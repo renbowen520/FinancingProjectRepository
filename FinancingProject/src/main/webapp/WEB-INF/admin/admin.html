@@ -1,0 +1,289 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>孔明理财后台管理</title>
+	
+<!-- 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+	<link href="/FinancingProject/assets/a" rel="stylesheet">
+	<link rel="stylesheet" href="/FinancingProject/assets/materialize/css/materialize.min.css" media="screen,projection" />
+    <!-- Bootstrap Styles-->
+    <link href="/FinancingProject/assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+     <!--  <link href="/FinancingProject/js/font-awesome.css" rel="stylesheet" />  -->
+    <link href="/FinancingProject/assets/css/font-awesome.css" rel="stylesheet" /> 
+    <!-- Morris Chart Styles-->
+    <link href="/FinancingProject/assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="/FinancingProject/assets/css/custom-styles.css" rel="stylesheet" />
+    <!-- Google Fonts-->
+      <link href="/FinancingProject/assets/b.css" type='text/css' />
+
+    <link rel="stylesheet" href="/FinancingProject/assets/js/Lightweight-Chart/cssCharts.css"> 
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand waves-effect waves-dark" href="">
+                	<i class="large material-icons">track_changes</i>
+                	<strong>menus</strong>
+                </a>
+				
+
+				
+		<div id="sideNav" href=""><i class="material-icons dp48">toc</i></div>
+            </div>
+
+            <ul class="nav navbar-top-links navbar-right"> 
+				<!-- <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown4"><i class="fa fa-envelope fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>				
+				<li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown3"><i class="fa fa-tasks fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
+				<li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown2"><i class="fa fa-bell fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li> -->
+			
+				  <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown1"><i class="fa fa-user fa-fw"></i> <b>Admin</b> <i class="material-icons right">arrow_drop_down</i></a></li>
+            </ul>
+        </nav>
+		<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+<li><a href="#"><i class="fa fa-user fa-fw"></i> My Profile</a>
+</li>
+<li><a href="#"><i class=" fa fa-refresh"></i> 注销</a>
+</li> 
+<li><a href="#"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
+</li>
+</ul>
+
+
+
+
+  
+	   <!--/. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+
+
+                    <li>
+                        <a href="#" class="waves-effect waves-dark"><i class="fa fa-dollar">
+						</i> <b>理财产品</b><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/FinancingProject/AdminController/admin">固收类/P2P</a>
+                            </li>
+                            <li>
+                                <a href="/FinancingProject/AdminController/menus2">私募基金</a>
+                            </li>
+
+                            <li>
+                                <a href="/FinancingProject/AdminController/menus4">股权基金</a>               
+                            </li>
+                            
+                              <li>
+                                <a href="/FinancingProject/AdminController/menus5">海外配置</a>               
+                            </li>
+                        </ul>
+                    </li>
+
+
+                   <li>
+                        <a href="#" class="waves-effect waves-dark"><i class="fa fa-money">
+						</i> <b>钱包管理</b><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/FinancingProject/AdminController/menus6">缴费记录</a>               
+                            </li>
+                        </ul>
+                    </li>
+
+
+             <li>
+                        <a href="#" class="waves-effect waves-dark"><i class="fa fa-tasks">
+						</i> <b>学院管理</b><span class="fa  arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                               <li>
+                                <a href="/FinancingProject/AdminController/menus7">资讯分类</a>
+                            </li>
+                           <li>
+                                <a href="/FinancingProject/AdminController/menus8">资讯管理</a>
+                            </li>
+                           
+                        </ul>
+                    </li>
+<!--===============================-->
+            <li>
+                        <a href="#" class="waves-effect waves-dark"><i class="fa fa-heart-o">
+						</i> <b>会员管理</b><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/FinancingProject/AdminController/menus9">账号管理</a>
+                            </li>
+                            <li>
+                                <a href="/FinancingProject/AdminController/menus10">理财师审核</a>
+                            </li>
+
+                            <li>
+                                <a href="/FinancingProject/AdminController/menus11">绑卡管理</a>               
+                            </li>
+                             <li>
+                                <a href="/FinancingProject/AdminController/menus12">付息计划</a>               
+                            </li>
+                             <li>
+                                <a href="/FinancingProject/AdminController/menus13">充值管理</a>               
+                            </li>
+                            
+                             <li>
+                                <a href="/FinancingProject/AdminController/menus14">提现管理</a>               
+                            </li>
+                             <li>
+                                <a href="/FinancingProject/AdminController/menus15">邀请奖励</a>               
+                            </li>
+                        </ul>
+                    </li>
+
+<!--          ======================                -->
+                 <li>
+                        <a href="#" class="waves-effect waves-dark"><i class="fa fa-krw">
+						</i> <b>理财统计</b><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/FinancingProject/AdminController/menus16">财务统计</a>
+                            </li>
+                            <li>
+                                <a href="/FinancingProject/AdminController/menus17">用户综合统计</a>
+                            </li>
+                        </ul>
+                    </li>
+<!--===========================-->
+                   <li>
+                        <a href="#" class="waves-effect waves-dark"><i class="fa fa-volume-off">
+						</i> <b>理财设置</b><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/FinancingProject/AdminController/menus18">发布公告</a>
+                            </li>
+                            <li>
+                                <a href="/FinancingProject/AdminController/menus19">意见反馈</a>
+                            </li>
+                        </ul>
+                    </li>
+<!--==========================-->
+                   <li>
+                        <a href="#" class="waves-effect waves-dark"><i class="fa fa-desktop">
+						</i> <b>系统管理</b><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/FinancingProject/AdminController/menus20">账号管理</a>
+                            </li>
+                            <li>
+                                <a href="/FinancingProject/AdminController/menus21">角色管理</a>
+                            </li>
+                            
+                              <li>
+                                <a href="/FinancingProject/AdminController/menus22">修改密码</a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+        
+        
+        
+        <div id="page-wrapper">
+		  <div class="header"> 
+                        <h1 class="page-header">
+                          <i class="fa fa-yen"></i>
+                             孔明理财 <small>您身边的理财专家</small>
+                        </h1>
+						<ol class="breadcrumb">
+					  <li><a href="#">Home</a></li>
+					  <li><a href="#">理财产品</a></li>
+					  <li class="active">Data</li>
+					</ol> 									
+		</div>
+<!--=======================================-->
+     
+         <!---在这里面可以写东西吗-->
+
+
+     <font size="+8">这里写内容</font>
+     
+     <br><br><br><br><br><br><br><br><br><br><br><br>
+      <!---在这里面可以写东西吗-->
+
+
+
+
+
+
+
+
+
+<!--================================-->
+			 <hr style="height:1px;border:none;border-top:1px solid #555555;" />
+		  <footer><p>
+		  ----All right reserved. Template by(版权所有):襄阳孔明投资管理有限公司
+	</p>
+	<div id="jnkc">
+
+ </div> 
+ <script>
+/*   function fun(){
+    var date=new Date();		
+	var s=date.getSeconds();	
+	var year=date.getFullYear();	
+	var month=date.getMonth()+1;	
+	var day=date.getDate();
+	var hour=date.getHours();
+	var minute=date.getMinutes();
+	var second=date.getSeconds();
+	var dateStr=year+"年"+month+"月"+day+"日"+hour+"时"+minute+"分"+s+"秒";
+	document.getElementById("sj").innerHTML=dateStr;
+ } 
+ 
+  setInterval(fun,100);  */
+ setInterval("jnkc.innerHTML='----'+new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());",1000); 
+
+	
+
+ </script> 
+		 
+		 </footer>
+		 	
+         <!-- /. PAGE WRAPPER  -->
+        </div>
+     <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+    
+    
+        <script src="/FinancingProject/assets/js/jquery-1.10.2.js"></script>   
+   <!--  <script src="/FinancingProject/js/jquery-3.2.0.min.js"></script> -->
+	<script src ="/FinancingProject/js/angular.min.js"></script>
+	<!-- Bootstrap Js -->
+    <script src="/FinancingProject/assets/js/bootstrap.min.js"></script>
+	
+	<script src="/FinancingProject/assets/materialize/js/materialize.min.js"></script>
+	
+    <!-- Metis Menu Js -->
+		<script src="/FinancingProject/assets/js/jquery.metisMenu.js"></script> 
+    <!-- Custom Js -->
+    <script src="/FinancingProject/assets/js/custom-scripts.js"></script> 
+	
+
+
+</body>
+
+</html>
