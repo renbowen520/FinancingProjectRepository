@@ -13,6 +13,13 @@ public class AdminController {
 		 return "admin/admin";
 	}
 	 
+	//后台登陆
+	@RequestMapping("/adminlogin")
+	public String adminlogin() {
+		return "admin/AdminLogin";
+	}
+	
+	
 	//显示后台首页图片
 	@RequestMapping("/show")
 	public String main1() {
