@@ -27,12 +27,12 @@
    
    
      <bean
-          id="d1"
+          id="a1"
               class="org.springframework.web.servlet.view.InternalResourceViewResolver">
             <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-            <property name="viewNames" value="admin*" />
-           <property name="prefix" value="/WEB-INF/admin/"></property>
-            <property name="suffix" value=".html"></property>  
+          <property name="viewNames" value="admin*" /> 
+           <property name="prefix" value="/WEB-INF/"></property>
+            <property name="suffix" value=".jsp"></property>  
              <property name="order" value="0" /> 
    </bean>
     <bean
