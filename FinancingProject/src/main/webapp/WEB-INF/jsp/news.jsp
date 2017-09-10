@@ -4,14 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>新闻中心</title>
 </head>
 <body>
-这个页面主要是用来 测试如果有多个  视图解析器的情况<br>
-http://127.0.0.1:8080/FinancingProject/Controller/aa<br>
-@RequestMapping("/aa")<br>
-	public String  aa() {  <br>
-		  return   "jsp/aa";<br>
-	}
+
 </body>
 </html>

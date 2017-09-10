@@ -4,13 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-
-
+<title>注册</title>
 </head>
-<body >
- <div>
-	<img src="/FinancingProject/images/5.jpg" width="100%" height="550">
-</div> 
+<body>
+
 </body>
 </html>
