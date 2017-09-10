@@ -731,7 +731,7 @@
     <div class="foot3">
 		<div class="container">
 			<div class="row">
-				Copyright © 2010 - 2015  All Rights Reserverd 襄阳孔明投资管理有限公司 版权所有<br>
+				Copyright © 2017  All Rights Reserverd 襄阳孔明投资管理有限公司 版权所有<br>
 			</div>
 		</div>
 	</div>
