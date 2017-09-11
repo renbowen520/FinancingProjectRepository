@@ -50,14 +50,14 @@
                         <a class="" href="javascript:;"><i class="fa fa-plug" aria-hidden="true"></i><span> 理财产品</span></a>
                         <dl class="layui-nav-child">
                               <dd>
-                                     <a href="javascript:;" data-url="/FinancingProject/AdminController/menus1" data-icon="&#xe614;" data-title="固收类/P2P" kit-target data-id='2'><i class="fa fa-user" aria-hidden="true"></i><span>&nbsp; 固收类/P2P</span></a>
+                                     <a href="javascript:;" data-url="/FinancingProject/AdminController/menus1" data-icon="&#xe614;" data-title="固收类/P2P" kit-target data-id='2'><i class="layui-icon">&#xe614;</i><span>&nbsp; 固收类/P2P</span></a>
                                   
                               </dd>
                               <dd>
-                                    <a href="javascript:;" data-url="/FinancingProject/AdminController/menus2" data-icon="&#xe614;" data-title="私募基金" kit-target data-id='3'><i class="fa fa-user" aria-hidden="true"></i><span>&nbsp;私募基金</span></a>
+                                    <a href="javascript:;" data-url="/FinancingProject/AdminController/menus2" data-icon="&#xe614;" data-title="私募基金" kit-target data-id='3'><i class="layui-icon">&#xe614;</i><span>&nbsp;私募基金</span></a>
                             </dd>
                             <dd>
-                                <a href="javascript:;" data-url="/FinancingProject/AdminController/menus3" data-icon="&#xe614;" data-title="股权基金" kit-target data-id='4'><i class="layui-icon">&#xe628;</i><span>&nbsp;股权基金</span></a>
+                                <a href="javascript:;" data-url="/FinancingProject/AdminController/menus3" data-icon="&#xe614;" data-title="股权基金" kit-target data-id='4'><i class="layui-icon">&#xe614;</i><span>&nbsp;股权基金</span></a>
                             </dd>
                             <dd>
                                 <a href="javascript:;" data-url="/FinancingProject/AdminController/menus4" data-icon="&#xe614;" data-title="海外配置" kit-target data-id='5'><i class="layui-icon">&#xe614;</i><span> &nbsp;海外配置</span></a>

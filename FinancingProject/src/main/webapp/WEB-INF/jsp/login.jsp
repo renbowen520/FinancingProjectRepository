@@ -115,6 +115,8 @@
                             <img src="/FinancingProject/index_files/passwordIcon.png"><input type="password" placeholder="密码" id="password" name="password" class="form-control password"><span class="errorInfo"></span>
                         </div>
                     </div>
+                
+                    
                     <div class="rest">
                         <!-- 显示错误的提示信息 -->
                         <p class="error"></p>

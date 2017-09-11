@@ -40,8 +40,8 @@ public class IndexController {
 					  return "jsp/investment_research";
 				}
 			
-				 //个人中心
-				 @RequestMapping("/personal_center ")
+				 //个人中心  
+				 @RequestMapping("/personal_center")
 				 public String  personal_center() {
 					  return "jsp/personal_center";
 				  }
@@ -64,4 +64,9 @@ public class IndexController {
 					 return "jsp/resetting";
 				 }
 				
+				 // 下载中心
+				 @RequestMapping("/download")
+				 public String   download() {
+					 return "jsp/download";
+				 }
 }
