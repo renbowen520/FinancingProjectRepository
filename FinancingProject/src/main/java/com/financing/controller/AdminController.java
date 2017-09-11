@@ -17,7 +17,7 @@ public class AdminController {
 	@RequestMapping("/show")
 	public String main1() {
 		return "admin/show";
-	}
+	} 
 	
 	@RequestMapping("/menus1")
 	public String menus1() {
