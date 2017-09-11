@@ -5,8 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
+
 </head>
-<body>
-<font size="+4">这里显示的是首页的图片</font>
+<body >
+ <div>
+	<img src="/FinancingProject/images/5.jpg" width="100%" height="550">
+</div> 
 </body>
 </html>
