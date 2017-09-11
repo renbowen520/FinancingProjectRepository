@@ -29,8 +29,13 @@
      <bean
           id="a1"
               class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+<<<<<<< HEAD
        <!--     <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/> -->
        <!--    <property name="viewNames" value="admin*" />  -->
+=======
+           <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/> 
+          <property name="viewNames" value="admin*" /> 
+>>>>>>> branch 'master' of https://github.com/renbowen520/FinancingProjectRepository
            <property name="prefix" value="/WEB-INF/"></property>
             <property name="suffix" value=".jsp"></property>  
            <!--   <property name="order" value="0" />  -->
@@ -38,7 +43,11 @@
 <!--     <bean
             id="d2"
               class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+<<<<<<< HEAD
           <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/> 
+=======
+            <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/> 
+>>>>>>> branch 'master' of https://github.com/renbowen520/FinancingProjectRepository
             <property name="viewNames" value="jsp*" />
            <property name="prefix" value="/WEB-INF/"></property>
             <property name="suffix" value=".jsp"></property> 
