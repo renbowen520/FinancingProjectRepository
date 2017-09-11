@@ -29,21 +29,21 @@
      <bean
           id="a1"
               class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-           <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-          <property name="viewNames" value="admin*" /> 
+       <!--     <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/> -->
+       <!--    <property name="viewNames" value="admin*" />  -->
            <property name="prefix" value="/WEB-INF/"></property>
             <property name="suffix" value=".jsp"></property>  
-             <property name="order" value="0" /> 
+           <!--   <property name="order" value="0" />  -->
    </bean>
-    <bean
+<!--     <bean
             id="d2"
               class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-           <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+          <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/> 
             <property name="viewNames" value="jsp*" />
            <property name="prefix" value="/WEB-INF/"></property>
             <property name="suffix" value=".jsp"></property> 
-             <property name="order" value="1" />  
-   </bean>
+            <property name="order" value="1" />  
+   </bean> -->
      
      
 </beans>
