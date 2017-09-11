@@ -139,10 +139,10 @@
         	
         }
         
-        $("#phone").blur(function(){  // 失去焦点  
+      /*   $("#phone").blur(function(){  // 失去焦点  
                 alert("shiqu ");
         
-});  
+        });  */ 
     </script>
     
     
