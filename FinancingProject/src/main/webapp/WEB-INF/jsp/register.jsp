@@ -28,6 +28,13 @@
 <script src="/FinancingProject/index_files/jquery"></script>
 <script src="/FinancingProject/index_files/bootstrap"></script>
 
+
+
+<link rel="stylesheet"  href="/FinancingProject/css/bootstrapValidator.css"  >
+<link rel="stylesheet"  href="/FinancingProject/css/bootstrap.min.css"  >
+  <script type="text/javascript"  src="/FinancingProject/js/bootstrap.min.js"></script>
+  <script type="text/javascript"  src="/FinancingProject/js/bootstrapValidator.js"></script>
+
 </head>
 <body>
 <!--   1  导入顶部  -->
@@ -91,31 +98,190 @@
 	
 
 
-<script type="text/javascript" src="/FinancingProject/index_files/regis.js"></script>
+
+<br><br><br>
+   <section>
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="page-header">
+                        <small><h1>注册</h1></small>
+                    </div>
+
+                    <form id="defaultForm" method="post" class="form-horizontal bv-form" action="/FinancingProject/LoginController/register" novalidate="novalidate">
+                        <div class="form-group has-feedback has-error">
+                            <label class="col-lg-3 control-label">姓名</label>
+                            <div class="col-lg-5">
+                                <input type="text"   id="member_name"      class="form-control" name="member_name" required="" data-bv-trigger="keyup" data-bv-notempty-message="姓名不能为空" placeholder="姓名,需实名注册" data-bv-field="member_name"><i class="form-control-feedback glyphicon glyphicon-remove" data-bv-icon-for="member_name" style="display: block;"></i>
+                            <small class="help-block" data-bv-validator="notEmpty" data-bv-for="member_name" data-bv-result="INVALID" style="display: block;">姓名不能为空</small></div>
+                           
+                        </div>
+
+                        
+
+                        <div class="form-group has-feedback has-success">
+                            <label class="col-lg-3 control-label">手机号码</label>
+                            <div class="col-lg-5">
+                                <input          type="text" class="form-control" name="mobile_Phone" data-bv-field="phone"><i class="form-control-feedback glyphicon glyphicon-ok" data-bv-icon-for="mobile_Phone" style="display: block;"></i>
+                            <small class="help-block" data-bv-validator="mobile_Phone" data-bv-for="mobile_Phone" data-bv-result="VALID" style="display: none;">输入不是有效的手机号码</small></div>
+                        </div>
+
+                        <div class="form-group has-feedback has-error">
+                            <label class="col-lg-3 control-label">密码</label>
+                            <div class="col-lg-5">
+                                <input type="password" class="form-control" name="password" data-bv-field="password"><i class="form-control-feedback glyphicon glyphicon-remove" data-bv-icon-for="password" style="display: block;"></i>
+                            <small class="help-block" data-bv-validator="notEmpty" data-bv-for="password" data-bv-result="INVALID" style="display: block;">密码不能位空</small><small class="help-block" data-bv-validator="identical" data-bv-for="password" data-bv-result="VALID" style="display: none;">两次密码不一致</small><small class="help-block" data-bv-validator="different" data-bv-for="password" data-bv-result="VALID" style="display: none;">用户名和密码不能相同</small></div>
+                        </div>
+
+                        <div class="form-group has-feedback has-error">
+                            <label class="col-lg-3 control-label">确认密码</label>
+                            <div class="col-lg-5">
+                                <input type="password" class="form-control" name="confirmPassword" data-bv-field="confirmPassword"><i class="form-control-feedback glyphicon glyphicon-remove" data-bv-icon-for="confirmPassword" style="display: block;"></i>
+                            <small class="help-block" data-bv-validator="notEmpty" data-bv-for="confirmPassword" data-bv-result="INVALID" style="display: block;">密码不能为空</small><small class="help-block" data-bv-validator="identical" data-bv-for="confirmPassword" data-bv-result="VALID" style="display: none;">两次密码不一致</small><small class="help-block" data-bv-validator="different" data-bv-for="confirmPassword" data-bv-result="VALID" style="display: none;">用户名和密码不能相同</small></div>
+                        </div>
+
+                    
+                     
+					        <div class="form-group has-feedback has-success">
+                            <label class="col-lg-3 control-label">理财师邀请码</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" name="invitedCode"   id="invitedCode" placeholder="选填,(填写理财师邀请码会有更多惊喜)" ><i ></i>
+                             </div>
+                        </div>
+
+                            <div class="form-group has-feedback has-success">
+                            <label class="col-lg-3 control-label">QQ号码</label>
+                            <div class="col-lg-5">
+                                <input type="text"     id=" qqNumber" name="qqNumber"     class="form-control"  placeholder="选填,(建议填写方便客服联系)" ><i ></i>
+                             </div>
+                        </div>
+
+                        <div class="form-group has-feedback has-error">
+                            <label class="col-lg-3 control-label" id="captchaOperation">16 + 55 =</label>
+                            <div class="col-lg-2">
+                                <input type="text" class="form-control" name="captcha" data-bv-field="captcha"><i class="form-control-feedback glyphicon glyphicon-remove" data-bv-icon-for="captcha" style="display: block;"></i>
+                            <small class="help-block" data-bv-validator="callback" data-bv-for="captcha" data-bv-result="INVALID" style="display: block;">答案错误</small></div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-9 col-lg-offset-3">
+                                <button        type="submit" class="btn btn-primary" name="signup" value="Sign up" disabled="disabled">注册</button>
+                              
+                                <button type="button" class="btn btn-info" id="resetBtn">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+            <!-- :form -->
 <script type="text/javascript">
-   function fun(){
-	   alert("点击了注册");
-   }
+$(document).ready(function() {
+    // Generate a simple captcha
+    function randomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    };
+    $('#captchaOperation').html([randomNumber(1, 100), '+', randomNumber(1, 200), '='].join(' '));
 
-$(function(){
-	var b = "";
-	regis(b);
+    $('#defaultForm').bootstrapValidator({
+//        live: 'disabled',
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            member_name: {
+                validators: {
+                    notEmpty: {
+                        message: '姓名不能为空'
+                    }
+                }
+            },
+            mobile_Phone: {
+                 message: 'The phone is not valid',
+                 validators: {
+                     notEmpty: {
+                         message: '手机号码不能为空'
+                     },
+                     stringLength: {
+                         min: 11,
+                         max: 11,
+                         message: '请输入11位手机号码'
+                     },
+                     regexp: {
+                         regexp: /^1[3|5|8]{1}[0-9]{9}$/,
+                         message: '请输入正确的手机号码'
+                     }
+                 }
+             },
+            password: {
+                validators: {
+                    notEmpty: {
+                        message: '密码不能位空'
+                    },
+                   stringLength:{
+				   min:6,
+				   max:30,
+                      message: '用户名长度必须在6到30之间'
+				   },
+                    identical: {
+                        field: 'confirmPassword',
+                        message: '两次密码不一致'
+                    },
+					regexp: {
+                         regexp: /^[a-zA-Z0-9_\.]+$/,
+                         message: 'The username can only consist of alphabetical, number, dot and underscore'
+                     }
+                }
+            },
+            confirmPassword: {
+              validators: {
+                    notEmpty: {
+                        message: '密码不能位空'
+                    },
+                   stringLength:{
+				   min:6,
+				   max:30,
+                      message: '用户名长度必须在6到30之间'
+				   },
+                    identical: {
+                        field: 'password',
+                        message: '两次密码不一致'
+                    },
+					regexp: {
+                         regexp: /^[a-zA-Z0-9_\.]+$/,
+                         message: 'The username can only consist of alphabetical, number, dot and underscore'
+                     }
+                }
+            },
+            captcha: {
+                validators: {
+                    callback: {
+                        message: '答案错误',
+                        callback: function(value, validator) {
+                            var items = $('#captchaOperation').html().split(' '), sum = parseInt(items[0]) + parseInt(items[2]);
+                            return value == sum;
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    // Validate the form manually
+    $('#validateBtn').click(function() {
+        $('#defaultForm').bootstrapValidator('validate');
+    });
+    $('#resetBtn').click(function() {
+        $('#defaultForm').data('bootstrapValidator').resetForm(true);
+    });
 });
-
-function updcaptcha(){
-	document.getElementById("captcha").src="/FinancingProject/index_files/authImage?"+new Date().getTime();
-}
-
-function showAgreement(){
-	window.open("/web/zcxy","注册协议","height=800,width=1000,scrollbars=yes, resizable=no,location=no, status=no,screenX=100") 
-}
 </script>
 
+  
+  
+  
+  
 
-
- -->
-  <font size="+5"> 这里是注册页面 </font>
-  <br><br><br>
   
      <!-- 4     图片广告 -->
     <div class="container index">

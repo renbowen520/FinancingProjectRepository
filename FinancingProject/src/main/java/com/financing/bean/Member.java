@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class Member {//用户表
+public class Member {//用户基本表
 		private int id;//用户id
 		private String member_name;//真实姓名
 		private String name;//用户名
