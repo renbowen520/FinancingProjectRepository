@@ -15,9 +15,17 @@ import com.financing.bean.Member;
 public class LoginController {
 
 	
+	@RequestMapping("/login")
+	public String  login(String phone,String password) {
+		System.out.println(phone);
+		System.out.println(password);
+		
+		return "";
+	}
 	
-	@RequestMapping("/register")
-	public String register(Member member) {   //用户注册
+	
+	@RequestMapping("/register")//用户注册
+	public String register(Member member) {   
 	    System.out.println(member.getMember_name());	 
 		 System.out.println(member.getMobile_Phone());
 		 System.out.println(member.getPassword());
