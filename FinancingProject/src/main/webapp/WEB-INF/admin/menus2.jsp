@@ -10,31 +10,21 @@
 <link rel="stylesheet" href="/FinancingProject/css/bootstrap.min.css" />
 <script type="text/javascript" src="/FinancingProject/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/FinancingProject/js/jquery.min.js" ></script>
-<!--  <script type="text/javascript">
-$(document).ready(function(){
-	$("#btn1").click(function(){ 
-		alert("1");
-		document.forms[0].action="/FinancingProject/finance/addfinance";
-		document.forms[0].submit();
-	});
-	$("#btn2").click(function(){ 
-		alert("2");
-		document.forms[0].action="/FinancingProject/AdminController/menus2";
-		document.forms[0].submit();
-	});
- });
-</script>-->
 <script type="text/javascript">
- $(document).ready(function(){
-	$("#btn1").click(function(){
+$(function(){
+	$("#btn2").click(function(){ //新增按钮
 		$("#form1").attr("action","/FinancingProject/finance/addfinance");
+		$("#form1").submit();
+	});
+	$("#btn1").click(function(){ //模糊查询按钮
+		$("#form1").attr("action","/FinancingProject/AdminController/menus2");
 		$("#form1").submit();
 	});
  });
  </script>
 <body>
 <font size="+5">私募基金  </font><br>
-<form action="" id="form1" method="post">
+<form action="" id="form1" method="post" role="form">
 <center>
 名称:<input type="text" name="name" placeholder="名称" value="${sname }">
 状态:<select name="status">
@@ -48,15 +38,13 @@ $(document).ready(function(){
 <option value="SIMU">私募</option>
 <option value="GUQUAN">股权</option>
 </select>
-<!-- 
-<input type="button" id="#btn2" value="查询">
-<input type="button" id="#btn1" value="新增">
- -->
- <a href="/FinancingProject/AdminController/menus2">查询</a>
- <a href="/FinancingProject/finance/addfinance">新增</a>
+ 
+<input type="button" id="btn2" value="查询">
+<input type="button" id="btn1" value="新增">
+
 </center>
 	<table width="100%" border="o" cellspacing="0">
-		<tr>
+		<tr align="center">
 		<th>序号</th>
 		<th>名称</th>
 		<th>类型</th>
@@ -70,7 +58,7 @@ $(document).ready(function(){
 		<th>添加时间</th>
 		<th>操作</th>
 			<c:forEach items="${listfinance}" var="li" varStatus="l">
-				<tr>
+				<tr align="center">
 				<td>${l.index+1}</td>
 				<td>${li.name}</td>
 				<td>${li.type}</td>

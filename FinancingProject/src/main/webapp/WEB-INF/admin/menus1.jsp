@@ -12,8 +12,12 @@
 <script type="text/javascript" src="/FinancingProject/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 $(function(){
-	$("#btn1").click(function(){ 
+	$("#btn2").click(function(){ //新增按钮
 		$("#form1").attr("action","/FinancingProject/subject/addfixget");
+		$("#form1").submit();
+	});
+	$("#btn1").click(function(){ //模糊查询按钮
+		$("#form1").attr("action","/FinancingProject/subject/menus1");
 		$("#form1").submit();
 	});
  });
@@ -22,7 +26,7 @@ $(function(){
 <br>
 <form method="post" id="form1" role="form">
 			
-						名称:<input type="text" placeholder="名称" name="sname" value="${sname}">
+		名称:<input type="text" placeholder="名称" name="sname" value="${sname}">
 				
 				
 						状态:<select>
@@ -41,10 +45,8 @@ $(function(){
 						</select>
 					
 						<input type="button" id="btn1" value="查询">
-				<a href="/FinancingProject/subject/menus1">select</a>
 						<input type="reset"  value="重置">
-					<input type="button" value="新增" id="btn1"/>
-						<a href="/FinancingProject/subject/addfixget">新增</a>
+					<input type="button" value="新增" id="btn2"/>
 				<table class="table" width="90%" border="0" cellspacing="1">
 				<tr class="success">
 					<th>序号</th>
