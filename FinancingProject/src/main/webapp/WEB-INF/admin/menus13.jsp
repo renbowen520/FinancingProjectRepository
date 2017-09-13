@@ -13,6 +13,11 @@
 <div >
 	<form action="" role="form"  method="post">
 		<table class="table table-striped" width="100%">
+		<div>
+			
+		
+		</div>
+		<br>
 			<tr>
 				<th>序号</th>
 				<th>手机号</th>
@@ -25,6 +30,20 @@
 				<th>提现状态</th>
 				<th>提现时间</th>
 				<th>操作</th>
+			</tr>
+			
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
 		</table>
 	</form>

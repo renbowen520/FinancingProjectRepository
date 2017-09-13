@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,7 +15,7 @@ public class Member_withdraw_record {//提现记录表
 	
 	private int id;//id
 	private String serial_number;//流水号
-	private int member_id;//用户id
+	private Member member_id;//用户id
 	private double amount;//提现金额
 	private String bank_name;//银行名称
 	private String bank_card;//银行卡号
@@ -35,14 +37,17 @@ public class Member_withdraw_record {//提现记录表
 	public String getSerial_number() {
 		return serial_number;
 	}
-	public void setSerial_number(String serial_number) {
-		this.serial_number = serial_number;
-	}
-	public int getMember_id() {
+	
+	@ManyToOne
+	@JoinColumn(name="member_id")
+	public Member getMember_id() {
 		return member_id;
 	}
-	public void setMember_id(int member_id) {
+	public void setMember_id(Member member_id) {
 		this.member_id = member_id;
+	}
+	public void setSerial_number(String serial_number) {
+		this.serial_number = serial_number;
 	}
 	public double getAmount() {
 		return amount;
