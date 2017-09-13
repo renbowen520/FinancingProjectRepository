@@ -54,10 +54,6 @@ public class SubjectController {
 	@RequestMapping("/bfupdate/{id}")
 	//修改之前的查询
 	public String bfupdate(@PathVariable("id")int id,Model model,Subject subject){
-		subject.setCreate_date(new Date());
-		subject.setUpdate_date(new Date());
-		subject.setRaise_start(new Date());
-		subject.setRaise_end(new Date());
 	    subject=subjectService.getById(id);
 		model.addAttribute("subject", subject);
 		return "admin/updatefixget";
@@ -65,6 +61,10 @@ public class SubjectController {
 	//修改固收类
 	@RequestMapping("/update")
 	public String update(Subject subject){
+		subject.setCreate_date(new Date());
+		subject.setUpdate_date(new Date());
+		subject.setRaise_start(new Date());
+		subject.setRaise_end(new Date());
 		this.subjectService.update(subject);
 		return "redirect:/subject/menus1";
 	}
