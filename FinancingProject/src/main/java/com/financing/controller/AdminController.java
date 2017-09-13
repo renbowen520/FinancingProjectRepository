@@ -68,7 +68,7 @@ public class AdminController {
 //Ë½Ä¼»ù½ð
 	@RequestMapping("/menus2")
 	public String menus2(Model model){
-		List<Finance_product_funds> listfinance=this.finance_product_funds_Service.listfinance();
+		List<Finance_product_funds> listfinance=this.finance_product_funds_Service.listfinance(model);
 		model.addAttribute("listfinance", listfinance);
 		return "admin/menus2";
 	}

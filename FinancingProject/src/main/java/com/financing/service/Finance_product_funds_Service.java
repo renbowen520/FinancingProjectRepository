@@ -1,6 +1,7 @@
 package com.financing.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,8 +36,8 @@ public class Finance_product_funds_Service {
 	}
 	
 	//²éÑ¯ÏÔÊ¾Ë½Ä¼
-	public List<Finance_product_funds> listfinance(Model model){
-	return this.finance_product_funds_Dao.listfinance(model);
+	public List<Finance_product_funds> listfinance(Map map){
+	return this.finance_product_funds_Dao.listfinance(map);
 	}
 	
 	//²éÑ¯ÏÔÊ¾Ë½Ä¼¶©ÔÄ

@@ -1,7 +1,9 @@
 package com.financing.controller;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,8 +26,10 @@ public class Finance_product_funds_Controller {
 	
 	@RequestMapping("/menus2")
 	//²éÑ¯Ë½Ä¼
-	public String menus2(Model model){
-		List<Finance_product_funds> listfinance=this.finance_product_funds_Service.listfinance();
+	public String menus2(Model model,String sname){
+		Map map=new HashMap();
+		map.put("sname",sname);
+		List<Finance_product_funds> listfinance=this.finance_product_funds_Service.listfinance(map);
 		model.addAttribute("listfinance", listfinance);
 		return "admin/menus2";
 	}
