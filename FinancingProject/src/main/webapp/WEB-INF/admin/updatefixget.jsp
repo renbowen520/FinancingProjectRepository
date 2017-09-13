@@ -8,6 +8,7 @@
 </head>
 <body>
 <form method="post" action="/FinancingProject/subject/update"> 
+<input type="hidden" name="id" value="${subject.id }"/>
 		名称:<input type="text" name="name" value="${subject.name} "><br>
 		合同编号:<input type="text" name="serial_no" value="${subject.serial_no}"><br>
 		起投金额(元):<input type="text" name="floor_amount" value="${subject.floor_amount}"><br>
@@ -31,7 +32,7 @@
 		<option value="0">否</option>
 		<option value="1">是</option>
 		</select><br>
-		已购人数:<input type="number" name="bought" value="${subject.bought}">
+		已购人数:<input type="text" name="bought" value="${subject.bought}">
 		
 		<br>
 		<input type="submit" value="保存">
