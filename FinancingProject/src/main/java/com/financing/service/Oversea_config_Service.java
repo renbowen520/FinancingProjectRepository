@@ -37,7 +37,7 @@ public class Oversea_config_Service {
 		return this.oversea_config_Dao.listOversea();
 	}
 	
-	//查询显示海外配置 
+	//查询显示海外配置 订阅
 	public List<Oversea_config_subscribe> listConfig(int id){
 		return this.oversea_config_Dao.listConfig(id);
 	}

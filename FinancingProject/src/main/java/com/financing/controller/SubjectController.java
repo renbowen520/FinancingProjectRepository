@@ -1,10 +1,10 @@
 package com.financing.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.financing.bean.Subject;
+import com.financing.bean.Subject_bbin_purchase_record;
 import com.financing.service.SubjectService;
 
 
@@ -26,11 +27,11 @@ public class SubjectController {
 	//跳到新增页面
 	@RequestMapping("/addfixget")
 	public String addfixget(){
-		return "addfixget";
+		return "admin/addfixget";
 	}
 	
 	//查询固收类
-	@RequestMapping("/listfix")
+	@RequestMapping("/menus1")
 	public String menus1(Model model,@RequestParam(required=false)String sname) {
 		Map map=new HashMap();
 		map.put("sname",sname);
@@ -42,20 +43,38 @@ public class SubjectController {
 	
 	//保存固收类
 	@RequestMapping("/save")
-	public String save(Subject subject){
+	public String save(Subject subject,Model model){
+		subject.setCreate_date(new Date());
+		subject.setUpdate_date(new Date());
+		subject.setRaise_start(new Date());
+		subject.setRaise_end(new Date());
 		subjectService.save(subject);
-		return "redirect:/subject/listfix";
+		return "redirect:/subject/menus1";
 	}
 	@RequestMapping("/bfupdate/{id}")
 	//修改之前的查询
-	public String bfupdate(@PathVariable("id")int id,Model model){
-		Subject subject=subjectService.getById(id);
+	public String bfupdate(@PathVariable("id")int id,Model model,Subject subject){
+		subject.setCreate_date(new Date());
+		subject.setUpdate_date(new Date());
+		subject.setRaise_start(new Date());
+		subject.setRaise_end(new Date());
+	    subject=subjectService.getById(id);
 		model.addAttribute("subject", subject);
-		return "redirect:/subject/update";
+		return "admin/updatefixget";
 	}
 	//修改固收类
+	@RequestMapping("/update")
 	public String update(Subject subject){
 		this.subjectService.update(subject);
-		return "redirect:/subject/listfix";
+		return "redirect:/subject/menus1";
 	}
+	
+	//显示标的购买记录
+	@RequestMapping("/listsubjectrecord/{id}")
+	public String listsubjectrecord(@PathVariable("id")int id,Model model){
+		List<Subject_bbin_purchase_record> listsubjectrecord=this.subjectService.listsubjectrecord(id);
+		model.addAttribute("listsubjectrecord", listsubjectrecord);
+		return "admin/subjectrecord";
+	}
+
 }

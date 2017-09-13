@@ -25,8 +25,8 @@ public class Subject {
 	private Date raise_end;//募集结束
 	private int refund_way;//还款方式
 	private int safeGuard_way;//保障方式
-	private Date start_date;//标的开始时间
-	private Date end_date;//标的结束时间
+	private String start_date;//标的开始时间
+	private String end_date;//标的结束时间
 	private double year_rate;//年化率
 	private String comment;//产品速览
 	private int folder_id;//文件夹id
@@ -132,16 +132,17 @@ public class Subject {
 	public void setSafeGuard_way(int safeGuard_way) {
 		this.safeGuard_way = safeGuard_way;
 	}
-	public Date getStart_date() {
+	
+	public String getStart_date() {
 		return start_date;
 	}
-	public void setStart_date(Date start_date) {
+	public void setStart_date(String start_date) {
 		this.start_date = start_date;
 	}
-	public Date getEnd_date() {
+	public String getEnd_date() {
 		return end_date;
 	}
-	public void setEnd_date(Date end_date) {
+	public void setEnd_date(String end_date) {
 		this.end_date = end_date;
 	}
 	public double getYear_rate() {

@@ -22,44 +22,32 @@ $(document).ready(function(){
 <body>
 <br>
 <form method="post">
-			<table class="table" width="90%" border="0" cellspacing="1">
-				<tr align="center">
-					<td colspan="2">
+			
 						名称:<input type="text" placeholder="名称" name="sname">
-					</td>
-					<td>  </td>
-					<td>
+				
+				
 						状态:<select>
-							<option>全部</option>
-							<option>未发布</option>
-							<option>募集中</option>
-							<option>回款中</option>
-							<option>还款完成</option>
+							<option value="0">全部</option>
+							<option value="1">未发布</option>
+							<option value="2">募集中</option>
+							<option value="3">回款中</option>
+							<option value="4">还款完成</option>
 						</select>
-					</td>
-					<td>  </td>
-					<td>
+				
 						类型:<select>
-							<option>全部</option>
-							<option>固收类</option>
-							<option>P2P车贷</option>
-							<option>P2P房贷</option>
+							<option value="0">全部</option>
+							<option value="1">固收类</option>
+							<option value="2">P2P车贷</option>
+							<option value="3">P2P房贷</option>
 						</select>
-					</td>
-					<td>  </td>
-					<td></td>
-					<td>
+					
 						<input type="button" id="btn1" value="查询">
-					</td>
-					<td>  </td>
-					<td>
+				<a href="/FinancingProject/subject/menus1">select</a>
 						<input type="reset"  value="重置">
-					</td>
-					<td></td>
-					<td>
+					
 						<a href="/FinancingProject/subject/addfixget">新增</a>
-					</td>
-				</tr>
+					
+				<table class="table" width="90%" border="0" cellspacing="1">
 				<tr class="success">
 					<th>序号</th>
 					<th>合同编号</th>
@@ -91,7 +79,7 @@ $(document).ready(function(){
 					<td>${li.create_date}</td>
 					<td>
 					<a href="/FinancingProject/subject/bfupdate/${li.id}">编辑查看</a>|
-					<a href="/FinancingProject/subject/">查看投资</a>
+					<a href="/FinancingProject/subject/listsubjectrecord/${li.id}">查看投资</a>
 					</td>
 				</tr>
 				</c:forEach>

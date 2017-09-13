@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.financing.bean.Subject;
+import com.financing.bean.Subject_bbin_purchase_record;
 import com.financing.dao.SubjectDao;
 
 
@@ -34,5 +35,9 @@ public class SubjectService {
 	//修改前的查询
 	public Subject getById(int id){
 		return this.subjectdao.getById(id);
+	}
+	//查询显示标的购买记录
+	public List<Subject_bbin_purchase_record> listsubjectrecord(int id){
+		return subjectdao.listsubjectrecord(id);
 	}
 }

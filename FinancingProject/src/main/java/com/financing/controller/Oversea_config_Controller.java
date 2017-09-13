@@ -34,13 +34,7 @@ public class Oversea_config_Controller {
 		oversea_config.setAddTime(new Date());
 		oversea_config.setUpdTime(new Date());
 		oversea_config_Service.save(oversea_config);
-		/*ModelAndView mv=new ModelAndView();
-		mv.setViewName("redirect:/oversea/menus4");*/
-//		List<Oversea_config> listOversea=this.oversea_config_Service.listOversea();
-//		model.addAttribute("listOversea", listOversea);
 		return "redirect:/oversea/menus4";
-		
-	
 	}
 	
 	
@@ -65,8 +59,6 @@ public class Oversea_config_Controller {
 		oversea_config.setAddTime(new Date());
 		oversea_config.setUpdTime(new Date());
 		this.oversea_config_Service.update(oversea_config);
-//		List<Oversea_config> listOversea=this.oversea_config_Service.listOversea();
-//		model.addAttribute("listOversea", listOversea);
 		return "redirect:/oversea/menus4";
 	}
 	//查看海外配置订阅
