@@ -11,19 +11,18 @@
 <script type="text/javascript" src="/FinancingProject/js/jquery-3.2.0.min.js" ></script>
 <script type="text/javascript" src="/FinancingProject/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-$(document).ready(function(){
+$(function(){
 	$("#btn1").click(function(){ 
-		alert("1");
-		document.forms[0].action="/FinancingProject/subject/addfixget";
-		document.forms[0].submit();
+		$("#form1").attr("action","/FinancingProject/subject/addfixget");
+		$("#form1").submit();
 	});
  });
  </script>
 <body>
 <br>
-<form method="post">
+<form method="post" id="form1" role="form">
 			
-						名称:<input type="text" placeholder="名称" name="sname">
+						名称:<input type="text" placeholder="名称" name="sname" value="${sname}">
 				
 				
 						状态:<select>
@@ -68,8 +67,8 @@ $(document).ready(function(){
 					<td>${li.serial_no}</td>
 					<td>${li.type}</td>
 					<td>${li.name}</td>
-					<td>${li.amount}</td>
-					<td>${li.amount}</td>
+					<td>${li.floor_amount}</td>
+					<td>${li.floor_amount}</td>
 					<td>${li.period}</td>
 					<td>${li.floor_amount}</td>
 					<td>${li.year_rate}</td>

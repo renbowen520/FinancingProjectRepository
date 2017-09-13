@@ -17,6 +17,7 @@ public class Subject {
 	private int type;//类型
 	private int status;//状态
 	private double floor_amount;//起投金额
+	private double amount;//标的金额
 	private int first_id;//始标id
 	private int parent_id;//父标id
 	private int period;//周期
@@ -83,6 +84,12 @@ public class Subject {
 	}
 	public void setFloor_amount(double floor_amount) {
 		this.floor_amount = floor_amount;
+	}
+	public double getAmount() {
+		return amount;
+	}
+	public void setAmount(double amount) {
+		this.amount = amount;
 	}
 	public int getFirst_id() {
 		return first_id;

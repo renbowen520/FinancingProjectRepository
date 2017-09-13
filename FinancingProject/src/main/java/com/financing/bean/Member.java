@@ -30,7 +30,6 @@ public class Member {//用户基本表
 		private String invitedCode;//被邀请码
 		private String qqNumber;//qq号码
 		
-		
 		@Id
 		@GeneratedValue
 		public int getId() {

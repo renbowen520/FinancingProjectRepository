@@ -36,7 +36,7 @@ $(document).ready(function(){
 <font size="+5">私募基金  </font><br>
 <form action="" id="form1" method="post">
 <center>
-名称:<input type="text" name="name" placeholder="名称">
+名称:<input type="text" name="name" placeholder="名称" value="${sname }">
 状态:<select name="status">
 <option value="">全部</option>
 <option value="0">未发布</option>

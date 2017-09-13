@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 
 import com.financing.bean.Finance_product_funds;
 import com.financing.bean.Finance_product_subscribe;
@@ -34,8 +35,8 @@ public class Finance_product_funds_Service {
 	}
 	
 	//²éÑ¯ÏÔÊ¾Ë½Ä¼
-	public List<Finance_product_funds> listfinance(){
-		return this.finance_product_funds_Dao.listfinance();
+	public List<Finance_product_funds> listfinance(Model model){
+	return this.finance_product_funds_Dao.listfinance(model);
 	}
 	
 	//²éÑ¯ÏÔÊ¾Ë½Ä¼¶©ÔÄ
