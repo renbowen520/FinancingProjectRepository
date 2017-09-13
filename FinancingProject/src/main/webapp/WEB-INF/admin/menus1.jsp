@@ -8,13 +8,13 @@
 <title>固收类</title>
 </head>
 <link rel="stylesheet" href="/FinancingProject/css/bootstrap.min.css" />
+<script type="text/javascript" src="/FinancingProject/js/jquery-3.2.0.min.js" ></script>
 <script type="text/javascript" src="/FinancingProject/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/FinancingProject/js/jquery.min.js" ></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#btn1").click(function(){ 
 		alert("1");
-		document.forms[0].action="/FinancingProject/AdminController/menus1";
+		document.forms[0].action="/FinancingProject/subject/addfixget";
 		document.forms[0].submit();
 	});
  });
@@ -44,9 +44,8 @@ $(document).ready(function(){
 						<input type="button" id="btn1" value="查询">
 				<a href="/FinancingProject/subject/menus1">select</a>
 						<input type="reset"  value="重置">
-					
+					<input type="button" value="新增" id="btn1"/>
 						<a href="/FinancingProject/subject/addfixget">新增</a>
-					
 				<table class="table" width="90%" border="0" cellspacing="1">
 				<tr class="success">
 					<th>序号</th>
@@ -69,8 +68,8 @@ $(document).ready(function(){
 					<td>${li.serial_no}</td>
 					<td>${li.type}</td>
 					<td>${li.name}</td>
-					<td>${li.floor_amount}</td>
-					<td>${li.floor_amount}</td>
+					<td>${li.amount}</td>
+					<td>${li.amount}</td>
 					<td>${li.period}</td>
 					<td>${li.floor_amount}</td>
 					<td>${li.year_rate}</td>
