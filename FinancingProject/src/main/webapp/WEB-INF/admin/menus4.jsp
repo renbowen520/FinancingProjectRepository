@@ -35,7 +35,7 @@
 				<td>${li.child_title}</td>
 				<td>${li.status}</td>
 				<td>${li.sortColum}</td>
-				<td>${li.oversea_icon}</td>
+				<td><img src="${li.oversea_icon}" /></td>
 				<td>${li.addTime}</td>
 				<td>
 				   <!-- <input type="button" value="编辑查看" ng-click="/FinancingProject/subject/bfupdate"/>

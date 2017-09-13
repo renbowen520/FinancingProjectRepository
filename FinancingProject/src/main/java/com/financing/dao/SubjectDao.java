@@ -1,5 +1,6 @@
 package com.financing.dao;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -8,7 +9,9 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.financing.bean.Oversea_config_subscribe;
 import com.financing.bean.Subject;
+import com.financing.bean.Subject_bbin_purchase_record;
 
 @Component
 public class SubjectDao {
@@ -52,12 +55,18 @@ public class SubjectDao {
 	
 	//模糊查询
 	public String listDataHql(Map map,String hql){
-		String sname=(String)map.get("name");
+		String sname=(String)map.get("sname");
 		if(sname!=null&&!sname.equals("")){
 			hql+=" and name like '%"+sname+"%'";
 		}
 		return hql;
 	}
-	
-	
+	//查看记录
+	//查询显示
+	public List<Subject_bbin_purchase_record> listsubjectrecord(int id){
+		String hql="from Subject_bbin_purchase_record";
+		Session session=getSession();
+		List<Subject_bbin_purchase_record> listsubjectrecord=session.createQuery(hql).list();
+		return listsubjectrecord;
+	}
 }
