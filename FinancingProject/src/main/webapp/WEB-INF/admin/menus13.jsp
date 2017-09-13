@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -31,12 +32,12 @@
 				<th>提现时间</th>
 				<th>操作</th>
 			</tr>
-			
+			<c:forEach items="${ listmember}" var="lm" varStatus="stat">
 			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td>${stat.index+1}</td>
+				<td>${lm.mobile_Phone }</td>
+				<td>${lm.member_name }</td>
+				<td>${lm.identity }</td>
 				<td></td>
 				<td></td>
 				<td></td>
@@ -45,6 +46,7 @@
 				<td></td>
 				<td></td>
 			</tr>
+			</c:forEach>
 		</table>
 	</form>
 
