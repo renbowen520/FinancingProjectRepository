@@ -32,21 +32,31 @@
 				<th>提现时间</th>
 				<th>操作</th>
 			</tr>
-			<c:forEach items="${ listmember}" var="lm" varStatus="stat">
+			<c:forEach items="${listMember_withdraw_record}" var="lmwr" varStatus="stat" >
 			<tr>
 				<td>${stat.index+1}</td>
-				<td>${lm.mobile_Phone }</td>
-				<td>${lm.member_name }</td>
-				<td>${lm.identity }</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td>${lmwr.member_id.mobile_Phone }</td>
+				<td>${lmwr.member_id.member_name }</td>
+				<td>${lmwr.member_id.identity }</td>
+				<td>${lmwr.amount }</td>
+				<td>${lmwr.bank_name }</td>
+				<td>${lmwr.bank_card }</td>
+				<td>${lmwr.cardaddress }</td>
+				<td>
+				<c:if test="${lmwr.status==0 }">
+				<font color="green">待审核</font></c:if>
+				<c:if test="${lmwr.status==1 }">
+				<font color="green">已打款</font></c:if>
+				<c:if test="${lmwr.status==2 }">
+				<font color="green">打款中</font></c:if>
+				<c:if test="${lmwr.status==3 }">
+				<font color="red">打款失败</font></c:if>
+				</td>
+				<td>${lmwr.create_date}</td>
 				<td></td>
 			</tr>
 			</c:forEach>
+		
 		</table>
 	</form>
 

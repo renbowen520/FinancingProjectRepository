@@ -12,9 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.financing.bean.Member;
+import com.financing.bean.Member_bankcards;
+import com.financing.bean.Member_deposit_record;
 import com.financing.bean.Member_withdraw_record;
 import com.financing.bean.Oversea_config;
 import com.financing.bean.Subject;
+import com.financing.service.Member_bankcards_service;
+import com.financing.service.Member_deposit_record_service;
 import com.financing.service.Member_service;
 import com.financing.service.Member_withdraw_record_service;
 import com.financing.service.Oversea_config_Service;
@@ -32,9 +36,13 @@ public class AdminController {
 	@Autowired
 	private Oversea_config_Service oversea_config_service;
 	
-	
+	@Autowired
+	private Member_deposit_record_service mdrs;
 	@Autowired
 	private Member_withdraw_record_service member_withdraw_record_service;
+	
+	@Autowired
+	private Member_bankcards_service mbs;
 	
 	 //显示后台
 	@RequestMapping("/admin")
@@ -111,16 +119,20 @@ public class AdminController {
 	public String menus9() {
 		return "admin/menus9";
 	}
-	@RequestMapping("/menus10")
-	public String menus10() {
+	@RequestMapping("/menus10")//绑卡管理
+	public String menus10(Model model) {
+		List<Member_bankcards> listMember_bankcards=this.mbs.listMember_bankcards();
+		model.addAttribute("listMember_bankcards", listMember_bankcards);
 		return "admin/menus10";
 	}
 	@RequestMapping("/menus11")
 	public String menus11() {
 		return "admin/menus11";
 	}
-	@RequestMapping("/menus12")
-	public String menus12() {
+	@RequestMapping("/menus12")//充值管理
+	public String menus12(Model model) {
+		List<Member_deposit_record> listMember_deposit_record=this.mdrs.listMember_deposit_record();
+		model.addAttribute("listMember_deposit_record", listMember_deposit_record);
 		return "admin/menus12";
 	}
 	@RequestMapping("/menus13")//提现管理
