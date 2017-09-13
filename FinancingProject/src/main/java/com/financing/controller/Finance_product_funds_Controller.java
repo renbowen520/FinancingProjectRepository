@@ -25,7 +25,7 @@ public class Finance_product_funds_Controller {
 	@RequestMapping("/menus2")
 	//²éÑ¯Ë½Ä¼
 	public String menus2(Model model){
-		List<Finance_product_funds> listfinance=this.finance_product_funds_Service.listfinance();
+		List<Finance_product_funds> listfinance=this.finance_product_funds_Service.listfinance(model);
 		model.addAttribute("listfinance", listfinance);
 		return "admin/menus2";
 	}
