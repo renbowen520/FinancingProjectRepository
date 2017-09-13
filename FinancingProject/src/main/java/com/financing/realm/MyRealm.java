@@ -7,10 +7,10 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
-public class MyRealm extends  AuthorizingRealm{
+public class MyRealm extends AuthorizingRealm{
 
 	
-	
+
 	/**
 	 * 为当限前登录的用户授予角色和权限
 	 */

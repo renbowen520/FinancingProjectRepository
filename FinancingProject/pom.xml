@@ -122,11 +122,11 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 </dependency>
 
 <!--aop有3个包  -->
-<dependency>
+ <dependency>
     <groupId>aopalliance</groupId>
     <artifactId>aopalliance</artifactId>
     <version>1.0</version>
-</dependency>
+</dependency> 
 
 <dependency>
     <groupId>org.aspectj</groupId>
