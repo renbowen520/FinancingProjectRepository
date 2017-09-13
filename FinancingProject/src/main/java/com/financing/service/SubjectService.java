@@ -1,12 +1,10 @@
 package com.financing.service;
-
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.financing.bean.Subject;
 import com.financing.dao.SubjectDao;
 
@@ -28,6 +26,7 @@ public class SubjectService {
 		this.subjectdao.update(subject);
 	}
 	//查询显示所有固收类
+	
 	public List<Subject> listSubject(Map map){
 		return subjectdao.ListFixGet(map);
 	}
