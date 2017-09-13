@@ -43,18 +43,12 @@ public class Member_withdraw_record {//提现记录表
 	public void setSerial_number(String serial_number) {
 		this.serial_number = serial_number;
 	}
-<<<<<<< HEAD
-/*	public int getMember_id() {
-		return member_id;
-	}
-	public void setMember_id(int member_id) {
-		this.member_id = member_id;
-	}*/
-=======
->>>>>>> branch 'master' of https://github.com/renbowen520/FinancingProjectRepository
+
+	
 	public double getAmount() {
 		return amount;
 	}
+	
 	@ManyToOne
 	@JoinColumn(name="member_id")
 	public Member getMember_id() {
