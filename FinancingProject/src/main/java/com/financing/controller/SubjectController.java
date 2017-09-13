@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -76,5 +76,15 @@ public class SubjectController {
 		model.addAttribute("listsubjectrecord", listsubjectrecord);
 		return "admin/subjectrecord";
 	}
-
+	
+	
+	//计算总的金额
+	@RequestMapping("/getTotalMoney")
+	public double getTotalMoney(int id){
+		System.out.println("id="+id);
+		Subject subject=this.subjectService.getById(id);
+		double num=0;
+		
+		return num;
+	}
 }

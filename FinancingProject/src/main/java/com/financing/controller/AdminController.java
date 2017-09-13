@@ -57,7 +57,7 @@ public class AdminController {
 	
 	//固收类
 	@RequestMapping("/menus1")
-	public String menus1(Model model,@RequestParam(required=false)String sname) {
+	public String menus1(Model model,@ModelAttribute("sname")String sname) {
 		Map map=new HashMap();
 		map.put("sname",sname);
 		List<Subject> listSubject=this.subjectService.listSubject(map);
@@ -67,8 +67,10 @@ public class AdminController {
 	}
 //私募基金
 	@RequestMapping("/menus2")
-	public String menus2(Model model){
-		List<Finance_product_funds> listfinance=this.finance_product_funds_Service.listfinance(model);
+	public String menus2(Model model,@ModelAttribute("sname")String sname){
+		Map map=new HashMap();
+		map.put("sname",sname);
+		List<Finance_product_funds> listfinance=this.finance_product_funds_Service.listfinance(map);
 		model.addAttribute("listfinance", listfinance);
 		return "admin/menus2";
 	}

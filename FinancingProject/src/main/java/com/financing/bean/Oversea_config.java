@@ -25,7 +25,6 @@ public class Oversea_config {
 	private String start_date;//开始时间
 	private String end_date;//结束时间
 	private int status;//状态
-	//private Oversea_config Oversea_config;
 	@Id
 	@GeneratedValue
 	public int getId() {
