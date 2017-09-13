@@ -9,15 +9,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.financing.bean.Finance_product_funds;
 import com.financing.bean.Member;
 import com.financing.service.Finance_product_funds_Service;
+import com.financing.service.Member_bankcards_service;
+import com.financing.service.Member_deposit_record_service;
 import com.financing.service.Member_service;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.financing.bean.Member;
+import com.financing.bean.Member_bankcards;
+import com.financing.bean.Member_deposit_record;
+import com.financing.bean.Member_withdraw_record;
 import com.financing.bean.Oversea_config;
 import com.financing.bean.Subject;
+import com.financing.service.Member_service;
+import com.financing.service.Member_withdraw_record_service;
 import com.financing.service.Oversea_config_Service;
 import com.financing.service.SubjectService;
 
@@ -35,6 +42,13 @@ public class AdminController {
 	@Autowired
 	private Oversea_config_Service oversea_config_service;
 	
+	@Autowired
+	private Member_deposit_record_service mdrs;
+	@Autowired
+	private Member_withdraw_record_service member_withdraw_record_service;
+	
+	@Autowired
+	private Member_bankcards_service mbs;
 	
 	 //显示后台
 	@RequestMapping("/admin")
@@ -57,7 +71,7 @@ public class AdminController {
 	
 	//固收类
 	@RequestMapping("/menus1")
-	public String menus1(Model model,@RequestParam(required=false)String sname) {
+	public String menus1(Model model,@ModelAttribute("sname")String sname) {
 		Map map=new HashMap();
 		map.put("sname",sname);
 		List<Subject> listSubject=this.subjectService.listSubject(map);
@@ -67,8 +81,10 @@ public class AdminController {
 	}
 //私募基金
 	@RequestMapping("/menus2")
-	public String menus2(Model model){
-		List<Finance_product_funds> listfinance=this.finance_product_funds_Service.listfinance(model);
+	public String menus2(Model model,@ModelAttribute("sname")String sname){
+		Map map=new HashMap();
+		map.put("sname",sname);
+		List<Finance_product_funds> listfinance=this.finance_product_funds_Service.listfinance(map);
 		model.addAttribute("listfinance", listfinance);
 		return "admin/menus2";
 	}
@@ -110,20 +126,29 @@ public class AdminController {
 	public String menus9() {
 		return "admin/menus9";
 	}
-	@RequestMapping("/menus10")
-	public String menus10() {
+	@RequestMapping("/menus10")//绑卡管理
+	public String menus10(Model model) {
+		List<Member_bankcards> listMember_bankcards=this.mbs.listMember_bankcards();
+		model.addAttribute("listMember_bankcards", listMember_bankcards);
 		return "admin/menus10";
 	}
 	@RequestMapping("/menus11")
 	public String menus11() {
 		return "admin/menus11";
 	}
-	@RequestMapping("/menus12")
-	public String menus12() {
+	@RequestMapping("/menus12")//充值管理
+	public String menus12(Model model) {
+		List<Member_deposit_record> listMember_deposit_record=this.mdrs.listMember_deposit_record();
+		model.addAttribute("listMember_deposit_record", listMember_deposit_record);
 		return "admin/menus12";
 	}
-	@RequestMapping("/menus13")
-	public String menus13() {
+	@RequestMapping("/menus13")//提现管理
+	public String menus13(Model model) {
+		System.out.println("11111");
+		List<Member_withdraw_record> listMember_withdraw_record=this.member_withdraw_record_service.listMember_withdraw_record();
+		List<Member> listmember=this.member_withdraw_record_service.listMember();
+		model.addAttribute("listMember_withdraw_record", listMember_withdraw_record);
+		model.addAttribute("listmember", listmember);
 		return "admin/menus13";
 	}
 	@RequestMapping("/menus14")

@@ -13,23 +13,23 @@ import javax.persistence.Table;
 public class Oversea_config_subscribe {//海外配置订阅表
 	private int id;
 	private int member_id;//会员id
-	private int oversea_id;//海外配置id
+	//private int oversea_id;//海外配置id
 	private String name;//
 	private String phone;//电话
 	private String addr;//地址
 	private int status;//状态
 	private Date create_date;
 	private Date update_date;
-//	private Oversea_config Oversea_config;
-//	
-//	@ManyToOne
-//	@JoinColumn(name="oversea_id")
-//	public Oversea_config getOversea_config() {
-//		return Oversea_config;
-//	}
-//	public void setOversea_config(Oversea_config oversea_config) {
-//		Oversea_config = oversea_config;
-//	}
+	private Oversea_config Oversea_config;
+	
+	@ManyToOne
+	@JoinColumn(name="oversea_id")
+	public Oversea_config getOversea_config() {
+		return Oversea_config;
+	}
+	public void setOversea_config(Oversea_config oversea_config) {
+		Oversea_config = oversea_config;
+	}
 	@Id
 	@GeneratedValue
 	public int getId() {
@@ -44,12 +44,12 @@ public class Oversea_config_subscribe {//海外配置订阅表
 	public void setMember_id(int member_id) {
 		this.member_id = member_id;
 	}
-	public int getOversea_id() {
-		return oversea_id;
-	}
-	public void setOversea_id(int oversea_id) {
-		this.oversea_id = oversea_id;
-	}
+//	public int getOversea_id() {
+//		return oversea_id;
+//	}
+//	public void setOversea_id(int oversea_id) {
+//		this.oversea_id = oversea_id;
+//	}
 	public String getName() {
 		return name;
 	}

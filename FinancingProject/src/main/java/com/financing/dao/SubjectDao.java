@@ -47,8 +47,8 @@ public class SubjectDao {
 	//ÏÔÊ¾ËùÓĞ
 	public List<Subject> ListFixGet(Map map){
 		String hql="from Subject where 0=0";
-		hql=listDataHql(map, hql);
 		Session session=getSession();
+		hql=listDataHql(map, hql);
 		List<Subject> listSubject=session.createQuery(hql).list();
 		return listSubject;
 	}

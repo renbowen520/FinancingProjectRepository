@@ -31,9 +31,10 @@ public class Finance_product_funds_Dao {
 		return hql;
 	}
 	//≤È—Øœ‘ æ
-	public List<Finance_product_funds> listfinance(Model model){
+	public List<Finance_product_funds> listfinance(Map map){
 		String hql="from Finance_product_funds where 0=0";
 		Session session=getSession();
+		hql=listDataHql(map, hql);
 		List<Finance_product_funds> listfinance=session.createQuery(hql).list();
 		return listfinance;
 	}
