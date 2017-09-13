@@ -120,9 +120,15 @@ public class AdminController {
 		return "admin/menus9";
 	}
 	@RequestMapping("/menus10")//绑卡管理
-	public String menus10(Model model) {
-		List<Member_bankcards> listMember_bankcards=this.mbs.listMember_bankcards();
+	public String menus10(Model model,@ModelAttribute("mobile_Phonem")String mobile_Phonem,@ModelAttribute("member_namem")String member_namem,@ModelAttribute("card_nom")String card_nom,@ModelAttribute("create_datem")String create_datem) {
+		Map map=new HashMap<>();
+		map.put("mobile_Phonem", mobile_Phonem);
+		map.put("member_namem", member_namem);
+		map.put("card_nom", card_nom);
+		map.put("create_datem", create_datem);
+		List<Member_bankcards> listMember_bankcards=this.mbs.listMember_bankcards(map);
 		model.addAttribute("listMember_bankcards", listMember_bankcards);
+		
 		return "admin/menus10";
 	}
 	@RequestMapping("/menus11")
@@ -130,15 +136,26 @@ public class AdminController {
 		return "admin/menus11";
 	}
 	@RequestMapping("/menus12")//充值管理
-	public String menus12(Model model) {
-		List<Member_deposit_record> listMember_deposit_record=this.mdrs.listMember_deposit_record();
+	public String menus12(Model model,@ModelAttribute("serial_numberm")String serial_numberm,@ModelAttribute("mobile_Phonem")String mobile_Phonem,@ModelAttribute("statusm")String statusm,@ModelAttribute("pay_channel_namem")String pay_channel_namem,@ModelAttribute("create_datem")String create_datem) {
+		Map map=new HashMap<>();
+		map.put("serial_numberm", serial_numberm);
+		map.put("mobile_Phonem", mobile_Phonem);
+		map.put("statusm", statusm);
+		map.put("pay_channel_namem", pay_channel_namem);
+		map.put("create_datem", create_datem);
+		List<Member_deposit_record> listMember_deposit_record=this.mdrs.listMember_deposit_record(map);
 		model.addAttribute("listMember_deposit_record", listMember_deposit_record);
 		return "admin/menus12";
 	}
 	@RequestMapping("/menus13")//提现管理
-	public String menus13(Model model) {
-		System.out.println("11111");
-		List<Member_withdraw_record> listMember_withdraw_record=this.member_withdraw_record_service.listMember_withdraw_record();
+	public String menus13(Model model,@ModelAttribute("member_namem")String member_namem,@ModelAttribute("mobile_Phonem")String mobile_Phonem,@ModelAttribute("bank_cardm")String bank_cardm,@ModelAttribute("create_datem")String create_datem) {
+		Map map=new HashMap<>();
+		map.put("member_namem", member_namem);
+		map.put("mobile_Phonem", mobile_Phonem);
+		map.put("bank_cardm", bank_cardm);
+		map.put("create_datem", create_datem);
+		
+		List<Member_withdraw_record> listMember_withdraw_record=this.member_withdraw_record_service.listMember_withdraw_record(map);
 		List<Member> listmember=this.member_withdraw_record_service.listMember();
 		model.addAttribute("listMember_withdraw_record", listMember_withdraw_record);
 		model.addAttribute("listmember", listmember);

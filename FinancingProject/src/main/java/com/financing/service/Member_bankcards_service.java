@@ -1,6 +1,7 @@
 package com.financing.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.transaction.Transactional;
 
@@ -18,7 +19,7 @@ public class Member_bankcards_service {
 		@Autowired
 		private Member_bankcards_dao mbd;
 		
-		public List<Member_bankcards> listMember_bankcards(){
-			return this.mbd.listmember_bankcards();
+		public List<Member_bankcards> listMember_bankcards(Map map){
+			return this.mbd.listmember_bankcards(map);
 		}
 }

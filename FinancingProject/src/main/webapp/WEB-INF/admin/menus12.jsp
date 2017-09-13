@@ -9,13 +9,35 @@
  <link href="/FinancingProject/css/bootstrap.min.css" rel="stylesheet">
 <script type="text/javascript" src="/FinancingProject/js/jquery-3.2.0.min.js" ></script>
 <script type="text/javascript" src="/FinancingProject/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#btn1").click(function(){
+			$("#form1").attr("action","/FinancingProject/Member_deposit_record_Controller/chongzhi");
+			$("#form1").submit();
+		});
+		
+	});
+</script>
 </head>
 <body>
 <div >
-	<form action="" role="form"  method="post">
+	<form action="" role="form"  method="post" id="form1">
 		<table class="table table-striped" width="100%">
+		<br>
 		<div>
-			
+			<font size="+1">
+			&nbsp;&nbsp;&nbsp;订单编号:<input type="text" name="serial_numberm" value="${serial_numberm }">&nbsp;&nbsp;&nbsp;
+			手机号:<input type="text" name="mobile_Phonem" value="${mobile_Phonem}">&nbsp;&nbsp;&nbsp;
+			订单状态:<select name="statusm" value="${statusm }">
+				<option >----请选择----</option>
+				<option value="0">未付款</option>
+				<option value="1">已付款</option>
+			</select>&nbsp;&nbsp;&nbsp;
+			充值渠道:<input type="text" name="pay_channel_namem" value="${pay_channel_namem }">&nbsp;&nbsp;&nbsp;
+			订单时间:<input type="date" name="create_datem" value="${create_datem }"> &nbsp;&nbsp;&nbsp;
+			<button type="button" class="btn btn-primary" id="btn1">查询</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<button type="button" id="resetBtn" class="btn btn-success">重置</button> &nbsp;&nbsp;&nbsp;&nbsp;
+			</font>
 		
 		</div>
 		<br>
@@ -41,7 +63,7 @@
 					<font color="red">待付款</font>
 				</c:if>
 				<c:if test="${lmdr.status ==1}">
-					<font color="green">完成</font>
+					<font color="green">已付款</font>
 				</c:if>
 				</td>
 				<td>${lmdr.pay_channel_name }</td>

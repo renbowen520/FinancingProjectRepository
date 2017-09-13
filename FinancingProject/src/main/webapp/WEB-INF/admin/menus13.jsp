@@ -9,13 +9,35 @@
  <link href="/FinancingProject/css/bootstrap.min.css" rel="stylesheet">
 <script type="text/javascript" src="/FinancingProject/js/jquery-3.2.0.min.js" ></script>
 <script type="text/javascript" src="/FinancingProject/js/bootstrap.min.js"></script>
+ <link href="/FinancingProject/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="/FinancingProject/js/jquery-3.2.0.min.js" ></script>
+<script type="text/javascript" src="/FinancingProject/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+$(function(){
+	$("#btn1").click(function(){
+		$("#form1").attr("action","/FinancingProject/Member_withdraw_recordController/Member_withdraw_record");
+		$("#form1").submit();
+	});
+	
+});
+</script>
 </head>
 <body>
 <div >
-	<form action="" role="form"  method="post">
+	<form action="" role="form"  method="post" id="form1">
 		<table class="table table-striped" width="100%">
+		<br>
 		<div>
-			
+			<font size="+1">
+				姓名:<input type="text" name="member_namem" value="${member_namem }">&nbsp;&nbsp;&nbsp;
+				手机号:<input type="text" name="mobile_Phonem"value="${mobile_Phonem }">&nbsp;&nbsp;&nbsp;
+				银行卡号:<input type="text" name="bank_cardm" value="${bank_cardm }">&nbsp;&nbsp;&nbsp;
+				提现时间:<input type="date" name="create_datem" value="${ create_datem}">&nbsp;&nbsp;&nbsp;
+					<button type="button" class="btn btn-primary" id="btn1">查询</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<button type="button" id="resetBtn" class="btn btn-success">重置</button> &nbsp;&nbsp;&nbsp;&nbsp;
+		
+			</font>
 		
 		</div>
 		<br>

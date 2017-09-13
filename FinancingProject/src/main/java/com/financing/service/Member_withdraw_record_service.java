@@ -1,6 +1,7 @@
 package com.financing.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.transaction.Transactional;
 
@@ -18,8 +19,8 @@ public class Member_withdraw_record_service {
 		@Autowired
 		private Member_withdraw_record_dao mwrd;
 		//显示提现表的信息
-		public List<Member_withdraw_record> listMember_withdraw_record(){
-			return this.mwrd.listmember_withdraw_record();
+		public List<Member_withdraw_record> listMember_withdraw_record(Map map){
+			return this.mwrd.listmember_withdraw_record(map);
 		}
 		//显示用户信息
 		public List<Member> listMember(){

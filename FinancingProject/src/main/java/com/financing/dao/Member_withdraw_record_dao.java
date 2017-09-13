@@ -22,19 +22,36 @@ public class Member_withdraw_record_dao {//提现记录功能包
 		return this.sessionFactory.getCurrentSession();
 	}
 	//显示所有提现记录
-	public List<Member_withdraw_record> listmember_withdraw_record(){
-		String hql=" from Member_withdraw_record";
+	public List<Member_withdraw_record> listmember_withdraw_record(Map map){
+		String hql=" from Member_withdraw_record where 0=0";
 		Session session=getSession();
+		hql=listMember_withdraw_record(map, hql);
 		List<Member_withdraw_record> listmember_withdraw_record=session.createQuery(hql).list();
 		return listmember_withdraw_record;
 	}
 	
 	
 	//模糊查询
-	public String listMember_withdraw_record(Map map){
+	public String listMember_withdraw_record(Map map,String hql){
+		String member_namem=(String)map.get("member_namem");
+		String mobile_Phonem=(String)map.get("mobile_Phonem");
+		String bank_cardm=(String)map.get("bank_cardm");
+		String create_datem=(String)map.get("create_datem");
 		
+		if (member_namem!=null && !member_namem.equals("")) {
+			hql+=" and member_id.member_name like '%"+member_namem+"%'";
+		}
+		if (mobile_Phonem!=null && !mobile_Phonem.equals("")) {
+			hql+=" and member_id.mobile_Phone like '%"+mobile_Phonem+"%'";
+		}
+		if (bank_cardm!=null && !bank_cardm.equals("")) {
+			hql+="and bank_card like '%"+bank_cardm+"%'";
+		}
+		if (create_datem!=null && !create_datem.equals("")) {
+			hql+="and create_date like '%"+create_datem+"%'";
+		}
 		
-		return null;
+		return hql;
 	}
 	
 	//显示帐号信息

@@ -1,6 +1,7 @@
 package com.financing.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.transaction.Transactional;
 
@@ -18,8 +19,8 @@ public class Member_deposit_record_service {
 	@Autowired
 	private Member_deposit_record_dao mdrd;
 	
-	public List<Member_deposit_record> listMember_deposit_record(){
+	public List<Member_deposit_record> listMember_deposit_record(Map map){
 		
-		return this.mdrd.listMember_deposit_record();
+		return this.mdrd.listMember_deposit_record(map);
 	}
 }
