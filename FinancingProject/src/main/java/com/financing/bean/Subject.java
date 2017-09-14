@@ -1,10 +1,14 @@
 package com.financing.bean;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -41,6 +45,17 @@ public class Subject {
 	private String safetyControl;//安全保障
 	private int exper_status;//体验金是否可以购买
 	
+	//同一个标可以被购买多次  一对多，用集合
+	private Set<Subject_purchase_record> subject_purchase_record=new HashSet<>();//标的购买表(购买次数)
+	
+	
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="subject")
+	public Set<Subject_purchase_record> getSubject_purchase_record() {
+		return subject_purchase_record;
+	}
+	public void setSubject_purchase_record(Set<Subject_purchase_record> subject_purchase_record) {
+		this.subject_purchase_record = subject_purchase_record;
+	}
 	@Id
 	@GeneratedValue
 	public int getId() {

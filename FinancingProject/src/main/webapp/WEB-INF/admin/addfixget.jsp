@@ -36,6 +36,7 @@
 		
 		<br>
 		<input type="submit" value="保存">
+		<a href="/FinancingProject/AdminController/menus1">返回固收首页</a>
 </form>
 </body>
 </html>
