@@ -56,8 +56,16 @@ public class SubjectDao {
 	//Ä£ºý²éÑ¯
 	public String listDataHql(Map map,String hql){
 		String sname=(String)map.get("sname");
+		String stype=(String)map.get("stype");
+		String status=(String)map.get("status");
 		if(sname!=null&&!sname.equals("")){
 			hql+=" and name like '%"+sname+"%'";
+		}
+		if(stype!=null&&!stype.equals("")){
+			hql+=" and type like '%"+stype+"%'";
+		}
+		if(status!=null&&!status.equals("")){
+			hql+=" and status like '%"+status+"%'";
 		}
 		return hql;
 	}

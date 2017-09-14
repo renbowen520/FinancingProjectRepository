@@ -15,6 +15,9 @@ public class Member_withdraw_record {//提现记录表
 	
 	private int id;//id
 	private String serial_number;//流水号
+	 
+	//需要根据  对象关系 关联
+//	private int member_id;//用户id
 	private Member member_id;//用户id
 	private double amount;//提现金额
 	private String bank_name;//银行名称
@@ -40,9 +43,12 @@ public class Member_withdraw_record {//提现记录表
 	public void setSerial_number(String serial_number) {
 		this.serial_number = serial_number;
 	}
+
+	
 	public double getAmount() {
 		return amount;
 	}
+	
 	@ManyToOne
 	@JoinColumn(name="member_id")
 	public Member getMember_id() {
