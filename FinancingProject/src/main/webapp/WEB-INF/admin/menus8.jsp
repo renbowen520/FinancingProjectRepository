@@ -60,7 +60,6 @@
 			<td align="center">${lm.create_date }</td>
 			<td align="center">
 			<button type="button" class="btn btn-primary"> 账号详情</button>
-  			
 			</td>
 		</tr>
 		</c:forEach>
