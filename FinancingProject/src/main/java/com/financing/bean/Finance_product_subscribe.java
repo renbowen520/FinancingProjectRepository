@@ -5,16 +5,17 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table
-public class Finance_product_subscribe {//私募订阅表
-	private int id;
+public class Finance_product_subscribe {
+	//理财类基金产品预约记录表
+	private int id;  //主键
 	private String name;//名称
-	private int member_id;//会员id
 	private String phone;//电话
-	private int product_id;//理财产品
 	private String addr;//所在地区
 	private int status;//是否签署（0签署拍照|1:已签约|2:审核中|3:签署失败）
 	private String comment;//电子签署文件信息
@@ -23,10 +24,17 @@ public class Finance_product_subscribe {//私募订阅表
 	private Date update_date;
 	private double amount;//私募购买金额
 	private double interest;//私募结算收益
-	private String start_date;
-	private String end_date;
+	private String start_date;//开始时间
+	private String end_date;//结束时间
 	private String signed_photos;//签署拍照
-	@Id
+	
+	 private Member Menber;//引用会员表id
+	 private   Finance_product_funds finance_product_funds;//引用理财类基金表id
+	
+	 
+	 
+	 
+	 @Id
 	@GeneratedValue
 	public int getId() {
 		return id;
@@ -40,24 +48,14 @@ public class Finance_product_subscribe {//私募订阅表
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getMember_id() {
-		return member_id;
-	}
-	public void setMember_id(int member_id) {
-		this.member_id = member_id;
-	}
+	
 	public String getPhone() {
 		return phone;
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public int getProduct_id() {
-		return product_id;
-	}
-	public void setProduct_id(int product_id) {
-		this.product_id = product_id;
-	}
+
 	public String getAddr() {
 		return addr;
 	}
@@ -124,5 +122,28 @@ public class Finance_product_subscribe {//私募订阅表
 	public void setSigned_photos(String signed_photos) {
 		this.signed_photos = signed_photos;
 	}
+	
+	
+	@ManyToOne
+	@JoinColumn(name="member_id")
+	public Member getMenber() {
+		return Menber;
+	}
+	public void setMenber(Member menber) {
+		Menber = menber;
+	}
+	
+	
+	@ManyToOne
+	@JoinColumn(name="product_id")
+	public Finance_product_funds getFinance_product_funds() {
+		return finance_product_funds;
+	}
+	public void setFinance_product_funds(Finance_product_funds finance_product_funds) {
+		this.finance_product_funds = finance_product_funds;
+	}
+	
+	
+	
 	
 }
