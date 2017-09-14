@@ -10,7 +10,7 @@
 </head>
 <body >
  <div>
-	<img src="/FinancingProject/images/5.jpg" width="100%" height="550">
+	<img src="/FinancingProject/images/5.jpg" width="100%" height="100%">
 </div> 
 </body>
 </html>

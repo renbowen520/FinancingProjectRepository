@@ -15,9 +15,9 @@
 	用户群体:<input type="text" name="user_type" value="${oversea_config.user_type }"><br>
 	排序值:<input type="text" name="sortColum" value="${oversea_config.sortColum }"><br>
 	状态:<select name="status">
-	<option>未发布</option>
-	<option>募集中</option>
-	<option>已结束</option>
+	<option value="1">未发布</option>
+	<option value="2">募集中</option>
+	<option value="3">已结束</option>
 	</select><br>
 	<!-- 
 	开始时间:<input type="date" name="start_date" value="${oversea_config.start_date}"><br>

@@ -9,6 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import com.financing.bean.Finance_product_funds;
+import com.financing.bean.Member;
+import com.financing.service.Finance_product_funds_Service;
+import com.financing.service.Member_bankcards_service;
+import com.financing.service.Member_deposit_record_service;
+import com.financing.service.Member_service;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.financing.bean.Member;
@@ -17,8 +23,6 @@ import com.financing.bean.Member_deposit_record;
 import com.financing.bean.Member_withdraw_record;
 import com.financing.bean.Oversea_config;
 import com.financing.bean.Subject;
-import com.financing.service.Member_bankcards_service;
-import com.financing.service.Member_deposit_record_service;
 import com.financing.service.Member_service;
 import com.financing.service.Member_withdraw_record_service;
 import com.financing.service.Oversea_config_Service;
@@ -33,6 +37,8 @@ public class AdminController {
 	@Autowired
 	private SubjectService subjectService;
 	
+	@Autowired
+	private Finance_product_funds_Service finance_product_funds_Service;
 	@Autowired
 	private Oversea_config_Service oversea_config_service;
 	
@@ -65,28 +71,29 @@ public class AdminController {
 	
 	//固收类
 	@RequestMapping("/menus1")
-	public String menus1(Model model,@RequestParam(required=false)String sname) {
+	public String menus1(Model model,@ModelAttribute("sname")String sname) {
 		Map map=new HashMap();
 		map.put("sname",sname);
 		List<Subject> listSubject=this.subjectService.listSubject(map);
-//		for (Subject subject : listSubject) {
-//			System.out.println(subject);
-//		}
 		model.addAttribute("sname",sname);
 		model.addAttribute("listSubject", listSubject);
 		return "admin/menus1";
 	}
-
+//私募基金
 	@RequestMapping("/menus2")
-	public String menus2() {
+	public String menus2(Model model,@ModelAttribute("sname")String sname){
+		Map map=new HashMap();
+		map.put("sname",sname);
+		List<Finance_product_funds> listfinance=this.finance_product_funds_Service.listfinance(map);
+		model.addAttribute("listfinance", listfinance);
 		return "admin/menus2";
 	}
 	@RequestMapping("/menus3")
 	public String menus3() {
 		return "admin/menus3";
 	}
-	@RequestMapping("/menus4")
 	//查询海外配置
+	@RequestMapping("/menus4")
 	public String menus4(Model model){
 		List<Oversea_config> listOversea=this.oversea_config_service.listOversea();
 		model.addAttribute("listOversea", listOversea);

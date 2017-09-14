@@ -104,7 +104,8 @@
                             手机号 
                         </div>
                         <div class="lInput">
-                            <img src="/FinancingProject/index_files/userIcon.png"><input type="text" placeholder="手机号" id="phone" name="phone" class="form-control phone"><span class="errorInfo">用户名不能为空</span>
+                            <img src="/FinancingProject/index_files/userIcon.png">
+                            <input type="text" placeholder="手机号" id="phone" name="phone" class="form-control phone"><span class="errorInfo">用户名不能为空</span>
                         </div>
                     </div>
                     <div class="item">
@@ -112,12 +113,15 @@
                             登录密码
                         </div>
                         <div class="lInput">
-                            <img src="/FinancingProject/index_files/passwordIcon.png"><input type="password" placeholder="密码" id="password" name="password" class="form-control password"><span class="errorInfo"></span>
+                            <img src="/FinancingProject/index_files/passwordIcon.png">
+                            <input type="password" placeholder="密码" id="password" name="password" class="form-control password"><span class="errorInfo"></span>
                         </div>
                     </div>
+                
+                    
                     <div class="rest">
                         <!-- 显示错误的提示信息 -->
-                        <p class="error"></p>
+                        <p class="error">这里显示错误</p>
                         <span id="loginError"></span><a class="forgetLink" href="/FinancingProject/IndexController/resetting">忘记密码？</a>
                     </div>
                     <div class="rest">
@@ -134,6 +138,8 @@
    </form> 
     <script type="text/javascript">
         function fun(){
+        	  //验证登陆
+        	  ///FinancingProject/LoginController/login
         	   alert("登陆提交按钮");
         	
         	
