@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -120,12 +122,20 @@ public class Finance_product_subscribe {
 	public void setSigned_photos(String signed_photos) {
 		this.signed_photos = signed_photos;
 	}
+	
+	
+	@ManyToOne
+	@JoinColumn(name="member_id")
 	public Member getMenber() {
 		return Menber;
 	}
 	public void setMenber(Member menber) {
 		Menber = menber;
 	}
+	
+	
+	@ManyToOne
+	@JoinColumn(name="product_id")
 	public Finance_product_funds getFinance_product_funds() {
 		return finance_product_funds;
 	}

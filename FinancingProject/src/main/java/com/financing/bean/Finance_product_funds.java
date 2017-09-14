@@ -1,12 +1,10 @@
 package com.financing.bean;
 
 import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 @Entity
 @Table
 public class Finance_product_funds {//Ë½Ä¼²úÆ·±í
