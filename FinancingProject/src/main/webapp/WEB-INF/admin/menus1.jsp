@@ -26,6 +26,7 @@ $(function(){
 		$("#form1").submit();
  }
  function test4(id){
+	 alert(id);
 	 $("#form1").attr("action","/FinancingProject/subject/listsubjectrecord/"+id);
 		$("#form1").submit();
  }
@@ -35,7 +36,7 @@ $(function(){
 <div class="table table-responsive">
 <form method="post" id="form1" role="form">
 			<table class="table table-striped" width="100%" >
-			<div><p>
+			<div><p><center>
 		名称:<input type="text" placeholder="名称" name="sname" value="${sname}">
 				
 				
@@ -53,12 +54,12 @@ $(function(){
 							<option value="1">P2P车贷</option>
 							<option value="2">P2P房贷</option>
 						</select>
-					
-						<input type="button" id="btn1" value="查询">
-						<input type="reset"  value="重置">
-					<input type="button" value="新增" id="btn2"/>
-	</p>	</div>		
-				<tr class="success">
+					<button type="button" class="btn btn-primary" id="btn1">查询</button>
+					<button type="reset" class="btn btn-primary">重置</button>
+					<button type="button" class="btn btn-primary" id="btn2">新增</button> 
+						
+		</center></p></div>		
+				<tr>
 					<th>序号</th>
 					<th>合同编号</th>
 					<th>类型</th>
@@ -75,7 +76,7 @@ $(function(){
 				</tr>
 				<c:forEach items="${listSubject}"  var="li" varStatus="l">
 				<tr class="table table-hover">
-					<td>${l.index+1 }</td>
+					<td>${l.index+1}</td>
 					<td>${li.serial_no}</td>
 					<td>
 					<c:if test="${li.type==0}">固收类</c:if>
@@ -83,7 +84,7 @@ $(function(){
 					<c:if test="${li.type==2}">P2P房贷</c:if>
 					</td>
 					<td>${li.name}</td>
-					<td>${li.amount}</td>
+					<td>¥${li.amount}</td>
 					<td>
 			 <script type="text/javascript">
 				  var id='${li.id}';
@@ -94,11 +95,11 @@ $(function(){
 				  $.post("/FinancingProject/subject/getTotalMoney",{id:id},function(data){
 					 num1=data;
 				  });
-				  document.write(num1);
+				  document.write("¥"+num1);
 				 </script>
 					</td>
 					<td>${li.period}天</td>
-					<td>${li.floor_amount}</td>
+					<td>¥${li.floor_amount}</td>
 					<td>${li.year_rate*10}%</td>
 					<td>
 					<c:if test="${li.status==0}">未发布</c:if>
@@ -112,8 +113,8 @@ $(function(){
 					</td>
 					<td>${li.create_date}</td>
 					<td>
-					 <input type="button" onclick="test3(${li.id})" value="编辑查看">
-					 <input type="button" onclick="test4(${li.id})" value="查看投资">
+					<button type="button" class="btn btn-primary" onclick="test3(${li.id})">编辑修改</button> 
+					<button type="button" class="btn btn-primary" onclick="test4(${li.id})">查看投资</button> 
 					</td>
 				</tr>
 				</c:forEach>

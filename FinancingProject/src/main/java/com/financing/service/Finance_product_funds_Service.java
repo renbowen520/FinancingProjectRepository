@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 
 import com.financing.bean.Finance_product_funds;
 import com.financing.bean.Finance_product_subscribe;
+import com.financing.bean.Finance_product_subscribe_record;
+import com.financing.bean.Member;
 import com.financing.dao.Finance_product_funds_Dao;
 
 
@@ -44,5 +46,16 @@ public class Finance_product_funds_Service {
 	public List<Finance_product_subscribe> listfinanceSubscribe(int id){
 		return this.finance_product_funds_Dao.listfinanceSubscribe(id);
 	}
-
+	
+	//签署合同
+	public void savesubscribe(Finance_product_subscribe finance_product_subscribe){
+		this.finance_product_funds_Dao.savesubscribe(finance_product_subscribe);
+	}
+	
+	//签署合约之前的查询
+	public Finance_product_subscribe getSubscribeById(int id){
+		return this.finance_product_funds_Dao.getSubscribeById(id);
+	}
+	
+	
 }

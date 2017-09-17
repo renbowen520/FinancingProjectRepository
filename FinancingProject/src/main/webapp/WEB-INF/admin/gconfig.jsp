@@ -7,8 +7,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>显示海外配置订阅记录</title>
 </head>
+<link rel="stylesheet" href="/FinancingProject/css/bootstrap.min.css" />
+<script type="text/javascript" src="/FinancingProject/js/jquery-3.2.0.min.js" ></script>
+<script type="text/javascript" src="/FinancingProject/js/bootstrap.min.js"></script>
+
 <body>
-	<table>
+<div class="table table-responsive">
+<form method="post" id="form1" role="form">
+	<table class="table table-striped" width="100%" >
 	<tr>
 	<th>序号</th>
 	<th>姓名</th>
@@ -27,5 +33,7 @@
 	</c:forEach>
 
 	</table>
+	</form>
+	</div>
 </body>
 </html>

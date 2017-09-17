@@ -1,9 +1,14 @@
 package com.financing.bean;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
 @Table
@@ -32,10 +37,21 @@ public class Finance_product_funds {//私募产品表
 	private int buyer_count;//购买人数
 	private String start_date;//开始时间
 	private String end_date;//结束时间
-	private double radio;//返佣比例
-	private String context;//私募合同
+	private double ratio;//返佣比例
+	private String contract;//私募合同
 	private String bank_account;//银行账户(银行名称，账号，户名)
 	
+	private Set<Finance_product_subscribe> finance_product_subscribe=new HashSet<>();
+	
+	
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="finance_product_funds")
+	public Set<Finance_product_subscribe> getFinance_product_subscribe() {
+		return finance_product_subscribe;
+	}
+	public void setFinance_product_subscribe(Set<Finance_product_subscribe> finance_product_subscribe) {
+		this.finance_product_subscribe = finance_product_subscribe;
+	}
+
 	@Id
 	@GeneratedValue
 	public int getId() {
@@ -182,17 +198,19 @@ public class Finance_product_funds {//私募产品表
 	public void setEnd_date(String end_date) {
 		this.end_date = end_date;
 	}
-	public double getRadio() {
-		return radio;
+	
+	public double getRatio() {
+		return ratio;
 	}
-	public void setRadio(double radio) {
-		this.radio = radio;
+	public void setRatio(double ratio) {
+		this.ratio = ratio;
 	}
-	public String getContext() {
-		return context;
+
+	public String getContract() {
+		return contract;
 	}
-	public void setContext(String context) {
-		this.context = context;
+	public void setContract(String contract) {
+		this.contract = contract;
 	}
 	public String getBank_account() {
 		return bank_account;
