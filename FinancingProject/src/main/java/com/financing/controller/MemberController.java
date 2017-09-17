@@ -23,7 +23,6 @@ public class MemberController {
 	
 	@RequestMapping("/zhanghao")
 	public String menus8(Model model,@ModelAttribute("mname")String mname,@ModelAttribute("mobile_Phonem")String mobile_Phonem,@ModelAttribute("member_namem")String member_namem,@ModelAttribute("invitatioinCodem")String invitatioinCodem) {
-		System.out.println("MemberController"+666);
 		Map map=new HashMap<>();
 		map.put("mname", mname);
 		map.put("mobile_Phonem", mobile_Phonem);

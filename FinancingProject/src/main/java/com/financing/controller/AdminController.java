@@ -21,10 +21,14 @@ import com.financing.bean.Member;
 import com.financing.bean.Member_bankcards;
 import com.financing.bean.Member_deposit_record;
 import com.financing.bean.Member_withdraw_record;
+import com.financing.bean.News;
+import com.financing.bean.News_type;
 import com.financing.bean.Oversea_config;
 import com.financing.bean.Subject;
 import com.financing.service.Member_service;
 import com.financing.service.Member_withdraw_record_service;
+import com.financing.service.News_service;
+import com.financing.service.News_type_service;
 import com.financing.service.Oversea_config_Service;
 import com.financing.service.SubjectService;
 
@@ -36,6 +40,8 @@ public class AdminController {
 	private Member_service member_service;
 	@Autowired
 	private SubjectService subjectService;
+	@Autowired
+	private News_type_service news_type_service;
 	
 	@Autowired
 	private Finance_product_funds_Service finance_product_funds_Service;
@@ -50,6 +56,8 @@ public class AdminController {
 	@Autowired
 	private Member_bankcards_service mbs;
 	
+	@Autowired
+	private News_service news_service;
 	 //显示后台
 	@RequestMapping("/admin")
 	public String admin() {
@@ -103,13 +111,34 @@ public class AdminController {
 	public String menus5() {
 		return "admin/menus5";
 	}
-	@RequestMapping("/menus6")
-	public String menus6() {
+	
+	
+	@RequestMapping("/menus6")//资讯分类
+	public String menus6(Model model) {
+		 List<News_type>list = news_type_service.list_News_type();//查询所有
+		  model.addAttribute("news_type", list) ;
 		return "admin/menus6";
 	}
-	@RequestMapping("/menus7")
-	public String menus7() {
-		return "admin/menus7";
+	@RequestMapping("/menus7")  //资讯管理
+	public String menus7(Model model,@ModelAttribute("news_q1")String news_q1,@ModelAttribute("news_q2")String news_q2) {
+		Map map = new HashMap<>();
+		    map.put("q1", news_q1);
+		     if(news_q2!=null &&!news_q2.equals("")) {
+		       int  qq2 = Integer.valueOf(news_q2);
+		           if(qq2==-1) {
+		    	    map.put("q2", "");
+		          }else {
+		        	  map.put("q2", news_q2); 
+		          }
+		    }else {
+		    	 map.put("q2", "");
+		    }
+		     
+		    List<News>list =news_service.list(map);
+		    model.addAttribute("news", list);
+		    model.addAttribute("news_q1",news_q1);
+		    model.addAttribute("news_q2", news_q2);
+		    return "admin/menus7";
 	}
 	@RequestMapping("/menus8")//帐号管理
 	public String menus8(Model model,@ModelAttribute("mname")String mname,@ModelAttribute("mobile_Phonem")String mobile_Phonem,@ModelAttribute("member_namem")String member_namem,@ModelAttribute("invitatioinCodem")String invitatioinCodem) {

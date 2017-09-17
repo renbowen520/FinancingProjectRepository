@@ -76,7 +76,7 @@
 
 
 	<!-- 自定义Realm -->
-	<!-- <bean id="myRealm" class="com.financing.realm.MyRealm"/>  
+<!-- 	<bean id="myRealm" class="com.financing.realm.MyRealm"/>  
 
     	安全管理器
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
@@ -84,7 +84,7 @@
 	</bean>
 	
 		Shiro过滤器
-	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+	    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		Shiro的核心安全接口,这个属性是必须的
 		<property name="securityManager" ref="securityManager" />
 		身份认证失败，则跳转到登录页面的配置
@@ -94,7 +94,6 @@
 		Shiro连接约束配置,即过滤链的定义
 		<property name="filterChainDefinitions">
 	    <value>
-				
 			</value>
 		</property>
 	</bean>
@@ -108,6 +107,6 @@
 	<bean
 		class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
 		<property name="securityManager" ref="securityManager" />
-	</bean> -->
+	</bean>  -->
 	
 </beans>
