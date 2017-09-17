@@ -32,7 +32,7 @@
               <div class="col-sm-3">
              <input type="text" class="form-control" id="title"  name="title"
               placeholder="请输入标题" 
-               placeholder="First name" required
+               required
               >
                 
            </div>

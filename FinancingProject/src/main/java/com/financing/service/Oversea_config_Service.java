@@ -6,15 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.financing.Interface_dao.IN_Oversea_config_dao;
+import com.financing.Interface_service.IN_Oversea_config_service;
 import com.financing.bean.Oversea_config;
 import com.financing.bean.Oversea_config_subscribe;
 import com.financing.dao.Oversea_config_Dao;
 
 @Service
 @Transactional
-public class Oversea_config_Service {
+public class Oversea_config_Service implements IN_Oversea_config_service {
 	@Autowired
-	private Oversea_config_Dao oversea_config_Dao;
+	private IN_Oversea_config_dao oversea_config_Dao;
 	
 	//±£¥Ê∫£Õ‚≈‰÷√
 	public void save(Oversea_config oversea_config){

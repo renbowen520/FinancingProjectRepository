@@ -2,18 +2,21 @@ package com.financing.dao;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.financing.Interface_dao.IN_News_type_dao;
 import com.financing.bean.News_type;
 
 @Component
-public class News_type_dao {
+public class News_type_dao implements IN_News_type_dao {
 
 	//资讯分类的dao
-	@Autowired
+	@Resource
 	private SessionFactory sf;
 	
 	public Session getSession(){

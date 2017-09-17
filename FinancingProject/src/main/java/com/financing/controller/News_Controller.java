@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.financing.Interface_service.IN_News_service;
+import com.financing.Interface_service.IN_News_type_service;
 import com.financing.bean.News;
 import com.financing.service.News_service;
 import com.financing.service.News_type_service;
@@ -32,10 +34,10 @@ import antlr.collections.impl.IntRange;
 public class News_Controller {
 
 	@Autowired
-	private News_service news_service;
+	private IN_News_service news_service;
      
 	@Autowired
-	private News_type_service news_type_service;
+	private IN_News_type_service news_type_service;
 	
     @RequestMapping("/update2")  
     public String update(@RequestParam("file1")MultipartFile file1,

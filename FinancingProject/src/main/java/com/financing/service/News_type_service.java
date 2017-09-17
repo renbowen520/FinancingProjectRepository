@@ -6,16 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.financing.Interface_dao.IN_News_type_dao;
+import com.financing.Interface_service.IN_News_type_service;
 import com.financing.bean.News_type;
 import com.financing.dao.News_type_dao;
 
 @Service
 @Transactional
-public class News_type_service {
+public class News_type_service implements IN_News_type_service {
   //资讯分类的service
 	
 	@Autowired
-	private News_type_dao  news_type_dao;
+	private IN_News_type_dao  news_type_dao;
 	
 	
 	public List<News_type>list_News_type(){

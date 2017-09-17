@@ -15,6 +15,8 @@ canvas{z-index:-1;position:absolute;}
 <script src="/FinancingProject/adminlogin/jquery.min(2).js"></script>
 <script src="/FinancingProject/adminlogin/verificationNumbers.js"></script>
 <script src="/FinancingProject/adminlogin/Particleground.js"></script>
+
+
 <script>
 $(document).ready(function() {
   //粒子背景特效
@@ -22,42 +24,92 @@ $(document).ready(function() {
         dotColor: '#5cbdaa',
         lineColor: '#5cbdaa'
   });
+
   //验证码
   createCode();//调用验证码
   //测试提交，对接程序删除即可
+  
   $(".submit_btn").click(function(){ //当点击提交按钮时
 	  var boo =  validate();
 	  if(boo==false){ //验证码不通过
+		   $("#yc2").hide();
+		   $("#yc").hide();
+		   $("#yc3").hide();
+		   $("#yc4").hide();
 		    return;
 	  }
 	   var a=document.getElementById("mobile_Phone").value;    
 	   var b=document.getElementById("password").value;    
 	  
         if(a.length<1){
-	      document.getElementById("mobile_Phone").setAttribute("placeholder","账号不能为空!");
-		  return ;
+	 //     document.getElementById("mobile_Phone").setAttribute("placeholder","手机号不能为空!");
+		   $("#yc2").show();
+		   $("#yc").hide();
+	       return ;
 	    }
+        
+    if(!(/^1[34578]\d{9}$/.test(a))){ 
+        //	 document.getElementById("mobile_Phone").setAttribute("placeholder","手机号码有误，请重填!");
+          $("#yc").show();
+          $("#yc2").hide();
+            return;
+        } 
+        
 		if(b.length<1){
-		    document.getElementById("password").setAttribute("placeholder","密码不能为空!");
+			  $("#yc3").show();
+			   $("#yc4").hide();
 		  return ;
 		}
-         location.href="/FinancingProject/AdminController/admin";
+		
+		if(b.length<6){
+			  $("#yc4").show();
+			   $("#yc3").hide();
+		  return ;
+		}
+		   $("#yc2").hide();
+		   $("#yc").hide();
+		   $("#yc3").hide();
+		   $("#yc4").hide();
+			$("#f1").attr("action","/FinancingProject/AdminController/adminLogin");
+			$("#f1").submit();
+       //  location.href="/FinancingProject/AdminController/adminLogin";
 
 	  });
 });
 </script>
+
 </head>
-<body><canvas class="pg-canvas" width="1536" height="642"></canvas>
+<body>
+<canvas class="pg-canvas" width="1536" height="642"></canvas>
+<form action="" method="post" name="f1" id="f1">
 <dl class="admin_login">
  <dt>
   <strong>孔明理财后台管理系统</strong>
   <em>Management System</em>
  </dt>
+ 
  <dd class="user_icon">
-         <input type="text"   id="mobile_Phone"  name="mobile_Phone"   placeholder="账号"   maxlength="12"   class="login_txtbx">
+         <input type="text"    class="login_txtbx"    id="mobile_Phone"  name="mobile_Phone"   placeholder="手机号"   maxlength="11"  >
+   <div id="yc"     style="display:none;margin: 5px;">
+<font  color="red">手机号码有误，请重填!</font>
+</div>
+    <div id="yc2"     style="display:none;">
+<font   color="red">请输入手机号码!</font>
+ </div>
  </dd>
+ 
+
  <dd class="pwd_icon">
        <input type="password"   id="password" name="password"   placeholder="密码"  min="6"       class="login_txtbx">
+    <div id="yc3"     style="display:none;margin: 5px;">
+<font  color="red">请输入密码!</font>
+</div>
+    <div id="yc4"     style="display:none;">
+<font   color="red">密码长度最低6个字符!</font>
+ </div>
+ 
+ 
+ 
  </dd>
  <dd class="val_icon">
   <div class="checkcode">
@@ -68,12 +120,13 @@ $(document).ready(function() {
  </dd>
  <dd>
   <input type="button" value="立即登陆" class="submit_btn">
+     
  </dd>
  <dd>
   <p>© 2017 襄阳孔明投资管理有限公司  版权所有</p>
   
  </dd>
 </dl>
-
+</form>
 
 </body></html>

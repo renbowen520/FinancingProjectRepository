@@ -32,7 +32,7 @@
               <input type="hidden" name="id"  id="id"   value="${news_bean.id }" >
              <input type="text" class="form-control" id="title"  name="title"
               placeholder="请输入标题" 
-               placeholder="First name" required
+             required
               value="${news_bean.title }"
               >
                 

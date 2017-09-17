@@ -7,8 +7,19 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.financing.Interface_service.IN_Finance_produce_funds_service;
+import com.financing.Interface_service.IN_Member_bankcards_service;
+import com.financing.Interface_service.IN_Member_deposit_record_service;
+import com.financing.Interface_service.IN_Member_service;
+import com.financing.Interface_service.IN_Member_withdraw_record_service;
+import com.financing.Interface_service.IN_News_service;
+import com.financing.Interface_service.IN_News_type_service;
+import com.financing.Interface_service.IN_Oversea_config_service;
+import com.financing.Interface_service.IN_Subject_service;
 import com.financing.bean.Finance_product_funds;
 import com.financing.bean.Member;
 import com.financing.service.Finance_product_funds_Service;
@@ -25,6 +36,7 @@ import com.financing.bean.News;
 import com.financing.bean.News_type;
 import com.financing.bean.Oversea_config;
 import com.financing.bean.Subject;
+import com.financing.bean.Users;
 import com.financing.service.Member_service;
 import com.financing.service.Member_withdraw_record_service;
 import com.financing.service.News_service;
@@ -37,39 +49,46 @@ import com.financing.service.SubjectService;
 public class AdminController {
  
 	@Autowired 
-	private Member_service member_service;
+	private IN_Member_service member_service;
 	@Autowired
-	private SubjectService subjectService;
+	private IN_Subject_service subjectService;
 	@Autowired
-	private News_type_service news_type_service;
+	private IN_News_type_service news_type_service;
 	
 	@Autowired
-	private Finance_product_funds_Service finance_product_funds_Service;
+	private IN_Finance_produce_funds_service finance_product_funds_Service;
 	@Autowired
-	private Oversea_config_Service oversea_config_service;
+	private IN_Oversea_config_service oversea_config_service;
 	
 	@Autowired
-	private Member_deposit_record_service mdrs;
+	private IN_Member_deposit_record_service mdrs;
 	@Autowired
-	private Member_withdraw_record_service member_withdraw_record_service;
+	private IN_Member_withdraw_record_service member_withdraw_record_service;
 	
 	@Autowired
-	private Member_bankcards_service mbs;
+	private IN_Member_bankcards_service mbs;
 	
 	@Autowired
-	private News_service news_service;
+	private IN_News_service news_service;
+	
+	
+	//后台登陆
+	@RequestMapping("adminLogin")
+	public String adminLogin(Users users) {
+		  System.out.println(users.getPassword());
+		  System.out.println(users.getMobile_Phone());
+		return "";
+	}
+	
+	
+	
 	 //显示后台
 	@RequestMapping("/admin")
 	public String admin() {
 		 return "admin/admin";
 	}
 	 
-	//后台登陆
-	@RequestMapping("/adminlogin")
-	public String adminlogin() {
-		return "admin/AdminLogin";
-	}
-	
+
 	
 	//显示后台首页图片
 	@RequestMapping("/show")

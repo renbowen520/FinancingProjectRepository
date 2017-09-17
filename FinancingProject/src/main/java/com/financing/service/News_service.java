@@ -7,15 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.financing.Interface_dao.IN_News_dao;
+import com.financing.Interface_service.IN_News_service;
 import com.financing.bean.News;
 import com.financing.dao.News_dao;
 
 @Service
 @Transactional
-public class News_service  {
+public class News_service implements IN_News_service  {
       
 	  @Autowired
-	   private News_dao news_dao;
+	   private IN_News_dao news_dao;
 	  
 	  public void update(News news) {
 		 news_dao.update(news);

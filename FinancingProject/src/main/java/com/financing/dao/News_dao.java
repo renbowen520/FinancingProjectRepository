@@ -3,19 +3,22 @@ package com.financing.dao;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
 import org.apache.catalina.authenticator.SavedRequest;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.financing.Interface_dao.IN_News_dao;
 import com.financing.bean.News;
 import com.financing.bean.News_type;
 
 @Component
-public class News_dao {
+public class News_dao  implements IN_News_dao{
   //新闻列表
-	@Autowired
+	@Resource
 	private SessionFactory sf;
 	public Session getSession(){
 		return this.sf.getCurrentSession();

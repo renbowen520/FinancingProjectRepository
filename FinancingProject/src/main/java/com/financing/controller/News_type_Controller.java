@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.financing.Interface_service.IN_News_type_service;
 import com.financing.bean.News_type;
 import com.financing.service.News_type_service;
 
@@ -25,7 +26,7 @@ public class News_type_Controller {
 	
 	
 	@Autowired
-	private News_type_service news_type_service;
+	private IN_News_type_service news_type_service;
 	
 	
 	@RequestMapping("/update")
