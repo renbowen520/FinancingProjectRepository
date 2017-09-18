@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -77,10 +79,23 @@ public class AdminController {
 	public String adminLogin(Users users) {
 		  System.out.println(users.getPassword());
 		  System.out.println(users.getMobile_Phone());
-		return "";
+		  org.apache.shiro.subject.Subject sub=SecurityUtils.getSubject();
+		  UsernamePasswordToken token = new UsernamePasswordToken(users.getMobile_Phone(),users.getPassword());
+		   try {
+			         sub.login(token);
+				     return "redirect:/AdminController/admin";//登陆成功后调到后台
+			   } catch (Exception e) {
+				    e.printStackTrace();
+				    token.clear();
+		            return "redirect:/AdminController/error";
+			 }
 	}
 	
-	
+	@RequestMapping("/error") 
+	public String error() {
+		return "error";
+		
+	}
 	
 	 //显示后台
 	@RequestMapping("/admin")
