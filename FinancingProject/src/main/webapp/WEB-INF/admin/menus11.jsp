@@ -12,11 +12,15 @@
 <script type="text/javascript">
 $(function(){
 	$("#btn1").click(function(){
+		alert("23")
 		$("#form1").attr("action","/FinancingProject/subject/menus11");
 		$("#form1").submit();
 	});
-	
 });
+function fun(id){
+	$("#form1").attr("action","/FinancingProject/subject/menus24/"+id);
+	$("#form1").submit();
+};
 </script>
 </head>
 <body>
@@ -27,8 +31,19 @@ $(function(){
 		<div>
 			<font size="+1">
 				名称:<input type="text" name="namem" value="${namem }">&nbsp;&nbsp;&nbsp;
-				状态:<input type="text" name="statusm" value="${statusm }">&nbsp;&nbsp;&nbsp;
-				类型:<input type="text" name="typem" value="${typem }">&nbsp;&nbsp;&nbsp;
+				状态:<select name="statusm" value="${statusm }">
+				<option >----请选择----</option>
+				<option value="0">未发布</option>
+				<option value="1">募集中</option>
+				<option value="2">回款中</option>
+				<option value="3">还款完成</option>
+			</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				类型:<select name="typem" value="${typem }">
+				<option >----请选择----</option>
+				<option value="0">固收类</option>
+				<option value="1">P2P车贷</option>
+				<option value="2">房贷</option>
+			</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<button type="button" class="btn btn-primary" id="btn1">查询</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<button type="button" id="resetBtn" class="btn btn-success">重置</button> &nbsp;&nbsp;&nbsp;&nbsp;
 		
@@ -48,24 +63,32 @@ $(function(){
 				<th>年化收益</th>
 				<th>标的状态</th>
 				<th>可体检金购买</th>
+				<th>操作</th>
 			</tr>
 		<c:forEach items="${listSubject }" var="ls" varStatus="stat">
 			<tr>
+			<input type="hidden" name="subject_id"  value="${ls.id }">
 				<td>${stat.index+1}</td>
 				<td>${ls.serial_no }</td>
-				<td>${ls.type }</td>
+				<td><c:if test="${ls.type==0 }">固收类</c:if>
+				<c:if test="${ls.type==1 }">P2P车贷</c:if>
+				<c:if test="${ls.type==2 }">房贷</c:if>
+				</td>
 				<td>${ls.name }</td>
 				<td>${ls.amount}元</td>
 				<td>${ls.floor_amount }</td>
 				<td>${ls.bought }人</td>
 				<td>${ls.period }</td>
 				<td>${ls.year_rate }%</td>
-				<td>${ls.status }</td>
+				<td><c:if test="${ls.status==0 }">未发布</c:if>
+				<c:if test="${ls.status==1 }">募集中</c:if>
+				<c:if test="${ls.status==2 }">回款中</c:if>
+				<c:if test="${ls.status==3 }">还款完成</c:if></td>
 				<td>
 					<c:if test="${ls.exper_status ==0}"><font color="red">否</font></c:if>
 					<c:if test="${ls.exper_status ==1}"><font color="green">是</font></c:if>
 				</td>
-				<td></td>
+				<td><button type="button" class="btn btn-primary" id="btn2" onclick="fun(${ls.id})" >体验金付息</button>&nbsp;<button type="button" class="btn btn-primary" id="btn3">付息列表</button></td>
 			</tr>
 	
 		</c:forEach>

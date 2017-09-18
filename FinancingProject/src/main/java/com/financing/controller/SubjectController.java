@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.financing.Interface_service.IN_Subject_bbin_purchase_record_service;
 import com.financing.Interface_service.IN_Subject_service;
 import com.financing.bean.Subject;
 import com.financing.bean.Subject_bbin_purchase_record;
@@ -29,6 +30,8 @@ import com.financing.service.SubjectService;
 public class SubjectController {
 	@Autowired
 	private IN_Subject_service subjectService;
+	@Autowired
+	private IN_Subject_bbin_purchase_record_service isbprs;
 	//跳到新增页面
 	@RequestMapping("/addfixget")
 	public String addfixget(){
@@ -88,7 +91,7 @@ public class SubjectController {
 	
 	
 	//计算总的金额
-	@RequestMapping("/getTotalMoney")
+	@RequestMapping("/getTotalMoney/")
 	@ResponseBody
 	public double getTotalMoney(int id){
 		System.out.println("id="+id);
@@ -108,8 +111,10 @@ public class SubjectController {
 	
 	@RequestMapping("/menus11")//付息计划
 	public String menus11(Model model,@ModelAttribute("namem")String namem,@ModelAttribute("statusm")String statusm,@ModelAttribute("typem")String typem) {//付息计划
+		System.out.println("6666");
 		Map map=new HashMap<>();
 		map.put("namem", namem);
+		System.out.println("namem:"+namem);
 		map.put("statusm", statusm);
 		map.put("typem", typem);
 		List<Subject>listSubject=subjectService.listSubject(map);
@@ -117,4 +122,13 @@ public class SubjectController {
 		
 		return "admin/menus11";
 	}
+	
+	@RequestMapping("/menus24/{id}")
+	public String menus24(Model model,@ModelAttribute("id")int id){
+		List<Subject_bbin_purchase_record> listSubject_bbin_purchase_record=isbprs.listSubject_bbin_purchase_record(id);
+		System.out.println(listSubject_bbin_purchase_record.size());
+		model.addAttribute("listSubject_bbin_purchase_record", listSubject_bbin_purchase_record);
+		return "admin/menus24";
+	}
+	
 }

@@ -26,7 +26,7 @@ public class Subject_bbin_purchase_record {
 	private int pay_interest_times;//支付次数
 	private int last_profit_day;//最后计息日
 	
-	private Member Member;//会员id
+	private Member member;//会员id
 	private  Subject subject; //引用了标 的id
 	
 	
@@ -34,10 +34,10 @@ public class Subject_bbin_purchase_record {
 	@ManyToOne
 	@JoinColumn(name="member_id")
 	public Member getMember() {
-		return Member;
+		return member;
 	}
 	public void setMember(Member member) {
-		Member = member;
+		this.member = member;
 	}
 	
 	
