@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.financing.Interface_service.IN_Finance_produce_funds_service;
 import com.financing.bean.Finance_product_funds;
 import com.financing.bean.Finance_product_subscribe;
 import com.financing.bean.Member;
@@ -27,7 +28,7 @@ import com.financing.service.Oversea_config_Service;
 @RequestMapping("/finance")
 public class Finance_product_funds_Controller {
 	@Autowired
-	private Finance_product_funds_Service finance_product_funds_Service;
+	private IN_Finance_produce_funds_service finance_product_funds_Service;
 	
 	@RequestMapping("/menus2")
 	//²éÑ¯Ë½Ä¼

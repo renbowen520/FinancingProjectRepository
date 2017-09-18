@@ -5,21 +5,24 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.financing.Interface_dao.IN_Finance_product_funds_dao;
 import com.financing.bean.Finance_product_funds;
 import com.financing.bean.Finance_product_subscribe;
 
 
 @Component
-public class Finance_product_funds_Dao {
-	@Autowired
+public class Finance_product_funds_Dao  implements IN_Finance_product_funds_dao {
+	@Resource
 	private SessionFactory sf;
 	
-	public Session getSession(){
+	public Session getSession() {
 		return this.sf.getCurrentSession();
 	}
 	
@@ -112,6 +115,7 @@ public class Finance_product_funds_Dao {
 		Finance_product_subscribe sub=(Finance_product_subscribe)session.get(Finance_product_subscribe.class, id);
 		return sub;
 	}
-	
+
+
 	
 }

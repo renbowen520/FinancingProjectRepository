@@ -2,16 +2,19 @@ package com.financing.dao;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.financing.Interface_dao.IN_Member_deposit_record_dao;
 import com.financing.bean.Member_deposit_record;
 
 @Component
-public class Member_deposit_record_dao {
-		@Autowired
+public class Member_deposit_record_dao implements IN_Member_deposit_record_dao {
+	@Resource
 		private SessionFactory sessionFactory;
 		
 		public Session getSession(){

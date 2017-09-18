@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.financing.Interface_service.IN_Member_service;
 import com.financing.bean.Member;
 import com.financing.service.Member_service;
 
@@ -19,11 +20,10 @@ public class MemberController {
 
 	
 	@Autowired 
-	private Member_service member_service;
+	private IN_Member_service member_service;
 	
 	@RequestMapping("/zhanghao")
 	public String menus8(Model model,@ModelAttribute("mname")String mname,@ModelAttribute("mobile_Phonem")String mobile_Phonem,@ModelAttribute("member_namem")String member_namem,@ModelAttribute("invitatioinCodem")String invitatioinCodem) {
-		System.out.println("MemberController"+666);
 		Map map=new HashMap<>();
 		map.put("mname", mname);
 		map.put("mobile_Phonem", mobile_Phonem);
