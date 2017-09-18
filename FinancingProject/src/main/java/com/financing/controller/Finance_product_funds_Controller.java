@@ -93,13 +93,24 @@ public class Finance_product_funds_Controller {
 		return "admin/successfinance";
 	}
 	
+	
+	//Ç©ÊðÊ§°Ü
+	@RequestMapping("/lose/{id}/{pid}")
+	public String lose(@PathVariable("id")int id,@PathVariable("pid")int pid){
+		this.finance_product_funds_Service.losesubscribe(id);
+		return "redirect:/finance/subscribe/"+pid;
+	}
+	
 	//±£´æÇ©ÊðË½Ä¼
-	@RequestMapping("/savesubscribe")
-	public String savesubscribe(Finance_product_subscribe finance_product_subscribe,Model model){
-		finance_product_subscribe.setCreate_date(new Date());
-		finance_product_subscribe.setUpdate_date(new Date());;
-		finance_product_funds_Service.savesubscribe(finance_product_subscribe);
-		return "admin/financeSubscribe";
+	@RequestMapping("/savesubscribe/{pid}")
+	public String savesubscribe(int id,Model model,@PathVariable("pid")int pid){
+//		finance_product_subscribe.setCreate_date(new Date());
+//		finance_product_subscribe.setUpdate_date(new Date());;
+//		finance_product_funds_Service.savesubscribe(finance_product_subscribe);
+		Finance_product_subscribe sub=this.finance_product_funds_Service.getsubscribe(id);
+		sub.setStatus(1);
+		this.finance_product_funds_Service.updatesubscribe(sub);
+		return "redirect:/finance/subscribe/"+pid;
 	}
 	
 	

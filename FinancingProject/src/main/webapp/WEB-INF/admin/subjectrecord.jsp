@@ -31,7 +31,15 @@
 	<td>${li.serial_number }</td>
 	<td>${li.member.member_name}</td>
 	<td>¥${li.amount }</td>
-	<td>${li.interest}</td>
+	<td><!-- ${li.interest} -->
+	<script type="text/javascript">
+	var first="${li.amount}";
+	var date=${li.subject.year_rate}/100;
+	var t="${e.subject.period}";
+	var shou=((first*date)/365)*t;
+	document.write(parseFloat(shou).toFixed(2));
+	</script>
+	</td>
 	<td>
 	<c:if test="${li.ispayment==0}">否</c:if>
 	<c:if test="${li.ispayment==1}">是</c:if>

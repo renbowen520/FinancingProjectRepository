@@ -16,8 +16,9 @@
 
 </head>
 <body>
+<center>
 <form action="/FinancingProject/oversea/save" method="post">
-<table border="0" cellspacing="0" width="100%">
+<table border="0" cellspacing="0" width="400">
 	<tr height="60">
 	<td>&nbsp;&nbsp;&nbsp;标题:</td>
 	<td><input type="text" name="title" class="form-control"></td>
@@ -60,5 +61,6 @@
 </table>
 
 </form>
+</center>
 </body>
 </html>

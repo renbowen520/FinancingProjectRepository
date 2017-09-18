@@ -13,6 +13,8 @@
 
 <script type="text/javascript">
 $(function(){
+	$("#status").val('${fpf.status}');
+	$("#type").val('${fpf.type}');
 	$("#btn2").click(function(){ //新增按钮
 		$("#form1").attr("action","/FinancingProject/finance/addfinance");
 		$("#form1").submit();
@@ -37,17 +39,16 @@ function test4(id){//编辑查看
 <div class="table table-responsive">
 <form method="post" id="form1" role="form">
 	<table class="table table-striped" width="100%" >
-	<div>
 	<p>
 	<center>
-		名称:<input type="text" name="sname" placeholder="名称" value="${sname}">
-		状态:<select name="status">
-				<option value="">全部</option>
+		名称:<input type="text" name="name" placeholder="名称" value="${fpf.name}">
+		状态:<select name="status" id="status">
+				<option value="-1">全部</option>
 				<option value="0">未募集</option>
 				<option value="1">募集中</option>
 				<option value="2">已结束</option>
 			</select>  
-		类别:<select name="type">
+		类别:<select name="type" id="type">
 				<option value="">全部</option>
 				<option value="SIMU">私募</option>
 				<option value="GUQUAN">股权</option>

@@ -52,10 +52,21 @@ public class Finance_product_funds_Service {
 		this.finance_product_funds_Dao.savesubscribe(finance_product_subscribe);
 	}
 	
+	public void updatesubscribe(Finance_product_subscribe finance_product_subscribe){
+		this.finance_product_funds_Dao.updatesubscribe(finance_product_subscribe);
+	}
+	
 	//签署合约之前的查询
 	public Finance_product_subscribe getSubscribeById(int id){
 		return this.finance_product_funds_Dao.getSubscribeById(id);
 	}
-	
+	//签署失败查询
+	public Finance_product_subscribe getsubscribe(int id){
+		return this.finance_product_funds_Dao.getsubscribe(id);
+	}
+	//签署失败
+	public void losesubscribe(int id){
+		this.finance_product_funds_Dao.lose(id);
+	}
 	
 }
