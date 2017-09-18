@@ -10,9 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.financing.bean.Member;
+import com.financing.Interface_service.IN_Member_bankcards_service;
 import com.financing.bean.Member_bankcards;
-import com.financing.service.Member_bankcards_service;
 
 @Controller
 @RequestMapping("/Member_bankcards_Controller" )
@@ -20,7 +19,7 @@ public class Member_bankcards_Controller {
 
 	
 	@Autowired
-	private Member_bankcards_service mbs;
+	private IN_Member_bankcards_service mbs;
 	
 	@RequestMapping("/bangka")//∞Ûø®π‹¿Ì
 	public String menus10(Model model,@ModelAttribute("mobile_Phonem")String mobile_Phonem,@ModelAttribute("member_namem")String member_namem,@ModelAttribute("card_nom")String card_nom,@ModelAttribute("create_datem")String create_datem) {

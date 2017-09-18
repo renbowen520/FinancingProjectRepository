@@ -4,22 +4,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.financing.Interface_service.IN_Member_deposit_record_service;
 import com.financing.bean.Member_deposit_record;
-import com.financing.service.Member_deposit_record_service;
 
 @Controller
 @RequestMapping("/Member_deposit_record_Controller")
 public class Member_deposit_record_Controller {
 	@Autowired
-	private Member_deposit_record_service mdrs;
+	private IN_Member_deposit_record_service  mdrs;
 	
 	
 	@RequestMapping("/chongzhi")//≥‰÷µπ‹¿Ì
