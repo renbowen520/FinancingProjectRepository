@@ -83,6 +83,7 @@ public class AdminController {
 		  UsernamePasswordToken token = new UsernamePasswordToken(users.getMobile_Phone(),users.getPassword());
 		   try {
 			         sub.login(token);
+			         
 				     return "redirect:/AdminController/admin";//登陆成功后调到后台
 			   } catch (Exception e) {
 				    e.printStackTrace();
@@ -93,7 +94,7 @@ public class AdminController {
 	
 	@RequestMapping("/error") 
 	public String error() {
-		return "error";
+		return "error/error";
 		
 	}
 	

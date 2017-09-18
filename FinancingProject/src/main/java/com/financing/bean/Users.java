@@ -1,7 +1,12 @@
 package com.financing.bean;
-
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table
 public class Users {
 //用户基本表  
 	private  int id;
@@ -15,6 +20,9 @@ public class Users {
 	private int   identity;//身份',
 	private Date create_date;//创建时间
 	private Date update_date;//修改时间
+	
+	@Id
+	@GeneratedValue
 	public int getId() {
 		return id;
 	}

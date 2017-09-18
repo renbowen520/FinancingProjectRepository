@@ -26,6 +26,17 @@ public class Users_dao  implements IN_Users_dao{
 		return this.sf.getCurrentSession();
 	}
 	
-	
+	public	 Users getByPhone(String phone) {
+		   Session session = this.getSession();
+		  Query query = session.createQuery("from Users  where mobile_Phone=:phone");
+		  query.setString("phone", phone);
+		  List<Users> list=query.list();
+	 	  Users users2=null; 
+	 	for(Users users:list){
+		   users2=users;
+		}
+		System.out.println("d="+users2.getUser_name());
+		return users2;
+	}
 	
 } 
