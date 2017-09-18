@@ -5,15 +5,18 @@ import java.util.Map;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.financing.Interface_dao.IN_Member_dao;
+import com.financing.Interface_service.IN_Member_service;
 import com.financing.bean.Member;
 import com.financing.dao.Member_dao;
 
 @Service
 @Transactional
-public class Member_service {
+public class Member_service  implements IN_Member_service{
 
 	@Autowired
-	private Member_dao md;
+	private IN_Member_dao md;
 	
 	public List<Member> listMember(Map map){
 		return this.md.listMember(map);

@@ -5,6 +5,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.financing.Interface_dao.IN_Subject_dao;
+import com.financing.Interface_service.IN_Subject_service;
 import com.financing.bean.Subject;
 import com.financing.bean.Subject_bbin_purchase_record;
 import com.financing.dao.SubjectDao;
@@ -13,10 +16,10 @@ import com.financing.dao.SubjectDao;
 
 @Service
 @Transactional
-public class SubjectService {
+public class SubjectService  implements IN_Subject_service {
 	
 	@Autowired
-	private SubjectDao subjectdao;
+	private IN_Subject_dao subjectdao;
 	
 	//±£¥ÊπÃ ’¿‡
 	public void save(Subject subject){

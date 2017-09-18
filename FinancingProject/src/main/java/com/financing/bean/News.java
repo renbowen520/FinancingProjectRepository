@@ -2,6 +2,14 @@ package com.financing.bean;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+@Entity
+@Table
 public class News { //新闻列表
 
 	private int id;   // 主键
@@ -30,7 +38,8 @@ public class News { //新闻列表
     //	private int  addId;  需要引用users表 
 	private News_type news_type;//引用新闻类别id
 
-	
+	@Id
+	@GeneratedValue
 	public int getId() {
 		return id;
 	}
@@ -199,6 +208,9 @@ public class News { //新闻列表
 		this.updTime = updTime;
 	}
 
+	
+	 @ManyToOne
+	 @JoinColumn(name="typeId")
 	public News_type getNews_type() {
 		return news_type;
 	}

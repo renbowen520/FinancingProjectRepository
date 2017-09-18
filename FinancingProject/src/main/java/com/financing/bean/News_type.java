@@ -2,8 +2,14 @@ package com.financing.bean;
 
 import java.util.Date;
 
-//新闻类别表
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+//新闻类别表
+@Table
+@Entity
 public class News_type {
 
 	private int id;  // 主键
@@ -26,6 +32,9 @@ public class News_type {
 	//private int updId; //修改人id
 	//private Set<News> news = new HashSet<News>();
 	
+	
+	@Id
+	@GeneratedValue
 	public int getId() {
 		return id;
 	}

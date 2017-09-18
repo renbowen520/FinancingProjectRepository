@@ -3,19 +3,22 @@ package com.financing.dao;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
+import com.financing.Interface_dao.IN_Subject_dao;
+import com.financing.bean.Oversea_config_subscribe;
 import com.financing.bean.Subject;
 import com.financing.bean.Subject_bbin_purchase_record;
 
 @Component
-public class SubjectDao {
+public class SubjectDao implements IN_Subject_dao {
 	
 	
-	@Autowired
+	@Resource
 	private SessionFactory sf;
 	
 	public Session getSession(){

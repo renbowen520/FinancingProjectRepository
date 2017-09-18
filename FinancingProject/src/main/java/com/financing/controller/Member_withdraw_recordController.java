@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.financing.Interface_service.IN_Member_withdraw_record_service;
 import com.financing.bean.Member;
 import com.financing.bean.Member_withdraw_record;
 import com.financing.service.Member_withdraw_record_service;
@@ -19,7 +20,7 @@ import com.financing.service.Member_withdraw_record_service;
 public class Member_withdraw_recordController {
 
 		@Autowired
-		private Member_withdraw_record_service mwrs;
+		private IN_Member_withdraw_record_service mwrs;
 		
 		//显示提现信息
 		@RequestMapping("/Member_withdraw_record")

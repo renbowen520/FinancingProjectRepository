@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.financing.Interface_service.IN_Subject_service;
 import com.financing.bean.Subject;
 import com.financing.bean.Subject_bbin_purchase_record;
 import com.financing.bean.Subject_purchase_record;
@@ -27,7 +28,7 @@ import com.financing.service.SubjectService;
 @RequestMapping("/subject")
 public class SubjectController {
 	@Autowired
-	private SubjectService subjectService;
+	private IN_Subject_service subjectService;
 	//跳到新增页面
 	@RequestMapping("/addfixget")
 	public String addfixget(){

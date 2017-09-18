@@ -2,18 +2,21 @@ package com.financing.dao;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.financing.Interface_dao.IN_Oversea_config_dao;
 import com.financing.bean.Oversea_config;
 import com.financing.bean.Oversea_config_subscribe;
 
 @Component
-public class Oversea_config_Dao {
+public class Oversea_config_Dao implements IN_Oversea_config_dao {
 	
-	@Autowired
+	@Resource
 	private SessionFactory sf;
 	
 	public Session getSession(){

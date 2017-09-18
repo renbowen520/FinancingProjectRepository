@@ -3,19 +3,22 @@ package com.financing.dao;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.financing.Interface_dao.IN_Member_wothdraw_record_dao;
 import com.financing.bean.Member;
 import com.financing.bean.Member_withdraw_record;
 
 @Component
-public class Member_withdraw_record_dao {//提现记录功能包
+public class Member_withdraw_record_dao implements IN_Member_wothdraw_record_dao {//提现记录功能包
 		
 	
-	@Autowired
+	@Resource
 	private SessionFactory sessionFactory;
 	
 	public Session getSession(){
@@ -88,4 +91,9 @@ public class Member_withdraw_record_dao {//提现记录功能包
 //			System.out.println("hql:"+hql);
 //			return hql;
 //		}
+	@Override
+	public String listMember_withdraw_record(Map map) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.financing.Interface_service.IN_Oversea_config_service;
 import com.financing.bean.Oversea_config;
 import com.financing.bean.Oversea_config_subscribe;
 import com.financing.service.Oversea_config_Service;
@@ -18,7 +19,7 @@ import com.financing.service.Oversea_config_Service;
 @RequestMapping("/oversea")
 public class Oversea_config_Controller {
 	@Autowired
-	private Oversea_config_Service oversea_config_Service;
+	private IN_Oversea_config_service oversea_config_Service;
 	
 	@RequestMapping("/menus4")
 	//≤È—Ø∫£Õ‚≈‰÷√
