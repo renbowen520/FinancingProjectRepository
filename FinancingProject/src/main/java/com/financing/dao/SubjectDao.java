@@ -1,6 +1,5 @@
 package com.financing.dao;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -9,7 +8,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.financing.bean.Oversea_config_subscribe;
 import com.financing.bean.Subject;
 import com.financing.bean.Subject_bbin_purchase_record;
 
@@ -76,5 +74,31 @@ public class SubjectDao {
 		Session session=getSession();
 		List<Subject_bbin_purchase_record> listsubjectrecord=session.createQuery(hql).list();
 		return listsubjectrecord;
+	}
+	
+	//付息计划显示所有信息
+	public List<Subject> listsubject(Map map){
+		System.err.println("123");
+		String hql="from Subject where 0=0";
+		Session session=getSession();
+		hql=listsubjectM(map, hql);
+		List<Subject> listsubject=session.createQuery(hql).list();
+		return listsubject;
+	}
+	//付息计划模糊查询
+	public String listsubjectM(Map map,String hql){
+		String namem=(String)map.get("namem");
+		String typem=(String)map.get("typem");
+		String statusm=(String)map.get("statusm");
+		if (namem!=null && !namem.equals("")) {
+			hql+="and name like '%"+namem+"%' ";
+		}
+		if (typem!=null && !typem.equals("")) {
+			hql+="and type like '%"+typem+"%'";
+		}
+		if (statusm!=null && !statusm.equals("")) {
+			hql+="and status like '%"+statusm+"%'";
+		}
+		return hql;
 	}
 }

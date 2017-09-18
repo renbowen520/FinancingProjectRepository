@@ -138,8 +138,15 @@ public class AdminController {
 		
 		return "admin/menus10";
 	}
-	@RequestMapping("/menus11")
-	public String menus11() {
+	@RequestMapping("/menus11")//付息计划
+	public String menus11(Model model,@ModelAttribute("namem")String namem,@ModelAttribute("statusm")String statusm,@ModelAttribute("typem")String typem) {//付息计划
+		Map map=new HashMap<>();
+		map.put("namem", namem);
+		map.put("statusm", statusm);
+		map.put("typem", typem);
+		List<Subject>listSubject=subjectService.listSubject(map);
+		model.addAttribute("listSubject", listSubject);
+		
 		return "admin/menus11";
 	}
 	@RequestMapping("/menus12")//充值管理

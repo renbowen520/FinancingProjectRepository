@@ -10,6 +10,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -102,5 +103,17 @@ public class SubjectController {
 		}
 		System.out.println("num:"+num);
 		return num;
+	}
+	
+	@RequestMapping("/menus11")//付息计划
+	public String menus11(Model model,@ModelAttribute("namem")String namem,@ModelAttribute("statusm")String statusm,@ModelAttribute("typem")String typem) {//付息计划
+		Map map=new HashMap<>();
+		map.put("namem", namem);
+		map.put("statusm", statusm);
+		map.put("typem", typem);
+		List<Subject>listSubject=subjectService.listSubject(map);
+		model.addAttribute("listSubject", listSubject);
+		
+		return "admin/menus11";
 	}
 }

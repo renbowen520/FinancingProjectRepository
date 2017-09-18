@@ -39,4 +39,9 @@ public class SubjectService {
 	public List<Subject_bbin_purchase_record> listsubjectrecord(int id){
 		return subjectdao.listsubjectrecord(id);
 	}
+	
+	//付息计划模糊查询及其显示所有
+	public List<Subject> listSubjectm(Map map){
+		return subjectdao.listsubject(map);
+	}
 }

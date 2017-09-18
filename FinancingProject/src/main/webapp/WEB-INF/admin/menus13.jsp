@@ -9,9 +9,7 @@
  <link href="/FinancingProject/css/bootstrap.min.css" rel="stylesheet">
 <script type="text/javascript" src="/FinancingProject/js/jquery-3.2.0.min.js" ></script>
 <script type="text/javascript" src="/FinancingProject/js/bootstrap.min.js"></script>
- <link href="/FinancingProject/css/bootstrap.min.css" rel="stylesheet">
-<script type="text/javascript" src="/FinancingProject/js/jquery-3.2.0.min.js" ></script>
-<script type="text/javascript" src="/FinancingProject/js/bootstrap.min.js"></script>
+
 
 <script type="text/javascript">
 $(function(){
