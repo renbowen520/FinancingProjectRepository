@@ -52,7 +52,8 @@ public class Oversea_config_Dao {
 	//查看预约(根据海外配置id查询预约表中的记录)
 	//查询显示
 	public List<Oversea_config_subscribe> listConfig(int id){
-		String hql="from Oversea_config_subscribe";
+//		String hql="from Oversea_config_subscribe";
+		String hql = "from Oversea_config_subscribe where oversea_id="+id+" order by create_date desc";
 		Session session=getSession();
 		List<Oversea_config_subscribe> listConfig=session.createQuery(hql).list();
 		return listConfig;

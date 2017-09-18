@@ -5,10 +5,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<title>标的投资记录</title>
 </head>
+<link rel="stylesheet" href="/FinancingProject/css/bootstrap.min.css" />
+<script type="text/javascript" src="/FinancingProject/js/jquery-3.2.0.min.js" ></script>
+<script type="text/javascript" src="/FinancingProject/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+</script>
 <body>
-<table width="100%" border="1" cellspacing="0">
+<div class="table table-responsive">
+<table class="table table-striped" width="100%" >
 	<tr align="center">
 	<th>序号</th>
 	<th>流水号</th>
@@ -19,16 +26,20 @@
 	<th>购买时间</th>
 	</tr>
 	<c:forEach items="${listsubjectrecord}" var="li" varStatus="l">
-	<tr align="center">
+	<tr >
 	<td>${l.index+1 }</td>
 	<td>${li.serial_number }</td>
-	<td>${li.member_id}</td>
-	<td>${li.amount }</td>
-	<td>${li.interest }</td>
-	<td>${li.ispayment }</td>
+	<td>${li.member.member_name}</td>
+	<td>¥${li.amount }</td>
+	<td>${li.interest}</td>
+	<td>
+	<c:if test="${li.ispayment==0}">否</c:if>
+	<c:if test="${li.ispayment==1}">是</c:if>
+	</td>
 	<td>${li.create_date}</td>
 	</tr>
 	</c:forEach>
 </table>
+</div>
 </body>
 </html>

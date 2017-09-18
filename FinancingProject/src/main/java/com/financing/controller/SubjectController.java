@@ -61,8 +61,8 @@ public class SubjectController {
 	}
 	@RequestMapping("/bfupdate/{id}")
 	//修改之前的查询
-	public String bfupdate(@PathVariable("id")int id,Model model,Subject subject){
-	    subject=subjectService.getById(id);
+	public String bfupdate(@PathVariable("id")int id,Model model){
+	    Subject subject=subjectService.getById(id);
 		model.addAttribute("subject", subject);
 		return "admin/updatefixget";
 	}

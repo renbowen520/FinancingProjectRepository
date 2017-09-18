@@ -28,7 +28,7 @@ public class Finance_product_subscribe {
 	private String end_date;//结束时间
 	private String signed_photos;//签署拍照
 	
-	 private Member Menber;//引用会员表id
+	 private Member Member;//引用会员表id
 	 private   Finance_product_funds finance_product_funds;//引用理财类基金表id
 	
 	 
@@ -126,11 +126,11 @@ public class Finance_product_subscribe {
 	
 	@ManyToOne
 	@JoinColumn(name="member_id")
-	public Member getMenber() {
-		return Menber;
+	public Member getMember() {
+		return Member;
 	}
-	public void setMenber(Member menber) {
-		Menber = menber;
+	public void setMember(Member member) {
+		Member = member;
 	}
 	
 	

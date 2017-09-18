@@ -5,6 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>添加海外配置信息</title>
+<link rel="stylesheet" href="/FinancingProject/css/bootstrap.min.css" />
+<script type="text/javascript" src="/FinancingProject/js/jquery-3.2.0.min.js" ></script>
+<script type="text/javascript" src="/FinancingProject/js/bootstrap.min.js"></script>
 
      <script type="text/javascript" charset="utf-8" src="/FinancingProject/ueditor/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="/FinancingProject/ueditor/ueditor.all.min.js"> </script>
@@ -14,40 +17,47 @@
 </head>
 <body>
 <form action="/FinancingProject/oversea/save" method="post">
-	名字:<input type="text" name="title"><br>
-	子标题:<input type="text" name="child_title"><br>
-	描述:<input type="text" name="description"><br>
-	用户群体:<input type="text" name="user_type"><br>
-	排序值:<input type="text" name="sortColum"><br>
-	状态:<select name="status">
-	<option value="1">未发布</option>
-	<option value="2">募集中</option>
-	<option value="3">已结束</option>
-	</select><br>
-	<!-- 开始时间:<input type="date" name="start_date"><br>
-	结束时间:<input type="date" name="end_date"><br>
-	 -->
-	 图标:<br>
-	 
-	 	<input type="submit" value="提交">
-	 
-	       <style type="text/css">
-        #dd{
-            width:80%;
-            height: 100px;
-        }
-    </style>
-	 
-	  <div id="dd">
-    <script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
-   </div>
-   
-   <script type="text/javascript">
-    //实例化编辑器
-    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
-    var ue = UE.getEditor('editor');
-   </script>
-	 
+<table border="0" cellspacing="0" width="100%">
+	<tr height="60">
+	<td>&nbsp;&nbsp;&nbsp;标题:</td>
+	<td><input type="text" name="title" class="form-control"></td>
+	</tr>
+	<tr height="60">
+	<td>&nbsp;&nbsp;&nbsp;子标题:</td>
+	<td><input type="text" name="child_title" class="form-control"></td>
+	</tr><tr height="60">
+	<td>&nbsp;&nbsp;&nbsp;描述:</td>
+	<td><input type="text" name="description" class="form-control"></td>
+	</tr>
+		<tr height="60">
+	<td>&nbsp;&nbsp;&nbsp;用户群体:</td>
+	<td><input type="text" name="user_type" class="form-control"></td>
+	</tr>
+	<tr height="60">
+	<td>&nbsp;&nbsp;&nbsp;排序值:</td>
+	<td><input type="text" name="sortColum" class="form-control"></td>
+	</tr><tr height="60">
+	<td>&nbsp;&nbsp;&nbsp;描述:</td>
+	<td><input type="text" name="description" class="form-control"></td>
+	</tr>
+	<tr>
+	<td>&nbsp;&nbsp;&nbsp;状态:</td>
+	<td><select class="form-control" name="status">
+		<option value="0">未发布</option>
+		<option value="1">募集中</option>
+		<option value="2">回款中</option>
+		<option value="3">还款完成</option>
+	</select></td>
+	</tr>
+	<tr height="60">
+	<td>&nbsp;&nbsp;&nbsp;图片预览 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td>
+	<input type="file" name="file_name" class="form-control"/></td>
+	 </tr>
+	 <tr>
+	 <td colspan="2"><input type="submit" value="保存"></td>
+	 </tr>
+</table>
 
 </form>
 </body>

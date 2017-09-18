@@ -70,7 +70,7 @@ public class SubjectDao {
 	//查看记录
 	//查询显示
 	public List<Subject_bbin_purchase_record> listsubjectrecord(int id){
-		String hql="from Subject_bbin_purchase_record";
+		String hql="from Subject_bbin_purchase_record where subject_id="+id;
 		Session session=getSession();
 		List<Subject_bbin_purchase_record> listsubjectrecord=session.createQuery(hql).list();
 		return listsubjectrecord;

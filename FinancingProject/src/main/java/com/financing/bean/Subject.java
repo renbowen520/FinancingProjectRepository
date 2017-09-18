@@ -47,8 +47,15 @@ public class Subject {
 	
 	//同一个标可以被购买多次  一对多，用集合
 	private Set<Subject_purchase_record> subject_purchase_record=new HashSet<>();//标的购买表(购买次数)
+	private Set<Subject_bbin_purchase_record> Subject_bbin_purchase_record=new HashSet<>();//体验金购买表
 	
-	
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="subject")
+	public Set<Subject_bbin_purchase_record> getSubject_bbin_purchase_record() {
+		return Subject_bbin_purchase_record;
+	}
+	public void setSubject_bbin_purchase_record(Set<Subject_bbin_purchase_record> subject_bbin_purchase_record) {
+		Subject_bbin_purchase_record = subject_bbin_purchase_record;
+	}
 	@OneToMany(cascade=CascadeType.ALL,mappedBy="subject")
 	public Set<Subject_purchase_record> getSubject_purchase_record() {
 		return subject_purchase_record;
