@@ -28,6 +28,15 @@ import com.financing.service.SubjectService;
 public class SubjectController {
 	@Autowired
 	private IN_Subject_service subjectService;
+	
+	//前台固收类显示
+//	public String subject(Model model){
+//		List<Subject> subject=this.subjectService.listSubject(map);
+//		model.addAttribute("subject", subject);
+//	}
+	
+	
+	
 	//跳到新增页面
 	@RequestMapping("/addfixget")
 	public String addfixget(){

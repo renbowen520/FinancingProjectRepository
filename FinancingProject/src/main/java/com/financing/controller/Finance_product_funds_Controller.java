@@ -30,6 +30,12 @@ public class Finance_product_funds_Controller {
 	@Autowired
 	private IN_Finance_produce_funds_service finance_product_funds_Service;
 	
+	
+	
+	
+	
+	
+	
 	@RequestMapping("/menus2")
 	//²éÑ¯Ë½Ä¼
 	public String menus2(Model model,@RequestParam(required=false)String sname,@RequestParam(required=false)String type,@RequestParam(required=false)String status){
