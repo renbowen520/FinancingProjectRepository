@@ -19,5 +19,7 @@ public interface IN_Finance_product_funds_dao {
 	 List<Finance_product_subscribe> listfinanceSubscribe(int id);
 	 void savesubscribe(Finance_product_subscribe finance_product_subscribe);
 	 Finance_product_subscribe getSubscribeById(int id);
-	 
+	 void updatesubscribe(Finance_product_subscribe finance_product_subscribe);
+	 Finance_product_subscribe getsubscribe(int id);
+	 void lose(int id);
 }

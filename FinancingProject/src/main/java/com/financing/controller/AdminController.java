@@ -124,11 +124,15 @@ public class AdminController {
 	}
 //Ë½Ä¼»ù½ð
 	@RequestMapping("/menus2")
-	public String menus2(Model model,@ModelAttribute("sname")String sname){
+	public String menus2(Model model,Finance_product_funds fpf){
+		System.out.println("name:"+fpf.getName());
 		Map map=new HashMap();
-		map.put("sname",sname);
+		map.put("sname",fpf.getName());
+		map.put("status",fpf.getStatus());
+		map.put("type",fpf.getType());
 		List<Finance_product_funds> listfinance=this.finance_product_funds_Service.listfinance(map);
 		model.addAttribute("listfinance", listfinance);
+		model.addAttribute("fpf",fpf);
 		return "admin/menus2";
 	}
 	@RequestMapping("/menus3")

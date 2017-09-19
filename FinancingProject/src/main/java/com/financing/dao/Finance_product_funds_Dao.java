@@ -1,5 +1,7 @@
 package com.financing.dao;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -27,16 +29,16 @@ public class Finance_product_funds_Dao  implements IN_Finance_product_funds_dao 
 	//模糊查询
 	public String listDataHql(Map map,String hql){
 		String sname=(String)map.get("sname");
-		String status=(String)map.get("status");
+		int status=(Integer)map.get("status");
 		String type=(String)map.get("type");
 		if(sname!=null&&!sname.equals("")){
 			hql+=" and name like '%"+sname+"%'";
 		}
-		if(status!=null&&!status.equals("")){
-			hql+=" and status like '%"+status+"%'";
+		if(status!=-1){
+			hql+=" and status="+status;
 		}
 		if(type!=null&&!type.equals("")){
-			hql+=" and type like '%"+type+"%'";
+			hql+=" and type='"+type+"'";
 		}
 		return hql;
 	}
@@ -70,8 +72,23 @@ public class Finance_product_funds_Dao  implements IN_Finance_product_funds_dao 
 		session.update(finance_product_funds);
 	}
 	
-	//查看预约 
-	//查询显示
+	
+	//签署失败前查询
+	public Finance_product_subscribe getsubscribe(int id){
+		Session session=getSession();
+		Finance_product_subscribe finance_product_subscribe=(Finance_product_subscribe)session.get(Finance_product_subscribe.class, id);
+		return finance_product_subscribe;
+	}
+	
+	//签署失败
+	public void lose(int id){
+		Session session=this.getSession();
+		Finance_product_subscribe finance_product_subscribe=this.getsubscribe(id);
+		finance_product_subscribe.setStatus(3);
+		session.update(finance_product_subscribe);
+	}
+	
+	//查看签署状态
 	public List<Finance_product_subscribe> listfinanceSubscribe(int id){
 		String hql = "from Finance_product_subscribe where product_id="+id+" order by create_date desc";
 		Session session=getSession();
@@ -83,7 +100,13 @@ public class Finance_product_funds_Dao  implements IN_Finance_product_funds_dao 
 	//保存私募签署合同
 	public void savesubscribe(Finance_product_subscribe finance_product_subscribe){
 		Session session=getSession();
-		session.save(finance_product_subscribe);
+		finance_product_subscribe.setStatus(1);
+		session.update(finance_product_subscribe);
+	}
+	
+	public void updatesubscribe(Finance_product_subscribe finance_product_subscribe){
+		Session session=getSession();
+		session.update(finance_product_subscribe);
 	}
 	
 	//查询签约人信息

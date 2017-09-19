@@ -14,4 +14,7 @@ public interface IN_Finance_produce_funds_service {
 	 List<Finance_product_subscribe> listfinanceSubscribe(int id);
 	 void savesubscribe(Finance_product_subscribe finance_product_subscribe);
 	 Finance_product_subscribe getSubscribeById(int id);
+	 void updatesubscribe(Finance_product_subscribe finance_product_subscribe);
+	 void losesubscribe(int id);
+	 Finance_product_subscribe getsubscribe(int id);
 }
