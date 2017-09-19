@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import com.financing.Interface_dao.IN_Member_dao;
 import com.financing.bean.Member;
+import com.financing.bean.Users;
 
 @Component
 public class Member_dao implements IN_Member_dao {
@@ -22,6 +24,22 @@ public class Member_dao implements IN_Member_dao {
 	public Session getSession(){
 		return this.sessionFactory.getCurrentSession();
 	}
+	
+	//根据手机号查询
+	public Member getByPhone(String phone) {
+		    Session session = this.getSession();
+		    Query query = session.createQuery("from Member  where mobile_Phone=:phone");
+			  query.setString("phone", phone);
+			  List<Member> list=query.list();
+		  	Member member=null; 
+		 	for(Member member2:list){
+		 		member=member2;
+			}
+			return member;
+	}
+	
+	
+	
 	//显示帐号信息
 	public List<Member> listMember(Map map){
 		String hql="from Member where 0=0";

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib  prefix="c"   uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -161,28 +162,10 @@
 
 </head>
 <body>
-	<div id="floatTools" class="rides-cs" style="height:408px;">
-		<div class="floatL">
-			<a id="aFloatTools_Show" class="btnOpen" title="查看在线客服" style="top:90px;display:block" href="javascript:void(0);">展开</a>
-			<a id="aFloatTools_Hide" class="btnCtn" title="关闭在线客服" style="top:90px;display:none" href="javascript:void(0);">收缩</a>
-		</div>
-		<div id="divFloatToolsView" class="floatR" style="display: none;height:408px;width: 140px;">
-			<div class="cn">
-				<img src="/FinancingProject/index_files/kefun.png" style="  width: 100px;display: block; margin: 0 auto; padding-top: 10px;">
-				<h3 class="titZx">孔明理财在线客服</h3>
-				<ul>
-					<li><span>客服1</span> <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2060142983&amp;site=qq&amp;menu=yes"><img border="0" src="./index_files/littleQQ.png" alt="点击这里给我发消息" title="点击这里给我发消息"></a> </li>
-					<li><span>客服2</span> <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1278814747&amp;site=qq&amp;menu=yes"><img border="0" src="./index_files/littleQQ.png" alt="点击这里给我发消息" title="点击这里给我发消息"></a> </li>
-					<li><span>客服3</span> <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=809776055&amp;site=qq&amp;menu=yes"><img border="0" src="./index_files/littleQQ.png" alt="点击这里给我发消息" title="点击这里给我发消息"></a> </li>
-                    <li><span>客服4</span> <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2496801420&amp;site=qq&amp;menu=yes"><img border="0" src="./index_files/littleQQ.png" alt="点击这里给我发消息" title="点击这里给我发消息"></a> </li>
-					<li style="border:none;"><span>电话：4000-888-888</span> </li>
-				</ul>
-			</div>
-		</div>
-	</div>
+
 	
     <div style=" width:1002px; height:94px; margin:0 auto;">
-        <iframe src="/FinancingProject/index_files/iframetop.html" scrolling="no" frameborder="0" width="1002" height="94"></iframe>
+        <iframe src="/FinancingProject/index_files/iframetop.jsp" scrolling="no" frameborder="0" width="1002" height="94"></iframe>
     </div>
     
     
@@ -191,7 +174,7 @@
 			<div class="row">
 				<ul class="topNav">
 					<li class="active">
-						<a class="item first" href="http://127.0.0.1:8080/FinancingProject/index.jsp">
+						<a class="item first" href="http://127.0.0.1:8080/FinancingProject/IndexController/index">
 							首页
 						</a>
 					</li>
@@ -266,17 +249,10 @@
                 </div>
     </div> 
 
-<!--    <a class="left carousel-control" href="http://www.ying158.com/home#homebanner" role="button" data-slide="prev">
-        <span class="fa fa-chevron-circle-left" aria-hidden="true"></span>
-        <span class="sr-only">上一张</span>
-    </a>
-    <a class="right carousel-control" href="/FinancingProject/images/timg.jpg" role="button" data-slide="next">
-        <span class="fa fa-chevron-circle-right" aria-hidden="true"></span>
-        <span class="sr-only">下一张</span>
-    </a>  -->
     
     
     <!--登陆 注册 div  -->
+    <c:if test="${empty  member_login}">
 </div>
     <div class="login-box">
         <div class="block backdrop"></div>
@@ -288,7 +264,7 @@
         </div>
     </div>
 </div>
-
+</c:if>
 
 <div class="container index">
     <div class="row">
@@ -365,14 +341,6 @@
 </div>
 
 
-
-
-<!-- <div id="announcementModal" class="modal fade infoModal">
-    <div class="modal-dialog">
-        <div class="modal-content" data-bind="if: $data"></div>
-    </div>
-</div>  -->
-
 <div class="modal fade myModal" id="bigImg" role="dialog">
     <div class="modal-dialog modal-sm" style="width: 1200px;">
         <div class="modal-content">
@@ -388,46 +356,10 @@
 </div>
 
 
-<!-- <div class="modal fade errorInfo infoModal" id="closePositionDialog" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content" style="border-radius: 0px;width:400px;">
-            <div class="modal-header">
-                <span>温馨提示</span>
-                <button type="button" class="close" data-dismiss="modal">
-                <span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-            </div>
-            <div class="modal-body">
-                <div id="errorMsg"></div><br>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-<!-- <div class="bottomAd" style="position:fixed; bottom:0px; margin:0 auto;">
-    <script type="text/javascript">
-        function hide() {
-            $(".bottomAd").hide();
-        }
-    </script>
-   <img src="./index_files/yingjia.png" border="0" usemap="#Map"> 
-    <map name="Map" id="Map">
-        <area shape="rect" coords="1420,23,1445,48" href="javascript:hide();">
-    </map>
-</div> -->
-
             <script src="/FinancingProject/index_files/knockout-3.2.0.js"></script>
             <script>
 
-            
-            /*             
-            //点击 下面的轮播图时会显示大图
-    $("#marqueeContainer img").click(function () {
-        var bigImg = $(this).attr("name");
-        var url = "/FinancingProject/index_files/" + bigImg;
-        $("#bigImg #theBigImg").attr("src", url);
-        $("#bigImg").modal();
-    });
- */
+
    (function () {
         var raf = window.requestAnimationFrame || function _raf(f) { return setTimeout(f, 16.6); }
         var caf = window.cancelAnimationFrame || function _caf(f) { return clearTimeout(f); }
@@ -476,107 +408,7 @@
         
     })(); 
 
-   /*  var loginFromPage = function () {
-        var phone = $("#phone").val();
-        var password = $("#password").val();
-        if ($.trim(phone) == "") {
-            $("#phone").focus();
-            return;
-        }
-        if ($.trim(password) == "") {
-            $("#password").focus();
-            return;
-        }
-        $(".loginBtn").addClass("disabled");
-        $.post("/api/authentication/signIn", { login: phone, password: password }, function (data) {
-            if (data.isAuthenticated) {
-                window.location.href = '/account/UserCenter';
-            } else {
-                $(".loginInfo #loginFail").html(data.errorMessage);
-                $(".loginInfo").modal();
-                $(".loginBtn").removeClass("disabled");
-            }
-        });
-    }
- */
-  /*   function login() {
-        var phone = $.trim($("#phoneNum").val());
-        if (phone == "") {
-            $("#infosResult").html("请输入您的手机号码");
-            $("#infoUser").modal();
-            $("#phoneNum").focus();
-            return false;
-        }
-        var pwd = $.trim($("#pwd").val());
-        if (pwd == "") {
-            $("#infosResult").html("请输入登录密码");
-            $("#infoUser").modal();
-            $("#pwd").focus();
-            return false;
-        } */
 
-      /*   $(".loginBtn").addClass("disabled");
-        $.post("/api/authentication/signIn", { login: phone, password: pwd }, function (data) {
-            if (data.isAuthenticated) {
-                if (data.returnUrl) {
-                    window.location.href = data.returnUrl;
-                } else {
-                    window.location.href = '/account/UserCenter';
-                }
-            } else {
-                $("#loginError").html(data.errorMessage);
-                $("#loginError").show();
-                $(".loginBtn").removeClass("disabled");
-            }
-        });
-    } */
-   /*  var counter = 1;
-    var announceTimer = function () {
-        return setInterval(function () {
-            var length = $("#spanAnnouncements > span").length;
-            if (length) {
-
-                $("#spanAnnouncements > span").each(function (i, e) {
-                    if (i == counter % length) {
-                        $(this).removeClass("hidden");
-                    } else {
-                        $(this).addClass("hidden");
-
-                    }
-                });
-                counter++;
-                if (counter == length) counter = 0;
-            }
-
-        }, 2000);
-    }; */
-
-  /*   var timerId = announceTimer();
-    var announcements = ko.observableArray();
-    var announcement = ko.observable();
-    var showannouncement = function (an) {
-        announcement(an);
-        $('#announcementModal').modal('show');
-    }
-    
-    $(function () {
-        ko.applyBindings(announcements, document.getElementById("announcements"));
-        ko.applyBindings(announcement, document.getElementById("announcementModal"));
-        $.get("/api/article/articleByCategory/b8c8dd38-0805-4ef4-bff6-17b835fca8aa/5", "", function (rel) {
-            $.each(rel, function (i, v) {
-                if (v.title.length > 32) {
-                    v.title = v.title.substring(0, 30) + '...';
-                }
-            });
-            announcements(rel);
-        });
-
-    }); */
-
- /*    var notReady = function () {
-        $("#closePositionDialog #errorMsg").html("<h4>即将推出，敬请期待！</h4>");
-        $("#closePositionDialog").modal();
-    } */
 </script>
 
 
@@ -971,30 +803,6 @@
 			window.open(url, '在线客服', 'height=405,width=500,top=200,left=200,toolbar=no,menubar=no,scrollbars=yes, resizable=no,location=no, status=no');
 		}
 
-	/* 	var loginFromModal = function () {
-			var un = $("#modalUser").val();
-			var pw = $("#modalPw").val();
-			if (un == "" || un == undefined) {
-				$("#loginFail").html("请输入用户名");
-				$(".loginInfo").modal();
-				return;
-			}
-			if (pw == "" || pw == undefined) {
-				$("#loginFail").html("请输入登录密码");
-				$(".loginInfo").modal();
-				return;
-			}
-			$.post("/api/authentication/signIn", { login: un, password: pw }, function (data) {
-				if (data.isAuthenticated) {
-					window.location.reload();
-				} else {
-					$("#loginFail").html("用户名或密码有误");
-					$(".loginInfo").modal();
-				}
-			});
-
-		} */
-
 
 		var gotoTop = function () {
 			$("html,body").animate({ scrollTop: 0 }, 1000);
@@ -1002,15 +810,7 @@
 
 	</script>
 
-    <script type="text/javascript">
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?bb6cf2322300378a89a69641641427c0";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
-    </script>
+
 
 
 

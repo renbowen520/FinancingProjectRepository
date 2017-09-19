@@ -42,14 +42,12 @@ $(document).ready(function() {
 	   var b=document.getElementById("password").value;    
 	  
         if(a.length<1){
-	 //     document.getElementById("mobile_Phone").setAttribute("placeholder","手机号不能为空!");
 		   $("#yc2").show();
 		   $("#yc").hide();
 	       return ;
 	    }
         
     if(!(/^1[34578]\d{9}$/.test(a))){ 
-        //	 document.getElementById("mobile_Phone").setAttribute("placeholder","手机号码有误，请重填!");
           $("#yc").show();
           $("#yc2").hide();
             return;
@@ -72,8 +70,6 @@ $(document).ready(function() {
 		   $("#yc4").hide();
 			$("#f1").attr("action","/FinancingProject/AdminController/adminLogin");
 			$("#f1").submit();
-       //  location.href="/FinancingProject/AdminController/adminLogin";
-
 	  });
 });
 </script>

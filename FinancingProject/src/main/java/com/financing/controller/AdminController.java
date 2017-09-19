@@ -1,18 +1,16 @@
 package com.financing.controller;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.financing.Interface_service.IN_Finance_produce_funds_service;
 import com.financing.Interface_service.IN_Member_bankcards_service;
 import com.financing.Interface_service.IN_Member_deposit_record_service;
@@ -29,7 +27,6 @@ import com.financing.service.Member_bankcards_service;
 import com.financing.service.Member_deposit_record_service;
 import com.financing.service.Member_service;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.financing.bean.Member;
 import com.financing.bean.Member_bankcards;
 import com.financing.bean.Member_deposit_record;
@@ -83,7 +80,10 @@ public class AdminController {
 		  UsernamePasswordToken token = new UsernamePasswordToken(users.getMobile_Phone(),users.getPassword());
 		   try {
 			         sub.login(token);
-			         
+			     	Session session=sub.getSession();
+					System.out.println("sessionId:"+session.getId());
+					System.out.println("sessionHost:"+session.getHost());
+					System.out.println("sessionTimeout:"+session.getTimeout());
 				     return "redirect:/AdminController/admin";//登陆成功后调到后台
 			   } catch (Exception e) {
 				    e.printStackTrace();

@@ -11,4 +11,5 @@ public interface IN_Member_dao {
 	Session getSession();
 	 List<Member> listMember(Map map);
 	 String listMemberM(Map map,String hql);
+	 Member getByPhone(String phone);
 }

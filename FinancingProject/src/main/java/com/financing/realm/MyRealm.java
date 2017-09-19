@@ -39,7 +39,7 @@ public class MyRealm extends AuthorizingRealm{
 	     String phone =token.getUsername();
 	     String upwd = String.valueOf(token.getPassword());
 	     System.out.println("取出:"+phone+"   "+upwd);
-	    Users users = users_service.getByPhone(phone) ;
+	     Users users = users_service.getByPhone(phone) ;
 	    if (users!= null) {//查询到有该用户
 	    	// 对输入的密码加密
 	         String  	newupwd= MD5(upwd,users.getSalt() );

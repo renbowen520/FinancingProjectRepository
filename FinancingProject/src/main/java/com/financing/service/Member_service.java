@@ -21,4 +21,9 @@ public class Member_service  implements IN_Member_service{
 	public List<Member> listMember(Map map){
 		return this.md.listMember(map);
 	}
+
+	@Override
+	public Member getByPhone(String phone) {
+		return md.getByPhone(phone);
+	}
 }

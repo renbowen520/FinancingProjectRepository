@@ -57,7 +57,7 @@
                 <div class="in">
                     <div class="textThis">
                         <h2>验证失败!</h2>
-                        <p><span>页面自动<a id="href" href="/FinancingProject/AdminLogin.jsp">跳转</a></span><span>等待<b id="wait">3</b>秒</span></p>
+                        <p><span>页面自动<a id="href" href="/FinancingProject/IndexController/adminLogin">跳转</a></span><span>等待<b id="wait">3</b>秒</span></p>
                         <script type="text/javascript">                            (function() {
                                 var wait = document.getElementById('wait'), href = document.getElementById('href').href;
                                 var interval = setInterval(function() {

@@ -1,7 +1,13 @@
 package com.financing.controller;
 
+import javax.persistence.Index;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.financing.bean.Member;
 
 //前台跳转页面相关的控制层
 
@@ -9,6 +15,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/IndexController")
 public class IndexController {
         
+	//后台登陆
+	@RequestMapping("/adminLogin")
+	public String adminLogin() {
+		
+		return "jsp/AdminLogin";
+	}
+	
+	
+	//主页
+	@RequestMapping("/index")
+	public String Index() {
+		return "jsp/index";
+	}
+	
+	
 	//网上体验中心
   @RequestMapping("/Online_experience_center")
   public String  Online_experience_center() {
@@ -42,8 +63,14 @@ public class IndexController {
 			
 				 //个人中心  
 				 @RequestMapping("/personal_center")
-				 public String  personal_center() {
-					  return "jsp/personal_center";
+				 public String  personal_center(HttpSession session) {
+					 Member member = (Member) session.getAttribute("member_login"); 
+					if(member!=null) {
+						  return "jsp/personal_center";
+					}else {
+						 return "jsp/login";
+					}
+					
 				  }
 				 
 				 //登陆

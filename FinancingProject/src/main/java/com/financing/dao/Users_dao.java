@@ -35,7 +35,6 @@ public class Users_dao  implements IN_Users_dao{
 	 	for(Users users:list){
 		   users2=users;
 		}
-		System.out.println("d="+users2.getUser_name());
 		return users2;
 	}
 	
