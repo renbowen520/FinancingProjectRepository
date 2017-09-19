@@ -2,6 +2,14 @@ package com.financing.bean;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+@Entity
+@Table
 public class Member_trade_record {
 	//交易记录表
 	private int id; //主键
@@ -17,9 +25,10 @@ public class Member_trade_record {
 	private String ext_field3;//扩展3
 	private Date create_date; //创建时间
 	private Date update_date;//修改时间
-	private Member member;	//引用了用户表id
+	private Member member_id;	//引用了用户表id
 	
-	
+	@Id
+	@GeneratedValue
 	public int getId() {
 		return id;
 	}
@@ -98,12 +107,16 @@ public class Member_trade_record {
 	public void setUpdate_date(Date update_date) {
 		this.update_date = update_date;
 	}
-	public Member getMember() {
-		return member;
+	
+	@ManyToOne
+	@JoinColumn(name="member_id")
+	public Member getMember_id() {
+		return member_id;
 	}
-	public void setMember(Member member) {
-		this.member = member;
+	public void setMember_id(Member member_id) {
+		this.member_id = member_id;
 	}
+
 	
 	
 	

@@ -16,8 +16,15 @@
 			$("#form1").attr("action","/FinancingProject/MemberController/zhanghao");
 			$("#form1").submit();
 		});
+	
 		
 	});
+	
+	function fun(id){
+		alert("333")
+		$("#form1").attr("action","/FinancingProject/MemberController/menus25/"+id);
+		$("#form1").submit();
+	};
 </script>
 </head>
 <body>
@@ -59,7 +66,7 @@
 			<td align="center">${lm.invitatioinCode }</td>
 			<td align="center">${lm.create_date }</td>
 			<td align="center">
-			<button type="button" class="btn btn-primary" > 账号详情</button>
+			<button type="button" class="btn btn-primary" id="btn2" onclick="fun(${lm.id})" > 账号详情</button>
   			
 			</td>
 		</tr>
