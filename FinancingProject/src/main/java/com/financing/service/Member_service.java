@@ -26,4 +26,22 @@ public class Member_service  implements IN_Member_service{
 	public Member getByPhone(String phone) {
 		return md.getByPhone(phone);
 	}
+
+	@Override
+	public String getma(int k) {
+	  
+		return  md.getma(k);
+	}
+
+	@Override
+	public Member getByCode(String code) {
+		// TODO Auto-generated method stub
+		return md.getByCode(code);
+	}
+
+	@Override
+	public void save(Member member) {
+		md.save(member);
+		
+	}
 }

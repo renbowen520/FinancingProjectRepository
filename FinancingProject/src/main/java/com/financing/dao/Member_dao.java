@@ -25,6 +25,34 @@ public class Member_dao implements IN_Member_dao {
 		return this.sessionFactory.getCurrentSession();
 	}
 	
+	
+	//查询邀请码
+	public Member getByCode(String code) {
+		   Session session = this.getSession();
+		    Query query = session.createQuery("from Member  where  invitationCode=:code");
+			  query.setString("code", code);
+			  List<Member> list=query.list();
+		  	Member member=null; 
+		 	for(Member member2:list){
+		 		member=member2;
+			}
+			return member;
+	}
+	
+	
+	//邀请码生成
+	public String getma(int k) {
+		 String s="";
+		   for(int i=0;i<k;i++) {
+			 String chars = "abcdefghijklmnopqrstuvwxyzQWERTYUIOPASDFGHJKLZXCVBNM";
+			    s+=chars.charAt((int)(Math.random() * 52));
+		   }
+		  return s;
+	}
+	
+	
+	
+	
 	//根据手机号查询
 	public Member getByPhone(String phone) {
 		    Session session = this.getSession();
@@ -73,5 +101,13 @@ public class Member_dao implements IN_Member_dao {
 		}
 		System.out.println("hql:"+hql);
 		return hql;
+	}
+
+
+	@Override 
+	public void save(Member member) {  //保存
+		// TODO Auto-generated method stub
+		Session session=getSession();
+		session.save(member);
 	}
 }

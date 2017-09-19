@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -105,14 +107,12 @@
                     <div class="page-header">
                         <small><h1>注册</h1></small>
                     </div>
-
-                    <form id="defaultForm" method="post" class="form-horizontal bv-form" action="/FinancingProject/LoginController/register" novalidate="novalidate">
+                   <form id="defaultForm" method="post"   class="form-horizontal bv-form"  action="/FinancingProject/LoginController/register"  novalidate="novalidate">
                         <div class="form-group has-feedback has-error">
                             <label class="col-lg-3 control-label">姓名</label>
                             <div class="col-lg-5">
-                                <input type="text"   id="member_name"      class="form-control" name="member_name" required="" data-bv-trigger="keyup" data-bv-notempty-message="姓名不能为空" placeholder="姓名,需实名注册" data-bv-field="member_name"><i class="form-control-feedback glyphicon glyphicon-remove" data-bv-icon-for="member_name" style="display: block;"></i>
+                                <input  value="${member_register.member_name }"      type="text"   id="member_name"      class="form-control" name="member_name" required="" data-bv-trigger="keyup" data-bv-notempty-message="姓名不能为空" placeholder="姓名,需实名注册" data-bv-field="member_name"><i class="form-control-feedback glyphicon glyphicon-remove" data-bv-icon-for="member_name" style="display: block;"></i>
                             <small class="help-block" data-bv-validator="notEmpty" data-bv-for="member_name" data-bv-result="INVALID" style="display: block;">姓名不能为空</small></div>
-                           
                         </div>
 
                         
@@ -120,21 +120,21 @@
                         <div class="form-group has-feedback has-success">
                             <label class="col-lg-3 control-label">手机号码</label>
                             <div class="col-lg-5">
-                                <input          type="text" class="form-control" name="mobile_Phone" data-bv-field="phone"><i class="form-control-feedback glyphicon glyphicon-ok" data-bv-icon-for="mobile_Phone" style="display: block;"></i>
+                                <input  value="${member_register.mobile_Phone }"          type="text" class="form-control" name="mobile_Phone" data-bv-field="phone"><i class="form-control-feedback glyphicon glyphicon-ok" data-bv-icon-for="mobile_Phone" style="display: block;"></i>
                             <small class="help-block" data-bv-validator="mobile_Phone" data-bv-for="mobile_Phone" data-bv-result="VALID" style="display: none;">输入不是有效的手机号码</small></div>
                         </div>
 
                         <div class="form-group has-feedback has-error">
                             <label class="col-lg-3 control-label">密码</label>
                             <div class="col-lg-5">
-                                <input type="password" class="form-control" name="password" data-bv-field="password"><i class="form-control-feedback glyphicon glyphicon-remove" data-bv-icon-for="password" style="display: block;"></i>
+                                <input   value="${member_register.password }"        type="password" class="form-control" name="password" data-bv-field="password"><i class="form-control-feedback glyphicon glyphicon-remove" data-bv-icon-for="password" style="display: block;"></i>
                             <small class="help-block" data-bv-validator="notEmpty" data-bv-for="password" data-bv-result="INVALID" style="display: block;">密码不能位空</small><small class="help-block" data-bv-validator="identical" data-bv-for="password" data-bv-result="VALID" style="display: none;">两次密码不一致</small><small class="help-block" data-bv-validator="different" data-bv-for="password" data-bv-result="VALID" style="display: none;">用户名和密码不能相同</small></div>
                         </div>
 
                         <div class="form-group has-feedback has-error">
                             <label class="col-lg-3 control-label">确认密码</label>
                             <div class="col-lg-5">
-                                <input type="password" class="form-control" name="confirmPassword" data-bv-field="confirmPassword"><i class="form-control-feedback glyphicon glyphicon-remove" data-bv-icon-for="confirmPassword" style="display: block;"></i>
+                                <input     value="${member_register.password }"        type="password" class="form-control" name="confirmPassword" data-bv-field="confirmPassword"><i class="form-control-feedback glyphicon glyphicon-remove" data-bv-icon-for="confirmPassword" style="display: block;"></i>
                             <small class="help-block" data-bv-validator="notEmpty" data-bv-for="confirmPassword" data-bv-result="INVALID" style="display: block;">密码不能为空</small><small class="help-block" data-bv-validator="identical" data-bv-for="confirmPassword" data-bv-result="VALID" style="display: none;">两次密码不一致</small><small class="help-block" data-bv-validator="different" data-bv-for="confirmPassword" data-bv-result="VALID" style="display: none;">用户名和密码不能相同</small></div>
                         </div>
 
@@ -143,14 +143,14 @@
 					        <div class="form-group has-feedback has-success">
                             <label class="col-lg-3 control-label">理财师邀请码</label>
                             <div class="col-lg-5">
-                                <input type="text" class="form-control" name="invitedCode"   id="invitedCode" placeholder="选填,(填写理财师邀请码会有更多惊喜)" ><i ></i>
+                                <input             type="text" class="form-control" name="ma"   id="ma" placeholder="选填,(填写理财师邀请码会有更多惊喜)" ><i ></i>
                              </div>
                         </div>
 
                             <div class="form-group has-feedback has-success">
                             <label class="col-lg-3 control-label">QQ号码</label>
                             <div class="col-lg-5">
-                                <input type="text"     id=" qqNumber" name="qqNumber"     class="form-control"  placeholder="选填,(建议填写方便客服联系)" ><i ></i>
+                                <input    value="${member_register.qqNumber }"     type="text"     id=" qqNumber" name="qqNumber"     class="form-control"  placeholder="选填,(建议填写方便客服联系)" ><i ></i>
                              </div>
                         </div>
 
@@ -163,16 +163,27 @@
 
                         <div class="form-group">
                             <div class="col-lg-9 col-lg-offset-3">
-                                <button        type="submit" class="btn btn-primary" name="signup" value="Sign up" disabled="disabled">注册</button>
+                                <button   type="submit" class="btn btn-primary" name="signup" value="Sign up" disabled="disabled">注册</button>
                               
                                 <button type="button" class="btn btn-info" id="resetBtn">重置</button>
+                            <font color="red">   &nbsp;${no_phone }</font>
+                            
                             </div>
+                            
                         </div>
                     </form>
                 </div>
             </section>
             <!-- :form -->
 <script type="text/javascript">
+
+/* function fun(){
+	alert("ok");
+	$("#defaultForm").attr("action","/FinancingProject/LoginController/register");
+	$("#defaultForm").submit();
+	
+} */
+
 $(document).ready(function() {
     // Generate a simple captcha
     function randomNumber(min, max) {
@@ -193,6 +204,10 @@ $(document).ready(function() {
                 validators: {
                     notEmpty: {
                         message: '姓名不能为空'
+                    },
+                    regexp: {
+                        regexp: /^[\u4e00-\u9fa5]+(·[\u4e00-\u9fa5]+)*$/ ,
+                        message: '请输入正确的姓名格式'
                     }
                 }
             },
@@ -213,15 +228,31 @@ $(document).ready(function() {
                      }
                  }
              },
+            
+             qqNumber: {
+                 message: 'The phone is not valid',
+                 validators: {
+                   
+                     stringLength: {
+                         min: 5,
+                         max: 12,
+                         message: 'QQ号码格式不正确！'
+                     },
+                     regexp: {
+                         regexp: /^[0-9]{5,12}$/,
+                         message: '只能输入数字'
+                     }
+                 }
+             },
             password: {
                 validators: {
                     notEmpty: {
-                        message: '密码不能位空'
+                        message: '密码不能为空'
                     },
                    stringLength:{
 				   min:6,
 				   max:30,
-                      message: '用户名长度必须在6到30之间'
+                      message: '密码长度必须在6到30之间'
 				   },
                     identical: {
                         field: 'confirmPassword',
@@ -236,12 +267,12 @@ $(document).ready(function() {
             confirmPassword: {
               validators: {
                     notEmpty: {
-                        message: '密码不能位空'
+                        message: '密码不能为空'
                     },
                    stringLength:{
 				   min:6,
 				   max:30,
-                      message: '用户名长度必须在6到30之间'
+                      message: '密码长度必须在6到30之间'
 				   },
                     identical: {
                         field: 'password',
@@ -269,8 +300,10 @@ $(document).ready(function() {
 
     // Validate the form manually
     $('#validateBtn').click(function() {
+    	
         $('#defaultForm').bootstrapValidator('validate');
-    });
+    }); 
+    
     $('#resetBtn').click(function() {
         $('#defaultForm').data('bootstrapValidator').resetForm(true);
     });

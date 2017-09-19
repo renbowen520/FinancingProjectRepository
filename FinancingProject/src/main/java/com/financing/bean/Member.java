@@ -16,15 +16,15 @@ public class Member {//用户基本表
 		private String password;// 密码
 		private String salt;//密码盐
 		private String mobile_Phone;// 手机号
-		private int status;// 帐号状态（正常、锁定、删除）
-		private int del_flag;//删除编制
+		private int status;// 帐号状态（0正常、1锁定、2删除）
+	//	private int del_flag;//删除标识  不要
 		private String identity;// 身份证号码
 		private Date create_date;//创建时间
 		private Date update_date;//修改时间
 		private String werBoAccount;//微博帐号关联
 		private String weixinAccount;//微信帐号关联
 		private int headid;//头像图片id
-		private String invitatioinCode;//邀请码
+		private String invitationCode;//邀请码
 		private String withdraw_password;//提款密码
 		private String qqAccount;//qq帐号关联
 		private String invitedCode;//被邀请码
@@ -74,12 +74,12 @@ public class Member {//用户基本表
 		public void setStatus(int status) {
 			this.status = status;
 		}
-		public int getDel_flag() {
+	/*	public int getDel_flag() {
 			return del_flag;
 		}
 		public void setDel_flag(int del_flag) {
 			this.del_flag = del_flag;
-		}
+		}*/
 		public String getIdentity() {
 			return identity;
 		}
@@ -116,11 +116,15 @@ public class Member {//用户基本表
 		public void setHeadid(int headid) {
 			this.headid = headid;
 		}
-		public String getInvitatioinCode() {
-			return invitatioinCode;
+
+	
+	
+		
+		public String getInvitationCode() {
+			return invitationCode;
 		}
-		public void setInvitatioinCode(String invitatioinCode) {
-			this.invitatioinCode = invitatioinCode;
+		public void setInvitationCode(String invitationCode) {
+			this.invitationCode = invitationCode;
 		}
 		public String getWithdraw_password() {
 			return withdraw_password;

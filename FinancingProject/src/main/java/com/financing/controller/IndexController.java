@@ -81,7 +81,8 @@ public class IndexController {
 				
 				 //зЂВс
 				 @RequestMapping("/register")
-				 public String  register() {
+				 public String  register(HttpSession session) {
+					 session.setAttribute("no_phone", "");
 					 return "jsp/register";
 				 }
 				 
