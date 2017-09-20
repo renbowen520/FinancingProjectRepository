@@ -16,6 +16,6 @@ public interface IN_Member_dao {
 	 String getma(int k);
 	 Member getByCode(String code);
 	 void save(Member member) ;
-		 
+	 Member getById(int id);	 
 	 
 }
