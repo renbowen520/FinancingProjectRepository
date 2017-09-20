@@ -20,7 +20,9 @@ import com.financing.Interface_service.IN_News_service;
 import com.financing.Interface_service.IN_News_type_service;
 import com.financing.Interface_service.IN_Oversea_config_service;
 import com.financing.Interface_service.IN_Subject_service;
+import com.financing.Interface_service.IN_feedback_service;
 import com.financing.Interface_service.IN_push_notice_service;
+import com.financing.bean.Feedback;
 import com.financing.bean.Finance_product_funds;
 import com.financing.bean.Member;
 import com.financing.service.Finance_product_funds_Service;
@@ -28,6 +30,8 @@ import com.financing.service.Member_bankcards_service;
 import com.financing.service.Member_deposit_record_service;
 import com.financing.service.Member_service;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.financing.bean.Member;
 import com.financing.bean.Member_bankcards;
 import com.financing.bean.Member_deposit_record;
@@ -75,7 +79,8 @@ public class AdminController {
 	@Autowired
 	private IN_push_notice_service IN_push_notice_service;
 	
-
+@Autowired
+private  IN_feedback_service IN_feedback_service;
 	
 	 //显示后台
 	@RequestMapping("/admin")
@@ -222,9 +227,26 @@ public class AdminController {
 	
 	
 	@RequestMapping("/menus18")
-	public String menus18() { //意见反馈
+	public String menus18(Model model,@ModelAttribute("feedback_q1")String feedback_q1,@ModelAttribute("feedback_q2")String feedback_q2) { //意见反馈
+		Map map = new HashMap<>();
+	    map.put("feedback_q1", feedback_q1);
+	    map.put("feedback_q2", feedback_q2); 
+	    List<Feedback>list =IN_feedback_service.list(map);
+	    model.addAttribute("feedback", list);
+	    model.addAttribute("feedback_q2",feedback_q2);
+	    model.addAttribute("feedback_q1", feedback_q1);
 		return "admin/menus18";
 	}
+	
+/*	@RequestMapping("/getFeedback")
+	@ResponseBody
+	public Feedback getFeedback(int id) {
+		System.out.println("id="+id);
+		Feedback Feedback=IN_feedback_service.getById(id);
+		return Feedback;
+	}*/
+	
+	
 	@RequestMapping("/menus19")
 	public String menus19() {
 		return "admin/menus19";

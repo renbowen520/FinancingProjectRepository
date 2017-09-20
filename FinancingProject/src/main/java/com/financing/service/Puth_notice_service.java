@@ -38,4 +38,10 @@ public class Puth_notice_service  implements IN_push_notice_service{
 		return IN_push_notice_dao.getById(id);
 	}
 
+	@Override
+	public void save(Push_notice push_notice) {
+		// TODO Auto-generated method stub
+		 IN_push_notice_dao.save(push_notice);
+	}
+
 }

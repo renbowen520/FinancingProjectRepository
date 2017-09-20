@@ -41,7 +41,6 @@ return push_notice;
 		  String hql="from  Push_notice   where  0=0    ";
 		  Session session = this.getSession();
 		    hql=  this.gethql(hql, map);
-		    System.out.println("hql="+hql);
 		   List<Push_notice>list = session.createQuery(hql).list();
 		   return list;
 	}
@@ -57,7 +56,15 @@ return push_notice;
           	  hql+="    and  typeId = "+q2;
 		   }
           hql+="       order by  sort  asc";*/
+		   hql+="    order by status asc";
 		   return hql;
+	}
+
+	@Override
+	public void save(Push_notice push_notice) {
+	  	 Session session = this.getSession();
+	     session.save(push_notice);
+		
 	}
 	
 	

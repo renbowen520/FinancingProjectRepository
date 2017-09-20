@@ -25,6 +25,12 @@ public class Member_dao implements IN_Member_dao {
 		return this.sessionFactory.getCurrentSession();
 	}
 	
+	public Member getById(int id) {
+		   Session session = this.getSession();
+		   Member member = (Member) session.get(Member.class, id);
+		   return member;
+	}
+	
 	
 	//²éÑ¯ÑûÇëÂë
 	public Member getByCode(String code) {

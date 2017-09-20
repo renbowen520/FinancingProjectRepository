@@ -44,4 +44,10 @@ public class Member_service  implements IN_Member_service{
 		md.save(member);
 		
 	}
+
+	@Override
+	public Member getById(int id) {
+		// TODO Auto-generated method stub
+		return md.getById(id);
+	}
 }
