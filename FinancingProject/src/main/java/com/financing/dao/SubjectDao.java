@@ -15,6 +15,7 @@ import com.financing.Interface_dao.IN_Subject_dao;
 import com.financing.bean.Oversea_config_subscribe;
 import com.financing.bean.Subject;
 import com.financing.bean.Subject_bbin_purchase_record;
+import com.financing.bean.Subject_file;
 
 @Component
 public class SubjectDao implements IN_Subject_dao {
@@ -33,6 +34,12 @@ public class SubjectDao implements IN_Subject_dao {
 		session.save(subject);
 	}
 	
+	//保存固收文件
+	public void savefile(Subject_file subject_file){
+		Session session=getSession();
+		session.save(subject_file);
+	}
+	
 	//修改之前的查询
 	public Subject getById(int id){
 		Session session=getSession();
@@ -46,8 +53,46 @@ public class SubjectDao implements IN_Subject_dao {
 		session.update(subject);
 	}
 	
+	
+	//前台模糊查询 
+	public String listHql(Map map,String hql){
+		String type=(String)map.get("type");
+		String year_rate=(String)map.get("year_rate");
+		String status=(String)map.get("status");
+	    String period_start=(String)map.get("period_start");
+	    String period_end=(String)map.get("period_end");
+		String flag=(String)map.get("flag");
+		   if(status!=null&&!status.equals("")){
+			    hql+=" and status="+Integer.valueOf(status);
+		   }
+		   if((period_start!=null&&!period_start.equals(""))&&(period_end!=null&&!period_end.equals(""))){
+			      if(period_end.equals("-1")){
+			    	  hql+=" and period >="+Integer.valueOf(period_start);
+			      }else{
+				    hql+=" and period between "+Integer.valueOf(period_start)+ " and "+Integer.valueOf(period_end);
+			      }
+		   }
+		   if(year_rate!=null&&year_rate.equals("")){
+			   if("0".equals(flag)){
+				   hql+="and year_rate="+Double.valueOf(year_rate);
+			   }else if("1".equals(flag)){
+				   hql+="and year_rate>"+Double.valueOf(year_rate);
+			   }
+		   }
+		  return hql;
+	}
+	
+	//显示所有前台
+	public List<Subject> listSubject(Map map){
+		String hql="from Subject where 0=0";
+		Session session=getSession();
+		hql=listHql(map, hql);
+		List<Subject> listSubject=session.createQuery(hql).list();
+		return listSubject;
+	}
+	
 	//查询固收类
-	//显示所有
+	//显示所有后台
 	public List<Subject> ListFixGet(Map map){
 		String hql="from Subject where 0=0";
 		Session session=getSession();
@@ -56,7 +101,7 @@ public class SubjectDao implements IN_Subject_dao {
 		return listSubject;
 	}
 	
-	//模糊查询
+	//模糊查询后台
 	public String listDataHql(Map map,String hql){
 		String sname=(String)map.get("sname");
 		String stype=(String)map.get("stype");
@@ -72,6 +117,9 @@ public class SubjectDao implements IN_Subject_dao {
 		}
 		return hql;
 	}
+	
+	
+	
 	//查看记录
 	//查询显示
 	public List<Subject_bbin_purchase_record> listsubjectrecord(int id){
