@@ -1,8 +1,11 @@
 package com.financing.bean;
+import java.security.KeyStore.PrivateKeyEntry;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,10 +20,22 @@ public class Users {
 	private  String mobile_Phone;
 	private  int status;//'账号状态（0正常，1锁定，2删除）',
 	private int del_flag; //删除标志',
-	private int   identity;//身份',
+//	private int   identity;//身份',
 	private Date create_date;//创建时间
 	private Date update_date;//修改时间
 	
+	private User_role user_role; //引用角色表 一对一
+	
+	
+	
+	@OneToOne
+	@JoinColumn(name="role_id")
+	public User_role getUser_role() {
+		return user_role;
+	}
+	public void setUser_role(User_role user_role) {
+		this.user_role = user_role;
+	}
 	@Id
 	@GeneratedValue
 	public int getId() {
@@ -71,12 +86,7 @@ public class Users {
 	public void setDel_flag(int del_flag) {
 		this.del_flag = del_flag;
 	}
-	public int getIdentity() {
-		return identity;
-	}
-	public void setIdentity(int identity) {
-		this.identity = identity;
-	}
+
 	public Date getCreate_date() {
 		return create_date;
 	}

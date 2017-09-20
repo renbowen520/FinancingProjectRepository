@@ -68,7 +68,7 @@ $(document).ready(function() {
 		   $("#yc").hide();
 		   $("#yc3").hide();
 		   $("#yc4").hide();
-			$("#f1").attr("action","/FinancingProject/AdminController/adminLogin");
+			$("#f1").attr("action","/FinancingProject/LoginController/adminLogin");
 			$("#f1").submit();
 	  });
 });

@@ -2,9 +2,11 @@ package com.financing.bean;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -30,6 +32,28 @@ public class Member {//用户基本表
 		private String invitedCode;//被邀请码
 		private String qqNumber;//qq号码
 		
+		
+		//一对一
+		private Member_account Member_account;//关联账户表
+		//一对一
+		private 	Bbin_info bbin_info;//体验金
+		
+		@OneToOne(mappedBy="member",cascade=CascadeType.ALL)
+		public Bbin_info getBbin_info() {
+			return bbin_info;
+		}
+		public void setBbin_info(Bbin_info bbin_info) {
+			this.bbin_info = bbin_info;
+		}
+		
+		@OneToOne(mappedBy="member",cascade=CascadeType.ALL)
+		public Member_account getMember_account() {
+			return Member_account;
+		}
+	
+		public void setMember_account(Member_account member_account) {
+			Member_account = member_account;
+		}
 		@Id
 		@GeneratedValue
 		public int getId() {

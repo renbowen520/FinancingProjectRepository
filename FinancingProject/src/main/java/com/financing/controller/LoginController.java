@@ -2,26 +2,25 @@ package com.financing.controller;
 import java.util.Date;
 
 import javax.servlet.http.HttpSession;
-
-import org.apache.jasper.tagplugins.jstl.core.Out;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.session.Session;
-import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
+import com.financing.Interface_service.IN_Member_account_service;
 import com.financing.Interface_service.IN_Member_service;
 import com.financing.Interface_service.IN_award_records_service;
 import com.financing.Interface_service.IN_bbin_info_service;
 import com.financing.bean.Award_records;
 import com.financing.bean.Bbin_info;
 import com.financing.bean.Member;
+import com.financing.bean.Member_account;
+import com.financing.bean.Users;
+
 
 
 
@@ -30,6 +29,10 @@ import com.financing.bean.Member;
 @RequestMapping("/LoginController")
 public class LoginController  {
 
+	
+	
+	
+	
 	@Autowired
 	private IN_bbin_info_service  IN_bbin_info_service;
 	
@@ -38,6 +41,38 @@ public class LoginController  {
 	
    @Autowired
    private IN_award_records_service IN_award_records_service;
+   
+   @Autowired
+    private IN_Member_account_service IN_Member_account_service;
+ //后台登陆
+ 	@RequestMapping("adminLogin")
+ 	public String adminLogin(Users users) {
+ 		  System.out.println(users.getPassword());
+ 		  System.out.println(users.getMobile_Phone());
+ 		  org.apache.shiro.subject.Subject sub=SecurityUtils.getSubject();
+ 		  UsernamePasswordToken token = new UsernamePasswordToken(users.getMobile_Phone(),users.getPassword());
+ 		   try {
+ 			         sub.login(token);
+ 			     	Session session=sub.getSession();
+ 			 //		System.out.println("sessionId:"+session.getId());
+ 				//	System.out.println("sessionHost:"+session.getHost());
+ 				//	System.out.println("sessionTimeout:"+session.getTimeout());
+ 				 //    return "redirect:/AdminController/admin";//登陆成功后调到后台
+ 				     return "admin/admin";
+ 		   } catch (Exception e) {
+ 				    e.printStackTrace();
+ 				    token.clear();
+ 		            return "redirect:/LoginController/error";
+ 			 }
+ 	}
+   
+	
+	@RequestMapping("/error") 
+	public String error() {
+		return "error/error";
+		
+	}
+   
    
    @RequestMapping("/out")
    public String out(HttpSession session) { //注销
@@ -108,7 +143,6 @@ public class LoginController  {
 		      String p1=   new Md5Hash(member.getPassword(),salt).toString();
 		     member.setPassword(p1);  //设置加密的密码
 		 
-		  //保存账号
 		  IN_Member_service.save(member);
 		  //根据手机号查询出新添加的id
 	    Member member33=	  IN_Member_service.getByPhone(member.getMobile_Phone());
@@ -133,6 +167,19 @@ public class LoginController  {
 		 a2.setIsAward(0);
 		 IN_award_records_service.save(a1);//保存
 		 IN_award_records_service.save(a2);
+		
+		  //关联 账户
+	 Member_account  m2= new Member_account();
+	m2.setUseable_balance(0);
+	m2.setImuseale_balance(0);
+	m2.setTotal_profit(0);
+	m2.setCreate_date(new Date());
+	m2.setBonus_amount(0);
+	m2.setInvest_amount(0);
+	m2.setDelflag(0);
+	m2.setMember(member33);
+	  IN_Member_account_service.save(m2);
+		 
 		 session.setAttribute("member_login", member33);//存入session中
 		 session.setAttribute("no_phone", "");
 	     return "jsp/personal_center"; //进入个人中心
