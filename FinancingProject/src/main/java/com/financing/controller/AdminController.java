@@ -1,18 +1,16 @@
 package com.financing.controller;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.financing.Interface_service.IN_Finance_produce_funds_service;
 import com.financing.Interface_service.IN_Member_bankcards_service;
 import com.financing.Interface_service.IN_Member_deposit_record_service;
@@ -22,6 +20,7 @@ import com.financing.Interface_service.IN_News_service;
 import com.financing.Interface_service.IN_News_type_service;
 import com.financing.Interface_service.IN_Oversea_config_service;
 import com.financing.Interface_service.IN_Subject_service;
+import com.financing.Interface_service.IN_push_notice_service;
 import com.financing.bean.Finance_product_funds;
 import com.financing.bean.Member;
 import com.financing.service.Finance_product_funds_Service;
@@ -29,7 +28,6 @@ import com.financing.service.Member_bankcards_service;
 import com.financing.service.Member_deposit_record_service;
 import com.financing.service.Member_service;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.financing.bean.Member;
 import com.financing.bean.Member_bankcards;
 import com.financing.bean.Member_deposit_record;
@@ -37,6 +35,7 @@ import com.financing.bean.Member_withdraw_record;
 import com.financing.bean.News;
 import com.financing.bean.News_type;
 import com.financing.bean.Oversea_config;
+import com.financing.bean.Push_notice;
 import com.financing.bean.Subject;
 import com.financing.bean.Users;
 import com.financing.service.Member_service;
@@ -73,29 +72,10 @@ public class AdminController {
 	@Autowired
 	private IN_News_service news_service;
 	
+	@Autowired
+	private IN_push_notice_service IN_push_notice_service;
 	
-	//后台登陆
-	@RequestMapping("adminLogin")
-	public String adminLogin(Users users) {
-		  System.out.println(users.getPassword());
-		  System.out.println(users.getMobile_Phone());
-		  org.apache.shiro.subject.Subject sub=SecurityUtils.getSubject();
-		  UsernamePasswordToken token = new UsernamePasswordToken(users.getMobile_Phone(),users.getPassword());
-		   try {
-			         sub.login(token);
-				     return "redirect:/AdminController/admin";//登陆成功后调到后台
-			   } catch (Exception e) {
-				    e.printStackTrace();
-				    token.clear();
-		            return "redirect:/AdminController/error";
-			 }
-	}
-	
-	@RequestMapping("/error") 
-	public String error() {
-		return "error";
-		
-	}
+
 	
 	 //显示后台
 	@RequestMapping("/admin")
@@ -230,12 +210,19 @@ public class AdminController {
 	public String menus16() {
 		return "admin/menus16";
 	}
-	@RequestMapping("/menus17")
-	public String menus17() {
+	@RequestMapping("/menus17")//公告
+	public String menus17(Model model,@ModelAttribute("q1")String q1) {//公告
+		Map map = new HashMap<>();
+	    map.put("q1", q1);
+	    List<Push_notice>list=IN_push_notice_service.list(map);
+	    model.addAttribute("push", list);
+	    model.addAttribute("q1",q1);
 		return "admin/menus17";
 	}
+	
+	
 	@RequestMapping("/menus18")
-	public String menus18() {
+	public String menus18() { //意见反馈
 		return "admin/menus18";
 	}
 	@RequestMapping("/menus19")

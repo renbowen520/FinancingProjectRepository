@@ -17,4 +17,5 @@ public interface IN_Finance_produce_funds_service {
 	 void updatesubscribe(Finance_product_subscribe finance_product_subscribe);
 	 void losesubscribe(int id);
 	 Finance_product_subscribe getsubscribe(int id);
+	 List<Finance_product_funds> finance(Map map);
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -83,19 +84,55 @@
 		</div>
 	</div>
 
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
     
 
 
   <div class="proMain">
     	<div class="hwpzNav">
     		<ul>
-    			<li class="first"><a href="/subject">固收类理财</a></li>
-    			<li class="second"><a class="active" href="/finance">私募基金</a></li>
-    			<li class="three"><a href="/oversea">海外配置</a></li>
+    			<li class="first"><a class="active" href="/FinancingProject/IndexController/product">固收类理财</a></li>
+    			<li class="second"><a href="/FinancingProject/IndexController/finance">私募基金</a></li>
+    			<li class="three"><a href="/FinancingProject/IndexController/oversea">海外配置</a></li>
     		</ul>
     	</div>
      
 
+
+    <div class="ajaxContainer">
+        <!-- 异步内容开始 -->
+        <c:forEach items="${finance}" var="f">
+                <ul class="tbList">
+                    <li class="first">
+                        <span class="ico jp"></span>
+                        <h2><b>${f.name}</b></h2>
+                        <i></i>
+                    </li>
+                    <li class="second">
+                        <div class="txt1" style="width:115px; margin-left:40px;">
+                            <h2>${f.year_rate}%</h2>
+                            <p>年化收益</p>
+                        </div>
+                        <div class="txt2" style="width:120px;margin-left:40px;">
+                            <h2>${f.floor_amount}</h2>
+                            <p>起购金额(元)</p>
+                        </div>
+                    </li>
+                    <li class="six three" style="width:290px;">
+                        <p>已购人数：${f.buyer_count}
+                            <br>
+                            管理人：襄阳孔明理财有限公司<br>
+                            投资方向：各交易所期货类、证券类投资品种等
+                        </p>
+                    </li>
+                    <li class="five"><a class="abtn" href="/FinancingProject/finance/buyfinance?id=${f.id }">购买</a></li>
+                </ul>
+            </c:forEach>
+        <!-- 异步内容结束 -->
+	
 
 
 

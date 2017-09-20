@@ -22,7 +22,7 @@ function test4(pid,id){//签署状态
  </script>
 <body>
 <div class="table table-responsive">
-<form id="form1" action="" method="post" role="form">s
+<form id="form1" action="" method="post" role="form">
 
 <table class="table table-striped" width="100%">
 <tr>

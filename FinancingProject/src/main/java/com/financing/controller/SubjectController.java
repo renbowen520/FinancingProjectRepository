@@ -31,53 +31,12 @@ import com.financing.bean.Subject_purchase_record;
 
 import javassist.bytecode.analysis.MultiArrayType;
 
-
-
 @Controller
 @RequestMapping("/subject")
 public class SubjectController {
 	@Autowired
 	private IN_Subject_service subjectService;
-	
-	//前台固收类显示
-	@RequestMapping("/subjectqian")
-	public String subject(Model model,HttpServletRequest request,HttpServletResponse response){
-		Map map=new HashMap<>();
-		map=initMap(map, request);
-		List<Subject> subject=this.subjectService.subject(map);
-		model.addAttribute("subject", subject);
-		return "jsp/product";
-	}
-	
-	public Map initMap(Map map,HttpServletRequest request){
-		String type=request.getParameter("type");
-		String year_rate=request.getParameter("year_rate");
-		String status=request.getParameter("status");
-		String period_start=request.getParameter("period_start");
-		String period_end=request.getParameter("period_end");
-		map.put("type",type);
-		map.put("year_rate", year_rate);
-		map.put("status", status);
-		map.put("period_start",period_start);
-		map.put("period_end",period_end);
-		if(type!=null){
-			request.setAttribute("type", type);
-		}
-		if(year_rate!=null){
-			request.setAttribute("year_rate", year_rate);
-		}
-		if(status!=null){
-			request.setAttribute("status", status);
-		}
-		if(period_start!=null){
-			request.setAttribute("period_start",period_start);
-		}
-		if(period_end!=null){
-			request.setAttribute("period_end",period_end);
-		}
-		return map; 
-	}
-	
+		
 	//跳到新增页面
 	@RequestMapping("/addfixget")
 	public String addfixget(){
@@ -101,7 +60,7 @@ public class SubjectController {
 	
 	//保存固收类
 	@RequestMapping("/save")
-	public String save(Subject subject,Model model,@RequestParam("file_name")MultipartFile file_name,
+	public String save(Subject subject,Model model,@RequestParam("file")MultipartFile file_name,
 			HttpServletRequest request,HttpSession session,Subject_file subject_file) throws IOException{
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddhhmmssssss");	
 		subject.setCreate_date(new Date());
@@ -113,7 +72,6 @@ public class SubjectController {
 		session.setAttribute("filename", file_name.getOriginalFilename());
 		String type=file_name.getOriginalFilename().substring(file_name.getOriginalFilename().indexOf("."));
 		Date date=new Date();
-		
 		SimpleDateFormat sdf2=new SimpleDateFormat("yyyyMMdd");
 		String filenametime=sdf.format(date)+type;
 		String path=request.getRealPath("/upload/");

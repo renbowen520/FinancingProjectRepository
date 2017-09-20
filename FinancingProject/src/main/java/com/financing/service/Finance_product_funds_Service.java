@@ -42,12 +42,14 @@ public class Finance_product_funds_Service implements IN_Finance_produce_funds_s
 	public void update(Finance_product_funds finance_product_funds){
 		this.finance_product_funds_Dao.update(finance_product_funds);
 	}
-	
-	//查询显示私募
+	//查询显示私募后台
 	public List<Finance_product_funds> listfinance(Map map){
 	return this.finance_product_funds_Dao.listfinance(map);
 	}
-	
+	//查询显示私募前台
+		public List<Finance_product_funds> finance(Map map){
+		return this.finance_product_funds_Dao.finance(map);
+		}
 	//查询显示私募订阅
 	public List<Finance_product_subscribe> listfinanceSubscribe(int id){
 		return this.finance_product_funds_Dao.listfinanceSubscribe(id);

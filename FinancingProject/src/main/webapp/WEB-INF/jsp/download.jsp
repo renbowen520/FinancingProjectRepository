@@ -30,7 +30,7 @@
 <body>
 <!--   1  导入顶部  -->
      <div style=" width:1002px; height:94px; margin:0 auto;">
-        <iframe src="/FinancingProject/index_files/iframetop.html" scrolling="no" frameborder="0" width="1002" height="94"></iframe>
+        <iframe src="/FinancingProject/index_files/iframetop.jsp" scrolling="no" frameborder="0" width="1002" height="94"></iframe>
     </div>
     
     <!--   2   导入菜单栏  -->
@@ -39,7 +39,7 @@
 			<div class="row">
 				<ul class="topNav">
 					<li class="active">
-						<a class="item first" href="http://127.0.0.1:8080/FinancingProject/index.jsp">
+						<a class="item first" href="http://127.0.0.1:8080/FinancingProject/IndexController/index">
 							首页
 						</a>
 					</li>
@@ -85,11 +85,10 @@
 
     
 
+<center>
+<font color="#E12AB6" size="7">暂</font><font color="#BF8D5C" size="6">未</font><font color="#6DD4B0" size="4">开</font><font color="#E65D58" size="2">放</font><font color="#F9977E" size="4">,</font><font color="#A99A3E" size="4">敬</font><font color="#E0574C" size="3">请</font><font color="#A1AB5A" size="5">期</font><font color="#0229A8" size="6">待</font><font color="#51A9F6" size="5">!</font>
 
-<font size="+5">下载中心的内容</font>
-<br/><br/><br/><br/><br/><br/>
-
-
+</center>
 
  <!-- 4     图片广告 -->
     <div class="container index">

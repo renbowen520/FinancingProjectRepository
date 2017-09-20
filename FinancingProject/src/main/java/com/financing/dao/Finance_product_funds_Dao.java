@@ -42,7 +42,7 @@ public class Finance_product_funds_Dao  implements IN_Finance_product_funds_dao 
 		}
 		return hql;
 	}
-	//查询显示
+	//查询显示后台
 	public List<Finance_product_funds> listfinance(Map map){
 		String hql="from Finance_product_funds where 0=0";
 		Session session=getSession();
@@ -51,7 +51,13 @@ public class Finance_product_funds_Dao  implements IN_Finance_product_funds_dao 
 		return listfinance;
 	}
 	
-	
+	//前台查询
+	public List<Finance_product_funds> finance(Map map){
+		String hql="from Finance_product_funds where 0=0";
+		Session session=getSession();
+		List<Finance_product_funds> finance=session.createQuery(hql).list();
+		return finance;
+	}
 	
 	//新增
 	public void save(Finance_product_funds finance_product_funds){

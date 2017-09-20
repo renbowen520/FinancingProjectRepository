@@ -83,7 +83,7 @@ $(function(){
 <tr height="60"><td colspan="2">&nbsp;&nbsp;&nbsp;图片预览 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </td>
 <td colspan="2">
-<input type="file" name="file_name" class="form-control"/></td>
+<input type="file" name="file" class="form-control"/></td>
 <td>
 </tr>
 <tr height="60">
@@ -92,25 +92,6 @@ $(function(){
 <input type="submit" class="btn btn-primary" id="btn1" value="保存">
 <a href="/FinancingProject/AdminController/menus1">返回固收首页</a>
 </td>
-</tr>
-</table>
-</form>
-
-
-
-
-
-		
-
-
- <form action="/uploadFile" method="post"  enctype="multipart/form-data">
-<table border="0" cellspacing="0" width="100%">
-<tr height="60"><td colspan="4"><p><h3>&nbsp;&nbsp;▶ 标的附件</h3><hr></td></tr>
-<tr height="60"><td colspan="2">&nbsp;&nbsp;&nbsp;图片预览 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<td>
-<input type="file" name="file_name" class="form-control"/></td>
-<td>
-<input type="submit" value="上传"  class="btn btn-primary"/></td>
 </tr>
 </table>
 </form>

@@ -7,6 +7,7 @@ import org.hibernate.Session;
 
 import com.financing.bean.Finance_product_funds;
 import com.financing.bean.Finance_product_subscribe;
+import com.financing.bean.Subject;
 
 public interface IN_Finance_product_funds_dao {
 
@@ -22,4 +23,5 @@ public interface IN_Finance_product_funds_dao {
 	 void updatesubscribe(Finance_product_subscribe finance_product_subscribe);
 	 Finance_product_subscribe getsubscribe(int id);
 	 void lose(int id);
+	 List<Finance_product_funds> finance(Map map);
 }

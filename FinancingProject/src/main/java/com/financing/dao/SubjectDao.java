@@ -1,6 +1,7 @@
 package com.financing.dao;
 
 import java.util.Date;
+
 import java.util.List;
 import java.util.Map;
 
@@ -8,11 +9,9 @@ import javax.annotation.Resource;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.financing.Interface_dao.IN_Subject_dao;
-import com.financing.bean.Oversea_config_subscribe;
 import com.financing.bean.Subject;
 import com.financing.bean.Subject_bbin_purchase_record;
 import com.financing.bean.Subject_file;
@@ -63,7 +62,12 @@ public class SubjectDao implements IN_Subject_dao {
 	    String period_end=(String)map.get("period_end");
 		String flag=(String)map.get("flag");
 		   if(status!=null&&!status.equals("")){
-			    hql+=" and status="+Integer.valueOf(status);
+			   if(status.equals("-1")){
+				   
+			   }else{
+				   hql+=" and status="+Integer.valueOf(status);
+			   }
+			    
 		   }
 		   if((period_start!=null&&!period_start.equals(""))&&(period_end!=null&&!period_end.equals(""))){
 			      if(period_end.equals("-1")){
@@ -72,13 +76,14 @@ public class SubjectDao implements IN_Subject_dao {
 				    hql+=" and period between "+Integer.valueOf(period_start)+ " and "+Integer.valueOf(period_end);
 			      }
 		   }
-		   if(year_rate!=null&&year_rate.equals("")){
+		   if(year_rate!=null&&!year_rate.equals("")){
 			   if("0".equals(flag)){
 				   hql+="and year_rate="+Double.valueOf(year_rate);
 			   }else if("1".equals(flag)){
 				   hql+="and year_rate>"+Double.valueOf(year_rate);
 			   }
 		   }
+		   System.out.println("hql="+hql);
 		  return hql;
 	}
 	

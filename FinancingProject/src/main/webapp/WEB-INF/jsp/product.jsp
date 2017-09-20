@@ -31,7 +31,7 @@
 <body>
 <!--   1  导入顶部  -->
      <div style=" width:1002px; height:94px; margin:0 auto;">
-        <iframe src="/FinancingProject/index_files/iframetop.html" scrolling="no" frameborder="0" width="1002" height="94"></iframe>
+        <iframe src="/FinancingProject/index_files/iframetop.jsp" scrolling="no" frameborder="0" width="1002" height="94"></iframe>
     </div>
     
     <!--   2   导入菜单栏  -->
@@ -40,7 +40,7 @@
 			<div class="row">
 				<ul class="topNav">
 					<li class="active">
-						<a class="item first" href="http://127.0.0.1:8080/FinancingProject/index.jsp">
+						<a class="item first" href="http://127.0.0.1:8080/FinancingProject/IndexController/index">
 							首页
 						</a>
 					</li>
@@ -94,22 +94,22 @@ $("#f1").click(function(){
 })	
 	function setValue3(m){
 			alert(m);
-			$("#type").val(m);
+			$("#status").val(m);
 	
-     document.forms[0].action="/FinancingProject/subject/subjectqian";
+     document.forms[0].action="/FinancingProject/IndexController/product";
     document.forms[0].submit(); 
 	}
 		
 		function setValue1(rate,flag){
 			$("#year_rate").val(rate);
 			$("#flag").val(flag);
-			document.forms[0].action="/FinancingProject/subject/subjectqian";
+			document.forms[0].action="/FinancingProject/IndexController/product";
 			document.forms[0].submit();
 		}
 		function setValue2(day1,day2){
 			$("#period_start").val(day1);
 			$("#period_end").val(day2);
-			document.forms[0].action="/FinancingProject/subject/subjectqian";
+			document.forms[0].action="/FinancingProject/IndexController/product";
 			document.forms[0].submit();
 		}
 
@@ -119,6 +119,7 @@ $("#f1").click(function(){
    <form action="" method="post" id="f1" name="f1">
 			<input type="hidden" name="year_rate" id="year_rate" value="${year_rate }"/>
 			<input type="hidden" name="type" id="type" value="${type}"   />
+			<input type="hidden" name="status" id="status" valus="${status }">
 			<input type="hidden" name="flag" id="flag" value="${flag}"/>
 			<input type="hidden" name="period_start" id="period_start" value="${period_start}">
 			<input type="hidden" name="period_end" id="period_end" value="${period_end }">
@@ -128,18 +129,18 @@ $("#f1").click(function(){
   <div class="proMain">
     	<div class="hwpzNav">
     		<ul>
-    			<li class="first"><a class="active" href="/FinancingProject/subject/subjectqian">固收类理财</a></li>
-    			<li class="second"><a href="/jsp/finance">私募基金</a></li>
-    			<li class="three"><a href="/oversea">海外配置</a></li>
+    			<li class="first"><a class="active" href="/FinancingProject/IndexController/product">固收类理财</a></li>
+    			<li class="second"><a href="/FinancingProject/IndexController/finance">私募基金</a></li>
+    			<li class="three"><a href="/FinancingProject/IndexController/oversea"">海外配置</a></li>
     		</ul>
     	</div>
         <div class="sdShaix">
         	<ul>
             	<li class="first">标的类型：</li>
-               		<li><a href="/FinancingProject/subject/subjectqian" id="11" class="select">全部</a></li>
-               		<li><a href="/FinancingProject/subject/subjectqian" id="12">固收类理财</a></li>
-               		<li><a href="/FinancingProject/subject/subjectqian" id="13">P2P房贷</a></li>
-               		<li><a href="/FinancingProject/subject/subjectqian" id="14">P2P车贷</a></li>
+               		<li><a href="/FinancingProject/IndexController/product" id="11" class="select">全部</a></li>
+               		<li><a href="/FinancingProject/IndexController/product" id="12">固收类理财</a></li>
+               		<li><a href="/FinancingProject/IndexController/product" id="13">P2P房贷</a></li>
+               		<li><a href="/FinancingProject/IndexController/product" id="14">P2P车贷</a></li>
             </ul>
         	<ul>
             	<li class="first">年化收益：</li>
@@ -199,7 +200,7 @@ $("#f1").click(function(){
 						<li class="four">
 						</li>
 						<li class="five">
-							<a class="abtn" href="/FinancingProject/shopping/toBuy?id=${s.id }">购买</a>
+							<a class="abtn" href="/FinancingProject/IndexController/buyproduct?id=${s.id }">购买</a>
 						</li>
 					</ul>
 				</c:forEach>

@@ -20,29 +20,60 @@ $(document).ready(function(){
 </script>
 
 <body>
-	<form action="/FinancingProject/oversea/update" method="post">
+<center>
+	<form action="/FinancingProject/oversea/update" method="post" >
 	<input type="hidden" name="id" value="${oversea_config.id }"/>
-	名字:<input type="text" name="title" value="${oversea_config.title}"><br>
-	子标题:<input type="text" name="child_title" value="${oversea_config.child_title }"><br>
-	描述:<input type="text" name="description" value="${oversea_config.description }"><br>
-	用户群体:<input type="text" name="user_type" value="${oversea_config.user_type }"><br>
-	排序值:<input type="text" name="sortColum" value="${oversea_config.sortColum }"><br>
-	状态:<select name="status" id="status">
+	<table border="0" cellspacing="0" width="400">
+	<tr height="60">
+	<td>&nbsp;&nbsp;&nbsp;名字:</td>
+	<td><input type="text" name="title" value="${oversea_config.title}" class="form-control"></td>
+	</tr>
+	<tr height="60">
+	<td>&nbsp;&nbsp;&nbsp;子标题:</td>
+	<td><input type="text" name="child_title" value="${oversea_config.child_title }" class="form-control"></td>
+	</tr>
+	<tr height="60">
+	<td>&nbsp;&nbsp;&nbsp;描述:</td>
+	<td><input type="text" name="description" value="${oversea_config.description }" class="form-control"></td>
+	</tr>
+	<tr height="60">
+	<td>&nbsp;&nbsp;&nbsp;用户群体:</td>
+	<td><input type="text" name="user_type" value="${oversea_config.user_type }" class="form-control"></td>
+	</tr>
+	<tr height="60">
+	<td>&nbsp;&nbsp;&nbsp;排序值:</td>
+	<td><input type="text" name="sortColum" value="${oversea_config.sortColum }" class="form-control"></td>
+	</tr>
+	<tr height="60">
+	<td>&nbsp;&nbsp;&nbsp;状态:</td>
+	<td><select name="status" id="status" class="form-control">
 	<option value="0">未募集</option>
 	<option value="1">募集中</option>
 	<option value="2">已结束</option>
-	</select><br>
-
-	开始时间:<input type="date" name="start_date" value="${oversea_config.addTime}"><br>
-	结束时间:<input type="date" name="end_date" value="${oversea_config.updTime}"><br>
-	 
-   	 <script id="editor" type="text/plain" style="width:auto;height:auto;">
+	</select></td>
+	</tr>
+	<tr height="60">
+	<td>&nbsp;&nbsp;&nbsp;开始时间:</td>
+	<td><input type="date" name="start_date" value="${oversea_config.start_date}" class="form-control"></td>
+	</tr>
+	<tr height="60">
+	<td>&nbsp;&nbsp;&nbsp;结束时间:</td>
+	<td><input type="date" name="end_date" value="${oversea_config.end_date}" class="form-control"></td>
+	</tr>
+<tr height="60"><td colspan="2">
+<p><h3>&nbsp;&nbsp;▶内容</h3><hr>
+ <script id="editor" type="text/plain" style="width:auto;height:auto;">
 		${oversea_config.context}
-	</script> 
-   
- 	<input type="submit" value="提交">
+</script> 
+</td></tr>
+ <tr height="60">
+<td colspan="2"  align="center">
+<input type="submit" value="保存" class="btn btn-primary"/>
+</td>
+</tr>
+ 	</table>
 </form>
-
+</center>
 
 	<script type="text/javascript">
    		 var ue = UE.getEditor('editor');

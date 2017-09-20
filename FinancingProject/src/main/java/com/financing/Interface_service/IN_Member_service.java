@@ -7,4 +7,8 @@ import com.financing.bean.Member;
 
 public interface IN_Member_service {
 	 List<Member> listMember(Map map);
+	 Member getByPhone(String phone) ;
+	 String getma(int k); 
+	 Member getByCode(String code);
+	 void save(Member member);
 }
