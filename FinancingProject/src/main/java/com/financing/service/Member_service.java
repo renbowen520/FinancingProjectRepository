@@ -50,7 +50,7 @@ public class Member_service  implements IN_Member_service{
 	//根据账号id显示该帐号的充值记录
 	public List<Member_deposit_record> getMember_deposit_recordByid(int id){
 		return this.md.getMember_deposit_recordById(id);
-
+	}
 
 	@Override
 	public Member getByPhone(String phone) {

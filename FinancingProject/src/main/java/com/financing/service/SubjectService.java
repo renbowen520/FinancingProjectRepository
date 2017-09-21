@@ -51,7 +51,7 @@ public class SubjectService  implements IN_Subject_service {
 	//付息计划模糊查询及其显示所有
 	public List<Subject> listSubjectm(Map map){
 		return subjectdao.listsubject(map);
-
+	}
 	//前台查询
 	public List<Subject> subject(Map map){
 		return subjectdao.listSubject(map);
