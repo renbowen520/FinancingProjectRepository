@@ -68,6 +68,7 @@ $(document).ready(function() {
 		   $("#yc").hide();
 		   $("#yc3").hide();
 		   $("#yc4").hide();
+		   $("#okok").val("");
 			$("#f1").attr("action","/FinancingProject/LoginController/adminLogin");
 			$("#f1").submit();
 	  });
@@ -113,7 +114,9 @@ $(document).ready(function() {
     <canvas class="J_codeimg" id="myCanvas" onclick="createCode()">对不起，您的浏览器不支持canvas，请下载最新版浏览器!</canvas>
   </div>
  <input type="button" value="验证码核验" class="ver_btn" onclick="validate();">
+ <div id="okok"></div>
  </dd>
+
  <dd>
   <input type="button" value="立即登陆" class="submit_btn">
      

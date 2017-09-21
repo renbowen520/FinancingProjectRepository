@@ -29,7 +29,7 @@
   <td >
   <label for="firstname" class="col-sm-2 control-label">标题</label >
               <input type="text" class="form-control" id="feedback_q1"  name="feedback_q1" 
-        value="${feedback_q1 }"        placeholder="请输入标题"   style="width: 200px">
+           value="${feedback_q1 }"        placeholder="请输入标题"   style="width: 200px">
   </td>
  <td >
  <label for="firstname" class="col-sm-3 control-label">会员姓名</label >
@@ -145,7 +145,7 @@
 <script type="text/javascript">
 var ue = UE.getEditor('t2');
 
-// 异步请求内容
+
 function fun55(title,content){
    $("#t1").val(title);
    ue.setContent(content);

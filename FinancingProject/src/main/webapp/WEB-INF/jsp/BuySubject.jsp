@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,7 +25,7 @@
 <script src="/FinancingProject/index_files/jquery"></script>
 <script src="/FinancingProject/index_files/bootstrap"></script>
 
-<title>产品中心</title>
+<title>购买固收类理财</title>
 </head>
 <body>
 <!--   1  导入顶部  -->
@@ -83,143 +82,75 @@
 			</div>
 		</div>
 	</div>
-<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 
-<script type="text/javascript">
-$("#f1").click(function(){
-	$("#f1").submit();
-})	
-	function setValue3(m){
-			alert(m);
-			$("#status").val(m);
-	
-     document.forms[0].action="/FinancingProject/IndexController/product";
-    document.forms[0].submit(); 
-	}
-		
-		function setValue1(rate,flag){
-			$("#year_rate").val(rate);
-			$("#flag").val(flag);
-			document.forms[0].action="/FinancingProject/IndexController/product";
-			document.forms[0].submit();
-		}
-		function setValue2(day1,day2){
-			$("#period_start").val(day1);
-			$("#period_end").val(day2);
-			document.forms[0].action="/FinancingProject/IndexController/product";
-			document.forms[0].submit();
-		}
+    
+<!--=====================================  -->
+<!--  --=============================================-  -->
 
-</script>
+<div class="proMain">
+    <div class="conTit">
+        <span><a style="color:#9d8440;" href="http://pro.ying158.com/subject">其他标的</a></span>
+        <h2><em>￥</em>稳盈宝新手标</h2>
+    </div>
+    <table class="conTable" width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tbody><tr>
+            <td class="txtInfo">
+                <div class="txt1">
+                    <h2>206</h2>
+                    <p>已购人数(人)</p>
+                </div>
+                <div class="txt2">
+                    <h2>6%</h2>
+                    <p>年化收益</p>
+                </div>
+                <div class="txt1">
+                    <h2>5</h2>
+                    <p>投资期限(天)</p>
+                </div>
+            </td>
+            <td width="360" rowspan="2" align="center" ;="" valign="middle" height="320">
+                <div class="tbBox">
+                    <input type="hidden" id="account" value="">
+                    <h2>1227489.3</h2>
+                    <p>已投金额(元)</p>
+                    <div class="li4" style=""><span id="checkmoney" style="color: red;"></span></div>
+                    <div class="tit">
+                    	<span class="fr">
+                            <a style="color:#2695d5" class="unlogin" href="http://pro.ying158.com/web/login">登录</a>后可见
+						</span>
+                        <h2>账户余额</h2>
+                        <div id="count">预期所得收益<i data-num="0.000822" id="num">0</i>元
+                        </div>
+                    </div>
+                    <input id="mytext" class="txt" name="totalFee" type="text" placeholder="起投金额100元以上">
+                        <span style="float: right;margin-top: -40px;position: relative; line-height: 40px; padding: 0 10px;color: #f00;" id="addMoney"></span>
+                    <p class="preBox">
+                        <input type="checkbox" id="registerRule" class="registerRule" checked="checked"><span class="fl">同意<a href="http://pro.ying158.com/web/syxy" target="_black">《产品协议》</a></span>
+                    </p>
+                    <button class="submit">确认抢购</button>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ul class="conInfoList">
+                    <li class="info">
+                        <p>计息日期：<font color="#00baff">2017-09-20</font></p>
+                        <p>还款方式：<font color="#00baff">一次性还本付息</font></p>
+                        <p>资金到账日：<font color="#00baff">2017-09-25至2017-09-26</font>
+                        </p>
+                    </li>
+                    <li class="info">
+                        <p>保障方式：<font color="#00baff">企业担保</font></p>
+                        <p>资金安全：<font color="#00baff">中国人保财险承保</font></p>
+                        <p></p>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+	</table>
 
-
-   <form action="" method="post" id="f1" name="f1">
-			<input type="hidden" name="year_rate" id="year_rate" value="${year_rate }"/>
-			<input type="hidden" name="type" id="type" value="${type}"   />
-			<input type="hidden" name="status" id="status" valus="${status }">
-			<input type="hidden" name="flag" id="flag" value="${flag}"/>
-			<input type="hidden" name="period_start" id="period_start" value="${period_start}">
-			<input type="hidden" name="period_end" id="period_end" value="${period_end }">
-  </form>
-
-
-  <div class="proMain">
-    	<div class="hwpzNav">
-    		<ul>
-    			<li class="first"><a class="active" href="/FinancingProject/IndexController/product">固收类理财</a></li>
-    			<li class="second"><a href="/FinancingProject/IndexController/finance">私募基金</a></li>
-    			<li class="three"><a href="/FinancingProject/IndexController/oversea"">海外配置</a></li>
-    		</ul>
-    	</div>
-        <div class="sdShaix">
-        	<ul>
-            	<li class="first">标的类型：</li>
-               		<li><a href="/FinancingProject/IndexController/product" id="11" class="select">全部</a></li>
-               		<li><a href="/FinancingProject/IndexController/product" id="12">固收类理财</a></li>
-            <!--    		<li><a href="/FinancingProject/IndexController/product" id="13">P2P房贷</a></li>
-               		<li><a href="/FinancingProject/IndexController/product" id="14">P2P车贷</a></li> -->
-            </ul>
-        	<ul>
-            	<li class="first">年化收益：</li>
-               		<li><a href="#" id="21" class="select" onclick="setValue1(0,-1)">全部</a></li>
-               		<li><a href="#" id="22" onclick="setValue1(6,0)">6.0%</a></li>
-               		<li><a href="#" id="23" onclick="setValue1(7,0)">7.0%</a></li>
-               		<li><a href="#" id="24" onclick="setValue1(7.5,0)">7.5%</a></li>
-               		<li><a href="#" id="25" onclick="setValue1(8,0)">8.0%</a></li>
-               		<li><a href="#" id="25" onclick="setValue1(8,1)">8.0%以上</a></li>
-            </ul>
-        	<ul>
-            	<li class="first">项目期限：</li>
-               		<li><a href="#" id="31" class="select" onclick="setValue2(0,0)">全部</a></li>
-               		<li><a href="#" id="32" onclick="setValue2(0,15)">15天以下</a></li>
-               		<li><a href="#" id="33" onclick="setValue2(15,30)">15-30天</a></li>
-               		<li><a href="#" id="34" onclick="setValue2(30,180)">30-180天</a></li>
-               		<li><a href="#" id="35" onclick="setValue2(180,365)">180-365天</a></li>
-               		<li><a href="#" id="36" onclick="setValue2(365,-1)">一年以上</a></li>
-            </ul>
-        	<ul>
-            	<li class="first">标的状态：</li>
-               		<li><a href="#" id="41" class="select" onclick="setValue3(-1)">全部</a></li>
-               		<li><a href="#" id="42" onclick="setValue3(0)">投标中</a></li>
-               		<li><a href="#" id="43" onclick="setValue3(1)">还款中</a></li>
-               		<li><a href="#" id="44" onclick="setValue3(2)">已完成</a></li>
-            </ul>
-        </div>
-
-
-<div class="ajaxContainer">
-	<!-- 异步内容开始 -->
-	<c:forEach items="${subject}" var="s">
-					<ul class="tbList">
-						<li class="first">
-							<span class="ico zq"></span>
-							<h2><em>投</em>${s.name }</h2>+
-							<i></i>
-						</li>
-						<li class="second">					
-							<div class="txt1">
-								<h2>${s.year_rate }<span style="font-size:18px;">${s.year_rate}%</span></h2>
-								<p>年化收益</p>
-							</div>
-							<div class="txt2">
-								<h2>￥${s.floor_amount }</h2>
-								<p>起购金额(元)</p>
-							</div>
-							<div class="txt2">
-								<h2>${s.period }天</h2>
-								<p>投资期限</p>
-							</div>
-						</li>
-						<li class="three">
-							<a href="#1">企业担保</a><span>中国人保财险承保</span>
-							<p>计息日期：当天投资，立即计息<br>已购人数：${s.bought }人</p>
-						</li>
-						<li class="four">
-						</li>
-						<li class="five">
-							<a class="abtn" href="/FinancingProject/IndexController/buyproduct?id=${s.id }">购买</a>
-						</li>
-					</ul>
-				</c:forEach>
-	<!-- 异步内容结束 -->
-	
-	
-					<div class="llpage">
-							<div class="in">
-								
-									<a class="prev_page">上页</a>
-								
-								
-										<a class="now" >1</a>
-								
-								
-									<a class="next_page" rel="next">下页</a>
-							</div>
-						</div>
-					</div>
 
 
  <!-- 4     图片广告 -->
@@ -335,4 +266,4 @@ $("#f1").click(function(){
 	</div>
     
 </body>
-</html>
+</html>>

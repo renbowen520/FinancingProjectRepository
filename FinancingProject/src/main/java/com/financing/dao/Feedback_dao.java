@@ -32,7 +32,7 @@ public class Feedback_dao implements IN_feedback_dao {
 	
 	@Override
 	public List<Feedback> list(Map map) {
-		  String hql="from   Feedback     where  0=0    ";
+		  String hql="from   Feedback  f    where  0=0    ";
 		  Session session = this.getSession();
 		    hql=  this.gethql(hql, map);
 		   List<Feedback>list = session.createQuery(hql).list();
@@ -43,13 +43,12 @@ public class Feedback_dao implements IN_feedback_dao {
 		 String q1 = (String) map.get("feedback_q1");
 		 String q2 = (String) map.get("feedback_q2");
 		 if(!q1.equals("")&&q1!=null) {
-			     hql+="    and  title like '%"+q1+"%'";
+			     hql+="    and  f.title like '%"+q1+"%'";
 		   }
          if(!q2.equals("")&&q2!=null) {
-         	  hql+="    and  member.member_name   like  '%"+q2+"%'";
+         	  hql+="    and  f.member.member_name   like  '%"+q2+"%'";
 		   }
-  
-       System.out.println("hql===="+hql);
+         hql+=  "    order by create_date  desc ";
 		   return hql;
 	}
 

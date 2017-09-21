@@ -122,10 +122,10 @@ public class IndexController {
 		
 		//购买固收
 		@RequestMapping("/buyproduct")
-		public String  buyproduct() {
-			
-			
-			return "jsp/buy";
+		public String  buyproduct(int id) {
+			System.out.println("标的id="+id);
+			//然后要查询数据到前台显示
+			return "jsp/BuySubject";
 		}
 		
 		  //商学院

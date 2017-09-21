@@ -225,23 +225,21 @@
 		
 
 <!-- Chang URLs to wherever Video.js files will be hosted -->
-<link href="/FinancingProject/index_files/video-js.css" rel="stylesheet" type="text/css">
+<!-- <link href="/FinancingProject/index_files/video-js.css" rel="stylesheet" type="text/css"> -->
 <!-- video.js must be in the <head> for older IEs to work. -->
 <script src="/FinancingProject/index_files/video.js"></script>
 <!-- Unless using the CDN hosted version, update the URL to the Flash SWF -->
-<script>
+<!-- <script>
     videojs.options.flash.swf = "video-js.swf";
 </script>
-
+ -->
 <div class="indexBanner">
-    
-
 <div id="homebanner" class="carousel slide" data-ride="carousel">
 
 
-    <ol class="carousel-indicators">
+ <!--    <ol class="carousel-indicators">
             <li data-target="#homebanner" data-slide-to="0" class=" active"></li>
-    </ol>
+    </ol> -->
 
    <div class="carousel-inner" role="listbox">
                 <div class=" item active">
@@ -251,7 +249,7 @@
 
     
     
-    <!--登陆 注册 div  -->
+    <!--登陆 注册 div    -->
     <c:if test="${empty  member_login}">
 </div>
     <div class="login-box">
@@ -412,7 +410,7 @@
 </script>
 
 
-<script>
+<!-- <script>
     var _hmt = _hmt || [];
     (function () {
         var hm = document.createElement("script");
@@ -420,7 +418,7 @@
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
     })();
-</script>
+</script> -->
 
 
 
@@ -570,7 +568,7 @@
 		</div>
 	</div>
 	
-	
+<!-- 	
 	<div class="modal fade loginModal infoModal" role="dialog">
 		<div class="modal-dialog">
 			<div class="modal-content" style="width:400px;">
@@ -590,9 +588,9 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
-	<div class="modal fade loginInfo infoModal" role="dialog">
+	<!-- <div class="modal fade loginInfo infoModal" role="dialog">
 		<div class="modal-dialog">
 			<div class="modal-content" style="width:400px;">
 				<div class="modal-header">
@@ -606,9 +604,9 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
-	<div class="modal fade infoModal" id="infosModal" role="dialog">
+<!-- 	<div class="modal fade infoModal" id="infosModal" role="dialog">
 		<div class="modal-dialog">
 			<div class="modal-content" style="border-radius: 0px;width:400px;">
 				<div class="modal-header">
@@ -621,8 +619,8 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="modal fade infoModal" id="infosSuccessModal" role="dialog">
+	</div> -->
+<!-- 	<div class="modal fade infoModal" id="infosSuccessModal" role="dialog">
 		<div class="modal-dialog">
 			<div class="modal-content" style="border-radius: 0px;width:400px;">
 				<div class="modal-header">
@@ -635,102 +633,13 @@
 				</div>
 			</div>
 		</div>
-	</div>
-
-	<div id="feedbackModal" class="modal fade infoModal">
-	<div data-bind="" class="modal-dialog modal-sm">
-		<div class="modal-content">
-			<div class="modal-header">
-				<span>填写反馈</span>
-				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only"></span></button>
-			</div>
-			<div class="modal-body">
-				<form class="form-horizontal" id="feedbackForm">
-					<div class="form-group">
-						<div class="col-sm-12">
-							
-
-                            <select name="MsgType" class="form-control" id="MsgType" data-val-required="留言类型 字段是必需的。" data-val="true">
-                                <option selected="selected" value="0">请选择反馈类型</option>
-                                <option value="1">终止实盘结算申请</option>
-                                <option value="6">追加保证金</option>
-                                <option value="7">交易问题</option>
-                                <option value="3">功能使用问题</option>
-                                <option value="4">大额预约</option>
-                                <option value="50">其他问题</option>
-                            </select>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-12">
-							<input type="text" class="form-control" id="contact" placeholder="请输入手机号或邮箱">
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-12">
-                            <textarea class="form-control" id="content" placeholder="请填写你的用户名、实盘帐号并说明是结算申请还是追加保证金！"></textarea>
-						</div>
-					</div>
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-success" id="submitFeedback" onclick="submitFeedback();">提交</button>
-				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-			</div>
-		</div>
-	</div>
-</div>
-
-<script type="text/javascript">
-	function submitFeedback() {
-		var type = $('#feedbackForm #MsgType').val();
-		var contact = $('#feedbackForm #contact').val();
-		var content = $('#feedbackForm #content').val();
-		$('#submitFeedback').attr('disabled', true);
-		$.post('/api/feedback/create', { msgType: type, contact: contact, content: content }).done(function(res) {
-			if (res.isSuccess) {
-				alert('感谢您的反馈，我们会尽快给您做出答复！');
-				$('#feedbackModal').modal('hide');
-				$('#feedbackForm #contact').val('');
-				$('#feedbackForm #content').val('');
-			} else {
-				alert(res.errorMessage);
-			}
-		}).always(function() {
-			$('#submitFeedback').attr('disabled', false);
-		});
-	}
-</script>
-<!-- 
-	<div id="bannedStockModal" class="modal fade infoModal">
-	<div data-bind="" class="modal-dialog modal-lg">
-		<div class="modal-content">
-			<div class="modal-header">
-				<span>今日限制购买的股票</span>
-				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only"></span></button>
-			</div>
-			<div class="modal-body">
-				<div class="row">
-							<span>今日暂时没有限购的股票</span>
-
-				</div>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-primary btn-straight" data-dismiss="modal" style="margin-top:initial;">确认</button>
-			</div>
-		</div>
-	</div>
-</div>
- -->
-
-<script type="text/javascript">
+	</div> -->
 
 
 
-	function showBannedStocks() {
-		$('#bannedStockModal').modal('show');
-	}
-</script>
+
+
+
 
 
 	<script>

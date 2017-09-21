@@ -56,7 +56,7 @@
 			<td align="center">${lm.name }</td>
 			<td align="center">${lm.member_name }</td>
 			<td align="center">${lm.identity }</td>
-			<td align="center">${lm.invitatioinCode }</td>
+			<td align="center">${lm.invitationCode }</td>
 			<td align="center">${lm.create_date }</td>
 			<td align="center">
 			<button type="button" class="btn btn-primary"> 账号详情</button>
