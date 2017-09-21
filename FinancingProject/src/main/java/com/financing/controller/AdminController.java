@@ -2,15 +2,13 @@ package com.financing.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.session.Session;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import com.financing.Interface_service.IN_Finance_produce_funds_service;
 import com.financing.Interface_service.IN_Member_bankcards_service;
 import com.financing.Interface_service.IN_Member_deposit_record_service;
@@ -20,18 +18,12 @@ import com.financing.Interface_service.IN_News_service;
 import com.financing.Interface_service.IN_News_type_service;
 import com.financing.Interface_service.IN_Oversea_config_service;
 import com.financing.Interface_service.IN_Subject_service;
+import com.financing.Interface_service.IN_award_records_service;
 import com.financing.Interface_service.IN_feedback_service;
 import com.financing.Interface_service.IN_push_notice_service;
+import com.financing.bean.Award_records;
 import com.financing.bean.Feedback;
 import com.financing.bean.Finance_product_funds;
-import com.financing.bean.Member;
-import com.financing.service.Finance_product_funds_Service;
-import com.financing.service.Member_bankcards_service;
-import com.financing.service.Member_deposit_record_service;
-import com.financing.service.Member_service;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.financing.bean.Member;
 import com.financing.bean.Member_bankcards;
 import com.financing.bean.Member_deposit_record;
@@ -41,13 +33,6 @@ import com.financing.bean.News_type;
 import com.financing.bean.Oversea_config;
 import com.financing.bean.Push_notice;
 import com.financing.bean.Subject;
-import com.financing.bean.Users;
-import com.financing.service.Member_service;
-import com.financing.service.Member_withdraw_record_service;
-import com.financing.service.News_service;
-import com.financing.service.News_type_service;
-import com.financing.service.Oversea_config_Service;
-import com.financing.service.SubjectService;
 
 @Controller
 @RequestMapping("/AdminController")
@@ -78,6 +63,9 @@ public class AdminController {
 	
 	@Autowired
 	private IN_push_notice_service IN_push_notice_service;
+	
+	@Autowired
+	private IN_award_records_service IN_award_records_service;
 	
 @Autowired
 private  IN_feedback_service IN_feedback_service;
@@ -227,8 +215,10 @@ private  IN_feedback_service IN_feedback_service;
 		model.addAttribute("listmember", listmember);
 		return "admin/menus13";
 	}
-	@RequestMapping("/menus14")
-	public String menus14() {
+	@RequestMapping("/menus14")//ÑûÇë½±Àø
+	public String menus14(Model model) {
+		List<Award_records> listaward_records=this.IN_award_records_service.listAward_records();
+		model.addAttribute("listaward_records", listaward_records);
 		return "admin/menus14";
 	}
 	@RequestMapping("/menus15")

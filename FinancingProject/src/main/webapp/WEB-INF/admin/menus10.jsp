@@ -15,6 +15,14 @@
 			$("#form1").attr("action","/FinancingProject/Member_bankcards_Controller/bangka");
 			$("#form1").submit();
 		});
+		  $("#resetBtn").off().on("click",function(){  
+		        $("#mobile_Phonem").val("");  
+		        $("#member_namem").val("");  
+		        $("#card_nom").val("");
+		        $("#create_datem").val("");
+		        $("#form1").attr("action","/FinancingProject/Member_bankcards_Controller/bangka");
+				$("#form1").submit();
+		    });
 		
 	});
 </script>
@@ -25,10 +33,10 @@
 		<table class="table table-striped" width="100%">
 		<br>
 		<div>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;手机号:<input type="text" name="mobile_Phonem" value="${mobile_Phonem }">&nbsp;&nbsp;
-			绑卡姓名:<input type="text" name="member_namem" value="${member_namem }">&nbsp;&nbsp;
-			绑卡卡号:<input type="text" name="card_nom" value="${card_nom }">&nbsp;&nbsp;&nbsp;&nbsp;
-			注册时间:<input type="date" name="create_datem" value="${create_datem }">&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;手机号:<input type="text" name="mobile_Phonem" value="${mobile_Phonem }" id="mobile_Phonem">&nbsp;&nbsp;
+			绑卡姓名:<input type="text" name="member_namem" value="${member_namem }" id="member_namem">&nbsp;&nbsp;
+			绑卡卡号:<input type="text" name="card_nom" value="${card_nom }" id="card_nom">&nbsp;&nbsp;&nbsp;&nbsp;
+			注册时间:<input type="date" name="create_datem" value="${create_datem }" id="create_datem">&nbsp;&nbsp;&nbsp;&nbsp;
 				<button type="button" class="btn btn-primary" id="btn1">查询</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<button type="button" id="resetBtn" class="btn btn-success">重置</button> &nbsp;&nbsp;&nbsp;&nbsp;
 		
