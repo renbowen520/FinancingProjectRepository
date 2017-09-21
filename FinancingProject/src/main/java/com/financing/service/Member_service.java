@@ -26,6 +26,7 @@ public class Member_service  implements IN_Member_service{
 	public List<Member> listMember(Map map){
 		return this.md.listMember(map);
 	}
+
 	
 	//根据账号id显示该帐号的信息
 	public List<Member> getMemberByid(int id){
@@ -49,5 +50,35 @@ public class Member_service  implements IN_Member_service{
 	//根据账号id显示该帐号的充值记录
 	public List<Member_deposit_record> getMember_deposit_recordByid(int id){
 		return this.md.getMember_deposit_recordById(id);
+
+
+	@Override
+	public Member getByPhone(String phone) {
+		return md.getByPhone(phone);
+	}
+
+	@Override
+	public String getma(int k) {
+	  
+		return  md.getma(k);
+	}
+
+	@Override
+	public Member getByCode(String code) {
+		// TODO Auto-generated method stub
+		return md.getByCode(code);
+	}
+
+	@Override
+	public void save(Member member) {
+		md.save(member);
+		
+	}
+
+	@Override
+	public Member getById(int id) {
+		// TODO Auto-generated method stub
+		return md.getById(id);
+
 	}
 }

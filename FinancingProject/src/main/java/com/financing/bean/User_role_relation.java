@@ -3,7 +3,7 @@ package com.financing.bean;
 import java.util.Date;
 
 //用户角色关联表
-
+//不会用到
 public class User_role_relation {
 
 	private int id;  //自增

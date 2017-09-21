@@ -2,6 +2,14 @@ package com.financing.bean;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
+@Entity
+@Table
 public class Push_notice {//公告表
 
 	private int id;   //主键
@@ -10,6 +18,10 @@ public class Push_notice {//公告表
 	private int status;//公告状态
 	private Date create_date;//创建时间
 	private Date update_date;//修改时间
+	
+	
+	@Id
+	@GeneratedValue
 	public int getId() {
 		return id;
 	}

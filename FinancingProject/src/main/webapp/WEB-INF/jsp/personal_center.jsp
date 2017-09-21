@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -25,12 +27,13 @@
 <script src="/FinancingProject/index_files/jquery"></script>
 <script src="/FinancingProject/index_files/bootstrap"></script>
 
-<title>网上体验中心</title>
+<title>个人中心</title>
 </head>
 <body>
+
 <!--   1  导入顶部  -->
      <div style=" width:1002px; height:94px; margin:0 auto;">
-        <iframe src="/FinancingProject/index_files/iframetop.html" scrolling="no" frameborder="0" width="1002" height="94"></iframe>
+        <iframe src="/FinancingProject/index_files/iframetop.jsp" scrolling="no" frameborder="0" width="1002" height="94"></iframe>
     </div>
     
     <!--   2   导入菜单栏  -->
@@ -39,7 +42,7 @@
 			<div class="row">
 				<ul class="topNav">
 					<li class="active">
-						<a class="item first" href="http://127.0.0.1:8080/FinancingProject/index.jsp">
+						<a class="item first" href="http://127.0.0.1:8080/FinancingProject/IndexController/index">
 							首页
 						</a>
 					</li>
@@ -87,6 +90,7 @@
 
 
 <font size="+5">个人中心的内容</font>
+登陆成功后显示
 <br/><br/><br/><br/><br/><br/>
 
 

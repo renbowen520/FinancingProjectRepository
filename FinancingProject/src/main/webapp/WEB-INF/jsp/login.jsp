@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib  prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -33,7 +34,7 @@
 
  <!--   1  导入顶部  -->
      <div style=" width:1002px; height:94px; margin:0 auto;">
-        <iframe src="/FinancingProject/index_files/iframetop.html" scrolling="no" frameborder="0" width="1002" height="94"></iframe>
+        <iframe src="/FinancingProject/index_files/iframetop.jsp" scrolling="no" frameborder="0" width="1002" height="94"></iframe>
     </div>
     
     <!--   2   导入菜单栏  -->
@@ -42,7 +43,7 @@
 			<div class="row">
 				<ul class="topNav">
 					<li class="active">
-						<a class="item first" href="http://127.0.0.1:8080/FinancingProject/index.jsp">
+						<a class="item first" href="http://127.0.0.1:8080/FinancingProject/IndexController/index">
 							首页
 						</a>
 					</li>
@@ -88,7 +89,7 @@
 
     
     <!--3  登陆主体部分  -->
-   <form action=""  method="post">
+   <form action=""  method="post"  name="f1" id="f1">
     <div class="proMain">
     	<div class="container">
             <div class="row login">
@@ -105,7 +106,7 @@
                         </div>
                         <div class="lInput">
                             <img src="/FinancingProject/index_files/userIcon.png">
-                            <input type="text" placeholder="手机号" id="phone" name="phone" class="form-control phone"><span class="errorInfo">用户名不能为空</span>
+                            <input type="text" placeholder="手机号" id="mobile_Phone" name="mobile_Phone" class="form-control phone"><span class="errorInfo">用户名不能为空</span>
                         </div>
                     </div>
                     <div class="item">
@@ -121,34 +122,60 @@
                     
                     <div class="rest">
                         <!-- 显示错误的提示信息 -->
-                        <p class="error">这里显示错误</p>
+                        
+                        <p class="error"  id="yc" style="color: red;"></p>
                         <span id="loginError"></span><a class="forgetLink" href="/FinancingProject/IndexController/resetting">忘记密码？</a>
                     </div>
                     <div class="rest">
-                        <button class="btn loginBtn submit"  onclick="fun();">立即登录</button>
+                        <button   id ="but" class="btn loginBtn submit"  >立即登录</button>
                     </div>
                     <div class="rest">
                         <span class="registUrl">没有账号？<a href="/FinancingProject/IndexController/register">免费注册</a></span>
                     </div>
-        
                 </div>
             </div>
         </div>
     </div>
    </form> 
     <script type="text/javascript">
-        function fun(){
-        	  //验证登陆
-        	  ///FinancingProject/LoginController/login
-        	   alert("登陆提交按钮");
-        	
-        	
+	    $("#yc").text('${no_login}');
+
+   /* 		 $.post("/FinancingProject/LoginController/login/"+a+"/"+b,function(msg){
+   	 	     if(msg){
+   	 	     alert("ok!");
+   	 	     }else{
+   	 	    	$("#yc").text("账号或者密码错误!");
+   	 	     }
+   			}); */
+    
+/*     $('#password').bind('keydown',function(event){
+        if(event.keyCode == "13") {
         }
-        
-      /*   $("#phone").blur(function(){  // 失去焦点  
-                alert("shiqu ");
-        
-        });  */ 
+    });  */
+    
+    $("#but").click(function(){
+  	  var a=document.getElementById("mobile_Phone").value;    
+  	   var b=document.getElementById("password").value;   
+  	   if(a.length<1){
+  				   $("#yc").text("请输入手机号码!");
+  			       return  false;
+  			    }
+  	    if(!(/^1[34578]\d{9}$/.test(a))){ 
+  	    	    $("#yc").text("手机号码有误，请重填!");
+			        return  false;
+  	        } 
+  	    if(b.length<1){
+				   $("#yc").text("请输入密码!");
+			       return  false;
+			    }
+  	    if(b.length<6){
+  	    	   $("#yc").text("	密码长度最低6个字符!");
+			       return  false;
+  	    }
+  	     $("#yc").text("");
+         $("#f1").attr("action","/FinancingProject/LoginController/login");
+		 $("#f1").submit();
+    });
     </script>
     
     

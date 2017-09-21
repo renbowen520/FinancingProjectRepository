@@ -42,14 +42,12 @@ $(document).ready(function() {
 	   var b=document.getElementById("password").value;    
 	  
         if(a.length<1){
-	 //     document.getElementById("mobile_Phone").setAttribute("placeholder","手机号不能为空!");
 		   $("#yc2").show();
 		   $("#yc").hide();
 	       return ;
 	    }
         
     if(!(/^1[34578]\d{9}$/.test(a))){ 
-        //	 document.getElementById("mobile_Phone").setAttribute("placeholder","手机号码有误，请重填!");
           $("#yc").show();
           $("#yc2").hide();
             return;
@@ -70,10 +68,9 @@ $(document).ready(function() {
 		   $("#yc").hide();
 		   $("#yc3").hide();
 		   $("#yc4").hide();
-			$("#f1").attr("action","/FinancingProject/AdminController/adminLogin");
+		   $("#okok").val("");
+			$("#f1").attr("action","/FinancingProject/LoginController/adminLogin");
 			$("#f1").submit();
-       //  location.href="/FinancingProject/AdminController/adminLogin";
-
 	  });
 });
 </script>
@@ -117,7 +114,9 @@ $(document).ready(function() {
     <canvas class="J_codeimg" id="myCanvas" onclick="createCode()">对不起，您的浏览器不支持canvas，请下载最新版浏览器!</canvas>
   </div>
  <input type="button" value="验证码核验" class="ver_btn" onclick="validate();">
+ <div id="okok"></div>
  </dd>
+
  <dd>
   <input type="button" value="立即登陆" class="submit_btn">
      

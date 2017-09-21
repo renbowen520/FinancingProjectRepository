@@ -6,19 +6,32 @@ import java.util.Map;
 import org.hibernate.Session;
 
 import com.financing.bean.Member;
+
 import com.financing.bean.Member_account;
 import com.financing.bean.Member_deposit_record;
 import com.financing.bean.Member_trade_record;
 import com.financing.bean.Member_withdraw_record;
 import com.financing.bean.Subject_purchase_record;
 
+import com.financing.bean.Menber_tally;
+
+
 public interface IN_Member_dao {
 	Session getSession();
 	 List<Member> listMember(Map map);
 	 String listMemberM(Map map,String hql);
+
 	 List<Member> getMemberById(int id);
 	 List<Member_account> listMember_account(int id);
 	 List<Member_withdraw_record> getMember_withdraw_recordByid(int id);
 	 List<Member_deposit_record> getMember_deposit_recordById(int id);
 	 List<Subject_purchase_record> getSubject_purchase_record(int id);
+
+	 Member getByPhone(String phone);
+	 String getma(int k);
+	 Member getByCode(String code);
+	 void save(Member member) ;
+	 Member getById(int id);	 
+	 
+
 }

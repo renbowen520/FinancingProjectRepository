@@ -1,11 +1,16 @@
 package com.financing.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.financing.Interface_service.IN_Finance_produce_funds_service;
 import com.financing.bean.Finance_product_funds;
@@ -30,13 +36,22 @@ public class Finance_product_funds_Controller {
 	@Autowired
 	private IN_Finance_produce_funds_service finance_product_funds_Service;
 	
+	//前台查询私募
+//	@RequestMapping("/financeqian")
+//	public String finance(Model model){
+//		Map map=new HashMap();
+//		List<Finance_product_funds> finance=finance_product_funds_Service.finance(map);
+//		model.addAttribute("finance", finance);
+//		return "jsp/finance";
+//	}
+	
 	@RequestMapping("/menus2")
-	//查询私募
-	public String menus2(Model model,@RequestParam(required=false)String sname,@RequestParam(required=false)String type,@RequestParam(required=false)String status){
+	//查询私募后台
+	public String menus2(Model model,@RequestParam(required=false)String sname,@RequestParam(required=false)String type,@RequestParam(required=false,defaultValue="-1")String status){
 		Map map=new HashMap();
 		map.put("sname",sname);
 		map.put("type", type);
-		map.put("status", status);
+		map.put("status", Integer.valueOf(status));
 		List<Finance_product_funds> listfinance=this.finance_product_funds_Service.listfinance(map);
 		model.addAttribute("sname",sname);
 		model.addAttribute("type", type);
@@ -47,12 +62,24 @@ public class Finance_product_funds_Controller {
 	
 	//保存私募
 	@RequestMapping("/save")
-	public String save(Finance_product_funds finance_product_funds,Model model){
+	public String save(Finance_product_funds finance_product_funds,Model model,
+			@RequestParam("file")MultipartFile mpf,HttpServletRequest request) throws IOException{
 		finance_product_funds.setCreate_date(new Date());
 		finance_product_funds.setUpdate_date(new Date());;
 		finance_product_funds.setInvest_points("");
-		//finance_product_funds.setRatio(0);
-		System.out.println(finance_product_funds.getRatio()             );
+		System.out.println(finance_product_funds.getRatio());
+		//获得上传文件的名字
+		String  filename=mpf.getOriginalFilename();
+		System.out.println("filename="+filename);
+		String leftpath=request.getRealPath("/upload/");
+		File file=new File(leftpath,filename);
+		System.out.println("file="+file);
+		if(!file.exists()){
+			file.createNewFile();
+		}
+		//把上传的文件内容传送给新创建的文件
+		mpf.transferTo(file);
+		finance_product_funds.setProduct_manager_pic(filename);
 		finance_product_funds_Service.save(finance_product_funds);
 		return "redirect:/finance/menus2";
 	}
@@ -74,10 +101,23 @@ public class Finance_product_funds_Controller {
 	
 	//修改私募
 	@RequestMapping("/update")
-	public String update(Finance_product_funds finance_product_funds,Model model){
+	public String update(Finance_product_funds finance_product_funds,Model model,
+			@RequestParam("file")MultipartFile mpf,HttpServletRequest request) throws IOException{
 		finance_product_funds.setCreate_date(new Date());
 		finance_product_funds.setUpdate_date(new Date());;
 		finance_product_funds.setInvest_points("");
+		//获得上传文件的名字
+				String  filename=mpf.getOriginalFilename();
+				System.out.println("filename="+filename);
+				String leftpath=request.getRealPath("/upload/");
+				File file=new File(leftpath,filename);
+				System.out.println("file="+file);
+				if(!file.exists()){
+					file.createNewFile();
+				}
+				//把上传的文件内容传送给新创建的文件
+				mpf.transferTo(file);
+				finance_product_funds.setProduct_manager_pic(filename);
 		this.finance_product_funds_Service.update(finance_product_funds);
 		return "redirect:/finance/menus2";
 	}
@@ -94,13 +134,24 @@ public class Finance_product_funds_Controller {
 		return "admin/successfinance";
 	}
 	
+	
+	//签署失败
+	@RequestMapping("/lose/{id}/{pid}")
+	public String lose(@PathVariable("id")int id,@PathVariable("pid")int pid){
+		this.finance_product_funds_Service.losesubscribe(id);
+		return "redirect:/finance/subscribe/"+pid;
+	}
+	
 	//保存签署私募
-	@RequestMapping("/savesubscribe")
-	public String savesubscribe(Finance_product_subscribe finance_product_subscribe,Model model){
-		finance_product_subscribe.setCreate_date(new Date());
-		finance_product_subscribe.setUpdate_date(new Date());;
-		finance_product_funds_Service.savesubscribe(finance_product_subscribe);
-		return "admin/financeSubscribe";
+	@RequestMapping("/savesubscribe/{pid}")
+	public String savesubscribe(int id,Model model,@PathVariable("pid")int pid){
+//		finance_product_subscribe.setCreate_date(new Date());
+//		finance_product_subscribe.setUpdate_date(new Date());;
+//		finance_product_funds_Service.savesubscribe(finance_product_subscribe);
+		Finance_product_subscribe sub=this.finance_product_funds_Service.getsubscribe(id);
+		sub.setStatus(1);
+		this.finance_product_funds_Service.updatesubscribe(sub);
+		return "redirect:/finance/subscribe/"+pid;
 	}
 	
 	

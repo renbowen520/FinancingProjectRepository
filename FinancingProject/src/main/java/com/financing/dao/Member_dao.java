@@ -5,10 +5,10 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Component;
-
 import com.financing.Interface_dao.IN_Member_dao;
 import com.financing.bean.Member;
 import com.financing.bean.Member_account;
@@ -16,6 +16,8 @@ import com.financing.bean.Member_deposit_record;
 import com.financing.bean.Member_trade_record;
 import com.financing.bean.Member_withdraw_record;
 import com.financing.bean.Subject_purchase_record;
+import com.financing.bean.Users;
+
 
 @Component
 public class Member_dao implements IN_Member_dao {
@@ -26,6 +28,56 @@ public class Member_dao implements IN_Member_dao {
 	public Session getSession(){
 		return this.sessionFactory.getCurrentSession();
 	}
+	
+	public Member getById(int id) {
+		   Session session = this.getSession();
+		   Member member = (Member) session.get(Member.class, id);
+		   return member;
+	}
+	
+	
+	//查询邀请码
+	public Member getByCode(String code) {
+		   Session session = this.getSession();
+		    Query query = session.createQuery("from Member  where  invitationCode=:code");
+			  query.setString("code", code);
+			  List<Member> list=query.list();
+		  	Member member=null; 
+		 	for(Member member2:list){
+		 		member=member2;
+			}
+			return member;
+	}
+	
+	
+	//邀请码生成
+	public String getma(int k) {
+		 String s="";
+		   for(int i=0;i<k;i++) {
+			 String chars = "abcdefghijklmnopqrstuvwxyzQWERTYUIOPASDFGHJKLZXCVBNM";
+			    s+=chars.charAt((int)(Math.random() * 52));
+		   }
+		  return s;
+	}
+	
+	
+	
+	
+	//根据手机号查询
+	public Member getByPhone(String phone) {
+		    Session session = this.getSession();
+		    Query query = session.createQuery("from Member  where mobile_Phone=:phone");
+			  query.setString("phone", phone);
+			  List<Member> list=query.list();
+		  	Member member=null; 
+		 	for(Member member2:list){
+		 		member=member2;
+			}
+			return member;
+	}
+	
+	
+	
 	//显示帐号信息
 	public List<Member> listMember(Map map){
 		String hql="from Member where 0=0";
@@ -60,6 +112,7 @@ public class Member_dao implements IN_Member_dao {
 		System.out.println("hql:"+hql);
 		return hql;
 	}
+
 	
 	
 	//账号详情  显示账户信息
@@ -111,4 +164,14 @@ public class Member_dao implements IN_Member_dao {
 	}
 	
 	
+
+
+
+	@Override 
+	public void save(Member member) {  //保存
+		// TODO Auto-generated method stub
+		Session session=getSession();
+		session.save(member);
+	}
+
 }

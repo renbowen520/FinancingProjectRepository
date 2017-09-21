@@ -1,13 +1,19 @@
 package com.financing.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.financing.Interface_service.IN_Oversea_config_service;
@@ -31,9 +37,22 @@ public class Oversea_config_Controller {
 	
 	//保存海外配置
 	@RequestMapping("/save")
-	public String save(Oversea_config oversea_config,Model model){
+	public String save(Oversea_config oversea_config,Model model,
+			@RequestParam("file")MultipartFile mpf,HttpServletRequest request) throws IOException{
 		oversea_config.setAddTime(new Date());
 		oversea_config.setUpdTime(new Date());
+		//获得上传文件的名字
+		String  filename=mpf.getOriginalFilename();
+		System.out.println("filename="+filename);
+		String leftpath=request.getRealPath("/upload/");
+		File file=new File(leftpath,filename);
+		System.out.println("file="+file);
+		if(!file.exists()){
+			file.createNewFile();
+		}
+		//把上传的文件内容传送给新创建的文件
+		mpf.transferTo(file);
+		oversea_config.setOversea_icon(filename);
 		oversea_config_Service.save(oversea_config);
 		return "redirect:/oversea/menus4";
 	}

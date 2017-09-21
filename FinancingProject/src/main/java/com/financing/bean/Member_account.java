@@ -8,6 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+
 @Entity
 @Table
 public class Member_account {
@@ -20,9 +24,12 @@ public class Member_account {
 	private Date update_date;//修改时间
 	private double bonus_amount;//红包金额
 	private double invest_amount;//投资金额
-	private int delflag; //状态
+	private int delflag; //删除状态 0 ok    1 no
 	private double bbin_amount;//体验金
-	private Member member_id;//引用用户表id
+	private Member member;//引用用户表id     一对一
+	
+	
+	
 	@Id
 	@GeneratedValue
 	public String getId() {
@@ -85,16 +92,15 @@ public class Member_account {
 	public void setBbin_amount(double bbin_amount) {
 		this.bbin_amount = bbin_amount;
 	}
-	@ManyToOne
+	
+	
+	@OneToOne
 	@JoinColumn(name="member_id")
-	public Member getMember_id() {
-		return member_id;
+	public Member getMember() {
+		return member;
 	}
-	public void setMember_id(Member member_id) {
-		this.member_id = member_id;
+	public void setMember(Member member) {
+		this.member = member;
 	}
-	
-
-	
 	
 }

@@ -12,9 +12,17 @@ import com.financing.bean.Subject_purchase_record;
 
 public interface IN_Member_service {
 	 List<Member> listMember(Map map);
+
 	 List<Member> getMemberByid(int id);
 	 List<Member_account> getMember_accountByid(int id);
 	 List<Member_withdraw_record>getMember_withdraw_recordByid(int id);
 	 List<Member_deposit_record> getMember_deposit_recordByid(int id);
 	 List<Subject_purchase_record> getSubject_purchase_record(int id);
+
+	 Member getByPhone(String phone) ;
+	 String getma(int k); 
+	 Member getByCode(String code);
+	 void save(Member member);
+	 Member getById(int id);
+
 }

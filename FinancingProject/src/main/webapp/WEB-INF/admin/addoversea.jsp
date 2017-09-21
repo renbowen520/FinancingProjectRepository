@@ -16,8 +16,9 @@
 
 </head>
 <body>
-<form action="/FinancingProject/oversea/save" method="post">
-<table border="0" cellspacing="0" width="100%">
+<center>
+<form action="/FinancingProject/oversea/save" method="post" enctype="multipart/form-data">
+<table border="0" cellspacing="0" width="400">
 	<tr height="60">
 	<td>&nbsp;&nbsp;&nbsp;标题:</td>
 	<td><input type="text" name="title" class="form-control"></td>
@@ -52,7 +53,7 @@
 	<tr height="60">
 	<td>&nbsp;&nbsp;&nbsp;图片预览 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 	<td>
-	<input type="file" name="file_name" class="form-control"/></td>
+	<input type="file" name="file" class="form-control"/></td>
 	 </tr>
 	 <tr>
 	 <td colspan="2"><input type="submit" value="保存"></td>
@@ -60,5 +61,6 @@
 </table>
 
 </form>
+</center>
 </body>
 </html>

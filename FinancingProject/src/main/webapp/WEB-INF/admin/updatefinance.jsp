@@ -20,7 +20,7 @@ $(document).ready(function(){
 });
 </script>
 <body>
-<form action="/FinancingProject/finance/update" method="post">
+<form action="/FinancingProject/finance/update" method="post" enctype="multipart/form-data">
 <input type="hidden" name="id" value="${finance_product_funds.id}">
 类别:<select name="type" id="type">
 <option value="SIMU">私募类</option>
@@ -58,7 +58,7 @@ $(document).ready(function(){
    基金经理名称:<input type="text" name="product_manager_name" value="${finance_product_funds.product_manager_name }"><br>
   基金经理头衔:<input type="text" name="product_manager_title" value="${finance_product_funds.product_manager_title }"><br>
  基金经理简介:<input type="text" name="product_manager_desc" value="${finance_product_funds.product_manager_desc }"><br>
- 基金经理头像:<input type="file" name="product_manager_pic" class="form-control"/>
+ 基金经理头像:<input type="file" name="file" value="${finance_product_funds.product_manager_pic}" class="form-control"/>
    <br>
    基金经理详情
    <hr>   

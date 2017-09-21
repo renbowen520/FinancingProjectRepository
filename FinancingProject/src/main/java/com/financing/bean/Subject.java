@@ -49,6 +49,16 @@ public class Subject {
 	private Set<Subject_purchase_record> subject_purchase_record=new HashSet<>();//标的购买表(购买次数)
 	private Set<Subject_bbin_purchase_record> Subject_bbin_purchase_record=new HashSet<>();//体验金购买表
 	
+	private Set<Subject_file> subject_file=new HashSet<>();
+	
+	
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="subject")
+	public Set<Subject_file> getSubject_file() {
+		return subject_file;
+	}
+	public void setSubject_file(Set<Subject_file> subject_file) {
+		this.subject_file = subject_file;
+	}
 	@OneToMany(cascade=CascadeType.ALL,mappedBy="subject")
 	public Set<Subject_bbin_purchase_record> getSubject_bbin_purchase_record() {
 		return Subject_bbin_purchase_record;

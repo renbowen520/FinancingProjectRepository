@@ -10,6 +10,7 @@ import com.financing.Interface_dao.IN_Subject_dao;
 import com.financing.Interface_service.IN_Subject_service;
 import com.financing.bean.Subject;
 import com.financing.bean.Subject_bbin_purchase_record;
+import com.financing.bean.Subject_file;
 import com.financing.dao.SubjectDao;
 
 
@@ -25,12 +26,15 @@ public class SubjectService  implements IN_Subject_service {
 	public void save(Subject subject){
 		this.subjectdao.save(subject);
 	}
+	//保存固收文件
+	public void savefile(Subject_file subject_file){
+		this.subjectdao.savefile(subject_file);
+	}
 	//修改固收类
 	public void update(Subject subject){
 		this.subjectdao.update(subject);
 	}
 	//查询显示所有固收类
-	
 	public List<Subject> listSubject(Map map){
 		return subjectdao.ListFixGet(map);
 	}
@@ -43,8 +47,14 @@ public class SubjectService  implements IN_Subject_service {
 		return subjectdao.listsubjectrecord(id);
 	}
 	
+
 	//付息计划模糊查询及其显示所有
 	public List<Subject> listSubjectm(Map map){
 		return subjectdao.listsubject(map);
+
+	//前台查询
+	public List<Subject> subject(Map map){
+		return subjectdao.listSubject(map);
+
 	}
 }

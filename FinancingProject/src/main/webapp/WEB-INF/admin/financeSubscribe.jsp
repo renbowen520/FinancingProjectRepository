@@ -12,11 +12,13 @@
 <script type="text/javascript" src="/FinancingProject/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 function test3(id){//签署状态
-	alert(id);
 	 $("#form1").attr("action","/FinancingProject/finance/bfsubscribe/"+id);
 		$("#form1").submit();
 }
-
+function test4(pid,id){//签署状态
+	 $("#form1").attr("action","/FinancingProject/finance/lose/"+id+"/"+pid);
+		$("#form1").submit();
+}
  </script>
 <body>
 <div class="table table-responsive">
@@ -54,7 +56,7 @@ function test3(id){//签署状态
 </c:if>
 <c:if test="${li.status==2}">
 <button type="button" class="btn btn-primary" onclick="test3(${li.id})">签署</button>
-<button type="button" class="btn btn-danger" onclick="return confirm('是否确定签署失败？')">签署失败</button>
+<button type="button" class="btn btn-danger" onclick="test4(${li.finance_product_funds.id},${li.id})">签署失败</button>
 </c:if>
 <c:if test="${li.status==3}">
 <button type="button" >签署失败</button>

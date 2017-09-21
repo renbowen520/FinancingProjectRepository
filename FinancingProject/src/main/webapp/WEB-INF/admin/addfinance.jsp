@@ -16,57 +16,101 @@
 
 
 <body>
-<form action="/FinancingProject/finance/save" method="post">
-类别:<select name="type">
+<center>
+<form action="/FinancingProject/finance/save" method="post" enctype="multipart/form-data">
+<table border="0" cellspacing="0" width="400">
+<tr height="60">
+<td>&nbsp;&nbsp;&nbsp;类别:</td>
+<td><select name="type"  class="form-control">
 <option value="SIMU">私募类</option>
 <option value="GUQUAN">股权类</option>
-</select><br>
-名称:<input type="text" name="name"><br>
-起投金额:<input type="text" name="floor_amount"><br>
-年化收益:<input type="text" name="year_rate"><br>
-返佣比例:<input type="text" name="ratio"><br>
-状态:<select name="status">
+</select></td>
+</tr>
+<tr height="60">
+<td>&nbsp;&nbsp;&nbsp;名称:</td>
+<td><input type="text" name="name"  class="form-control"></td>
+</tr>
+<tr height="60">
+<td>&nbsp;&nbsp;&nbsp;起投金额:</td>
+<td><input type="text" name="floor_amount" class="form-control"></td>
+</tr>
+<tr height="60">
+<td>&nbsp;&nbsp;&nbsp;年化收益:</td>
+<td><input type="text" name="year_rate" class="form-control"></td>
+</tr>
+<tr height="60">
+<td>&nbsp;&nbsp;&nbsp;返佣比例:</td>
+<td><input type="text" name="ratio" class="form-control"></td>
+</tr>
+<tr height="60">
+<td>&nbsp;&nbsp;&nbsp;状态:</td>
+<td><select name="status" class="form-control">
 <option value="0">未发布</option>
 <option value="1">募集中</option>
 <option value="2">已结束</option>
-</select><br>
-投资期限:<input type="text" name="period">
-<br>
-关于基金
-<hr>
-    <script id="editor1" type="text/plain" style="width:1024px;height:200px;"></script>
-   <br>
-   产品要素
-  <hr>
-    <script id="editor2" type="text/plain" style="width:1024px;height:200px;"></script>
-   
-   <br>
-   产品策略
-   <hr>
-    <script id="editor3" type="text/plain" style="width:1024px;height:200px;"></script>
-   
-   <br>
-   基金经理
-   <hr>
-   基金经理名称:<input type="text" name="product_manager_name"><br>
-  基金经理头衔:<input type="text" name="product_manager_title"><br>
- 基金经理简介:<input type="text" name="product_manager_desc"><br>
- 基金经理头像:<input type="file" name="product_manager_pic" class="form-control"/>
-   <br>
-   基金经理详情
-   <hr>
-    <script id="editor4" type="text/plain" style="width:1024px;height:200px;"></script>
-   <br>
-   合同内容
-   <hr>
-    <script id="editor5" type="text/plain" style="width:1024px;height:200px;"></script>
-   <br>
-   银行账户
-   <hr>
-   	银行账户:<input type="text" name="bank_account"><br>
-   	<input type="submit" value="保存">
-</form> 
+</select></td>
+</tr>
+<tr height="60">
+<td>&nbsp;&nbsp;&nbsp;投资期限:</td>
+<td><input type="text" name="period" class="form-control"></td>
+</tr>
+<tr height="60"><td colspan="2">
+<p><h3>&nbsp;&nbsp;▶ 关于基金</h3><hr>
+   	 <script id="editor1" type="text/plain" style="width:100%;height:200px;" name="product_topic "></script>
+</td></tr>
 
+<tr height="60"><td colspan="2">
+<p><h3>&nbsp;&nbsp;▶  产品要素</h3><hr>
+  <script id="editor2" type="text/plain" style="width:100%;height:200px;" name="product_factor"></script>
+</td></tr>
+
+<tr height="60"><td colspan="2">
+<p><h3>&nbsp;&nbsp;▶    产品策略</h3><hr>
+   	<script id="editor3" type="text/plain" style="width:100%;height:200px;" name="product_strategy"></script>
+</td></tr>
+<tr height="60"><td colspan="2">
+<p><h3>&nbsp;&nbsp;▶ 基金经理</h3><hr>
+</td></tr>
+
+<tr height="60">
+<td>&nbsp;&nbsp;&nbsp;基金经理名称:</td>
+<td><input type="text" name="product_manager_name" class="form-control"></td>
+</tr>
+<tr height="60">
+<td>&nbsp;&nbsp;&nbsp;基金经理头衔:</td>
+<td><input type="text" name="product_manager_title" class="form-control"></td>
+</tr>
+<tr height="60">
+<td>&nbsp;&nbsp;&nbsp;基金经理简介:</td>
+<td><input type="text" name="product_manager_desc" class="form-control"></td>
+</tr>
+<tr height="60">
+<td>&nbsp;&nbsp;&nbsp;基金经理头像:</td>
+<td><input type="file" name="file" class="form-control"/></td>
+</tr>
+<tr height="60"><td colspan="2">
+<p><h3>&nbsp;&nbsp; ▶基金经理详情</h3><hr>
+   	<script id="editor4" type="text/plain" style="width:100%;height:200px;" name="product_manager"></script>
+</td></tr>
+<tr height="60"><td colspan="2">
+<p><h3>&nbsp;&nbsp;▶合同内容</h3><hr>
+   	<script id="editor5" type="text/plain" style="width:100%;height:200px;" name="contract"></script>
+</td></tr>
+<tr height="60"><td colspan="2">
+<p><h3>&nbsp;&nbsp;▶   银行账户</h3><hr>
+</td></tr>
+<tr height="60">
+<td>&nbsp;&nbsp;&nbsp;银行账户:</td>
+<td><input type="text" name="bank_account" class="form-control"></td>
+</tr>
+<tr height="60">
+<td colspan="2"  align="center">
+<input type="submit" value="保存" class="btn btn-primary"/>
+</td>
+</tr>
+ </table>
+</form> 
+</center>
    <script type="text/javascript">
     var ue = UE.getEditor('editor1');
     var ue = UE.getEditor('editor2');

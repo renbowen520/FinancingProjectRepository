@@ -1,6 +1,7 @@
 package com.financing.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -23,14 +24,13 @@ public class Oversea_config_Dao implements IN_Oversea_config_dao {
 		return this.sf.getCurrentSession();
 	}
 	
-	//查询显示
+	//查询显示后台  前台
 	public List<Oversea_config> listOversea(){
 		String hql="from Oversea_config where 0=0";
 		Session session=getSession();
 		List<Oversea_config> listOversea=session.createQuery(hql).list();
 		return listOversea;
 	}
-	
 	
 	
 	//新增

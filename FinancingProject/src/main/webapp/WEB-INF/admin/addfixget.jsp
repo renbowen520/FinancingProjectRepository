@@ -27,19 +27,19 @@ $(function(){
 
 <body>
 <p><h3>&nbsp;&nbsp;▶ 产品信息详细表</h3>
-<form id="form1" action="/FinancingProject/subject/save" method="post">
+<form id="form1" action="/FinancingProject/subject/save" method="post" enctype="multipart/form-data">
 <table border="0" cellspacing="0" width="100%">
 <tr height="60">
 <td>&nbsp;&nbsp;&nbsp;名称:</td><td><input type="text" name="name" class="form-control"></td><td>&nbsp;&nbsp;类型:</td><td><select class="form-control" name="type"><option value="0">固收类</option><option value="1">P2P车贷</option><option value="2">P2P房贷</option></select></td>
 </tr>
 <tr height="60">
-<td>&nbsp;&nbsp;&nbsp;合同编号:</td><td><input type="text" name="serialNo" class="form-control"></td><td>&nbsp;&nbsp;借款用途:</td><td><input type="text" name="purpose"  class="form-control"></td>
+<td>&nbsp;&nbsp;&nbsp;合同编号:</td><td><input type="text" name="serial_no" class="form-control"></td><td>&nbsp;&nbsp;借款用途:</td><td><input type="text" name="purpose"  class="form-control"></td>
 </tr>
 <tr height="60">
-<td>&nbsp;&nbsp;&nbsp;起投金额(元):</td><td><input type="text" name="floorAmount" class="form-control"></td><td>&nbsp;&nbsp;保障方式:</td><td><select name="safeGuard_way" class="form-control"><option value="0">企业担保</option><option value="1">银行监管</option></select></td>
+<td>&nbsp;&nbsp;&nbsp;起投金额(元):</td><td><input type="text" name="floor_amount" class="form-control"></td><td>&nbsp;&nbsp;保障方式:</td><td><select name="safeGuard_way" class="form-control"><option value="0">企业担保</option><option value="1">银行监管</option></select></td>
 </tr>
 <tr height="60">
-<td>&nbsp;&nbsp;&nbsp;年化收益(%):</td><td><input type="text" name="yearRate" class="form-control"></td><td>&nbsp;&nbsp;可使用体验金:</td><td><select name="experStatus" class="form-control"><option value="0">否</option><option value="1">是</option></select></td>
+<td>&nbsp;&nbsp;&nbsp;年化收益(%):</td><td><input type="text" name="year_rate" class="form-control"></td><td>&nbsp;&nbsp;可使用体验金:</td><td><select name="experStatus" class="form-control"><option value="0">否</option><option value="1">是</option></select></td>
 </tr>
 <tr height="60">
 <td>&nbsp;&nbsp;&nbsp;状态:</td><td><select class="form-control" name="status">
@@ -76,31 +76,22 @@ $(function(){
 <p><h3>&nbsp;&nbsp;▶ 安全保障</h3><hr>
    	<script id="editor3" type="text/plain" style="width:100%;height:200px;" name="safetyControl"></script>
 </td></tr>
+
+<tr height="60"><td colspan="4">
+<p><h3>&nbsp;&nbsp;▶ 标的附件</h3><hr>
+</td></tr>
+<tr height="60"><td colspan="2">&nbsp;&nbsp;&nbsp;图片预览 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</td>
+<td colspan="2">
+<input type="file" name="file" class="form-control"/></td>
+<td>
+</tr>
 <tr height="60">
 <td colspan="4"  align="center">
 
 <input type="submit" class="btn btn-primary" id="btn1" value="保存">
 <a href="/FinancingProject/AdminController/menus1">返回固收首页</a>
 </td>
-</tr>
-</table>
-</form>
-
-
-
-
-
-		
-
-
- <form action="/uploadFile" method="post"  enctype="multipart/form-data">
-<table border="0" cellspacing="0" width="100%">
-<tr height="60"><td colspan="4"><p><h3>&nbsp;&nbsp;▶ 标的附件</h3><hr></td></tr>
-<tr height="60"><td colspan="2">&nbsp;&nbsp;&nbsp;图片预览 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<td>
-<input type="file" name="file_name" class="form-control"/></td>
-<td>
-<input type="submit" value="上传"  class="btn btn-primary"/></td>
 </tr>
 </table>
 </form>

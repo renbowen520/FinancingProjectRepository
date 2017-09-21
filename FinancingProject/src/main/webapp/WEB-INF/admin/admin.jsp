@@ -54,7 +54,7 @@
                                   
                               </dd>
                               <dd>
-                                    <a href="javascript:;" data-url="/FinancingProject/AdminController/menus2" data-icon="&#xe614;" data-title="私募基金" kit-target data-id='3'><i class="layui-icon">&#xe614;</i><span>&nbsp;私募基金</span></a>
+                                    <a href="javascript:;" data-url="/FinancingProject/AdminController/menus2?status=-1" data-icon="&#xe614;" data-title="私募基金" kit-target data-id='3'><i class="layui-icon">&#xe614;</i><span>&nbsp;私募基金</span></a>
                             </dd>
                             <dd>
                                 <a href="javascript:;" data-url="/FinancingProject/AdminController/menus3" data-icon="&#xe614;" data-title="股权基金" kit-target data-id='4'><i class="layui-icon">&#xe614;</i><span>&nbsp;股权基金</span></a>

@@ -110,7 +110,7 @@
          <div class="modal-body">
                          <span class="glyphicon glyphicon-sign" ></span>
        
-           <input type="text"  id="did"  name="did">
+           <input type="hidden"  id="did"  name="did">
        
             <font size="+1" >  确定删除该条数据?  </font>
                </div>
