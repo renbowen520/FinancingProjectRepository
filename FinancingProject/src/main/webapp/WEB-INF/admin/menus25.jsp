@@ -31,7 +31,7 @@
 									</tr>
 										<tr>
 										<td>邀请码:</td>
-										<td><input class="form-control" type="text" placeholder="Readonly input here…" readonly value="${listmemberByid.invitatioinCode}"></td>
+										<td><input class="form-control" type="text" placeholder="Readonly input here…" readonly value="${listmemberByid.invitationCode}"></td>
 										<td>被邀请码:</td>
 										<td><input class="form-control" type="text" placeholder="Readonly input here…" readonly value="${listmemberByid.invitedCode}"></td>
 									</tr>
