@@ -46,19 +46,24 @@
 				<th>注册时间</th>
 				<th>操作</th>
 			</tr>
-			
+			<c:forEach items="${listaward_records }" var="lr" varStatus="stat">
 			<tr>
+				<td>${stat.index+1}</td>
+				<td>${lr.member.mobile_Phone }</td>
+				<td>${lr.member.member_name }</td>
+				<td>${lr.member.invitationCode }</td>
+				<td>${lr.member.invitedCode }</td>
 				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td><c:if test="${lr.type==0 }"><font color="green">是</font></c:if>
+				<c:if test="${lr.type==1 }"><font color="red">否</font></c:if>
+				</td>
+				<td><c:if test="${lr.isAward==0}"><font color="red">否</font></c:if>
+				<c:if test="${lr.isAward==1}"><font color="green">是</font></c:if>
+				</td>
+				<td>${lr.addTime}</td>
+				<td>不能奖励&nbsp;&nbsp;|&nbsp;&nbsp;<button type="button" class="btn btn-primary" id="btn2" >奖励记录</button></td>
 			</tr>
+			</c:forEach>
 		</table>
 	</form>
 

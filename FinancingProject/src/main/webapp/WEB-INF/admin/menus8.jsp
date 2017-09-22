@@ -16,7 +16,14 @@
 			$("#form1").attr("action","/FinancingProject/MemberController/zhanghao");
 			$("#form1").submit();
 		});
-	
+		  $("#resetBtn").off().on("click",function(){  
+		        $("#mname").val("");  
+		        $("#mobile_Phonem").val("");  
+		        $("#member_namem").val("");
+		        $("#invitatioinCodem").val("");
+		        $("#form1").attr("action","/FinancingProject/MemberController/zhanghao");
+				$("#form1").submit();
+		    });
 		
 	});
 	
@@ -31,13 +38,13 @@
 
 <div class="table-responsive">
 <form action="" role="form" id="form1" method="post">
-	<table class="table table-bordered" width="100%" >
+	<table class="table table-hover" width="100%" >
 	<br>
 	<div>
-	<p>	用户名:<input type="text" name="mname" value="${mname}">&nbsp;
-		手机号:<input type="text" name="mobile_Phonem" value="${ mobile_Phonem}">&nbsp;
-		姓名:<input type="text" name="member_namem" value="${member_namem }">&nbsp;
-		邀请码:<input type="text" name="invitatioinCodem" value="${invitatioinCodem }">
+	<p>	用户名:<input  class="form-group" type="text" name="mname" value="${mname}" id="mname">&nbsp;
+		手机号:<input type="text" name="mobile_Phonem" value="${ mobile_Phonem}" id="mobile_Phonem">&nbsp;
+		姓名:<input type="text" name="member_namem" value="${member_namem }" id="member_namem">&nbsp;
+		邀请码:<input type="text" name="invitatioinCodem" value="${invitatioinCodem }" id="invitatioinCodem">
 		<button type="button" class="btn btn-primary" id="btn1">查询</button>&nbsp;
 		
 <button type="button" id="resetBtn" class="btn btn-success">重置</button> 
@@ -45,7 +52,7 @@
 	</div>	
 	<br>
 	<br>
-		<tr>
+		<tr class="active">
 			<td align="center">序号</td>
 			<td align="center">手机号</td>
 			<td align="center">用户名</td>

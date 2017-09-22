@@ -1,5 +1,7 @@
 package com.financing.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,10 @@ public class Award_records_service implements IN_award_records_service {
 	@Override
 	public void save(Award_records award_records) {
 		 IN_award_records_dao.save(award_records);
+	}
+	
+	public List<Award_records> listAward_records(){
+		return IN_award_records_dao.listaward_records();
 	}
 
 }

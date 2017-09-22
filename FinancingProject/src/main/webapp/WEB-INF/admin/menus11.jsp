@@ -12,10 +12,19 @@
 <script type="text/javascript">
 $(function(){
 	$("#btn1").click(function(){
-		alert("23")
 		$("#form1").attr("action","/FinancingProject/subject/menus11");
 		$("#form1").submit();
+		 
+     
 	});
+	   //重置按钮事件 
+    $("#resetBtn").off().on("click",function(){  
+        $("#namem").val("");  
+        $("#statusm").val("");  
+        $("#typem").val("");
+        $("#form1").attr("action","/FinancingProject/subject/menus11");
+		$("#form1").submit();
+    });
 });
 function fun(id){
 	$("#form1").attr("action","/FinancingProject/subject/menus24/"+id);
@@ -30,16 +39,16 @@ function fun(id){
 		<br>
 		<div>
 			<font size="+1">
-				名称:<input type="text" name="namem" value="${namem }">&nbsp;&nbsp;&nbsp;
-				状态:<select name="statusm" value="${statusm }">
-				<option >----请选择----</option>
+				名称:<input type="text" name="namem" value="${namem }" id="namem">&nbsp;&nbsp;&nbsp;
+				状态:<select name="statusm" value="${statusm }" id="statusm" >
+				<option >全部</option>
 				<option value="0">未发布</option>
 				<option value="1">募集中</option>
 				<option value="2">回款中</option>
 				<option value="3">还款完成</option>
 			</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				类型:<select name="typem" value="${typem }">
-				<option >----请选择----</option>
+				类型:<select name="typem" value="${typem }" id="typem" >
+				<option >全部</option>
 				<option value="0">固收类</option>
 				<option value="1">P2P车贷</option>
 				<option value="2">房贷</option>

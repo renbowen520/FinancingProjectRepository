@@ -17,6 +17,15 @@ $(function(){
 		$("#form1").attr("action","/FinancingProject/Member_withdraw_recordController/Member_withdraw_record");
 		$("#form1").submit();
 	});
+	   //重置按钮事件 
+    $("#resetBtn").off().on("click",function(){  
+        $("#member_namem").val("");  
+        $("#mobile_Phonem").val("");  
+        $("#bank_cardm").val("");
+        $("#create_datem").val("");
+        $("#form1").attr("action","/FinancingProject/Member_withdraw_recordController/Member_withdraw_record");
+		$("#form1").submit();
+    });
 	
 });
 </script>
@@ -28,10 +37,10 @@ $(function(){
 		<br>
 		<div>
 			<font size="+1">
-				姓名:<input type="text" name="member_namem" value="${member_namem }">&nbsp;&nbsp;&nbsp;
-				手机号:<input type="text" name="mobile_Phonem"value="${mobile_Phonem }">&nbsp;&nbsp;&nbsp;
-				银行卡号:<input type="text" name="bank_cardm" value="${bank_cardm }">&nbsp;&nbsp;&nbsp;
-				提现时间:<input type="date" name="create_datem" value="${ create_datem}">&nbsp;&nbsp;&nbsp;
+				姓名:<input type="text" name="member_namem" value="${member_namem }" id="member_namem">&nbsp;&nbsp;&nbsp;
+				手机号:<input type="text" name="mobile_Phonem"value="${mobile_Phonem }" id="mobile_Phonem">&nbsp;&nbsp;&nbsp;
+				银行卡号:<input type="text" name="bank_cardm" value="${bank_cardm }" id="bank_cardm">&nbsp;&nbsp;&nbsp;
+				提现时间:<input type="date" name="create_datem" value="${ create_datem}" id="create_datem">&nbsp;&nbsp;&nbsp;
 					<button type="button" class="btn btn-primary" id="btn1">查询</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<button type="button" id="resetBtn" class="btn btn-success">重置</button> &nbsp;&nbsp;&nbsp;&nbsp;
 		
