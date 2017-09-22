@@ -19,11 +19,10 @@ public class Users {
 	private  String salt;//密码盐
 	private  String mobile_Phone;
 	private  int status;//'账号状态（0正常，1锁定，2删除）',
-	private int del_flag; //删除标志',
+//	private int del_flag; //删除标志',
 //	private int   identity;//身份',
 	private Date create_date;//创建时间
 	private Date update_date;//修改时间
-	
 	private User_role user_role; //引用角色表 一对一
 	
 	
@@ -80,12 +79,12 @@ public class Users {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	public int getDel_flag() {
+/*	public int getDel_flag() {
 		return del_flag;
 	}
 	public void setDel_flag(int del_flag) {
 		this.del_flag = del_flag;
-	}
+	}*/
 
 	public Date getCreate_date() {
 		return create_date;

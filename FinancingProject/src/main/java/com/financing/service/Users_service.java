@@ -1,4 +1,7 @@
 package com.financing.service;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +19,29 @@ public class Users_service  implements IN_Users_service{
 	
 	public Users getByPhone(String phone) {  //≤È’“”√ªß
 		 return users_dao.getByPhone(phone);
+	}
+
+	@Override
+	public List<Users> list_Users(Map map) {
+		// TODO Auto-generated method stub
+		return users_dao.list_Users(map);
+	}
+
+	@Override
+	public Users getById(int id) {
+		// TODO Auto-generated method stub
+		return users_dao.getById(id);
+	}
+
+	@Override
+	public void update(Users users) {
+		users_dao.update(users);
+	}
+
+	@Override
+	public void save_users(Users users) {
+	   users_dao.save_users(users);
+		
 	}
 
 }

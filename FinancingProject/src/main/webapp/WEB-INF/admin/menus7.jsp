@@ -12,7 +12,10 @@
 <script type="text/javascript" src="/FinancingProject/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h3>>>资讯管理</h3>
+<h3>
+<span class=" glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+<b>资讯管理</b>
+</h3>
 <hr>
 
 
@@ -45,7 +48,7 @@
   <td align="right" width="10%">
       <button type="button" class="btn btn-primary"  onclick="fun3();"
         >
-           添加
+          新增
           </button>
  </td>
 </tr>

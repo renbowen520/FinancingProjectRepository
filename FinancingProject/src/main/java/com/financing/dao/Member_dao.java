@@ -50,7 +50,7 @@ public class Member_dao implements IN_Member_dao {
 	}
 	
 	
-	//邀请码生成
+	//密码盐生成
 	public String getma(int k) {
 		 String s="";
 		   for(int i=0;i<k;i++) {

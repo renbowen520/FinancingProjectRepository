@@ -44,10 +44,12 @@
         <div class="layui-side layui-bg-black kit-side">
             <div class="layui-side-scroll">
                 <div class="kit-side-fold"  ><i class="fa fa-bars" aria-hidden="true"></i></div>
+                
+                
                 <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
                 <ul class="layui-nav layui-nav-tree" lay-filter="kitNavbar" kit-navbar>
                     <li class="layui-nav-item">
-                        <a class="" href="javascript:;"><i class="fa fa-plug" aria-hidden="true"></i><span> 理财产品</span></a>
+                        <a class="" href="javascript:;"><i class="fa fa-money" aria-hidden="true"></i><span> 理财产品</span></a>
                         <dl class="layui-nav-child">
                               <dd>
                                      <a href="javascript:;" data-url="/FinancingProject/AdminController/menus1" data-icon="&#xe614;" data-title="固收类/P2P" kit-target data-id='2'><i class="layui-icon">&#xe614;</i><span>&nbsp; 固收类/P2P</span></a>
@@ -67,7 +69,7 @@
                     </li>
 
                  <li class="layui-nav-item">
-                        <a href="javascript:;"  data-name="table" kit-loader><i class="fa fa-plug" aria-hidden="true"></i><span> 钱包管理</span></a>
+                        <a href="javascript:;"  data-name="table" kit-loader><i class="fa fa-cny" aria-hidden="true"></i><span> 钱包管理</span></a>
                    <dl class="layui-nav-child">
                     
                               
@@ -79,7 +81,7 @@
 
 
                     <li class="layui-nav-item">
-                        <a href="javascript:;"  data-name="table" kit-loader><i class="fa fa-plug" aria-hidden="true"></i><span> 学院管理</span></a>
+                        <a href="javascript:;"  data-name="table" kit-loader><i class="fa fa-columns" aria-hidden="true"></i><span> 学院管理</span></a>
                    <dl class="layui-nav-child">
                      
                               
@@ -96,7 +98,7 @@
 
 
                   <li class="layui-nav-item">
-                        <a href="javascript:;"  data-name="table" kit-loader><i class="fa fa-plug" aria-hidden="true"></i><span> 会员管理</span></a>
+                        <a href="javascript:;"  data-name="table" kit-loader><i class="fa fa-user-circle-o" aria-hidden="true"></i><span> 会员管理</span></a>
                    <dl class="layui-nav-child">
                      
                               
@@ -127,7 +129,7 @@
 
 
          <li class="layui-nav-item">
-                        <a href="javascript:;"  data-name="table" kit-loader><i class="fa fa-plug" aria-hidden="true"></i><span> 理财统计</span></a>
+                        <a href="javascript:;"  data-name="table" kit-loader><i class="fa fa-area-chart" aria-hidden="true"></i><span> 理财统计</span></a>
                    <dl class="layui-nav-child">
                      
                               
@@ -142,7 +144,7 @@
 					</li>
 
                <li class="layui-nav-item">
-                        <a href="javascript:;"  data-name="table" kit-loader><i class="fa fa-plug" aria-hidden="true"></i><span> 理财设置</span></a>
+                        <a href="javascript:;"  data-name="table" kit-loader><i class="fa fa-gg-circle" aria-hidden="true"></i><span> 理财设置</span></a>
                    <dl class="layui-nav-child">
                      
                               
@@ -157,7 +159,7 @@
 					</li>
 
      <li class="layui-nav-item">
-                        <a href="javascript:;"  data-name="table" kit-loader><i class="fa fa-plug" aria-hidden="true"></i><span> 系统管理</span></a>
+                        <a href="javascript:;"  data-name="table" kit-loader><i class="fa fa-television" aria-hidden="true"></i><span> 系统管理</span></a>
                    <dl class="layui-nav-child">
                      
                               

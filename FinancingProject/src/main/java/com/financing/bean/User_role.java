@@ -17,10 +17,10 @@ import org.springframework.web.context.request.NativeWebRequest;
 @Entity
 @Table
 public class User_role {   //角色表
-	private String id;//主键
+	private int id;//主键
 	private String cname;//中文名
 	private String ename;//英文名
-	private int available;//是否可用
+//	private int available;//是否可用
 	private String remark;//备注
 	private Date create_date;//创建时间
 	private Date update_date;//修改时间 
@@ -47,16 +47,18 @@ public class User_role {   //角色表
 	
 	@Id
 	@GeneratedValue
-	public String getId() {
+	public int getId() {
 		return id;
 	}
-	
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
+	
+	
 	public String getCname() {
 		return cname;
 	}
+
 	public void setCname(String cname) {
 		this.cname = cname;
 	}
@@ -66,12 +68,12 @@ public class User_role {   //角色表
 	public void setEname(String ename) {
 		this.ename = ename;
 	}
-	public int getAvailable() {
+/*	public int getAvailable() {
 		return available;
 	}
 	public void setAvailable(int available) {
 		this.available = available;
-	}
+	}*/
 	public String getRemark() {
 		return remark;
 	}

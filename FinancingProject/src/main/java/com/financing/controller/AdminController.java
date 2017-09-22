@@ -5,6 +5,7 @@ import java.util.Map;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.session.Session;
+import org.aspectj.weaver.AjAttribute.PrivilegedAttribute;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,8 +21,10 @@ import com.financing.Interface_service.IN_News_service;
 import com.financing.Interface_service.IN_News_type_service;
 import com.financing.Interface_service.IN_Oversea_config_service;
 import com.financing.Interface_service.IN_Subject_service;
+import com.financing.Interface_service.IN_Users_service;
 import com.financing.Interface_service.IN_feedback_service;
 import com.financing.Interface_service.IN_push_notice_service;
+import com.financing.Interface_service.IN_user_role_service;
 import com.financing.bean.Feedback;
 import com.financing.bean.Finance_product_funds;
 import com.financing.bean.Member;
@@ -41,6 +44,7 @@ import com.financing.bean.News_type;
 import com.financing.bean.Oversea_config;
 import com.financing.bean.Push_notice;
 import com.financing.bean.Subject;
+import com.financing.bean.User_role;
 import com.financing.bean.Users;
 import com.financing.service.Member_service;
 import com.financing.service.Member_withdraw_record_service;
@@ -82,6 +86,14 @@ public class AdminController {
 @Autowired
 private  IN_feedback_service IN_feedback_service;
 	
+
+@Autowired
+private IN_Users_service IN_Users_service;
+
+@Autowired
+private IN_user_role_service IN_user_role_service;
+
+
 	 //显示后台
 	@RequestMapping("/admin")
 	public String admin() {
@@ -270,13 +282,34 @@ private  IN_feedback_service IN_feedback_service;
 		return Feedback;
 	}*/
 	
+	@RequestMapping("/get_user_role")
+	@ResponseBody
+	public List<User_role>	  get_user_role() {
+		List<User_role>list = IN_user_role_service.list_user_role();
+		return   list;
+	}
 	
+	
+	  //用户管理
 	@RequestMapping("/menus19")
-	public String menus19() {
+	public String menus19(Model model,@ModelAttribute("users_q1")String users_q1,@ModelAttribute("users_q2")String users_q2) {
+		Map map = new HashMap<>();
+	    map.put("users_q1", users_q1);
+	    map.put("users_q2", users_q2); 
+	    List<Users>list =IN_Users_service.list_Users(map);
+	    model.addAttribute("users_list", list);
+	    model.addAttribute("users_q1",users_q1);
+	    model.addAttribute("users_q2", users_q2);
 		return "admin/menus19";
 	}
+	
+	
+	//角色管理
 	@RequestMapping("/menus20")
-	public String menus20() {
+	public String menus20(Model model) {
+		
+		List<User_role>list= IN_user_role_service.list_user_role();
+		model.addAttribute("list_user_role", list);
 		return "admin/menus20";
 	}
 	@RequestMapping("/menus21")
