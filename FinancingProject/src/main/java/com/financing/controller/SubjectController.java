@@ -146,8 +146,11 @@ public class SubjectController {
 		Map map=new HashMap<>();
 		map.put("namem", namem);
 		System.out.println("namem:"+namem);
-		map.put("statusm", statusm);
 		map.put("typem", typem);
+		System.out.println("typem:"+typem);
+		map.put("statusm", statusm);
+		System.out.println("statusm:"+statusm);
+		
 		List<Subject>listSubject=subjectService.listSubject(map);
 		model.addAttribute("listSubject", listSubject);
 		
