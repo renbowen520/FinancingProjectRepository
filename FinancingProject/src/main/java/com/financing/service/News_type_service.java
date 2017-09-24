@@ -1,6 +1,7 @@
 package com.financing.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,8 +21,8 @@ public class News_type_service implements IN_News_type_service {
 	private IN_News_type_dao  news_type_dao;
 	
 	
-	public List<News_type>list_News_type(){
-		 return news_type_dao.list_News_type();
+	public List<News_type>list_News_type(Map map){
+		 return news_type_dao.list_News_type(map);
 	}
 	
 	 public News_type getById(int id) {
@@ -35,4 +36,18 @@ public class News_type_service implements IN_News_type_service {
 	 public void update(News_type news_type) {
 		 news_type_dao.update(news_type);
 	 }
+
+	@Override
+	public List<News_type> list_News_type() {
+		// TODO Auto-generated method stub
+		return news_type_dao.list_News_type();
+	}
+
+	@Override
+	public boolean getsupType(int id) {
+		// TODO Auto-generated method stub
+		return news_type_dao.getsupType(id);
+	}
+
+
 }

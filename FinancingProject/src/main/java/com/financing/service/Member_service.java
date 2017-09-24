@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.financing.Interface_dao.IN_Member_dao;
 import com.financing.Interface_service.IN_Member_service;
+import com.financing.bean.Award_records;
+import com.financing.bean.Bbin_info;
 import com.financing.bean.Member;
 import com.financing.bean.Member_account;
 import com.financing.bean.Member_deposit_record;
@@ -80,5 +82,13 @@ public class Member_service  implements IN_Member_service{
 		// TODO Auto-generated method stub
 		return md.getById(id);
 
+	}
+
+
+	@Override
+	public void saveAll(Member member, Bbin_info bbin_info, Award_records award_records,
+			Member_account member_account) {
+	md.saveAll(member, bbin_info, award_records, member_account);
+		
 	}
 }

@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.apache.catalina.authenticator.SavedRequest;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,21 @@ public class News_dao  implements IN_News_dao{
 	public Session getSession(){
 		return this.sf.getCurrentSession();
 	}
+	
+	public boolean getsupType(int id) {
+		 Session session = this.getSession();
+		  Query query = session.createQuery("from News s  where s.news_type.id=:id");
+		  query.setInteger("id", id);
+		  List<News>list = query.list();
+		  if(list.size()>0) {
+				 return true;   
+		  }else {
+				 return false;  
+		  }
+
+	}
+	
+	
 	
 	public void update(News news) {
 		  Session session = this.getSession();
@@ -52,7 +68,7 @@ public class News_dao  implements IN_News_dao{
 
 	 
 	public  List<News>list(Map map){  //查询所有的资讯
-		  String hql="from  News   where  0=0    ";
+		  String hql="from  News   where   status=0   ";
 		  Session session = this.getSession();
 		    hql=  this.gethql(hql, map);
 		   List<News>list = session.createQuery(hql).list();
@@ -68,7 +84,7 @@ public class News_dao  implements IN_News_dao{
             if(!q2.equals("")&&q2!=null) {
             	  hql+="    and  typeId = "+q2;
 		   }
-            hql+="       order by  sort  asc";
+            hql+="       order by  sort  asc,addTime desc";
 		   return hql;
 	}
 }

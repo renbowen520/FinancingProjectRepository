@@ -51,7 +51,7 @@
   <td align="right" width="10%">
       <button   id="add1"   type="button" class="btn btn-primary" "
         data-toggle="modal"     >
-           添加
+           新增
           </button>
  </td>
 </tr>
@@ -99,17 +99,26 @@
                   <button type="button" class="btn btn-primary"     data-toggle="modal"       onclick="fun2(${s.id})"  >
                    编辑查看
                   </button>
-                   &nbsp; &nbsp;    
-                   <c:if test="${s.status == 0 ||s.status==1 }">
-                   <button type="button" class="btn btn-danger"  data-toggle="modal"   onclick="fun(${s.id})"  >
-                   删除
-                  </button>
-                  </c:if>
-                       <c:if test="${s.status == 2}">
-                   <button disabled="disabled"    type="button" class="btn btn-danger"  data-toggle="modal"   onclick="fun(${s.id})"  >
-                   删除
-                  </button>
-                  </c:if>
+                   &nbsp; &nbsp;   
+                        <c:if test="${s.id == admin_login.id ||s.status == 2}">
+                           <button disabled="disabled"    type="button" class="btn btn-danger"  data-toggle="modal"   onclick="fun(${s.id})"  >
+                            删除
+                           </button>
+                       </c:if>
+                        <c:if test="${s.id != admin_login.id }">
+                                   <c:if test="${s.status == 0 ||s.status==1 }">
+                                  <button  id="de2"  type="button" class="btn btn-danger"  data-toggle="modal"   onclick="fun(${s.id})"  >
+                                   删除
+                                  </button>
+                                   </c:if>
+                       </c:if>
+                  
+               
+             
+               
+                  
+                
+                  
                   </td>
           </tr>
         </c:forEach>
@@ -195,7 +204,7 @@
 
 
 
-<!--  新增的div层-->
+<!--  div层-->
 <div class="modal fade" id="my2" tabindex="-1" role="dialog" 
      aria-labelledby="myModalLabel" aria-hidden="true">
    <div class="modal-dialog">
@@ -311,6 +320,9 @@
 
         
 <script type="text/javascript">
+
+
+
 
 function fun2(id){
 	//点击编辑 弹出对话框

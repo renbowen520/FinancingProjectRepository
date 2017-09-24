@@ -1,20 +1,28 @@
 package com.financing.bean;
 
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 //登陆日志表
 
-
+@Entity
+@Table
 public class User_log {
 	private int id;	 // ID
-	private  int action;	 //动作
+	private  int action;	 //动作 0表示登陆    1表示退出
 	private Date create_date;	//创建时间
-	private Date update_date;	//修改时间
+	private Date update_date;	//修改时间  
 	private String login_ip;	//登陆ip
 	private Users users;	//引用用户表id
 	
 	
-	
+	@Id
+	@GeneratedValue
 	public int getId() {
 		return id;
 	}
@@ -45,6 +53,10 @@ public class User_log {
 	public void setLogin_ip(String login_ip) {
 		this.login_ip = login_ip;
 	}
+	
+	
+	@ManyToOne
+	@JoinColumn(name="user_id")
 	public Users getUsers() {
 		return users;
 	}

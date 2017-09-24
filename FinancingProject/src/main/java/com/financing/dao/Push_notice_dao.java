@@ -38,7 +38,7 @@ return push_notice;
 	
 	@Override
 	public List<Push_notice> list(Map map) {
-		  String hql="from  Push_notice   where  0=0    ";
+		  String hql="from  Push_notice  p   where  0=0    ";
 		  Session session = this.getSession();
 		    hql=  this.gethql(hql, map);
 		   List<Push_notice>list = session.createQuery(hql).list();
@@ -47,16 +47,16 @@ return push_notice;
 
 	
 	public String gethql(String hql,Map map) {
-		 String q1 = (String) map.get("q1");
-		// String q2 = (String) map.get("q2");
+		 String q1 = (String) map.get("push_q1");
+		 String q2 = (String) map.get("push_q2");
 		   if(!q1.equals("")&&q1!=null) {
-			     hql+="    and  title like '%"+q1+"%'";
+			     hql+="    and  p.title like '%"+q1+"%'";
 		   }
-    /*      if(!q2.equals("")&&q2!=null) {
-          	  hql+="    and  typeId = "+q2;
+      if(!q2.equals("")&&q2!=null) {
+    	       hql+="    and  p.users.user_name  like '%"+q2+"%'";
 		   }
-          hql+="       order by  sort  asc";*/
-		   hql+="    order by status asc";
+        
+		   hql+="    order by status asc,create_date  desc";
 		   return hql;
 	}
 

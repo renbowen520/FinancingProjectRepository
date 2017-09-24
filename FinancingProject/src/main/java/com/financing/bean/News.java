@@ -29,14 +29,46 @@ public class News { //新闻列表
 	private String seoKey;//seo关键字
 	private String seoDes; //seo描述
 	private int placTop;//是否置顶 0是 1否
-	private int recommend; //是否推荐
+	private int recommend; //是否推荐0是   1否
 	private int audit;//是否审核
 	private Date addTime;//添加时间
 	private Date updTime;//修改时间
-	
-	//private int updId;   需要引用users表
-    //	private int  addId;  需要引用users表 
 	private News_type news_type;//引用新闻类别id
+    private  Users users;  
+    private Users users2;   //
+	private int status; //状态 0 正常   1删除
+	
+	
+	
+	
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	@ManyToOne
+	@JoinColumn(name="create_id")
+	public Users getUsers() {
+		return users;
+	}
+
+	public void setUsers(Users users) {
+		this.users = users;
+	}
+
+	
+	@ManyToOne
+	@JoinColumn(name="update_id")
+	public Users getUsers2() {
+		return users2;
+	}
+
+	public void setUsers2(Users users2) {
+		this.users2 = users2;
+	}
 
 	@Id
 	@GeneratedValue

@@ -10,6 +10,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Component;
 import com.financing.Interface_dao.IN_Member_dao;
+import com.financing.bean.Award_records;
+import com.financing.bean.Bbin_info;
 import com.financing.bean.Member;
 import com.financing.bean.Member_account;
 import com.financing.bean.Member_deposit_record;
@@ -173,5 +175,17 @@ public class Member_dao implements IN_Member_dao {
 		Session session=getSession();
 		session.save(member);
 	}
+	
+	//注册保存 会员表  体验金表  奖励表  账户表
+	public void saveAll(Member member
+			,Bbin_info bbin_info,Award_records award_records,
+			Member_account member_account
+			) {
+		Session session=getSession();
+		session.save(member);
+		session.save(bbin_info);
+		session.save(award_records);
+		session.save(member_account);
+	 }
 
 }

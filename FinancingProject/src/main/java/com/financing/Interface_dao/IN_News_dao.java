@@ -15,4 +15,5 @@ public interface IN_News_dao {
 	 void delete(int id) ;
 	 List<News>list(Map map);
 	 String gethql(String hql,Map map);
+	 boolean getsupType(int id);
 }

@@ -19,7 +19,6 @@ public class Member {//用户基本表
 		private String salt;//密码盐
 		private String mobile_Phone;// 手机号
 		private int status;// 帐号状态（0正常、1锁定、2删除）
-	//	private int del_flag;//删除标识  不要
 		private String identity;// 身份证号码
 		private Date create_date;//创建时间
 		private Date update_date;//修改时间

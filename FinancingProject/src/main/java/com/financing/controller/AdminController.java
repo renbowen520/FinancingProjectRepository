@@ -138,8 +138,11 @@ private IN_user_role_service IN_user_role_service;
 	
 	
 	@RequestMapping("/menus6")//资讯分类
-	public String menus6(Model model) {
-		 List<News_type>list = news_type_service.list_News_type();//查询所有
+	public String menus6(Model model,@ModelAttribute("news_type_q1")String news_type_q1,@ModelAttribute("news_type_q2")String news_type_q2) {
+		Map map = new HashMap<>();
+	    map.put("news_type_q1", news_type_q1);
+	    map.put("news_type_q2", news_type_q2);
+		List<News_type>list = news_type_service.list_News_type( map);//查询所有
 		  model.addAttribute("news_type", list) ;
 		return "admin/menus6";
 	}
@@ -243,12 +246,14 @@ private IN_user_role_service IN_user_role_service;
 		return "admin/menus16";
 	}
 	@RequestMapping("/menus17")//公告
-	public String menus17(Model model,@ModelAttribute("q1")String q1) {//公告
+	public String menus17(Model model,@ModelAttribute("push_q1")String q1,@ModelAttribute("push_q2")String q2) {//公告
 		Map map = new HashMap<>();
-	    map.put("q1", q1);
+	    map.put("push_q1",q1);
+	    map.put("push_q2", q2);
 	    List<Push_notice>list=IN_push_notice_service.list(map);
 	    model.addAttribute("push", list);
-	    model.addAttribute("q1",q1);
+	    model.addAttribute("push_q1",q1);
+	    model.addAttribute("push_q2",q2);
 		return "admin/menus17";
 	}
 	

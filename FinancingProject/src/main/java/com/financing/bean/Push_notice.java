@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -18,8 +20,28 @@ public class Push_notice {//公告表
 	private int status;//公告状态
 	private Date create_date;//创建时间
 	private Date update_date;//修改时间
+	private  Users users;   //发布人
+	private  Users users2;   //更新人
 	
 	
+	
+	
+	@ManyToOne
+	@JoinColumn(name="update_id")
+	public Users getUsers2() {
+		return users2;
+	}
+	public void setUsers2(Users users2) {
+		this.users2 = users2;
+	}
+	@ManyToOne
+	@JoinColumn(name="create_id")
+	public Users getUsers() {
+		return users;
+	}
+	public void setUsers(Users users) {
+		this.users = users;
+	}
 	@Id
 	@GeneratedValue
 	public int getId() {

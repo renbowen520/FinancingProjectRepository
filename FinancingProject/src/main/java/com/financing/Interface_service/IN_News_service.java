@@ -11,6 +11,6 @@ public interface IN_News_service {
 	 void  save(News news);
 	 void delete(int id);
 	 List<News>list(Map map);
-	 
+	 boolean getsupType(int id);
 
 }

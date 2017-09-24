@@ -11,6 +11,9 @@
 <script type="text/javascript" src="/FinancingProject/js/jquery-3.2.0.min.js" ></script>
 <script type="text/javascript" src="/FinancingProject/js/bootstrap.min.js"></script>
 
+<link href="/FinancingProject/css/jquery.treetable.css" rel="stylesheet" type="text/css" /> 
+<script src="/FinancingProject/js/jquery.treetable.js"></script>
+
 </head>
 <body>
 <h3>
@@ -39,7 +42,7 @@
           <th>状态</th>
          <th>创建时间</th>
          <th>更新时间</th>
-          <th>权限配置</th>
+          <th>操作</th>
        </tr>
        
        <c:forEach  items="${list_user_role }" var="s"   varStatus="va">
@@ -92,13 +95,19 @@
        <form  action="/FinancingProject/"     name="f2"  id="f2"    class="form-horizontal" role="form"    method="post">    
          <div class="modal-body">
            <div class="form-group">
-           <label for="firstname" class="col-sm-2 control-label">用户名</label>
+           <label for="firstname" class="col-sm-2 control-label">角色名</label>
                <div class="col-sm-10">
                <input type="text" class="form-control" id="a1"  name="a1"
-                 placeholder="请输入用户名" required="required">
+                 placeholder="请输入角色名" required="required">
                </div>
           </div>
-
+         <div class="form-group">
+           <label for="firstname" class="col-sm-2 control-label">角色描述</label>
+               <div class="col-sm-10">
+               <input type="text" class="form-control" id=""  name=""
+                 placeholder="请输入角色描述" required="required">
+               </div>
+          </div>
    
    </div>
          
@@ -165,8 +174,10 @@
 
 <script type="text/javascript">
 function fun(){   //新增
-    alert("新增");
-    $('#my').modal('show'); //显示
+   // alert("新增");
+	 $(location).attr('href', '/FinancingProject/UsersController/show_add');
+
+//    $('#my').modal('show'); //显示
 }
 
 

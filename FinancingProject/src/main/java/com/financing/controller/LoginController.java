@@ -1,6 +1,9 @@
 package com.financing.controller;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -10,27 +13,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.financing.Interface_service.IN_Member_account_service;
 import com.financing.Interface_service.IN_Member_service;
+import com.financing.Interface_service.IN_Users_service;
 import com.financing.Interface_service.IN_award_records_service;
 import com.financing.Interface_service.IN_bbin_info_service;
+import com.financing.Interface_service.IN_user_role_service;
 import com.financing.bean.Award_records;
 import com.financing.bean.Bbin_info;
 import com.financing.bean.Member;
 import com.financing.bean.Member_account;
+import com.financing.bean.User_log;
 import com.financing.bean.Users;
 
 
 
 
-//该控制层主要用来处理登陆 注册相关的业务
+//该控制层主要用来处理前后台登陆 注册相关的业务
 @Controller
 @RequestMapping("/LoginController")
 public class LoginController  {
 
 	
-	
+	@Autowired
+	private IN_Users_service IN_Users_service;
 	
 	
 	@Autowired
@@ -44,130 +54,204 @@ public class LoginController  {
    
    @Autowired
     private IN_Member_account_service IN_Member_account_service;
- //后台登陆
+ 
+   
+   @RequestMapping("/admin_out")
+   public String  admin_out(HttpServletRequest request) {  //后台退出
+	     //退出日志
+	     Users users =  (Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login");
+	     User_log  log= new User_log();
+         log.setUsers(users);
+         log.setAction(1);
+         log.setCreate_date(new Date());
+         log.setLogin_ip(IN_Users_service.getIpAddr(request));
+         IN_Users_service.save_User_log(log);
+         
+	     //清空session
+	     SecurityUtils.getSubject().getSession().removeAttribute("admin_login");
+	     SecurityUtils.getSubject().logout();
+	     return "redirect:/IndexController/index";
+   }
+   
+ 
+   @RequestMapping("/admin_logon")
+   public String  admin_logon(HttpServletRequest request) {  //后台注销
+	     //清空session
+	    //退出日志
+	     Users users =  (Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login");
+	     User_log  log= new User_log();
+           log.setUsers(users);
+           log.setAction(1);
+           log.setCreate_date(new Date());
+           log.setLogin_ip(IN_Users_service.getIpAddr(request));
+           IN_Users_service.save_User_log(log);
+           
+           SecurityUtils.getSubject().getSession().removeAttribute("admin_login");
+ 	       SecurityUtils.getSubject().logout();
+	       return "redirect:/IndexController/adminLogin";
+   }
+   
+   
+   
+   //后台登陆
  	@RequestMapping("adminLogin")
- 	public String adminLogin(Users users) {
+ 	public String adminLogin(Users users,HttpServletRequest request) {
  		  System.out.println(users.getPassword());
  		  System.out.println(users.getMobile_Phone());
  		  org.apache.shiro.subject.Subject sub=SecurityUtils.getSubject();
  		  UsernamePasswordToken token = new UsernamePasswordToken(users.getMobile_Phone(),users.getPassword());
  		   try {
- 			         sub.login(token);
- 			     	Session session=sub.getSession();
- 			 //		System.out.println("sessionId:"+session.getId());
- 				//	System.out.println("sessionHost:"+session.getHost());
- 				//	System.out.println("sessionTimeout:"+session.getTimeout());
+ 			          sub.login(token);
+ 			     	 Session session=sub.getSession();
+ 		 	        Users users888= (Users) sub.getPrincipal();
+ 		 	        session.setAttribute("admin_login", users888);
+ 		       //	System.out.println("前台用户接受到了值:"+users888.getUser_name());
+ 				//	System.out.println("sessionId:"+session.getId());
+ 			  //	System.out.println("sessionHost:"+session.getHost());
+ 			  //	System.out.println("sessionTimeout:"+session.getTimeout());
  				 //    return "redirect:/AdminController/admin";//登陆成功后调到后台
- 				     return "admin/admin";
+ 	             //登陆成功后添加登陆记录
+ 		           User_log  log= new User_log();
+ 		            log.setUsers(users888);
+ 		            log.setAction(0);
+ 		            log.setCreate_date(new Date());
+ 		            log.setLogin_ip(IN_Users_service.getIpAddr(request));
+ 		            IN_Users_service.save_User_log(log);
+ 				    return "redirect:/AdminController/admin";
  		   } catch (Exception e) {
  				    e.printStackTrace();
  				    token.clear();
- 		            return "redirect:/LoginController/error";
+ 		            return "redirect:/IndexController/error";
  			 }
  	}
    
+
+ 	
 	
-	@RequestMapping("/error") 
-	public String error() {
-		return "error/error";
-		
-	}
+
    
    
    @RequestMapping("/out")
-   public String out(HttpSession session) { //注销
+   public String out(HttpSession session) { //前台注销
 	    session.removeAttribute("member_login");
-	   return "jsp/index";
-	   
+	   return "redirect:/IndexController/index";
    }
 
-   @RequestMapping("/r")
-   public String r() {
-	   return "jsp/register";
-   }
-   
+
 	 @RequestMapping("/login")
 	public String    login(HttpSession session,Member member0,Model model) {
          //根据手机号查询用户 
 		 System.out.println(member0.getMobile_Phone());
 		 System.out.println(member0.getPassword());
 		 Member member = IN_Member_service.getByPhone(member0.getMobile_Phone()) ;
-		   if(member!=null) {  //查询到了
+		   if(member!=null&&member.getStatus()==0) {  //查询到了,并且状态0
 			   //输入的密码加密
 			     String p1=   new Md5Hash(member0.getPassword(),member.getSalt()).toString();
 			   //如果密码相同
 			   if(p1.equals(member.getPassword())) {
 				   session.setAttribute("member_login", member);
 				   session.setAttribute("no_login", "");
-			//	   model.addAttribute("member_login", member);//存入session
-				//   model.addAttribute("no_login", "");
 				   return  "jsp/personal_center"; //个人中心
 			   }else {
-				   session.setAttribute("no_login", "账号或者密码错误!");
-			//	   model.addAttribute("no_login", "账号或者密码错误!");
-			       return "jsp/login";
+				    session.setAttribute("no_login", "账号或者密码错误!");
+					 return "redirect:/IndexController/login";
+				   
 			   }
 		   }else { //没有查询到
-			   return "jsp/login"; //账号不存在
+			   session.setAttribute("no_login", "账号不存在或者被锁定!");
+				 return "redirect:/IndexController/login"; //账号不存在
 		   }
 		 
 		  
 	}
 	
 	 
-	 
+		@RequestMapping("/yz")  //验证手机号唯一性
+		@ResponseBody
+		public  String   yz(@RequestParam String mobile_Phone) {
+	  Member member=		IN_Member_service.getByPhone(mobile_Phone);
+		
+		 boolean b ;
+		   Map<String, Boolean> map = new HashMap<>();
+		   if(member!=null) {
+			  b=false;
+		   }else {
+			  b=true;
+		   }
+		   map.put("valid", b);
+		   ObjectMapper mapper = new ObjectMapper();
+	       String resultString = "";
+	       try {
+	           resultString = mapper.writeValueAsString(map);
+	       } catch (JsonProcessingException e) {
+	           e.printStackTrace();
+	       }
+	         return resultString;
+		}
+		
+		
+		@RequestMapping("/yz_ma")  //验证吗
+		@ResponseBody
+		public  String   yz_ma(@RequestParam String invitedCode) {
+			Member member=		IN_Member_service.getByCode(invitedCode);
+		
+		 boolean b ;
+		   Map<String, Boolean> map = new HashMap<>();
+		   if(member!=null) {
+			  b=true;
+		   }else {
+			  b=false;
+		   }
+		   map.put("valid", b);
+		   ObjectMapper mapper = new ObjectMapper();
+	       String resultString = "";
+	       try {
+	           resultString = mapper.writeValueAsString(map);
+	       } catch (JsonProcessingException e) {
+	           e.printStackTrace();
+	       }
+	         return resultString;
+		}
+		
+		
+		
 	
 	@RequestMapping("/register")//用户注册
-	public String register(Member member,String ma,Model model,HttpSession session) {   
-	    //  System.out.println(member.getMember_name());	 
-		//  System.out.println(member.getMobile_Phone());
-		//  System.out.println(member.getPassword());
-		//  System.out.println("邀请码:"+ma);
-		//  System.out.println(member.getQqNumber());
-		  // 首先查询手机是不是被注册了
-		  Member member55 = IN_Member_service.getByPhone(member.getMobile_Phone());
-		  if(member55==null) {//手机没有被注册
+	public String register(Member member,Model model,HttpSession session) {   
+	      System.out.println(member.getMember_name());	 
+		  System.out.println(member.getMobile_Phone());
+		  System.out.println(member.getPassword());
+		  System.out.println("bei邀请码:"+member.getInvitationCode());
+		  System.out.println(member.getQqNumber());
+		 
 		  //生产自己的邀请码
-		  member.setInvitationCode(""+new Date().getTime());
-		  if(ma!=null &&!ma.equals("")) {
-			   //如果填写了 邀请码  那么需要查询
-		   Member	   member2 = IN_Member_service.getByCode(ma);
-		   if(member2!=null) {//查询到邀请码是正确的
-			   //设置自己的被邀请码
-			   member.setInvitedCode(member2.getInvitationCode());
-		   }//没有就不写
-		  } 
+		     member.setInvitationCode(""+new Date().getTime());
 		      member.setStatus(0); //账号 正常状态
 		      String salt=  IN_Member_service.getma(10);//密码盐
 		      member.setSalt(salt);//设置盐
 		      String p1=   new Md5Hash(member.getPassword(),salt).toString();
 		     member.setPassword(p1);  //设置加密的密码
-		 
-		  IN_Member_service.save(member);
-		  //根据手机号查询出新添加的id
-	    Member member33=	  IN_Member_service.getByPhone(member.getMobile_Phone());
-	//	 System.out.println("id="+member33.getId());
-		//注册赠送888体验金 
-		 Bbin_info bbin_info= new Bbin_info();
-		 bbin_info.setMember(member33);
-		 bbin_info.setAmont(888);
-		 bbin_info.setStatus(0);//正常
-		 bbin_info.setCreate_date(new Date());//添加时间
-		 IN_bbin_info_service.save(bbin_info);
+		    member.setCreate_date(new Date());
+		     
+		      //体验金表
+		     //注册赠送888体验金 
+		     Bbin_info bbin_info= new Bbin_info();
+			 bbin_info.setMember(member);
+			 bbin_info.setAmont(888);
+			 bbin_info.setStatus(0);//正常
+			 bbin_info.setCreate_date(new Date());//添加时间
+		     
+		//	  IN_Member_account_service.save(m2);
+  	   //	  IN_Member_service.save(member);
+		// IN_bbin_info_service.save(bbin_info);
+				//	 IN_award_records_service.save(a1);//保存
 		 //向奖励表添加
 		 Award_records  a1 = new Award_records();
-		 Award_records  a2 = new Award_records();
-		 a2.setMember(member33);
-		 a1.setMember(member33);
+		 a1.setMember(member);
 		 a1.setAddTime(new Date());
-		 a2.setAddTime(new Date());
 		 a1.setType(0);//注册
-		 a1.setIsAward(0);
-		 a2.setType(1);//投资
-		 a2.setIsAward(0);
-		 IN_award_records_service.save(a1);//保存
-		 IN_award_records_service.save(a2);
-		
+		 a1.setIsAward(0);//未奖励
+	
 		  //关联 账户
 	 Member_account  m2= new Member_account();
 	m2.setUseable_balance(0);
@@ -177,16 +261,22 @@ public class LoginController  {
 	m2.setBonus_amount(0);
 	m2.setInvest_amount(0);
 	m2.setDelflag(0);
-	m2.setMember(member33);
-	  IN_Member_account_service.save(m2);
-		 
-		 session.setAttribute("member_login", member33);//存入session中
-		 session.setAttribute("no_phone", "");
-	     return "jsp/personal_center"; //进入个人中心
-	}else { //手机号被注册了
-		 session.setAttribute("member_register",member );
-		 session.setAttribute("no_phone", "手机号码已被注册!");
-		 return "redirect:/LoginController/r";
+	m2.setMember(member);
+	 
+	 //全部保存  必须在一个事物中
+	 IN_Member_service.saveAll(member, bbin_info, a1, m2);
+	   //重新查询账号 
+		Member   member999 =IN_Member_service.getByPhone(member.getMobile_Phone()) ;
+		 session.setAttribute("member_login", member999);//存入session中
+		 //进入个人中心
+		 return "redirect:/IndexController/personal_center";
+		
+	  
 	}
-}
+	
+
+	
+	
+
+		  
 }

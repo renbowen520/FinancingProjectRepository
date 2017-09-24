@@ -5,20 +5,20 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 //新闻类别表
 @Table
 @Entity
 public class News_type {
-
 	private int id;  // 主键
 	private String name;//名称
 	private String link;//链接
 	private String note;//备注
 	private int sort;//排序
 	private String pageType;//页面类型
-	private int supType;//上级类别
 	private String info;//简介
 	private String cPhoto;//封面图片
 	private String text; //内容
@@ -27,12 +27,46 @@ public class News_type {
 	private String seoDes;//seo描述
 	private Date updTime;//修改时间
 	private Date addTime; //添加时间
-	
-    //	private int addId;   //添加人id   会引用users id
-	//private int updId; //修改人id
-	//private Set<News> news = new HashSet<News>();
-	
-	
+   private   int supType;
+   private Users users;//添加人
+   private Users users2;//修改人
+   
+private   int status;  //0正常    1删除
+
+ 
+
+
+public int getStatus() {
+	return status;
+}
+public void setStatus(int status) {
+	this.status = status;
+}
+public int getSupType() {
+	return supType;
+}
+public void setSupType(int supType) {
+	this.supType = supType;
+}
+
+
+@ManyToOne
+@JoinColumn(name="create_id")
+public Users getUsers() {
+	return users;
+}
+public void setUsers(Users users) {
+	this.users = users;
+}
+
+@ManyToOne
+@JoinColumn(name="update_id")
+public Users getUsers2() {
+	return users2;
+}
+public void setUsers2(Users users2) {
+	this.users2 = users2;
+}
 	@Id
 	@GeneratedValue
 	public int getId() {
@@ -71,12 +105,7 @@ public class News_type {
 	public void setPageType(String pageType) {
 		this.pageType = pageType;
 	}
-	public int getSupType() {
-		return supType;
-	}
-	public void setSupType(int supType) {
-		this.supType = supType;
-	}
+
 	public String getInfo() {
 		return info;
 	}

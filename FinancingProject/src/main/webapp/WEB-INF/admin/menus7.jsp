@@ -46,7 +46,7 @@
          <button id="reset"      type="button" class="btn btn-danger"  >  重置 </button>
  </td>
   <td align="right" width="10%">
-      <button type="button" class="btn btn-primary"  onclick="fun3();"
+      <button  id="add_news"     type="button" class="btn btn-primary"  
         >
           新增
           </button>
@@ -69,6 +69,9 @@
         <th>所属类别</th>
         <th>排序</th>
          <th>添加时间</th>
+         <th>修改时间</th>
+          <th>添加人</th>
+          <th>修改人</th>
           <th>操作</th>
        </tr>
        
@@ -79,6 +82,9 @@
                  <td>${s.news_type.name}</td>
                   <td>${s.sort }</td>
                   <td>${s.addTime }</td>
+                  <td>${s.updTime }</td>
+                  <td>${s.users.user_name }</td>
+                      <td>${s.users2.user_name }</td>
                   <td>
                   <button type="button" class="btn btn-primary"   onclick="fun2(${s.id})"  >
                    编辑查看
@@ -136,11 +142,12 @@
  
  
  <script type="text/javascript">
- function fun3(){  //新增
+
+ 
+ $("#add_news").click(function(){
 	 $(location).attr('href', '/FinancingProject/News_Controller/add1');
- }
- 
- 
+
+ });
  
 function fun2(id){  //编辑
 	 $(location).attr('href', '/FinancingProject/News_Controller/update1/'+id);
@@ -149,21 +156,22 @@ function fun2(id){  //编辑
  
  
  function fun(id){//点击删除按钮
-	    $('#myModal').modal('show');
 	    $("#did").val(id);
+	    $('#myModal').modal('show');
+	  
  }
 
-
-$(function(){
-	 //删除
+ //删除
 	$("#delete").click(function(){
 		$("#f2").attr("action","/FinancingProject/News_Controller/delete");
 		$("#f2").submit();
 		
 	});
-	
-	
-	
+ 
+ 
+
+$(function(){
+
 	//点击时模糊查询
 	$("#se").click(function(){
 		$("#f1").attr("action","/FinancingProject/AdminController/menus7");

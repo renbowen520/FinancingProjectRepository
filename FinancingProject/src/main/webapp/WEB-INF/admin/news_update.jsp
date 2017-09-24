@@ -22,7 +22,10 @@
 
 </head>
 <body>
-<h3>>>编辑资讯</h3>
+<h3>
+<span class=" glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+<b>资讯管理\编辑资讯</b>
+</h3>
 <hr>
 
 <form   action="/FinancingProject/News_Controller/update2"   class="form-horizontal"   method="post"   role="form"  id="f1" name="f1"    enctype="multipart/form-data">
@@ -73,7 +76,7 @@
               <div class="col-sm-8">
           <!--    multiple data-min-file-count="1"  -->
    
-                   <input   id="file1"   name="file1" class="form-control"   type="file" >
+                   <input   id="file88"   name="file88" class="form-control"   type="file" >
            </div>
    </div>
    
@@ -104,8 +107,7 @@
       <div class="col-sm-offset-2 col-sm-10">
           <button  id="ok"     type="submit" class="btn btn-primary">提交</button>
             &nbsp;&nbsp;
-          <button    id="em"   type="reset" class="btn btn-danger">重置</button>
-            &nbsp;&nbsp;
+          
           <button type="button" class="btn btn-default"  onclick="javascript:history.back(-1);">返回</button>
       </div>
    </div>
@@ -115,12 +117,12 @@
     var ue = UE.getEditor('text');
     
 
-    $('#em').click(function() {
+/*     $('#em').click(function() {
         var ue = UE.getEditor('text');
     	ue.setContent(""); 
     	 $("#yc").hide();
         $('#f1').data('bootstrapValidator').resetForm(true);
-    });
+    }); */
 
 	$("#ok").click(function(){//点击提交按钮
 		   var ue = UE.getEditor('text');
@@ -129,11 +131,6 @@
 	    	  return ;
 	     }
 	     $("#yc").hide();
-	   //  alert(ue.getContent());
-	     //var s = ue.getContent();
-	 //    alert(s.length);
-	//$('#f1').bootstrapValidator('validate');
-	//	$("#f1").attr("action","");
 		$("#f1").submit();
 	});
     
@@ -242,7 +239,7 @@
            validateInitialCount : true,
      //      previewFileIcon : "<i class='glyphicon glyphicon-king'></i>",
            msgFilesTooMany : "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
-           allowedFileTypes : [ 'image' ,'jpg'],//配置允许文件上传的类型
+           allowedFileTypes : [ 'image' ,'jpg','png','gif','jpeg','bmp'],//配置允许文件上传的类型
            allowedPreviewTypes : [ 'image' ],//配置所有的被预览文件类型
            allowedPreviewMimeTypes : [ 'jpg', 'png', 'gif' ,'jpeg','bmp'],//控制被预览的所有mime类型
            language : 'zh'

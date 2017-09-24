@@ -76,7 +76,6 @@
             <button type="button" class="btn btn-default" 
                data-dismiss="modal">关闭</button>
               
-              <button type="button"    onclick="reset2();"    id="resetBtn" class="btn btn-danger">重置</button> 
                
             <button  id="ok2"   type="button" class="btn btn-primary"  >
                提交</button>
@@ -151,13 +150,19 @@
 
 <center>
 <form  name="f1"  id="f1"    class="form-horizontal" role="form"  action=""  method="post">    
-<table  width="90%" >
+<table  width="90%"   border="1">
 <tr>
   <td >
   <label for="firstname" class="col-sm-2 control-label">标题</label >
-              <input type="text" class="form-control" id="q1"  name="q1" 
-        value="${q1 }"        placeholder="请输入标题"   style="width: 200px">
+              <input type="text" class="form-control" id=" push_q1"  name="push_q1" 
+        value="${push_q1 }"        placeholder="请输入标题"   style="width: 200px">
   </td>
+ <td >
+  <label for="firstname" class="col-sm-3 control-label">发布人</label >
+              <input type="text" class="form-control" id="push_q2"  name="push_q2" 
+        value="${push_q2 }"        placeholder="请输入发布人姓名"   style="width: 200px">
+  </td>
+ 
  
   <td>
        <button type="button" class="btn btn-primary"  name="se"  id="se" >
@@ -169,7 +174,7 @@
  </td>
   <td align="right" width="10%">
       <button type="button" class="btn btn-primary" data-toggle="modal" 
-        data-target="#my">
+      id="on_add">
         新增
      </button>
  </td>
@@ -191,6 +196,8 @@
         <th>公告标题</th>
          <th>添加时间</th>
          <th>修改时间</th>
+         <th>发布人</th>
+         <th>修改人</th>
          <th>状态</th>
           <th>操作</th>
        </tr>
@@ -202,6 +209,8 @@
                  <td>${s.title }</td>
                  <td>${s.create_date}</td>
                   <td>${s.update_date}</td>
+                   <td>${s.users.user_name}</td>
+                     <td>${s.users2.user_name}</td>
                   <td>
                    <c:if  test="${ s.status == 0}">
                        <font color="blue">发布中</font>
@@ -242,15 +251,25 @@
 <script type="text/javascript">
    var ue = UE.getEditor('t2');
    var ue2 = UE.getEditor('content');
+   
+   
+   $("#on_add").click(function(){
+	   //添加按钮打开 窗口
+	    $("#t1").val("");
+	    ue.setContent(""); 
+	    $("#yc").hide()   ;//表示display:none; 
+	    $('#my').modal('show'); //显示
+   });
+   
+   
    function fun2(id){
 	    $('#my2').modal('show');
 	    $("#div22").hide();
+	    $("#yc2").hide()   ;//表示display:none; 
 	 // 异步请求内容
 	    $.post("/FinancingProject/Push_notice_controller/getById",{id:id},
 	    function(msg){
-	    	  $("#cr").val(msg.create_date);
 	    	  $("#title").val(msg.title);
-	    	  $("#sj").val(msg.create_date);
 	    	  ue2.setContent(msg.content);
 	    	  $("#id").val(msg.id);
 	    	  if(msg.status==1){
@@ -260,14 +279,14 @@
    }
    
    
-   function  reset2(){
+/*    function  reset2(){
 	       var t1=  $("#title").val("");
 	       ue2.setContent(""); 
 		   $("#yc2").hide()   ;//表示display:none; 
-}
+} */
    
    function  reset1(){
-	      var t1=  $("#t1").val("");
+	     $("#t1").val("");
 	       ue.setContent(""); 
 		   $("#yc").hide()   ;//表示display:none; 
    }
@@ -279,7 +298,8 @@
 		
 	});
 	$("#reset").click(function(){  //重置按钮
-	      $("#q1").val("");
+	      $("#push_q1").val("");
+	      $("#push_q2").val("");
 	  	  $("#f1").attr("action","/FinancingProject/AdminController/menus17");
 		  $("#f1").submit();
 	});
@@ -299,6 +319,14 @@
 					   $("#yc").show();//表示display:block, 
 					   return ;
 				  }
+			     if(t1.length<2||t1.length>30){
+			    	 $("#yc").text("标题长度2-30个字符!");
+					   $("#yc").show();//表示display:block, 
+					   return ;
+			    	 
+			     }
+			     
+			     
 			     if(t2==null  || t2==""){
 			    	   $("#yc").text("请填写完整信息!");
 					   $("#yc").show();//表示display:block, 
@@ -321,6 +349,12 @@
 				   $("#yc2").show();//表示display:block, 
 				   return ;
 			  }
+		     if(t1.length<2||t1.length>30){
+		    	 $("#yc2").text("标题长度2-30个字符!");
+				   $("#yc2").show();//表示display:block, 
+				   return ;
+		    	 
+		     }
 		     if(t2==null  || t2==""){
 		    	   $("#yc2").text("请填写完整信息!");
 				   $("#yc2").show();//表示display:block, 

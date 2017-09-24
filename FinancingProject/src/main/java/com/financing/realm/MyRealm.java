@@ -23,8 +23,8 @@ public class MyRealm extends AuthorizingRealm{
 	 */
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection arg0) {
-		  String userName=(String)arg0.getPrimaryPrincipal();
-		  System.out.println("userName+"+userName);
+		 Users user =(Users) arg0.getPrimaryPrincipal();//取出登陆用户的实体类
+		  System.out.println("userName=========="+user.getUser_name());
 		  return null;
 	}
 
@@ -45,9 +45,11 @@ public class MyRealm extends AuthorizingRealm{
 	         String  	newupwd= MD5(upwd,users.getSalt() );
 	         System.out.println("加密后:"+newupwd);
 	         System.out.println("数据库中的密码:"+users.getPassword());
-	    	 if(users.getPassword().equals(newupwd)){
+	         //密码要相同 并且 状态0是正常的
+	    	 if(users.getPassword().equals(newupwd)&&users.getStatus()==0){
 	    		    System.out.println("说明成功了");
-	    		    AuthenticationInfo au = new SimpleAuthenticationInfo(users.getUser_name(), users.getPassword(),"x");
+	    		    //保存用户的信息
+	    		    AuthenticationInfo au = new SimpleAuthenticationInfo(users, users.getPassword(),users.getUser_name());
 	    	        token.setPassword(users.getPassword().toCharArray());
 	    		    return au;
            } else {

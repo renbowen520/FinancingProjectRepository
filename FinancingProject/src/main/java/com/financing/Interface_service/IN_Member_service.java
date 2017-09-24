@@ -3,6 +3,8 @@ package com.financing.Interface_service;
 import java.util.List;
 import java.util.Map;
 
+import com.financing.bean.Award_records;
+import com.financing.bean.Bbin_info;
 import com.financing.bean.Member;
 import com.financing.bean.Member_account;
 import com.financing.bean.Member_deposit_record;
@@ -24,5 +26,8 @@ public interface IN_Member_service {
 	 Member getByCode(String code);
 	 void save(Member member);
 	 Member getById(int id);
-
+	 void saveAll(Member member
+				,Bbin_info bbin_info,Award_records award_records,
+				Member_account member_account
+				);
 }

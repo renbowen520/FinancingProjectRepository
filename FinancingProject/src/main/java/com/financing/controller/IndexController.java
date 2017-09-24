@@ -33,6 +33,16 @@ public class IndexController {
 	@Autowired
 	private IN_Oversea_config_service oversea_config_Service;
 	
+	
+	@RequestMapping("/error") 
+	public String error() {
+		return "error/error";
+		
+	}
+	
+	
+	
+	
 	//ºóÌ¨µÇÂ½
 	@RequestMapping("/adminLogin")
 	public String adminLogin() {

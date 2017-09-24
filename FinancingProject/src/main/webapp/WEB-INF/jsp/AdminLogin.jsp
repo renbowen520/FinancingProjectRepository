@@ -44,31 +44,40 @@ $(document).ready(function() {
         if(a.length<1){
 		   $("#yc2").show();
 		   $("#yc").hide();
+		   $("#okok").hide();
+		   createCode();//调用验证码
 	       return ;
 	    }
         
     if(!(/^1[34578]\d{9}$/.test(a))){ 
           $("#yc").show();
           $("#yc2").hide();
+          $("#okok").hide();
+          createCode();//调用验证码
             return;
         } 
         
 		if(b.length<1){
 			  $("#yc3").show();
 			   $("#yc4").hide();
+			   $("#okok").hide();
+			   createCode();//调用验证码
+			 
 		  return ;
 		}
 		
 		if(b.length<6){
 			  $("#yc4").show();
 			   $("#yc3").hide();
+			   $("#okok").hide();
+			   createCode();//调用验证码
 		  return ;
 		}
 		   $("#yc2").hide();
 		   $("#yc").hide();
 		   $("#yc3").hide();
 		   $("#yc4").hide();
-		   $("#okok").val("");
+		   $("#okok").hide();
 			$("#f1").attr("action","/FinancingProject/LoginController/adminLogin");
 			$("#f1").submit();
 	  });

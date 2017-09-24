@@ -2,6 +2,9 @@ package com.financing.controller;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.apache.catalina.startup.PasswdUserDatabase;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,13 +41,19 @@ public class UsersController {
     	  return users;
 	 }
 	
+	 @RequestMapping("/show_add")
+	 public String show_add() {
+		 
+		 return "admin/show_add";
+	 }
+	 
 	
 	 @RequestMapping("/up_users")
 	 public String   up_users(Users users,int role_id) {  //更新账号
-	    System.out.println("角色"+role_id);
+	 /*   System.out.println("角色"+role_id);
 	    System.out.println("id"+users.getId());
 	    System.out.println("手机号"+users.getMobile_Phone());
-	    System.out.println("密码:"+users.getPassword());
+	    System.out.println("密码:"+users.getPassword());*/
 		//根据角色id查询实体类
 	    User_role user_role = IN_user_role_service.getById(role_id);
 	    Users  users2  = IN_Users_service.getById(users.getId());
@@ -52,8 +61,8 @@ public class UsersController {
 	    if(users.getPassword()!=null && !users.getPassword().equals("")) {
 	    	 //重新填写了
 	    	//获取密码盐
-	    	     String y = IN_Member_service.getma(10);
-			      String p1=   new Md5Hash(users.getPassword(),y).toString();
+	    	       String y = IN_Member_service.getma(10);
+			       String p1=   new Md5Hash(users.getPassword(),y).toString();
 			       users2.setPassword(p1);
 				    users2.setSalt(y);
 	    }
@@ -62,9 +71,65 @@ public class UsersController {
 	     users2.setUser_role(user_role);
 	     users2.setUpdate_date(new Date());
 	     IN_Users_service.update(users2);
+         SecurityUtils.getSubject().getSession().setAttribute("admin_login",users2);  
+
 	     return "redirect:/AdminController/menus19";
 	}
 	
+	 
+	 
+	 @RequestMapping("/up_admin_pwd")
+	 @ResponseBody
+	 public boolean up_admin_pwd(String  pwd) {
+		 Users users =  (Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login");
+         //根据登陆的id 查询实体类
+		 Users    users22 = IN_Users_service.getById(users.getId());
+		//得到密码盐
+		     String y = IN_Member_service.getma(10);
+	         String p1=   new Md5Hash(pwd,y).toString();
+            //更新时间，盐，密码
+	         users22.setPassword(p1);
+            users22.setSalt(y);
+            users22.setUpdate_date(new Date());
+            IN_Users_service.update(users22);
+            //更新session中存储的
+            SecurityUtils.getSubject().getSession().setAttribute("admin_login",users22);  
+       Users  Users99=   (Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login");
+            System.out.println("更新后的密码:"+Users99.getPassword());
+            
+            return true;
+	 }
+	 
+	 
+	 @RequestMapping("/pwd")   //修改密码时验证原密码
+	 @ResponseBody
+	 public String pwd(@RequestParam String pwd) { 
+		 Users users =  (Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login");
+	     String p = users.getPassword();
+	     String p2=   new Md5Hash(pwd,users.getSalt()).toString();
+	/*      System.out.println("=="+pwd);
+	     System.out.println("p===="+p);
+	     System.out.println("p2====="+p2);*/
+	     boolean b;
+	     Map<String, Boolean> map = new HashMap<>();
+	      if(p.equals(p2)) {
+	    	  b=true;
+	      }else {
+	    	  b=false;
+	      }
+	      map.put("valid", b);
+		   ObjectMapper mapper = new ObjectMapper();
+	       String resultString = "";
+	       try {
+	           resultString = mapper.writeValueAsString(map);
+	       } catch (JsonProcessingException e) {
+	           e.printStackTrace();
+	       }
+	         return resultString;
+	     
+	 }
+	 
+	 
 	
 	@RequestMapping("/yz")  //验证手机号唯一性
 	@ResponseBody
@@ -115,6 +180,7 @@ public class UsersController {
 	//	 System.out.println("id="+delete_id);
 		   Users users = IN_Users_service.getById(Integer.valueOf(delete_id));
 		   users.setStatus(2);//删除状态
+		   users.setUpdate_date(new Date());  //更新时间
 		   IN_Users_service.update(users);
 		   return "redirect:/AdminController/menus19";
 	}

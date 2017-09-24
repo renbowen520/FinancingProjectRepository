@@ -40,5 +40,11 @@ public class News_service implements IN_News_service  {
 	  public List<News>list(Map map){
 		  return  news_dao.list(map);
 	  }
+
+	@Override
+	public boolean getsupType(int id) {
+		// TODO Auto-generated method stub
+		return news_dao.getsupType(id);
+	}
 	  
 }

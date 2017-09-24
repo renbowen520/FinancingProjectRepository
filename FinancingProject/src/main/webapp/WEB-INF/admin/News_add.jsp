@@ -22,7 +22,10 @@
 
 </head>
 <body>
-<h3>>>添加资讯</h3>
+<h3>
+<span class=" glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+<b>资讯管理\添加资讯</b>
+</h3>
 <hr>
 
 
@@ -122,11 +125,6 @@
 	    	  return ;
 	     }
 	     $("#yc").hide();
-	   //  alert(ue.getContent());
-	     //var s = ue.getContent();
-	 //    alert(s.length);
-	//$('#f1').bootstrapValidator('validate');
-	//	$("#f1").attr("action","");
 		$("#f1").submit();
 	});
     
@@ -220,7 +218,7 @@
         validateInitialCount : true,
   //      previewFileIcon : "<i class='glyphicon glyphicon-king'></i>",
         msgFilesTooMany : "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
-        allowedFileTypes : [ 'image' ,'jpg'],//配置允许文件上传的类型
+        allowedFileTypes : [ 'image' ,'jpg','png','gif','jpeg','bmp'],//配置允许文件上传的类型
         allowedPreviewTypes : [ 'image' ],//配置所有的被预览文件类型
         allowedPreviewMimeTypes : [ 'jpg', 'png', 'gif' ,'jpeg','bmp'],//控制被预览的所有mime类型
         language : 'zh'

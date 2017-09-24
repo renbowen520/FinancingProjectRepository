@@ -23,8 +23,8 @@
 <script src="/FinancingProject/index_files/echarts.js"></script>
 <script src="/FinancingProject/index_files/hm.js"></script>
 <script src="/FinancingProject/index_files/hm(1).js"></script>	
-<script src="/FinancingProject/index_files/jquery"></script>
-<script src="/FinancingProject/index_files/bootstrap"></script>
+ <script src="/FinancingProject/index_files/jquery"></script>
+<script src="/FinancingProject/index_files/bootstrap"></script> 
 
 
 
@@ -140,18 +140,7 @@
     <script type="text/javascript">
 	    $("#yc").text('${no_login}');
 
-   /* 		 $.post("/FinancingProject/LoginController/login/"+a+"/"+b,function(msg){
-   	 	     if(msg){
-   	 	     alert("ok!");
-   	 	     }else{
-   	 	    	$("#yc").text("账号或者密码错误!");
-   	 	     }
-   			}); */
-    
-/*     $('#password').bind('keydown',function(event){
-        if(event.keyCode == "13") {
-        }
-    });  */
+
     
     $("#but").click(function(){
   	  var a=document.getElementById("mobile_Phone").value;    
@@ -176,6 +165,7 @@
          $("#f1").attr("action","/FinancingProject/LoginController/login");
 		 $("#f1").submit();
     });
+
     </script>
     
     

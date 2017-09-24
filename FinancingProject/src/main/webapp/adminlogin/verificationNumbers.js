@@ -39,7 +39,7 @@ function validate () {
    //   window.open(document.getElementById("J_down").getAttribute("data-link"));
  //   document.getElementById("J_codetext").value="";
    //   document.getElementById("okok").setAttribute("placeholder","验证码正确");
-    	 document.getElementById("okok").innerHTML="<font color='red'>Verification code OK</fon>"
+    	 document.getElementById("okok").innerHTML="<font color='blue'>Verification code OK</font>"
   //    createCode();
       return true;
     }

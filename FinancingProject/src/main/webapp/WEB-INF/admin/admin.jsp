@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
+    <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,24 +27,24 @@
               
                 <li class="layui-nav-item">
                     <a href="javascript:;">
-                        <img src="/FinancingProject/images/0.jpg" class="layui-nav-img"> Admin
+                        <img src="/FinancingProject/images/0.jpg" class="layui-nav-img"> ${admin_login.user_name }
                     </a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;">基本资料</a></dd>
               
-                        <dd><a href="javascript:;"><i class=" fa fa-refresh"></i>&nbsp;注销</a></dd>
+                        <dd><a href="/FinancingProject/LoginController/admin_logon"><i class=" fa fa-refresh"></i>&nbsp;注销</a></dd>
 
                     </dl>
                 </li>
 
-      <li class="layui-nav-item"><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> 退出</a></li>
+      <li class="layui-nav-item"><a href="/FinancingProject/LoginController/admin_out"  onclick="return confirm('确定退出?')"><i class="fa fa-sign-out" aria-hidden="true"></i> 退出</a></li>
             </ul>
         </div>
 
 
         <div class="layui-side layui-bg-black kit-side">
             <div class="layui-side-scroll">
-                <div class="kit-side-fold"  ><i class="fa fa-bars" aria-hidden="true"></i></div>
+                <div class="kit-side-fold"  ><i class="fa fa-bank" aria-hidden="true"></i></div>
                 
                 
                 <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
@@ -69,7 +70,7 @@
                     </li>
 
                  <li class="layui-nav-item">
-                        <a href="javascript:;"  data-name="table" kit-loader><i class="fa fa-cny" aria-hidden="true"></i><span> 钱包管理</span></a>
+                        <a href="javascript:;"  data-name="table" kit-loader><i class="fa fa-credit-card" aria-hidden="true"></i><span> 钱包管理</span></a>
                    <dl class="layui-nav-child">
                     
                               

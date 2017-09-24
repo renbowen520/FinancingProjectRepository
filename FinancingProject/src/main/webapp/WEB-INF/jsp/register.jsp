@@ -28,10 +28,11 @@
 <script src="/FinancingProject/index_files/hm.js"></script>
 <script src="/FinancingProject/index_files/hm(1).js"></script>	
 <script src="/FinancingProject/index_files/jquery"></script>
-<script src="/FinancingProject/index_files/bootstrap"></script>
+<!-- <script src="/FinancingProject/index_files/bootstrap"></script> -->
 
 
 
+<script type="text/javascript" src="/FinancingProject/js/jquery-3.2.0.min.js" ></script>
 <link rel="stylesheet"  href="/FinancingProject/css/bootstrapValidator.css"  >
 <link rel="stylesheet"  href="/FinancingProject/css/bootstrap.min.css"  >
   <script type="text/javascript"  src="/FinancingProject/js/bootstrap.min.js"></script>
@@ -120,8 +121,9 @@
                         <div class="form-group has-feedback has-success">
                             <label class="col-lg-3 control-label">手机号码</label>
                             <div class="col-lg-5">
-                                <input  value="${member_register.mobile_Phone }"          type="text" class="form-control" name="mobile_Phone" data-bv-field="phone"><i class="form-control-feedback glyphicon glyphicon-ok" data-bv-icon-for="mobile_Phone" style="display: block;"></i>
-                            <small class="help-block" data-bv-validator="mobile_Phone" data-bv-for="mobile_Phone" data-bv-result="VALID" style="display: none;">输入不是有效的手机号码</small></div>
+                                <input  value="${member_register.mobile_Phone }"          type="text" class="form-control"     id="mobile_Phone"      name="mobile_Phone" data-bv-field="phone"><i class="form-control-feedback glyphicon glyphicon-ok" data-bv-icon-for="mobile_Phone" style="display: block;"></i>
+                           <!--  <small class="help-block" data-bv-validator="mobile_Phone" data-bv-for="mobile_Phone" data-bv-result="VALID" style="display: none;">输入不是有效的手机号码</small> -->
+                           </div>
                         </div>
 
                         <div class="form-group has-feedback has-error">
@@ -143,7 +145,7 @@
 					        <div class="form-group has-feedback has-success">
                             <label class="col-lg-3 control-label">理财师邀请码</label>
                             <div class="col-lg-5">
-                                <input             type="text" class="form-control" name="ma"   id="ma" placeholder="选填,(填写理财师邀请码会有更多惊喜)" ><i ></i>
+                                <input             type="text" class="form-control" name="invitedCode"   id="invitedCode" placeholder="选填,(填写理财师邀请码会有更多惊喜)" ><i ></i>
                              </div>
                         </div>
 
@@ -192,7 +194,6 @@ $(document).ready(function() {
     $('#captchaOperation').html([randomNumber(1, 100), '+', randomNumber(1, 200), '='].join(' '));
 
     $('#defaultForm').bootstrapValidator({
-//        live: 'disabled',
         message: 'This value is not valid',
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
@@ -214,6 +215,7 @@ $(document).ready(function() {
             mobile_Phone: {
                  message: 'The phone is not valid',
                  validators: {
+                	  
                      notEmpty: {
                          message: '手机号码不能为空'
                      },
@@ -225,6 +227,13 @@ $(document).ready(function() {
                      regexp: {
                          regexp: /^1[3|5|8]{1}[0-9]{9}$/,
                          message: '请输入正确的手机号码'
+                     },
+                     threshold :11,
+                     remote: {
+                   	  url: '/FinancingProject/LoginController/yz',//验证地址
+                         message: '手机号码已被注册!',//提示消息
+                         delay :  2000,//每输入一个字符，就发ajax请求，服务器压力还是太大，设置2秒发送一次ajax（默认输入一个字符，提交一次，服务器压力太大）
+                         type: 'POST'//请求方式
                      }
                  }
              },
@@ -232,7 +241,6 @@ $(document).ready(function() {
              qqNumber: {
                  message: 'The phone is not valid',
                  validators: {
-                   
                      stringLength: {
                          min: 5,
                          max: 12,
@@ -241,6 +249,19 @@ $(document).ready(function() {
                      regexp: {
                          regexp: /^[0-9]{5,12}$/,
                          message: '只能输入数字'
+                     }
+                   
+                 }
+             },
+             invitedCode: {
+                 message: 'The phone is not valid',
+                 validators: {
+                	 threshold :5,
+                     remote: {
+                   	  url: '/FinancingProject/LoginController/yz_ma',//验证地址
+                         message: '邀请码不存在!',//提示消息
+                         delay :  2000,//每输入一个字符，就发ajax请求，服务器压力还是太大，设置2秒发送一次ajax（默认输入一个字符，提交一次，服务器压力太大）
+                         type: 'POST'//请求方式
                      }
                  }
              },
