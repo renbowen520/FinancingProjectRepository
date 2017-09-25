@@ -1,12 +1,12 @@
 package com.financing.controller;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-
-import org.apache.catalina.startup.PasswdUserDatabase;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.financing.Interface_service.IN_Member_service;
+import com.financing.Interface_service.IN_Role_permission_relation_service;
 import com.financing.Interface_service.IN_Users_service;
 import com.financing.Interface_service.IN_user_role_service;
+import com.financing.bean.Role_permission_relation;
 import com.financing.bean.User_role;
 import com.financing.bean.Users;
 
@@ -34,6 +36,78 @@ public class UsersController {
 	@Autowired
 	private IN_Member_service  IN_Member_service;
 	
+@Autowired
+private  IN_Role_permission_relation_service IN_Role_permission_relation_service;
+	
+
+
+	@RequestMapping(value="/permission",produces=MediaType.APPLICATION_JSON_VALUE+";charset=utf-8")
+	@ResponseBody
+	 public String  permission(int  id) {  //异步请求权限树形菜单
+		
+		System.out.println("接受id=========="+id);
+		//查询权限
+		List<Role_permission_relation>list = IN_Role_permission_relation_service.listAll();
+	   //查询角色拥有的权限
+		List<Integer>list2=IN_Role_permission_relation_service.list_role_All(id);
+	   String  	treeStr = "";  
+	   for (int i=0;i<list.size();i++) {
+			if(list.get(i).getParent_node()==0) {  //是父节点
+				treeStr += "{id:'"+list.get(i).getId()+"',pid:'"+list.get(i).getUp_id()+"',name:'"+list.get(i).getPermission_ename()+"' ,isParent:true,open:true},";  
+			}else {//不是父节点
+				treeStr += "{id:'"+list.get(i).getId()+"',pid:'"+list.get(i).getUp_id()+"',name:'"+list.get(i).getPermission_ename()+"' ,isParent:false},";  
+			}
+		}
+	    
+	    treeStr = "["+treeStr.substring(0,treeStr.length()-1)+"]";  
+	  System.out.println(treeStr);
+	
+
+	
+		return treeStr;
+	}
+	
+	
+	@RequestMapping("/de_role")
+	public String de_role(int  delete_id) {
+		User_role user_role = new User_role();
+		user_role.setId(delete_id);
+		user_role.setDelFlag(1);
+		user_role.setUpdate_date(new Date());
+		IN_user_role_service.update(user_role);
+		  return "redirect:/AdminController/menus20";
+	}
+	
+	
+	
+	 @RequestMapping(value="/boo",produces="text/html;charset=UTF-8") 
+	 @ResponseBody
+	public String boo(int id) {
+		 //该方法判断该角色有没有被使用
+		List<Users>list = IN_user_role_service.get_users(id);
+		User_role user_role = IN_user_role_service.getById(id);
+		if(!list.isEmpty()||user_role.getDelFlag()==1) { //只要有一个查询到有东西  或者是删除状态
+			return "0".toString();
+		}else {
+			return "1".toString();
+		}
+	
+	 }
+	
+	
+	@RequestMapping("/add_role")
+ 	public String  add_role(User_role user_role) {  //保存角色
+		//System.out.println(user_role.getCname());
+	  //	System.out.println(user_role.getRemark());
+		user_role.setCreate_date(new Date());
+		user_role.setDelFlag(0);
+		IN_user_role_service.save_role(user_role);
+	    return "redirect:/AdminController/menus20";
+	}
+	
+	
+	
+	
 	 @RequestMapping("/get_users/{id}")
 	 @ResponseBody 
  	 public Users get_users(@PathVariable("id")int id) {   //异步请求 编辑前的查询
@@ -41,11 +115,7 @@ public class UsersController {
     	  return users;
 	 }
 	
-	 @RequestMapping("/show_add")
-	 public String show_add() {
-		 
-		 return "admin/show_add";
-	 }
+
 	 
 	
 	 @RequestMapping("/up_users")
@@ -59,12 +129,14 @@ public class UsersController {
 	    Users  users2  = IN_Users_service.getById(users.getId());
 	    //判断密码是不是空
 	    if(users.getPassword()!=null && !users.getPassword().equals("")) {
-	    	 //重新填写了
+	    	//重新填写了
 	    	//获取密码盐
+	    
 	    	       String y = IN_Member_service.getma(10);
 			       String p1=   new Md5Hash(users.getPassword(),y).toString();
 			       users2.setPassword(p1);
 				    users2.setSalt(y);
+				    
 	    }
 	     users2.setStatus(0);
 	     users2.setUser_name(users.getUser_name());

@@ -270,18 +270,12 @@ private IN_user_role_service IN_user_role_service;
 		return "admin/menus18";
 	}
 	
-/*	@RequestMapping("/getFeedback")
-	@ResponseBody
-	public Feedback getFeedback(int id) {
-		System.out.println("id="+id);
-		Feedback Feedback=IN_feedback_service.getById(id);
-		return Feedback;
-	}*/
+
 	
 	@RequestMapping("/get_user_role")
 	@ResponseBody
-	public List<User_role>	  get_user_role() {
-		List<User_role>list = IN_user_role_service.list_user_role();
+	public List<User_role>get_user_role() {
+		List<User_role>list = IN_user_role_service.list_user_role_All();
 		return   list;
 	}
 	

@@ -17,4 +17,5 @@ public interface IN_Users_service {
 	  void save_users(Users users);
 	  String getIpAddr(HttpServletRequest request);
 	  void  save_User_log(User_log user_log);
+
 }

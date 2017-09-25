@@ -381,7 +381,6 @@ $("#reset").click(function(){  //重置按钮
 
 
 $(function(){
-	
 	   // 异步请求内容
     var s;
     $.post("/FinancingProject/AdminController/get_user_role",
@@ -413,7 +412,7 @@ $(function(){
                       },
                       stringLength: {  //长度验证
                           min: 2,
-                          max: 100,
+                          max: 10,
                           message: '用户名长度为2-10个字符!'
                       }
                   }
@@ -465,7 +464,7 @@ $(function(){
                       },
                       stringLength: {  //长度验证
                           min: 2,
-                          max: 100,
+                          max: 10,
                           message: '用户名长度为2-10个字符!'
                       }
                   }

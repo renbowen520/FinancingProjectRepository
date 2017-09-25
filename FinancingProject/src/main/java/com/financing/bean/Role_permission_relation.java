@@ -17,10 +17,30 @@ public class Role_permission_relation {
 
 	private int  id;
 	private String permission_ename;//权限名称
-	private Date create_date;  //创建时间
+	//private Date create_date;  //创建时间
+	private int  up_id; //上级id
+	private int    Parent_node ;//是不是父节点 0是  1不是 
+	
+	
+	
+	
+	
 	//引用角色表   多对多
 	private Set<User_role> user_role=new HashSet<User_role>();
-	
+
+	public int getParent_node() {
+		return Parent_node;
+	}
+	public void setParent_node(int parent_node) {
+		Parent_node = parent_node;
+	}
+	public int getUp_id() {
+		return up_id;
+	}
+	public void setUp_id(int up_id) {
+		this.up_id = up_id;
+	}
+
 	@Id
 	@GeneratedValue
 	public int getId() {
@@ -35,12 +55,7 @@ public class Role_permission_relation {
 	public void setPermission_ename(String permission_ename) {
 		this.permission_ename = permission_ename;
 	}
-	public Date getCreate_date() {
-		return create_date;
-	}
-	public void setCreate_date(Date create_date) {
-		this.create_date = create_date;
-	}
+
 	
 	@ManyToMany(mappedBy="role_permission_relation")
 	public Set<User_role> getUser_role() {

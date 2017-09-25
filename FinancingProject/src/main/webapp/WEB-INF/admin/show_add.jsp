@@ -31,22 +31,36 @@
 
 <script type="text/javascript">
 var setting = {
+		view: {
+			fontCss : {color:"blue"}
+		},
+		
+	   async: {   //异步加载
+			enable: true,
+	         url:"/FinancingProject/UsersController/permission",
+				autoParam:["id", "name"], //异步加载时需要自动提交父节点属性的参数。[setting.async.enable = true 时生效]
+		//		otherParam:{"id":id}, //Ajax 请求提交的静态参数键值对。[setting.async.enable = true 时生效]
+			//	dataFilter: filter 用于对 Ajax 返回数据进行预处理的函数
+		},
 		check: {
 			enable: true,//节点的 checkBox / radio 的 勾选状态
 			chkStyle: "checkbox",//chkStyle = "checkbox" 时，显示 checkbox 选择框，setting.check.chkboxType 属性有效。 
 			chkboxType: { "Y": "ps", "N": "ps" }  //勾选 checkbox 对于父子节点的关联关系
 		},
-		data: {
+		data: {  
 			simpleData: {
-				enable: true
-			 }
+				enable: true,
+			   idKey : "id",  //节点数据中保存唯一标识的属性名称。[setting.data.simpleData.enable = true 时生效]
+            pIdKey : "pid", //节点数据中保存其父节点唯一标识的属性名称。[setting.data.simpleData.enable = true 时生效]  
+           rootId : 0  //用于修正根节点父节点数据，即 pIdKey 指定的属性值
+			}
 		 }
-   
+
 	};
 
 
 
-var zNodes =[
+ var zNodes =[
 	{ id:1, pId:0, name:"随意勾选 1", open:true},
 	{ id:11, pId:1, name:"随意勾选 1-1", open:true},
 	{ id:111, pId:11, name:"随意勾选 1-1-1"},
@@ -60,16 +74,12 @@ var zNodes =[
 	{ id:221, pId:22, name:"随意勾选 2-2-1", checked:true},
 	{ id:222, pId:22, name:"随意勾选 2-2-2"},
 	{ id:23, pId:2, name:"随意勾选 2-3"}
-];
+]; 
 
 
 $(document).ready(function(){
-	$.fn.zTree.init($("#treeDemo"), setting, zNodes);
-/* 	setCheck();
-	$("#py").bind("change", setCheck);
-	$("#sy").bind("change", setCheck);
-	$("#pn").bind("change", setCheck);
-	$("#sn").bind("change", setCheck); */
+	$.fn.zTree.init($("#treeDemo"), setting);
+
 });
 </script>
  <div>

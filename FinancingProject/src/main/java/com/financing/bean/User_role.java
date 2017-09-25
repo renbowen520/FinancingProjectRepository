@@ -14,8 +14,11 @@ import javax.persistence.Table;
 
 import org.springframework.web.context.request.NativeWebRequest;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table
+@JsonIgnoreProperties(value={"role_permission_relation"})
 public class User_role {   //角色表
 	private int id;//主键
 	private String cname;//中文名
@@ -68,12 +71,7 @@ public class User_role {   //角色表
 	public void setEname(String ename) {
 		this.ename = ename;
 	}
-/*	public int getAvailable() {
-		return available;
-	}
-	public void setAvailable(int available) {
-		this.available = available;
-	}*/
+
 	public String getRemark() {
 		return remark;
 	}
