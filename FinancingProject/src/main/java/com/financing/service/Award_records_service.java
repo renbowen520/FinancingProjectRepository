@@ -1,6 +1,7 @@
 package com.financing.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.transaction.Transactional;
 
@@ -24,8 +25,11 @@ public class Award_records_service implements IN_award_records_service {
 		 IN_award_records_dao.save(award_records);
 	}
 	
-	public List<Award_records> listAward_records(){
-		return IN_award_records_dao.listaward_records();
+
+	@Override
+	public List<Award_records> listAward_records(Map map) {
+		// TODO Auto-generated method stub
+		return IN_award_records_dao.listaward_records(map);
 	}
 
 }

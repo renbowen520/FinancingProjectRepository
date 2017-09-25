@@ -84,8 +84,24 @@ function fun(id){
 				<c:if test="${ls.type==2 }">房贷</c:if>
 				</td>
 				<td>${ls.name }</td>
-				<td>${ls.amount}元</td>
-				<td>${ls.floor_amount }</td>
+				<td>￥${ls.amount}</td>
+				<td>
+				<script type="text/javascript">
+				      //在全局设置				  				 
+				      var amount="";
+				      var subject_id=${ls.id };		
+				         $.ajaxSetup({  
+				      		 async : false  
+				      	});       
+					        $.post(
+					          "/FinancingProject/subject/menus112",	
+					           {id:subject_id},
+					           function(data){
+					        amount=data;								
+					       });		
+					            document.write('￥'+amount);
+				      </script>
+				      </td>
 				<td>${ls.bought }人</td>
 				<td>${ls.period }</td>
 				<td>${ls.year_rate }%</td>

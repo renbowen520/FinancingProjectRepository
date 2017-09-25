@@ -11,7 +11,6 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,13 +24,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.financing.Interface_service.IN_Subject_bbin_purchase_record_service;
+import com.financing.Interface_service.IN_Subject_purchase_record_service;
 import com.financing.Interface_service.IN_Subject_service;
 import com.financing.bean.Subject;
 import com.financing.bean.Subject_bbin_purchase_record;
 import com.financing.bean.Subject_file;
 import com.financing.bean.Subject_purchase_record;
-
-import javassist.bytecode.analysis.MultiArrayType;
 
 @Controller
 @RequestMapping("/subject")
@@ -41,7 +39,8 @@ public class SubjectController {
 
 	@Autowired
 	private IN_Subject_bbin_purchase_record_service isbprs;
-
+	@Autowired
+	private IN_Subject_purchase_record_service isprs;
 
 	//跳到新增页面
 	@RequestMapping("/addfixget")
@@ -156,6 +155,21 @@ public class SubjectController {
 		
 		return "admin/menus11";
 	}
+	@RequestMapping("/menus112")//付息计划
+	@ResponseBody
+	//计算已投金额
+	public String menus112(Model model,@ModelAttribute("id")int id, HttpServletRequest request){
+		List<Subject_purchase_record> getSubject_purchase_record=isprs.getSubject_purchase_record(id);
+		Double double1=0d;
+		for (int i = 0; i < getSubject_purchase_record.size(); i++) {
+			Double  d1=getSubject_purchase_record.get(i).getAmount();
+			Double  d2=getSubject_purchase_record.get(i).getSubject().getYear_rate();
+			double1=d1*(1+d1/100);
+		}
+		return String.valueOf(double1);
+	}
+	
+	
 	
 	@RequestMapping("/menus24/{id}")
 	public String menus24(Model model,@ModelAttribute("id")int id){

@@ -9,6 +9,28 @@
  <link href="/FinancingProject/css/bootstrap.min.css" rel="stylesheet">
 <script type="text/javascript" src="/FinancingProject/js/jquery-3.2.0.min.js" ></script>
 <script type="text/javascript" src="/FinancingProject/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#btn1").click(function(){
+		$("#form1").attr("action","/FinancingProject/Award_records_controller/menus14");
+		$("#form1").submit();
+		 
+     
+	});
+	   //重置按钮事件 
+    $("#resetBtn").off().on("click",function(){  
+        $("#member_namem").val("");  
+        $("#mobile_Phonem").val("");  
+        $("#invitationCodem").val("");
+        $("#invitedCodem").val("");
+        $("#typem").val("");
+        $("#isAwardm").val("");
+        $("#form1").attr("action","/FinancingProject/Award_records_controller/menus14");
+		$("#form1").submit();
+    });
+});
+
+</script>
 </head>
 <body>
 <div >
@@ -17,15 +39,17 @@
 		<br>
 		<div>
 			<font size="+1">
-			姓名:<input type="text" name="member_namem">&nbsp;&nbsp;&nbsp;
-			手机号:<input type="text" name="mobile_Phonem"> &nbsp;&nbsp;&nbsp;
-			邀请码:<input type="invitationCodem">&nbsp;&nbsp;&nbsp;
-			被邀请码:<input type="invitedCodem">&nbsp;&nbsp;&nbsp;<br><br>
-			是否已注册奖励:<select name="typem">
-			<option value="0">全部</option>
+			姓名:<input type="text" name="member_namem" value="${ member_namem}" id="member_namem">&nbsp;&nbsp;&nbsp;
+			手机号:<input type="text" name="mobile_Phonem" value="${mobile_Phonem }" id="mobile_Phonem"> &nbsp;&nbsp;&nbsp;
+			邀请码:<input type="invitationCodem" value="${invitationCodem }" id="invitationCodem">&nbsp;&nbsp;&nbsp;
+			被邀请码:<input type="invitedCodem" value="${invitedCodem }" id="invitedCodem">&nbsp;&nbsp;&nbsp;<br><br>
+			是否已注册奖励:<select name="typem" value="${typem }" id="typem">
+			<option value="0">是</option>
+			<option value="1">否</option>
 			</select>&nbsp;&nbsp;&nbsp;
-			是否已投资奖励:<select name="isAwardm">
-			<option value="0">全部</option>
+			是否已投资奖励:<select name="isAwardm" value="${ isAwardm}"   id="isAwardm">
+			<option value="0">是</option>
+			<option value="1">否</option>
 			</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<button type="button" class="btn btn-primary" id="btn1">查询</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<button type="button" id="resetBtn" class="btn btn-success">重置</button> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -53,7 +77,7 @@
 				<td>${lr.member.member_name }</td>
 				<td>${lr.member.invitationCode }</td>
 				<td>${lr.member.invitedCode }</td>
-				<td></td>
+				<td>${lr.amount}</td>
 				<td><c:if test="${lr.type==0 }"><font color="green">是</font></c:if>
 				<c:if test="${lr.type==1 }"><font color="red">否</font></c:if>
 				</td>
