@@ -232,8 +232,15 @@ private IN_user_role_service IN_user_role_service;
 		return "admin/menus13";
 	}
 	@RequestMapping("/menus14")//ÑûÇë½±Àø
-	public String menus14(Model model) {
-		List<Award_records> listaward_records=this.IN_award_records_service.listAward_records();
+	public String menus14(Model model,@ModelAttribute("member_namem")String member_namem,@ModelAttribute("mobile_Phonem")String mobile_Phonem,@ModelAttribute("invitationCodem")String invitationCodem,@ModelAttribute("invitedCodem")String invitedCodem,@ModelAttribute("typem")String typem,@ModelAttribute("isAwardm")String isAwardm) {
+		Map map=new HashMap<>();
+		map.put("member_namem", member_namem);
+		map.put("mobile_Phonem", mobile_Phonem);
+		map.put("invitationCodem", invitationCodem);
+		map.put("invitedCodem", invitedCodem);
+		map.put("typem", typem);
+		map.put("isAwardm", isAwardm);
+		List<Award_records> listaward_records=this.IN_award_records_service.listAward_records(map);
 		model.addAttribute("listaward_records", listaward_records);
 		return "admin/menus14";
 	}

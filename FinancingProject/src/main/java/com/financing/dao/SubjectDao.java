@@ -144,9 +144,10 @@ public class SubjectDao implements IN_Subject_dao {
 		List<Subject> listsubject=session.createQuery(hql).list();
 		return listsubject;
 	}
-	//付息计划模糊查询
+	//付息计划模糊查询 
 	public String listsubjectM(Map map,String hql){
 		String namem=(String)map.get("namem");
+		System.out.println("付息计划表="+namem);
 		String typem=(String)map.get("typem");
 		String statusm=(String)map.get("statusm");
 		if (namem!=null && !namem.equals("")) {
