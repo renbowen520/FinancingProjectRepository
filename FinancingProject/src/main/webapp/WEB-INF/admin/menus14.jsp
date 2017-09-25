@@ -28,8 +28,13 @@ $(function(){
         $("#form1").attr("action","/FinancingProject/Award_records_controller/menus14");
 		$("#form1").submit();
     });
+	
 });
-
+function fun(id){
+	alert("333")
+	$("#form1").attr("action","/FinancingProject/Award_records_controller/menus26/"+id);
+	$("#form1").submit();
+};
 </script>
 </head>
 <body>
@@ -85,7 +90,7 @@ $(function(){
 				<c:if test="${lr.isAward==1}"><font color="green">是</font></c:if>
 				</td>
 				<td>${lr.addTime}</td>
-				<td>不能奖励&nbsp;&nbsp;|&nbsp;&nbsp;<button type="button" class="btn btn-primary" id="btn2" >奖励记录</button></td>
+				<td>不能奖励&nbsp;&nbsp;|&nbsp;&nbsp;<button type="button" class="btn btn-primary" id="btn2" onclick="fun(${lr.member.id})" >奖励记录</button></td>
 			</tr>
 			</c:forEach>
 		</table>

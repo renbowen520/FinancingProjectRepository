@@ -26,10 +26,14 @@ public class Award_records_service implements IN_award_records_service {
 	}
 	
 
-	@Override
+	//邀请奖励显示以及模糊查询
 	public List<Award_records> listAward_records(Map map) {
 		// TODO Auto-generated method stub
 		return IN_award_records_dao.listaward_records(map);
 	}
-
+	
+	//邀请记录表
+	public List<Award_records> getAward_records(int id){
+		return IN_award_records_dao.getAward_records(id);
+	}
 }

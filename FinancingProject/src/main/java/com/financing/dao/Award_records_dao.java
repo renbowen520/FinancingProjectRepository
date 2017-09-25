@@ -29,7 +29,7 @@ public class Award_records_dao  implements IN_award_records_dao{
 		 session.save(award_records);
 	}
 
-
+//ÑûÇë½±Àø
 	public List<Award_records> listaward_records(Map map){
 		String hql="from Award_records ar where 0=0";
 		Session session=getSession();
@@ -37,7 +37,7 @@ public class Award_records_dao  implements IN_award_records_dao{
 		List<Award_records> listaward_records=session.createQuery(hql).list();
 		return listaward_records;
 	}
-
+	//Ä£ºý²éÑ¯
 	public String listMap(Map map,String hql){
 		String member_namem=(String)map.get("member_namem");
 		String mobile_Phonem=(String)map.get("mobile_Phonem");
@@ -67,4 +67,18 @@ public class Award_records_dao  implements IN_award_records_dao{
 		}
 		return hql;
 	}
+	
+	//ÑûÇë½±Àø¼Ç
+	
+	public List<Award_records> getAward_records(int id){
+		System.out.println("dao");
+		String hql="from Award_records a where a.member.id="+id;
+		Session session=getSession();
+		List<Award_records> listAward_records=session.createQuery(hql).list();
+		for (Award_records a : listAward_records) {
+			System.out.println("iD"+a.getId());
+		}
+		return listAward_records;
+	}
+	
 }

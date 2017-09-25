@@ -41,4 +41,12 @@ public class Award_records_Controller {
 		model.addAttribute("listaward_records", listaward_records);
 		return "admin/menus14";
 	}
+	
+	@RequestMapping("/menus26/{id}")
+	public String menus26(Model model,@ModelAttribute("id")int id){
+		System.out.println(2222);
+		List<Award_records> getAward_records=this.IN_award_records_service.getAward_records(id);
+		model.addAttribute("getAward_records", getAward_records);
+		return "admin/menus26";
+	}
 }
