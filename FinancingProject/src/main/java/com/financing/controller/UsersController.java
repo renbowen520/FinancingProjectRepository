@@ -1,8 +1,12 @@
 package com.financing.controller;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,12 +44,27 @@ public class UsersController {
 private  IN_Role_permission_relation_service IN_Role_permission_relation_service;
 	
 
+//修改权限
+   @RequestMapping("/up_role/{num}")
+   public String  up_role(int rid,@PathVariable("num")String num) {
+		String[] arr= num.split("-");
+		Set<Role_permission_relation>s= new HashSet<>();
+		for (String string : arr) {
+	    s.add(IN_Role_permission_relation_service.getById(Integer.valueOf(string))); 
+		}
+		
+	 User_role user_role=	  IN_user_role_service.getById(rid);
+	   user_role.setRole_permission_relation(s);
+	   user_role.setUpdate_date(new Date());
+	   user_role.setDelFlag(0); //状态正常
+	   IN_user_role_service.update(user_role);
+	   return "redirect:/AdminController/menus20";
+   }
+
 
 	@RequestMapping(value="/permission",produces=MediaType.APPLICATION_JSON_VALUE+";charset=utf-8")
 	@ResponseBody
 	 public String  permission(int  id) {  //异步请求权限树形菜单
-		
-		System.out.println("接受id=========="+id);
 		//查询权限
 		List<Role_permission_relation>list = IN_Role_permission_relation_service.listAll();
 	   //查询角色拥有的权限
@@ -53,17 +72,19 @@ private  IN_Role_permission_relation_service IN_Role_permission_relation_service
 	   String  	treeStr = "";  
 	   for (int i=0;i<list.size();i++) {
 			if(list.get(i).getParent_node()==0) {  //是父节点
-				treeStr += "{id:'"+list.get(i).getId()+"',pid:'"+list.get(i).getUp_id()+"',name:'"+list.get(i).getPermission_ename()+"' ,isParent:true,open:true},";  
+				treeStr += "{id:'"+list.get(i).getId()+"',pid:'"+list.get(i).getUp_id()+"',name:'"+list.get(i).getPermission_ename()+"' ,isParent:true,open:true";  
 			}else {//不是父节点
-				treeStr += "{id:'"+list.get(i).getId()+"',pid:'"+list.get(i).getUp_id()+"',name:'"+list.get(i).getPermission_ename()+"' ,isParent:false},";  
+				treeStr += "{id:'"+list.get(i).getId()+"',pid:'"+list.get(i).getUp_id()+"',name:'"+list.get(i).getPermission_ename()+"' ,isParent:false,";  
 			}
+			for(int  j=0;j<list2.size();j++) {
+				  if(list.get(i).getId()==list2.get(j)) {
+					    treeStr +="checked:true";
+				  } 
+			}
+			treeStr+="},";
 		}
-	    
 	    treeStr = "["+treeStr.substring(0,treeStr.length()-1)+"]";  
-	  System.out.println(treeStr);
-	
-
-	
+//	  System.out.println(treeStr);
 		return treeStr;
 	}
 	
@@ -144,7 +165,6 @@ private  IN_Role_permission_relation_service IN_Role_permission_relation_service
 	     users2.setUpdate_date(new Date());
 	     IN_Users_service.update(users2);
          SecurityUtils.getSubject().getSession().setAttribute("admin_login",users2);  
-
 	     return "redirect:/AdminController/menus19";
 	}
 	
@@ -166,9 +186,8 @@ private  IN_Role_permission_relation_service IN_Role_permission_relation_service
             IN_Users_service.update(users22);
             //更新session中存储的
             SecurityUtils.getSubject().getSession().setAttribute("admin_login",users22);  
-       Users  Users99=   (Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login");
+           Users  Users99=   (Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login");
             System.out.println("更新后的密码:"+Users99.getPassword());
-            
             return true;
 	 }
 	 

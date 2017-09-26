@@ -218,11 +218,11 @@ public class LoginController  {
 	
 	@RequestMapping("/register")//用户注册
 	public String register(Member member,Model model,HttpSession session) {   
-	      System.out.println(member.getMember_name());	 
+	  /*    System.out.println(member.getMember_name());	 
 		  System.out.println(member.getMobile_Phone());
 		  System.out.println(member.getPassword());
 		  System.out.println("bei邀请码:"+member.getInvitationCode());
-		  System.out.println(member.getQqNumber());
+		  System.out.println(member.getQqNumber());*/
 		 
 		  //生产自己的邀请码
 		     member.setInvitationCode(""+new Date().getTime());
@@ -241,10 +241,6 @@ public class LoginController  {
 			 bbin_info.setStatus(0);//正常
 			 bbin_info.setCreate_date(new Date());//添加时间
 		     
-		//	  IN_Member_account_service.save(m2);
-  	   //	  IN_Member_service.save(member);
-		// IN_bbin_info_service.save(bbin_info);
-				//	 IN_award_records_service.save(a1);//保存
 		 //向奖励表添加
 		 Award_records  a1 = new Award_records();
 		 a1.setMember(member);
@@ -270,13 +266,7 @@ public class LoginController  {
 		 session.setAttribute("member_login", member999);//存入session中
 		 //进入个人中心
 		 return "redirect:/IndexController/personal_center";
-		
-	  
 	}
 	
-
-	
-	
-
-		  
+	  
 }

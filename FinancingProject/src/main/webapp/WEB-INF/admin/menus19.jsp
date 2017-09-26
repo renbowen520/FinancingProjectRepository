@@ -320,10 +320,6 @@
 
         
 <script type="text/javascript">
-
-
-
-
 function fun2(id){
 	//点击编辑 弹出对话框
 		  $('#my4').modal('show'); //显示
@@ -354,9 +350,6 @@ $("#delete").click(function(){   //提交删除
 	$("#f3").submit();
 	});
 
-/* $("#add").click(function(){   //提交添加
-alert("ok");
-}); */
 
 function fun(id){//删除
 	  $('#my2').modal('show'); //显示

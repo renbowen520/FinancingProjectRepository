@@ -29,7 +29,7 @@ public class User_role {   //角色表
 	private Date update_date;//修改时间 
 	//private String category;//分类
 //	private  int source_type;//原型类别
-	//private   source_id   源id    实体类Role_Permission_Relation
+
 
 	private int delFlag;  //是否删除
 	

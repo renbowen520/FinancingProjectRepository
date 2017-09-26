@@ -67,9 +67,6 @@
                   </td>
                   <td>${s.create_date }</td>
                   <td>${s.update_date }</td>
-                
-             
-                
                   <td>
                   <button type="button" class="btn btn-primary"     data-toggle="modal"       onclick="fun2(${s.id},${s.delFlag})"  >
                     权限配置
@@ -113,7 +110,7 @@
        <form  action=""     name="f2"  id="f2"    class="form-horizontal" role="form"    method="post">    
     
     <div class="modal-body" style="background-color: #F0F6E4;">
-            <input type="text"  id="rid"  name="rid" >
+            <input type="hidden"  id="rid"  name="rid" >
            
            <ul id="treeDemo" class="ztree" ></ul>
           
@@ -131,7 +128,7 @@
          <div class="modal-footer">
             <button type="button" class="btn btn-default" 
                data-dismiss="modal">关闭</button>
-            <button  type="submit" class="btn btn-primary"   onclick="okok();">
+            <button  type="button" class="btn btn-primary"   onclick="okok();">
                提交</button>
          </div>
    </form>   
@@ -225,14 +222,20 @@
       </div><!-- /.modal -->
     </div><!--最外的div  my  -->
  
-
-
-
 <script type="text/javascript">
-function okok(){   //提交权限配置
-	
-	
-	
+function okok(){      //提交权限配置
+	var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+	    //checked = true 表示获取 被勾选 的节点集合
+        var nodes = zTree.getCheckedNodes(true);
+	    var num = "";
+	         for (var i = 0; i < nodes.length; i++) {
+	         if(nodes[i].isParent){
+	     	       continue;
+	         }
+	        num += nodes[i].id+"-";
+	     } 
+	 	$("#f2").attr("action","/FinancingProject/UsersController/up_role/"+num);
+		$("#f2").submit(); 
 }
 
 
@@ -330,14 +333,9 @@ function fun(){   //新增
                       }
                   }
               }
-	      
-	     
-	          }//验证
+	       }//验证
 	      });
 	    //////////////////////
-		
-	  
-	  
   });
 </script>
 

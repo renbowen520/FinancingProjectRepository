@@ -30,4 +30,10 @@ public class Role_permission_relation_service  implements IN_Role_permission_rel
 		return IN_Role_permission_relation_dao.list_role_All(rid);
 	}
 
+	@Override
+	public Role_permission_relation getById(int id) {
+		// TODO Auto-generated method stub
+		return IN_Role_permission_relation_dao.getById(id);
+	}
+
 }

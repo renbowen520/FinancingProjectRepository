@@ -37,4 +37,11 @@ public class Role_permission_relation_dao  implements IN_Role_permission_relatio
 		    return  query.list();
 	}
 	
+	 //¸ù¾Ýid²éÑ¯
+	 public Role_permission_relation getById(int id) {
+		   Session session = getSession();
+		   Role_permission_relation r = (Role_permission_relation) session.get(Role_permission_relation.class,id);
+	       return r;
+	 }
+	 
 }

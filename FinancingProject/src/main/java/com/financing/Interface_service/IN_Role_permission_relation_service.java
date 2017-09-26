@@ -8,4 +8,5 @@ public interface IN_Role_permission_relation_service {
 
 	List<Role_permission_relation> listAll();
 	List<Integer>list_role_All(int rid);
+	Role_permission_relation getById(int id);
 }
