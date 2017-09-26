@@ -31,7 +31,6 @@ $(function(){
 	
 });
 function fun(id){
-	alert("333")
 	$("#form1").attr("action","/FinancingProject/Award_records_controller/menus26/"+id);
 	$("#form1").submit();
 };
