@@ -243,7 +243,7 @@
 
    <div class="carousel-inner" role="listbox">
                 <div class=" item active">
-                    <img src="/FinancingProject/index_files/banner2.jpg" alt="[]">
+                    <img src="/FinancingProject/index_files/lc.jpg" alt="[]">
                 </div>
     </div> 
 
