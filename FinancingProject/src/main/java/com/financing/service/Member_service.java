@@ -91,4 +91,11 @@ public class Member_service  implements IN_Member_service{
 	md.saveAll(member, bbin_info, award_records, member_account);
 		
 	}
+
+
+	@Override
+	public void update(Member member) {
+		// TODO Auto-generated method stub
+		md.update(member);
+	}
 }

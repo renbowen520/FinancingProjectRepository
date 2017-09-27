@@ -1,5 +1,6 @@
 package com.financing.controller;
 
+import java.net.PasswordAuthentication;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,13 +35,14 @@ public class IndexController {
 	private IN_Oversea_config_service oversea_config_Service;
 	
 	
-	@RequestMapping("/error") 
+	
+	
+	@RequestMapping("/error")   //´íÎó
 	public String error() {
 		return "error/error";
 		
 	}
-	
-	
+
 	
 	
 	//ºóÌ¨µÇÂ½
@@ -73,6 +75,9 @@ public class IndexController {
 		model.addAttribute("subject", subject);
 		return "jsp/product";
 	}
+	
+	
+	
 	public Map initMap(HttpServletRequest request,Map map){
 		String type=request.getParameter("type");
 		String year_rate=request.getParameter("year_rate");

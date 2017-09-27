@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,16 @@ public class Member_bankcards_dao implements IN_Member_bankcards_dao {
 		
 		public Session getSession(){
 			return this.sessionFactory.getCurrentSession();
+		}
+		
+		
+		//根据用户查询卡号
+		public List<Member_bankcards> getById(int id){
+			Session session=getSession();
+			Query query = session.createQuery("from Member_bankcards b where b.member_id.id=:id");
+			query.setInteger("id", id);
+			List<Member_bankcards>list = query.list();
+			return list;
 		}
 		
 		//查询绑卡信息以及身份信息

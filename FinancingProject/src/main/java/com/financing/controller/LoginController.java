@@ -1,6 +1,8 @@
 package com.financing.controller;
+import java.security.KeyStore.PrivateKeyEntry;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.financing.Interface_service.IN_Member_account_service;
+import com.financing.Interface_service.IN_Member_bankcards_service;
 import com.financing.Interface_service.IN_Member_service;
 import com.financing.Interface_service.IN_Users_service;
 import com.financing.Interface_service.IN_award_records_service;
@@ -27,6 +30,7 @@ import com.financing.bean.Award_records;
 import com.financing.bean.Bbin_info;
 import com.financing.bean.Member;
 import com.financing.bean.Member_account;
+import com.financing.bean.Member_bankcards;
 import com.financing.bean.User_log;
 import com.financing.bean.Users;
 
@@ -55,6 +59,8 @@ public class LoginController  {
    @Autowired
     private IN_Member_account_service IN_Member_account_service;
  
+   @Autowired
+   private IN_Member_bankcards_service IN_Member_bankcards_service;
    
    @RequestMapping("/admin_out")
    public String  admin_out(HttpServletRequest request) {  //后台退出
@@ -150,8 +156,12 @@ public class LoginController  {
 			   //如果密码相同
 			   if(p1.equals(member.getPassword())) {
 				   session.setAttribute("member_login", member);
-				   session.setAttribute("no_login", "");
-				   return  "jsp/personal_center"; //个人中心
+		   List<Member_bankcards>list=	IN_Member_bankcards_service.getById(member.getId());
+		 //查询绑定的银行卡
+		   session.setAttribute("member_bankcards_bk", list);
+		   session.setAttribute("no_login", "");
+				    //个人中心
+				   return "redirect:/IndexController/personal_center";
 			   }else {
 				    session.setAttribute("no_login", "账号或者密码错误!");
 					 return "redirect:/IndexController/login";

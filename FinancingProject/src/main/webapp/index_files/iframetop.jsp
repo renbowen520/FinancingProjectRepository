@@ -32,7 +32,7 @@
                         <a style="font-size:18px;float:right;margin-right:15px;margin-top:5px;color:#917739;" target="_parent" href="/FinancingProject/IndexController/login">登录</a>
                        </c:if>
                          <c:if test="${!empty  member_login}">
-                        <a style="font-size:18px;float:right;margin-right:15px;margin-top:5px;color:#917739;" target="_parent"   onclick="return confirm('确定退出?')"    href="/FinancingProject/LoginController/out">[欢迎您,${member_login.member_name }]退出</a>
+                        <a style="font-size:18px;float:right;margin-right:15px;margin-top:5px;color:#917739;" target="_parent"   onclick="return confirm('确定退出?')"    href="/FinancingProject/LoginController/out">[欢迎您,${member_login.name }]退出</a>
                        </c:if>
                        
                        <c:if test="${empty  member_login}">

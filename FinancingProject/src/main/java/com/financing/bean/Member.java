@@ -24,13 +24,13 @@ public class Member {//用户基本表
 		private Date update_date;//修改时间
 		private String werBoAccount;//微博帐号关联
 		private String weixinAccount;//微信帐号关联
-		private int headid;//头像图片id
+		private String  headid;//头像图片
 		private String invitationCode;//邀请码
 		private String withdraw_password;//提款密码
 		private String qqAccount;//qq帐号关联
 		private String invitedCode;//被邀请码
 		private String qqNumber;//qq号码
-		
+		private String salt2;// 取款密码盐
 		
 		//一对一
 		private Member_account Member_account;//关联账户表
@@ -60,6 +60,19 @@ public class Member {//用户基本表
 		}
 		public void setId(int id) {
 			this.id = id;
+		}
+		
+		public String getHeadid() {
+			return headid;
+		}
+		public void setHeadid(String headid) {
+			this.headid = headid;
+		}
+		public String getSalt2() {
+			return salt2;
+		}
+		public void setSalt2(String salt2) {
+			this.salt2 = salt2;
 		}
 		public String getMember_name() {
 			return member_name;
@@ -97,12 +110,7 @@ public class Member {//用户基本表
 		public void setStatus(int status) {
 			this.status = status;
 		}
-	/*	public int getDel_flag() {
-			return del_flag;
-		}
-		public void setDel_flag(int del_flag) {
-			this.del_flag = del_flag;
-		}*/
+
 		public String getIdentity() {
 			return identity;
 		}
@@ -133,12 +141,7 @@ public class Member {//用户基本表
 		public void setWeixinAccount(String weixinAccount) {
 			this.weixinAccount = weixinAccount;
 		}
-		public int getHeadid() {
-			return headid;
-		}
-		public void setHeadid(int headid) {
-			this.headid = headid;
-		}
+		
 
 	
 	

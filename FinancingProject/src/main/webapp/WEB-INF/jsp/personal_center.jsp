@@ -27,6 +27,15 @@
 <script src="/FinancingProject/index_files/jquery"></script>
 <script src="/FinancingProject/index_files/bootstrap"></script>
 
+    <!--图标样式  -->
+	 <link rel="stylesheet" type="text/css" href="/FinancingProject/css/font-awesome.css">
+    <link rel="stylesheet" href="/FinancingProject/build/css/app.css" media="all">
+    <link rel="stylesheet" href="/FinancingProject/build/css/themes/blue.css" media="all">
+
+
+<link rel="stylesheet"  href="/FinancingProject/css/bootstrapValidator.css"  >
+<script type="text/javascript"  src="/FinancingProject/js/bootstrapValidator.js"></script>
+
 <title>个人中心</title>
 </head>
 <body>
@@ -86,15 +95,531 @@
 		</div>
 	</div>
 
+  <!-- ============================================================= -->  
+
+<br>
+ 
+
+
+
+<table height="160" class="peopleInfo" width="970" border="0" cellspacing="0" cellpadding="0">
+    <tbody>
+    <tr>
+        <td width="200px;">
+            	<div  >
+            	   <img src="/FinancingProject/images/0.jpg"    style="border-radius:50%;height: 150px;width: 150px;">
+            </div>
+            	</td>
+            	<td  align="left" valign="middle" class="info" >
+                <h2>${member_login.name }，<span>您好!</span></h2>
+        </td>
+        <td align="right">
+            <a  onclick="return confirm('确定退出?')"    href="/FinancingProject/LoginController/out"   class="loginOut"><span class="iconfont"></span>安全退出</a>
+        </td>
+    </tr>
+</tbody>
+</table>
+
+
+<div class="countBox">
+    <ul>
+        <li><h2>0</h2><p>账户可用余额(元)<a href="javascript:;" class="iconfont"><span>账户可用余额</span><i></i></a></p></li>
+        <li><h2>0</h2><p>账户总资产(元)<a href="javascript:;" class="iconfont"><span>可用余额+投资金额+累计收益</span><i></i></a></p></li>
+        <li><h2 style="color:#9d8440">0</h2><p>投资金额(元)<a href="javascript:;" class="iconfont"><span>投资中资金</span><i></i></a></p></li>
+        <li><h2 style="color:#9d8440">0</h2><p>累计收益(元)<a href="javascript:;" class="iconfont"><span>累计收益</span><i></i></a></p></li>
+        <li><h2 style="color:#9d8440">0</h2><p>冻结金额(元)<a href="javascript:;" class="iconfont"><span>提现冻结金额</span><i></i></a></p></li>
+    </ul>
+    <a href="/FinancingProject/MemberController/cz" class="cz">充值</a>
+    <a href="" class="tk">提款</a>
+</div>    <div class="proMain clearfix">
+<div class="adminLeft">
+    <h2>我的投资</h2>
     
+    <ul >
+         <li > <a id="" href="" >投资记录</a></li>
+        <li><a id="" href=""   >收益记录</a></li>
+        <li><a id="" href="">充值记录</a></li>
+        <li><a id="" href="">提款记录</a></li>
+        <li><a id="" href="">体验金记录</a></li>
+    </ul>
+    <h2>我的账户</h2>
+    <ul>  
+        <li><a id="" href="#">账户充值</a></li>
+        <li><a id="/FinancingProject/IndexController/personal_center" href="">安全中心</a></li>
+        <li><a id="" href="">我要提款</a></li>
+        <li><a id="" href="">我是理财师</a></li>
+    </ul>
+</div>
 
 
-<font size="+5">个人中心的内容</font>
-登陆成功后显示
-<br/><br/><br/><br/><br/><br/>
+
+        <div class="admin-right">
+        	<div class="tbConBox">
+                <div class="tab">
+                    <a class="select" href="">安全中心</a>
+                </div>
+                <div id="conBox">
+                    <div class="box" style="display:block">
+							&nbsp;&nbsp;&nbsp;							                         
+                         
+	                            <table class="safeTable" width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tbody>
+                  <tr>
+								     <td ><i class="fa fa-credit-card-alt"></i></td>
+								     <c:if test="${empty member_bankcards_bk }">
+									<td><p style="color:#ff503f">绑卡认证</p></td>
+									<td>未绑定</td>
+									<td><p style="color:#888">保障账户安全，完成实名绑卡认证才能充值提款</p></td>
+									<td><a href="/FinancingProject/MemberController/bk" class="renzheng">认证</a></td>
+									</c:if>
+								
+									  <c:if test="${!empty member_bankcards_bk }">
+									<td><p style="color:#ff503f">绑卡认证</p></td>
+									<td>已绑定</td>
+									<td><p style="color:#888">保障账户安全，完成实名绑卡认证才能充值提款</p></td>
+									<td><a href="/FinancingProject/MemberController/bk_ck" class="renzheng">查看</a></td>
+									</c:if>
+					</tr>
+                    <tr>
+                           <td ><i class="fa fa-tablet"></i></td>
+                            <td><p style="color:#ff503f">绑定手机</p></td>
+                            <td>
+                             <script type="text/javascript">
+                                var s ="  ${member_login.mobile_Phone }";
+                              var ss = s.substring(0,9);
+                            ss=ss+"****";
+                            document.write(ss);
+                             </script>
+                            </td>
+                            <td><p style="color:#888">手机号码是您在孔明理财的重要身份凭证</p></td>
+                            <td>绑定完成</td>
+                  </tr>
+                  <tr>
+                             <td ><i class="fa fa-gears"></i></td>
+                             <td><p style="color:#ff503f">登录密码</p></td>
+                            <td>已设置</td>
+                            <td><p style="color:#888">登录孔明理财网站时需要输入的密码</p></td>
+                            <td><a  href="" class="renzheng"     data-toggle="modal"    data-target="#my">修改</a></td>
+                  </tr>
+                  <tr>
+                                <td ><i class="fa fa-hand-pointer-o"></i></td>
+ 	                            <td><p style="color:#ff503f">提款密码</p></td>
+	                        
+	                           <c:if test="${empty member_login.withdraw_password  }">
+	                            <td>
+	                            未设置
+	                            </td>
+	                            <td><p style="color:#888">保障资金安全，提款需要设置提款密码</p></td>
+	                            <td><a  href="" class="renzheng"  data-toggle="modal"    data-target="#my2">设置</a></td>								
+                              </c:if>
+                              
+                                 <c:if test="${!empty member_login.withdraw_password   }">
+	                             <td>
+	                            已设置
+	                            </td>
+	                            <td><p style="color:#888">保障资金安全，提款需要设置提款密码</p></td>
+	                            <td><a  href="" class="renzheng"  data-toggle="modal"    data-target="#my3">修改</a></td>								
+                              </c:if>
+                  </tr>
+                </tbody>
+                </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- ========================================= -->
+   <form  name="f66"  id="f66"    action="/FinancingProject/MemberController/up_withdraw_password"  method="post">
+<!--  div层-->
+<div class="modal fade" id="my3" tabindex="-1" role="dialog" 
+     aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+      
+         <div class="modal-header">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">  &times;</button>
+            <h4 class="modal-title" id="myModalLabel"> 修改提款密码 <small>Update Personal Pin</small></b>  </h4>
+         </div>
+         
+         <div class="modal-body">
+     <div class="form-group">
+           <label for="firstname" class="col-sm-2 control-label">原密码</label>
+               <div class="col-sm-10">
+               <input type="password" class="form-control" id="pwd111"  name="pwd111"
+               placeholder="请输入原密码"          required="required"> 
+               </div>
+          </div>
+    &nbsp;
+   <div class="form-group">
+           <label for="firstname" class="col-sm-2 control-label">新密码</label>
+               <div class="col-sm-10">
+               <input type="password" class="form-control" id="pwd222"  name="pwd222"
+               placeholder="请输入新密码"          required="required"> 
+               </div>
+          </div>
+         &nbsp;   
+          <div class="form-group">
+           <label for="firstname" class="col-sm-2 control-label">确认密码</label>
+               <div class="col-sm-10">
+               <input type="password" class="form-control" id="pwd333"  name="pwd333"
+                 placeholder="请输入确认密码"          required="required"> 
+               </div>
+          </div>
+             
+        </div>
+        <br>
+         <div class="modal-footer">
+           <div id="yc" style="margin-bottom:1px;color: red;display: none"></div>
+            <button type="button" class="btn btn-default" 
+               data-dismiss="modal">关闭</button>
+           <button type="reset"       id="but44" class="btn btn-danger">重置</button> 
+            <button  type="submit" class="btn btn-primary"  >
+               提交</button>
+         </div>   
+      </div><!-- /.modal-content -->
+      </div><!-- /.modal -->
+    </div><!--最外的div  my  -->
+</form>  
+
+
+<!-- =========================================== -->
+    <form  name="f88"  id="f88"    action="/FinancingProject/MemberController/up_pwd"  method="post">
+<!--  div层-->
+<div class="modal fade" id="my" tabindex="-1" role="dialog" 
+     aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+      
+         <div class="modal-header">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">  &times;</button>
+            <h4 class="modal-title" id="myModalLabel"> 修改密码 <small>update password</small></b>  </h4>
+         </div>
+         
+         <div class="modal-body">
+     <div class="form-group">
+           <label for="firstname" class="col-sm-2 control-label">原密码</label>
+               <div class="col-sm-10">
+               <input type="password" class="form-control" id="pwd"  name="pwd"
+               placeholder="请输入原密码"          required="required"> 
+               </div>
+          </div>
+    &nbsp;
+   <div class="form-group">
+           <label for="firstname" class="col-sm-2 control-label">新密码</label>
+               <div class="col-sm-10">
+               <input type="password" class="form-control" id="pwd2"  name="pwd2"
+               placeholder="请输入新密码"          required="required"> 
+               </div>
+          </div>
+         &nbsp;   
+          <div class="form-group">
+           <label for="firstname" class="col-sm-2 control-label">确认密码</label>
+               <div class="col-sm-10">
+               <input type="password" class="form-control" id="pwd3"  name="pwd3"
+                 placeholder="请输入确认密码"          required="required"> 
+               </div>
+          </div>
+             
+        </div>
+        <br>
+         <div class="modal-footer">
+           <div id="yc" style="margin-bottom:1px;color: red;display: none"></div>
+            <button type="button" class="btn btn-default" 
+               data-dismiss="modal">关闭</button>
+           <button type="reset"       id="but22" class="btn btn-danger">重置</button> 
+            <button  type="submit" class="btn btn-primary"  >
+               提交</button>
+         </div>   
+      </div><!-- /.modal-content -->
+      </div><!-- /.modal -->
+    </div><!--最外的div  my  -->
+</form>   
+<!--========================================  -->
+   <form  name="f777"  id="f777"    action="/FinancingProject/MemberController/withdraw_password"  method="post">
+<!--  div层-->
+<div class="modal fade" id="my2" tabindex="-1" role="dialog" 
+     aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+      
+         <div class="modal-header">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">  &times;</button>
+            <h4 class="modal-title" id="myModalLabel"> 设置提款密码 <small>Personal Pin </small></b>  </h4>
+         </div>
+         
+         <div class="modal-body">
+   <div class="form-group">
+           <label for="firstname" class="col-sm-2 control-label">密码</label>
+               <div class="col-sm-10">
+               <input type="password" class="form-control" id="pwd7"  name="pwd7"
+               placeholder="请输入提款密码"          required="required"> 
+               </div>
+          </div>
+         &nbsp;   
+          <div class="form-group">
+           <label for="firstname" class="col-sm-2 control-label">确认密码</label>
+               <div class="col-sm-10">
+               <input type="password" class="form-control" id="pwd8"  name="pwd8"
+                 placeholder="请确认提款密码"          required="required"> 
+               </div>
+          </div>   
+        </div>
+        <br>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" 
+               data-dismiss="modal">关闭</button>
+           <button type="reset"       id="but33" class="btn btn-danger">重置</button> 
+            <button  type="submit" class="btn btn-primary"  >
+               提交</button>
+         </div>   
+      </div><!-- /.modal-content -->
+      </div><!-- /.modal -->
+    </div><!--最外的div  my  -->
+</form>   
 
 
 
+
+<script type="text/javascript">
+
+$("#but22").click(function(){   //重置按钮 f2
+    $('#f88').data('bootstrapValidator').resetForm(true);
+	});
+$("#but33").click(function(){   //重置按钮 f2
+    $('#f777').data('bootstrapValidator').resetForm(true);
+	});
+
+$("#but44").click(function(){   //重置按钮 f2
+    $('#f66').data('bootstrapValidator').resetForm(true);
+	});
+
+
+
+$('#f66').bootstrapValidator({
+       message: 'This value is not valid',
+       feedbackIcons: {
+           valid: 'glyphicon glyphicon-ok',
+           invalid: 'glyphicon glyphicon-remove',
+           validating: 'glyphicon glyphicon-refresh'
+       },
+       fields: {
+     	    pwd111: {
+        validators: {
+            notEmpty: {
+                message: '密码不能为空'
+            },
+           stringLength:{
+			   min:6,
+			   max:30,
+              message: '密码长度必须在6到30之间'
+			   },
+				regexp: {
+                 regexp: /^[a-zA-Z0-9_\.]+$/,
+                 message: 'The username can only consist of alphabetical, number, dot and underscore'
+             },
+             threshold :6,
+             remote: {
+                 	  url: '/FinancingProject/MemberController/pwd2',//验证地址
+                       message: '原密码输入错误!',//提示消息
+                       delay :  2000,//每输入一个字符，就发ajax请求，服务器压力还是太大，设置2秒发送一次ajax（默认输入一个字符，提交一次，服务器压力太大）
+                       type: 'POST'//请求方式
+                   }
+        }
+    }, 
+         pwd222: {
+             validators: {
+                       notEmpty: {
+                       message: '密码不能为空'
+                    },
+                stringLength:{
+				          min:6,
+				          max:30,
+                       message: '密码长度必须在6到30之间'
+				   },
+                identical: {
+                       field: 'pwd333',
+                       message: '两次密码不一致'
+                   },
+					 regexp: {
+                        regexp: /^[a-zA-Z0-9_\.]+$/,
+                        message: 'The username can only consist of alphabetical, number, dot and underscore'
+                    }
+               }
+           },
+           pwd333: {
+	                validators: {
+	                      notEmpty: {
+	                          message: '密码不能为空'
+	                      },
+	                     stringLength:{
+	  				         min:6,
+	  				         max:30,
+	                        message: '密码长度必须在6到30之间'
+	  				   },
+	                      identical: {
+	                          field: 'pwd222',
+	                          message: '两次密码不一致'
+	                      },
+	  					regexp: {
+	                           regexp: /^[a-zA-Z0-9_\.]+$/,
+	                           message: 'The username can only consist of alphabetical, number, dot and underscore'
+	                       }
+	                  }
+	              }
+       }//验证
+   });//-------------------
+
+
+
+
+
+
+
+
+
+
+
+$(function(){
+	 $('#f777').bootstrapValidator({
+         message: 'This value is not valid',
+         feedbackIcons: {
+             valid: 'glyphicon glyphicon-ok',
+             invalid: 'glyphicon glyphicon-remove',
+             validating: 'glyphicon glyphicon-refresh'
+         },
+         fields: {
+  
+           pwd7: {
+               validators: {
+                         notEmpty: {
+                         message: '密码不能为空'
+                      },
+                  stringLength:{
+ 				          min:6,
+ 				          max:30,
+                         message: '密码长度必须在6到30之间'
+ 				   },
+                  identical: {
+                         field: 'pwd8',
+                         message: '两次密码不一致'
+                     },
+ 					 regexp: {
+                          regexp: /^[a-zA-Z0-9_\.]+$/,
+                          message: 'The username can only consist of alphabetical, number, dot and underscore'
+                      }
+                 }
+             },
+             pwd8: {
+	                validators: {
+	                      notEmpty: {
+	                          message: '密码不能为空'
+	                      },
+	                     stringLength:{
+	  				         min:6,
+	  				         max:30,
+	                        message: '密码长度必须在6到30之间'
+	  				   },
+	                      identical: {
+	                          field: 'pwd7',
+	                          message: '两次密码不一致'
+	                      },
+	  					regexp: {
+	                           regexp: /^[a-zA-Z0-9_\.]+$/,
+	                           message: 'The username can only consist of alphabetical, number, dot and underscore'
+	                       }
+	                  }
+	              }
+         }//验证
+     });//-------------------
+	
+	
+	
+	   $('#f88').bootstrapValidator({
+	          message: 'This value is not valid',
+	          feedbackIcons: {
+	              valid: 'glyphicon glyphicon-ok',
+	              invalid: 'glyphicon glyphicon-remove',
+	              validating: 'glyphicon glyphicon-refresh'
+	          },
+	          fields: {
+	        	    pwd: {
+               validators: {
+                   notEmpty: {
+                       message: '密码不能为空'
+                   },
+                  stringLength:{
+				   min:6,
+				   max:30,
+                     message: '密码长度必须在6到30之间'
+				   },
+					regexp: {
+                        regexp: /^[a-zA-Z0-9_\.]+$/,
+                        message: 'The username can only consist of alphabetical, number, dot and underscore'
+                    },
+                    threshold :6,
+                    remote: {
+	                    	  url: '/FinancingProject/MemberController/pwd',//验证地址
+	                          message: '原密码输入错误!',//提示消息
+	                          delay :  2000,//每输入一个字符，就发ajax请求，服务器压力还是太大，设置2秒发送一次ajax（默认输入一个字符，提交一次，服务器压力太大）
+	                          type: 'POST'//请求方式
+	                      }
+               }
+           }, 
+	            pwd2: {
+	                validators: {
+	                          notEmpty: {
+	                          message: '密码不能为空'
+	                       },
+	                   stringLength:{
+	  				          min:6,
+	  				          max:30,
+	                          message: '密码长度必须在6到30之间'
+	  				   },
+	                   identical: {
+	                          field: 'pwd3',
+	                          message: '两次密码不一致'
+	                      },
+	  					 regexp: {
+	                           regexp: /^[a-zA-Z0-9_\.]+$/,
+	                           message: 'The username can only consist of alphabetical, number, dot and underscore'
+	                       }
+	                  }
+	              },
+	              pwd3: {
+		                validators: {
+		                      notEmpty: {
+		                          message: '密码不能为空'
+		                      },
+		                     stringLength:{
+		  				         min:6,
+		  				         max:30,
+		                        message: '密码长度必须在6到30之间'
+		  				   },
+		                      identical: {
+		                          field: 'pwd2',
+		                          message: '两次密码不一致'
+		                      },
+		  					regexp: {
+		                           regexp: /^[a-zA-Z0-9_\.]+$/,
+		                           message: 'The username can only consist of alphabetical, number, dot and underscore'
+		                       }
+		                  }
+		              }
+	          }//验证
+	      });//-------------------
+});
+
+
+
+
+
+
+
+</script>
+<!--  ==============================================================-->
  <!-- 4     图片广告 -->
     <div class="container index">
 			<div class="row">

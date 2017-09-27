@@ -17,7 +17,7 @@ public class Member_bankcards {//(成员银联表)
 		private String type;//银行卡类型
 		private Member member_id;//用户表id 外键
 		private  String card_no;//银行卡号
-		private int delflag;//是否删除（0：正常使用，2：被删除）
+		private int delflag;//是否删除（0：正常使用，1：被删除）
 		private Date create_date;//创建时间
 		private Date update_date;//修改时间
 		private String cardaddress;//开户银行所在地

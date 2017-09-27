@@ -186,8 +186,8 @@ private  IN_Role_permission_relation_service IN_Role_permission_relation_service
             IN_Users_service.update(users22);
             //更新session中存储的
             SecurityUtils.getSubject().getSession().setAttribute("admin_login",users22);  
-           Users  Users99=   (Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login");
-            System.out.println("更新后的密码:"+Users99.getPassword());
+    /*       Users  Users99=   (Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login");
+            System.out.println("更新后的密码:"+Users99.getPassword());*/
             return true;
 	 }
 	 

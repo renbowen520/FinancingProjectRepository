@@ -102,7 +102,7 @@
 
 
 
-<br><br><br>
+
    <section>
                 <div class="col-lg-8 col-lg-offset-2">
                     <div class="page-header">
@@ -110,10 +110,10 @@
                     </div>
                    <form id="defaultForm" method="post"   class="form-horizontal bv-form"  action="/FinancingProject/LoginController/register"  novalidate="novalidate">
                         <div class="form-group has-feedback has-error">
-                            <label class="col-lg-3 control-label">姓名</label>
+                            <label class="col-lg-3 control-label">用户名</label>
                             <div class="col-lg-5">
-                                <input  value="${member_register.member_name }"      type="text"   id="member_name"      class="form-control" name="member_name" required="" data-bv-trigger="keyup" data-bv-notempty-message="姓名不能为空" placeholder="姓名,需实名注册" data-bv-field="member_name"><i class="form-control-feedback glyphicon glyphicon-remove" data-bv-icon-for="member_name" style="display: block;"></i>
-                            <small class="help-block" data-bv-validator="notEmpty" data-bv-for="member_name" data-bv-result="INVALID" style="display: block;">姓名不能为空</small></div>
+                                <input  value="${member_register.name }"      type="text"   id="name"      class="form-control" name="name" required="" data-bv-trigger="keyup" data-bv-notempty-message="用户名不能为空" placeholder="请输入用户名" data-bv-field="name"><i class="form-control-feedback glyphicon glyphicon-remove" data-bv-icon-for="name" style="display: block;"></i>
+                            <small class="help-block" data-bv-validator="notEmpty" data-bv-for="name" data-bv-result="INVALID" style="display: block;">用户名不能为空</small></div>
                         </div>
 
                         
@@ -201,15 +201,20 @@ $(document).ready(function() {
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            member_name: {
+            name: {
                 validators: {
                     notEmpty: {
-                        message: '姓名不能为空'
+                        message: '用户名不能为空'
                     },
-                    regexp: {
+                    stringLength: {
+                        min: 2,
+                        max:20,
+                        message: '用户名长度2-20个字符'
+                    }
+                  /*   regexp: {
                         regexp: /^[\u4e00-\u9fa5]+(·[\u4e00-\u9fa5]+)*$/ ,
                         message: '请输入正确的姓名格式'
-                    }
+                    } */
                 }
             },
             mobile_Phone: {

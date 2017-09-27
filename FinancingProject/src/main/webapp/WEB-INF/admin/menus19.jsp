@@ -112,13 +112,6 @@
                                   </button>
                                    </c:if>
                        </c:if>
-                  
-               
-             
-               
-                  
-                
-                  
                   </td>
           </tr>
         </c:forEach>

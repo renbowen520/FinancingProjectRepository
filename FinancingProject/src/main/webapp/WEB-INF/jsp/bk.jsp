@@ -25,7 +25,11 @@
 <script src="/FinancingProject/index_files/jquery"></script>
 <script src="/FinancingProject/index_files/bootstrap"></script>
 
-<title>找回密码</title>
+<link rel="stylesheet"  href="/FinancingProject/css/bootstrapValidator.css"  >
+<script type="text/javascript"  src="/FinancingProject/js/bootstrapValidator.js"></script>
+
+
+<title>下载中心</title>
 </head>
 <body>
 <!--   1  导入顶部  -->
@@ -84,15 +88,92 @@
 	</div>
 
     
+ <!-- ============================================================= -->  
+
+<br>
+ 
 
 
-<br><br><br>
-<center>
-<font color="#E12AB6" size="7">暂</font><font color="#BF8D5C" size="6">未</font><font color="#6DD4B0" size="4">开</font><font color="#E65D58" size="2">放</font><font color="#F9977E" size="4">,</font><font color="#A99A3E" size="4">敬</font><font color="#E0574C" size="3">请</font><font color="#A1AB5A" size="5">期</font><font color="#0229A8" size="6">待</font><font color="#51A9F6" size="5">!</font>
-</center>
-<br><br><br>
+
+<table height="160" class="peopleInfo" width="970" border="0" cellspacing="0" cellpadding="0">
+    <tbody>
+    <tr>
+        <td width="200px;">
+            	<div  >
+            	   <img src="/FinancingProject/images/0.jpg"    style="border-radius:50%;height: 150px;width: 150px;">
+            </div>
+            	</td>
+            	<td  align="left" valign="middle" class="info" >
+                <h2>${member_login.name }，<span>您好!</span></h2>
+        </td>
+        <td align="right">
+            <a  onclick="return confirm('确定退出?')"    href="/FinancingProject/LoginController/out"   class="loginOut"><span class="iconfont"></span>安全退出</a>
+        </td>
+    </tr>
+</tbody>
+</table>
 
 
+<div class="countBox">
+    <ul>
+        <li><h2>0</h2><p>账户可用余额(元)<a href="javascript:;" class="iconfont"><span>账户可用余额</span><i></i></a></p></li>
+        <li><h2>0</h2><p>账户总资产(元)<a href="javascript:;" class="iconfont"><span>可用余额+投资金额+累计收益</span><i></i></a></p></li>
+        <li><h2 style="color:#9d8440">0</h2><p>投资金额(元)<a href="javascript:;" class="iconfont"><span>投资中资金</span><i></i></a></p></li>
+        <li><h2 style="color:#9d8440">0</h2><p>累计收益(元)<a href="javascript:;" class="iconfont"><span>累计收益</span><i></i></a></p></li>
+        <li><h2 style="color:#9d8440">0</h2><p>冻结金额(元)<a href="javascript:;" class="iconfont"><span>提现冻结金额</span><i></i></a></p></li>
+    </ul>
+    <a href="/FinancingProject/MemberController/cz" class="cz">充值</a>
+    <a href="" class="tk">提款</a>
+</div>    <div class="proMain clearfix">
+<div class="adminLeft">
+    <h2>我的投资</h2>
+    
+    <ul >
+         <li > <a id="" href="" >投资记录</a></li>
+        <li><a id="" href=""   >收益记录</a></li>
+        <li><a id="" href="">充值记录</a></li>
+        <li><a id="" href="">提款记录</a></li>
+        <li><a id="" href="">体验金记录</a></li>
+    </ul>
+    <h2>我的账户</h2>
+    <ul>
+        <li><a id="" href="#">账户充值</a></li>
+         <li><a id="/FinancingProject/IndexController/personal_center" href="">安全中心</a></li>
+        <li><a id="" href="">我要提款</a></li>
+        <li><a id="" href="">我是理财师</a></li>
+    </ul>
+</div>
+
+
+
+        <div class="admin-right">
+        	<div class="tbConBox">
+                <div class="tab">
+                    <a class="select" href="">银行卡管理</a>
+                </div>
+                
+                
+                <div id="conBox">
+                    <div class="box" style="display:block">
+							&nbsp;&nbsp;&nbsp;							                         
+                            <font size="+2"><b>绑定银行卡</b></font>            
+	                        <form action="" method="post" name="f1" id="f1">
+	    
+	                          
+	                          
+	                          </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<script type="text/javascript">
+       
+
+
+</script>
  <!-- 4     图片广告 -->
     <div class="container index">
 			<div class="row">

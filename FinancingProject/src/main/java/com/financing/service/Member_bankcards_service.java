@@ -25,5 +25,11 @@ public class Member_bankcards_service  implements IN_Member_bankcards_service{
 			return this.mbd.listmember_bankcards(map);
 		}
 
+		@Override
+		public List<Member_bankcards> getById(int id) {
+			// TODO Auto-generated method stub
+			return mbd.getById(id);
+		}
+
 	
 }

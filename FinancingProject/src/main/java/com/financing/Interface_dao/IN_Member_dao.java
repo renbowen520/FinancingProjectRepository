@@ -39,5 +39,5 @@ public interface IN_Member_dao {
 				,Bbin_info bbin_info,Award_records award_records,
 				Member_account member_account
 				);
-
+	 void update(Member member);
 }
