@@ -20,6 +20,12 @@ public class Member_account_service implements IN_Member_account_service {
 	IN_Member_account_dao.save(member_account);
 		
 	}
+
+	@Override
+	public void update_account(Member_account member_account) {
+		// TODO Auto-generated method stub
+		IN_Member_account_dao.update_account(member_account);
+	}
 	
 	
 

@@ -21,6 +21,10 @@ public class Member_bankcards_service  implements IN_Member_bankcards_service{
 		@Autowired
 		private IN_Member_bankcards_dao mbd;
 		
+		
+		
+		
+		
 		public List<Member_bankcards> listMember_bankcards(Map map){
 			return this.mbd.listmember_bankcards(map);
 		}
@@ -29,6 +33,18 @@ public class Member_bankcards_service  implements IN_Member_bankcards_service{
 		public List<Member_bankcards> getById(int id) {
 			// TODO Auto-generated method stub
 			return mbd.getById(id);
+		}
+
+		@Override
+		public Member_bankcards get_ka(String card_no) {
+			// TODO Auto-generated method stub
+			return mbd.get_ka(card_no);
+		}
+
+		@Override
+		public void save(Member_bankcards member_bankcards) {
+			// TODO Auto-generated method stub
+			mbd.save(member_bankcards);
 		}
 
 	

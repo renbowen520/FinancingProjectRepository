@@ -11,12 +11,14 @@ import org.springframework.stereotype.Service;
 import com.financing.Interface_dao.IN_Member_dao;
 import com.financing.Interface_service.IN_Member_service;
 import com.financing.bean.Award_records;
+import com.financing.bean.Bank;
 import com.financing.bean.Bbin_info;
 import com.financing.bean.Member;
 import com.financing.bean.Member_account;
 import com.financing.bean.Member_deposit_record;
 import com.financing.bean.Member_withdraw_record;
 import com.financing.bean.Subject_purchase_record;
+import com.financing.bean.Sys_region;
 
 @Service
 @Transactional
@@ -97,5 +99,47 @@ public class Member_service  implements IN_Member_service{
 	public void update(Member member) {
 		// TODO Auto-generated method stub
 		md.update(member);
+	}
+
+
+	@Override
+	public Member getByIdentity(String identity) {
+		// TODO Auto-generated method stub
+		return md.getByIdentity(identity);
+	}
+
+
+	@Override
+	public List<Bank> get_bank() {
+		// TODO Auto-generated method stub
+		return md.get_bank();
+	}
+
+
+/*	@Override
+	public List<Sys_region> get_s111(int id) {
+		// TODO Auto-generated method stub
+		return md.get_s111(id);
+	}
+
+
+	@Override
+	public List<Sys_region> get_s222(int id) {
+		// TODO Auto-generated method stub
+		return md.get_s222(id);
+	}
+*/
+
+	@Override
+	public List<Sys_region> get_s333(int rid, int pid) {
+		// TODO Auto-generated method stub
+		return md.get_s333(rid, pid);
+	}
+
+
+	@Override
+	public Bank get_bank_id(int id) {
+		// TODO Auto-generated method stub
+		return md.get_bank_id(id);
 	}
 }

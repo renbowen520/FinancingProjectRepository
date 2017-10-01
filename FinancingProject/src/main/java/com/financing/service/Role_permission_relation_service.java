@@ -1,5 +1,6 @@
 package com.financing.service;
 import java.util.List;
+import java.util.Set;
 
 import javax.transaction.Transactional;
 
@@ -34,6 +35,12 @@ public class Role_permission_relation_service  implements IN_Role_permission_rel
 	public Role_permission_relation getById(int id) {
 		// TODO Auto-generated method stub
 		return IN_Role_permission_relation_dao.getById(id);
+	}
+
+	@Override
+	public Set<String> list_pname(int uid) {
+		// TODO Auto-generated method stub
+		return  IN_Role_permission_relation_dao.list_pname(uid);
 	}
 
 }

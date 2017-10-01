@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.financing.Interface_dao.IN_Member_deposit_record_dao;
 import com.financing.Interface_service.IN_Member_deposit_record_service;
 import com.financing.bean.Member_deposit_record;
+import com.financing.bean.Member_trade_record;
 import com.financing.dao.Member_deposit_record_dao;
 
 @Service
@@ -25,4 +26,23 @@ public class Member_deposit_record_service  implements IN_Member_deposit_record_
 		
 		return this.mdrd.listMember_deposit_record(map);
 	}
+
+	@Override
+	public void save(Member_deposit_record member_deposit_record) {
+		// TODO Auto-generated method stub
+		mdrd.save(member_deposit_record);
+	}
+
+	@Override
+	public Member_deposit_record get_deposit(String no) {
+		// TODO Auto-generated method stub
+		return mdrd.get_deposit(no);
+	}
+
+	@Override
+	public void update(Member_deposit_record member_deposit_record, Member_trade_record member_trade_record) {
+		// TODO Auto-generated method stub
+		mdrd.update(member_deposit_record, member_trade_record);
+	}
+
 }

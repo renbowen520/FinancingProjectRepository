@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
           <%@  taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
     
+    <%@    taglib   prefix="shiro"  uri="http://shiro.apache.org/tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -31,9 +32,12 @@
 
 
 <div   style="width: 95%;text-align: right;">
+
+<shiro:hasPermission name="添加角色">
    <button type="button" class="btn btn-primary"     data-toggle="modal"       onclick="fun()"  >
                   新增
     </button>
+   </shiro:hasPermission>
 </div>
 
 
@@ -68,11 +72,16 @@
                   <td>${s.create_date }</td>
                   <td>${s.update_date }</td>
                   <td>
+                  
+                  <shiro:hasPermission name="修改角色">
                   <button type="button" class="btn btn-primary"     data-toggle="modal"       onclick="fun2(${s.id},${s.delFlag})"  >
                     权限配置
                    </button>
+                   </shiro:hasPermission>
                    &nbsp; &nbsp;
                    
+                   
+                   <shiro:hasPermission name="删除角色">
                    <script type="text/javascript">
                   var id='${s.id}';
 				   $.ajaxSetup({  
@@ -88,7 +97,7 @@
 				    	  document.write("   <button     disabled='disabled'        type='button' class='btn btn-danger'     data-toggle='modal'       onclick='fun3(${s.id})'  > 删除</button>");
 				    }
 				 </script>
-           
+           </shiro:hasPermission>
                   </td>
           </tr>
         </c:forEach>

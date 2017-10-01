@@ -150,7 +150,7 @@
 
 <center>
 <form  name="f1"  id="f1"    class="form-horizontal" role="form"  action=""  method="post">    
-<table  width="90%"   border="1">
+<table  width="90%"   border="0">
 <tr>
   <td >
   <label for="firstname" class="col-sm-2 control-label">标题</label >

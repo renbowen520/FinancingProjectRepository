@@ -46,7 +46,7 @@
     </div>
     
     <!--   2   导入菜单栏  -->
-    <div class="jwNav">
+  <!--   <div class="jwNav">
 		<div class="container">
 			<div class="row">
 				<ul class="topNav">
@@ -93,8 +93,10 @@
 				</ul>
 			</div>
 		</div>
-	</div>
-
+	</div> -->
+       <div style="background-color: ; width:100%px; height:40px; margin:0 auto;">
+        <iframe src="/FinancingProject/index_files/daohang.jsp" scrolling="no" frameborder="0"  width="100%"></iframe>
+    </div>
   <!-- ============================================================= -->  
 
 <br>
@@ -114,7 +116,7 @@
                 <h2>${member_login.name }，<span>您好!</span></h2>
         </td>
         <td align="right">
-            <a  onclick="return confirm('确定退出?')"    href="/FinancingProject/LoginController/out"   class="loginOut"><span class="iconfont"></span>安全退出</a>
+            <a  onclick="return confirm('确定退出?')"    href="/FinancingProject/LoginController/out"   class="loginOut"><i class="fa fa-hand-o-right"></i>&nbsp;安全退出</a>
         </td>
     </tr>
 </tbody>
@@ -123,7 +125,7 @@
 
 <div class="countBox">
     <ul>
-        <li><h2>0</h2><p>账户可用余额(元)<a href="javascript:;" class="iconfont"><span>账户可用余额</span><i></i></a></p></li>
+        <li><h2>0</h2><p>账户可用余额(元)<a href="javascript:;" class="iconfont"><span>账户可用余额 </span></a></p></li>
         <li><h2>0</h2><p>账户总资产(元)<a href="javascript:;" class="iconfont"><span>可用余额+投资金额+累计收益</span><i></i></a></p></li>
         <li><h2 style="color:#9d8440">0</h2><p>投资金额(元)<a href="javascript:;" class="iconfont"><span>投资中资金</span><i></i></a></p></li>
         <li><h2 style="color:#9d8440">0</h2><p>累计收益(元)<a href="javascript:;" class="iconfont"><span>累计收益</span><i></i></a></p></li>
@@ -145,7 +147,7 @@
     <h2>我的账户</h2>
     <ul>  
         <li><a id="" href="#">账户充值</a></li>
-        <li><a id="/FinancingProject/IndexController/personal_center" href="">安全中心</a></li>
+        <li><a id="" href="/FinancingProject/IndexController/personal_center">安全中心</a></li>
         <li><a id="" href="">我要提款</a></li>
         <li><a id="" href="">我是理财师</a></li>
     </ul>
@@ -168,14 +170,14 @@
 								     <td ><i class="fa fa-credit-card-alt"></i></td>
 								     <c:if test="${empty member_bankcards_bk }">
 									<td><p style="color:#ff503f">绑卡认证</p></td>
-									<td>未绑定</td>
+									<td><font color="red">未绑定</font></td>
 									<td><p style="color:#888">保障账户安全，完成实名绑卡认证才能充值提款</p></td>
 									<td><a href="/FinancingProject/MemberController/bk" class="renzheng">认证</a></td>
 									</c:if>
 								
 									  <c:if test="${!empty member_bankcards_bk }">
 									<td><p style="color:#ff503f">绑卡认证</p></td>
-									<td>已绑定</td>
+									<td><font color="blue">已绑定</font></td>
 									<td><p style="color:#888">保障账户安全，完成实名绑卡认证才能充值提款</p></td>
 									<td><a href="/FinancingProject/MemberController/bk_ck" class="renzheng">查看</a></td>
 									</c:if>
@@ -192,12 +194,12 @@
                              </script>
                             </td>
                             <td><p style="color:#888">手机号码是您在孔明理财的重要身份凭证</p></td>
-                            <td>绑定完成</td>
+                            <td><font color="blue">绑定完成</font></td>
                   </tr>
                   <tr>
                              <td ><i class="fa fa-gears"></i></td>
                              <td><p style="color:#ff503f">登录密码</p></td>
-                            <td>已设置</td>
+                            <td><font color="blue">已设置</font></td>
                             <td><p style="color:#888">登录孔明理财网站时需要输入的密码</p></td>
                             <td><a  href="" class="renzheng"     data-toggle="modal"    data-target="#my">修改</a></td>
                   </tr>
@@ -207,7 +209,7 @@
 	                        
 	                           <c:if test="${empty member_login.withdraw_password  }">
 	                            <td>
-	                            未设置
+	                           <font color="red"> 未设置</font>
 	                            </td>
 	                            <td><p style="color:#888">保障资金安全，提款需要设置提款密码</p></td>
 	                            <td><a  href="" class="renzheng"  data-toggle="modal"    data-target="#my2">设置</a></td>								
@@ -215,7 +217,7 @@
                               
                                  <c:if test="${!empty member_login.withdraw_password   }">
 	                             <td>
-	                            已设置
+	                         <font color="blue">   已设置</font>
 	                            </td>
 	                            <td><p style="color:#888">保障资金安全，提款需要设置提款密码</p></td>
 	                            <td><a  href="" class="renzheng"  data-toggle="modal"    data-target="#my3">修改</a></td>								
@@ -239,7 +241,7 @@
          <div class="modal-header">
             <button type="button" class="close" 
                data-dismiss="modal" aria-hidden="true">  &times;</button>
-            <h4 class="modal-title" id="myModalLabel"> 修改提款密码 <small>Update Personal Pin</small></b>  </h4>
+            <h4 class="modal-title" id="myModalLabel"> 修改提款密码 <small>Update Personal Pin</small>  </h4>
          </div>
          
          <div class="modal-body">
@@ -294,7 +296,7 @@
          <div class="modal-header">
             <button type="button" class="close" 
                data-dismiss="modal" aria-hidden="true">  &times;</button>
-            <h4 class="modal-title" id="myModalLabel"> 修改密码 <small>update password</small></b>  </h4>
+            <h4 class="modal-title" id="myModalLabel"> 修改密码 <small>update password</small>  </h4>
          </div>
          
          <div class="modal-body">
@@ -347,7 +349,7 @@
          <div class="modal-header">
             <button type="button" class="close" 
                data-dismiss="modal" aria-hidden="true">  &times;</button>
-            <h4 class="modal-title" id="myModalLabel"> 设置提款密码 <small>Personal Pin </small></b>  </h4>
+            <h4 class="modal-title" id="myModalLabel"> 设置提款密码 <small>Personal Pin </small>  </h4>
          </div>
          
          <div class="modal-body">

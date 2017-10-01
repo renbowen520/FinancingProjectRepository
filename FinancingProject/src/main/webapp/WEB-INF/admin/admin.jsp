@@ -37,7 +37,7 @@
                     </dl>
                 </li>
 
-      <li class="layui-nav-item"><a href="/FinancingProject/LoginController/admin_out"  onclick="return confirm('确定退出?')"><i class="fa fa-sign-out" aria-hidden="true"></i> 退出</a></li>
+      <li class="layui-nav-item"><a href="/FinancingProject/LoginController/admin_out"  onclick="return confirm('确定退出?')"><i class="fa fa-sign-out" ></i> 退出</a></li>
             </ul>
         </div>
 
@@ -165,7 +165,7 @@
                      
                               
 							    <dd>
-                                <a href="javascript:;" data-url="/FinancingProject/AdminController/menus19" data-icon="&#xe614;" data-title="账号管理" kit-target data-id='20'><i class="layui-icon">&#xe614;</i><span> &nbsp;账号管理</span></a>
+                                <a href="javascript:;" data-url="/FinancingProject/AdminController/menus19" data-icon="&#xe614;" data-title="账号管理" kit-target data-id='20'><i class="layui-icon">&#xe614;</i><span> &nbsp;用户管理</span></a>
                             </dd>
 							    <dd>
                                 <a href="javascript:;" data-url="/FinancingProject/AdminController/menus20" data-icon="&#xe614;" data-title="角色管理" kit-target data-id='21'><i class="layui-icon">&#xe614;</i><span> &nbsp;角色管理</span></a>

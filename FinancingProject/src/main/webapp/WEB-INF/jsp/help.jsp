@@ -34,7 +34,7 @@
     </div>
     
     <!--   2   导入菜单栏  -->
-    <div class="jwNav">
+   <!--  <div class="jwNav">
 		<div class="container">
 			<div class="row">
 				<ul class="topNav">
@@ -81,7 +81,12 @@
 				</ul>
 			</div>
 		</div>
-	</div>
+	</div> -->
+
+       <div style="background-color: ; width:100%px; height:40px; margin:0 auto;">
+        <iframe src="/FinancingProject/index_files/daohang.jsp" scrolling="no" frameborder="0"  width="100%"></iframe>
+    </div>
+
 
 
 <div class="container helpCenter">

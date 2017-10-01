@@ -2,8 +2,16 @@ package com.financing.bean;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 //行政区表
 
+
+@Table
+@Entity
 public class Sys_region {
 	private int id;  //主键
 	private String gb2260;//行政区 国际代码
@@ -17,7 +25,8 @@ public class Sys_region {
 	private Date last_modified; //最后修改时间
 	
 	
-	
+	@Id
+	@GeneratedValue
 	public int getId() {
 		return id;
 	}

@@ -9,13 +9,25 @@ public class Sys_recharge_price_config {
 
 	private int id;   //主键
 	private String type;//类型
-	private BigDecimal market_price;//金额
-	private BigDecimal sell_price;//不知道什么金额
+	private double market_price;//金额  售价
+	private double sell_price;//实际付款金额
 	private Date create_date;//创建时间
 	private Date update_date;//修改时间
 	
 	
 	
+	public double getMarket_price() {
+		return market_price;
+	}
+	public void setMarket_price(double market_price) {
+		this.market_price = market_price;
+	}
+	public double getSell_price() {
+		return sell_price;
+	}
+	public void setSell_price(double sell_price) {
+		this.sell_price = sell_price;
+	}
 	public int getId() {
 		return id;
 	}
@@ -28,18 +40,7 @@ public class Sys_recharge_price_config {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public BigDecimal getMarket_price() {
-		return market_price;
-	}
-	public void setMarket_price(BigDecimal market_price) {
-		this.market_price = market_price;
-	}
-	public BigDecimal getSell_price() {
-		return sell_price;
-	}
-	public void setSell_price(BigDecimal sell_price) {
-		this.sell_price = sell_price;
-	}
+	
 	public Date getCreate_date() {
 		return create_date;
 	}

@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -140,7 +142,7 @@ private  IN_Role_permission_relation_service IN_Role_permission_relation_service
 	 
 	
 	 @RequestMapping("/up_users")
-	 public String   up_users(Users users,int role_id) {  //更新账号
+	 public String   up_users(HttpSession session,Users users,int role_id) {  //更新账号
 	 /*   System.out.println("角色"+role_id);
 	    System.out.println("id"+users.getId());
 	    System.out.println("手机号"+users.getMobile_Phone());
@@ -164,7 +166,8 @@ private  IN_Role_permission_relation_service IN_Role_permission_relation_service
 	     users2.setUser_role(user_role);
 	     users2.setUpdate_date(new Date());
 	     IN_Users_service.update(users2);
-         SecurityUtils.getSubject().getSession().setAttribute("admin_login",users2);  
+	  //   session.setAttribute("admin_login",users2); 
+     SecurityUtils.getSubject().getSession().setAttribute("admin_login",users2);  
 	     return "redirect:/AdminController/menus19";
 	}
 	
@@ -172,8 +175,9 @@ private  IN_Role_permission_relation_service IN_Role_permission_relation_service
 	 
 	 @RequestMapping("/up_admin_pwd")
 	 @ResponseBody
-	 public boolean up_admin_pwd(String  pwd) {
-		 Users users =  (Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login");
+	 public boolean up_admin_pwd(HttpSession session,String  pwd) {
+	//	 Users users = (Users) session.getAttribute("admin_login");
+	 Users users =  (Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login");
          //根据登陆的id 查询实体类
 		 Users    users22 = IN_Users_service.getById(users.getId());
 		//得到密码盐
@@ -185,7 +189,8 @@ private  IN_Role_permission_relation_service IN_Role_permission_relation_service
             users22.setUpdate_date(new Date());
             IN_Users_service.update(users22);
             //更新session中存储的
-            SecurityUtils.getSubject().getSession().setAttribute("admin_login",users22);  
+      //      session.setAttribute("admin_login",users22);  
+        SecurityUtils.getSubject().getSession().setAttribute("admin_login",users22);  
     /*       Users  Users99=   (Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login");
             System.out.println("更新后的密码:"+Users99.getPassword());*/
             return true;
@@ -194,8 +199,11 @@ private  IN_Role_permission_relation_service IN_Role_permission_relation_service
 	 
 	 @RequestMapping("/pwd")   //修改密码时验证原密码
 	 @ResponseBody
-	 public String pwd(@RequestParam String pwd) { 
-		 Users users =  (Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login");
+	 public String pwd(@RequestParam String pwd,HttpSession session) { 
+		// Users users = (Users) session.getAttribute("admin_login");
+
+		 
+ Users users =  (Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login");
 	     String p = users.getPassword();
 	     String p2=   new Md5Hash(pwd,users.getSalt()).toString();
 	/*      System.out.println("=="+pwd);

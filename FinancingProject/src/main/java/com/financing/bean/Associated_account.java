@@ -13,6 +13,8 @@ public class Associated_account {
 	private Date create_date; //创建时间
 	private Date update_date;//修改时间
 	private Member member;//引用会员id
+	
+	
 	public int getId() {
 		return id;
 	}

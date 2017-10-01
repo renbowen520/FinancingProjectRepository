@@ -2,6 +2,8 @@ package com.financing.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -98,7 +100,9 @@ private IN_user_role_service IN_user_role_service;
 	} 
 	
 	//固收类
+
 	@RequestMapping("/menus1")
+	@RequiresPermissions(value="固收类/P2P")
 	public String menus1(Model model,@ModelAttribute("sname")String sname) {
 		Map map=new HashMap();
 		map.put("sname",sname);
@@ -108,7 +112,9 @@ private IN_user_role_service IN_user_role_service;
 		return "admin/menus1";
 	}
 //私募基金
+	
 	@RequestMapping("/menus2")
+	@RequiresPermissions(value="私募基金")
 	public String menus2(Model model,Finance_product_funds fpf){
 		System.out.println("name:"+fpf.getName());
 		Map map=new HashMap();
@@ -120,23 +126,33 @@ private IN_user_role_service IN_user_role_service;
 		model.addAttribute("fpf",fpf);
 		return "admin/menus2";
 	}
+	
+	
+	
+	@RequiresPermissions(value="股权基金")
 	@RequestMapping("/menus3")
 	public String menus3() {
 		return "admin/menus3";
 	}
 	//查询海外配置
 	@RequestMapping("/menus4")
+	@RequiresPermissions(value="海外配置")
 	public String menus4(Model model){
 		List<Oversea_config> listOversea=this.oversea_config_service.listOversea();
 		model.addAttribute("listOversea", listOversea);
 		return "admin/menus4";
 	}
+	
+	
+	
+	
+	@RequiresPermissions(value="缴费记录")
 	@RequestMapping("/menus5")
 	public String menus5() {
 		return "admin/menus5";
 	}
 	
-	
+	@RequiresPermissions(value="资讯分类")
 	@RequestMapping("/menus6")//资讯分类
 	public String menus6(Model model,@ModelAttribute("news_type_q1")String news_type_q1,@ModelAttribute("news_type_q2")String news_type_q2) {
 		Map map = new HashMap<>();
@@ -146,6 +162,9 @@ private IN_user_role_service IN_user_role_service;
 		  model.addAttribute("news_type", list) ;
 		return "admin/menus6";
 	}
+	
+	
+	@RequiresPermissions(value="资讯管理")
 	@RequestMapping("/menus7")  //资讯管理
 	public String menus7(Model model,@ModelAttribute("news_q1")String news_q1,@ModelAttribute("news_q2")String news_q2) {
 		Map map = new HashMap<>();
@@ -167,6 +186,10 @@ private IN_user_role_service IN_user_role_service;
 		    model.addAttribute("news_q2", news_q2);
 		    return "admin/menus7";
 	}
+	
+	
+	
+	@RequiresPermissions(value="账号管理")
 	@RequestMapping("/menus8")//帐号管理
 	public String menus8(Model model,@ModelAttribute("mname")String mname,@ModelAttribute("mobile_Phonem")String mobile_Phonem,@ModelAttribute("member_namem")String member_namem,@ModelAttribute("invitatioinCodem")String invitatioinCodem) {
 		Map map=new HashMap<>();
@@ -178,10 +201,17 @@ private IN_user_role_service IN_user_role_service;
 		model.addAttribute("listmember", listmember);
 		return "admin/menus8";
 	}
+	
+	
+	
+	@RequiresPermissions(value="理财师审核")
 	@RequestMapping("/menus9")
 	public String menus9() {
 		return "admin/menus9";
 	}
+	
+	
+	@RequiresPermissions(value="绑卡管理")
 	@RequestMapping("/menus10")//绑卡管理
 	public String menus10(Model model,@ModelAttribute("mobile_Phonem")String mobile_Phonem,@ModelAttribute("member_namem")String member_namem,@ModelAttribute("card_nom")String card_nom,@ModelAttribute("create_datem")String create_datem) {
 		Map map=new HashMap<>();
@@ -194,6 +224,10 @@ private IN_user_role_service IN_user_role_service;
 		
 		return "admin/menus10";
 	}
+	
+	
+	
+	@RequiresPermissions(value="付息计划")
 	@RequestMapping("/menus11")//付息计划
 	public String menus11(Model model,@ModelAttribute("namem")String namem,@ModelAttribute("statusm")String statusm,@ModelAttribute("typem")String typem) {//付息计划
 		Map map=new HashMap<>();
@@ -205,6 +239,10 @@ private IN_user_role_service IN_user_role_service;
 		
 		return "admin/menus11";
 	}
+	
+	
+	
+	@RequiresPermissions(value="充值管理")
 	@RequestMapping("/menus12")//充值管理
 	public String menus12(Model model,@ModelAttribute("serial_numberm")String serial_numberm,@ModelAttribute("mobile_Phonem")String mobile_Phonem,@ModelAttribute("statusm")String statusm,@ModelAttribute("pay_channel_namem")String pay_channel_namem,@ModelAttribute("create_datem")String create_datem) {
 		Map map=new HashMap<>();
@@ -217,6 +255,9 @@ private IN_user_role_service IN_user_role_service;
 		model.addAttribute("listMember_deposit_record", listMember_deposit_record);
 		return "admin/menus12";
 	}
+	
+	
+	@RequiresPermissions(value="提现管理")
 	@RequestMapping("/menus13")//提现管理
 	public String menus13(Model model,@ModelAttribute("member_namem")String member_namem,@ModelAttribute("mobile_Phonem")String mobile_Phonem,@ModelAttribute("bank_cardm")String bank_cardm,@ModelAttribute("create_datem")String create_datem) {
 		Map map=new HashMap<>();
@@ -231,6 +272,10 @@ private IN_user_role_service IN_user_role_service;
 		model.addAttribute("listmember", listmember);
 		return "admin/menus13";
 	}
+	
+	
+	
+	@RequiresPermissions(value="邀请奖励")
 	@RequestMapping("/menus14")//邀请奖励
 	public String menus14(Model model,@ModelAttribute("member_namem")String member_namem,@ModelAttribute("mobile_Phonem")String mobile_Phonem,@ModelAttribute("invitationCodem")String invitationCodem,@ModelAttribute("invitedCodem")String invitedCodem,@ModelAttribute("typem")String typem,@ModelAttribute("isAwardm")String isAwardm) {
 		Map map=new HashMap<>();
@@ -244,14 +289,24 @@ private IN_user_role_service IN_user_role_service;
 		model.addAttribute("listaward_records", listaward_records);
 		return "admin/menus14";
 	}
+	
+	
+	
+	@RequiresPermissions(value="财务统计")
 	@RequestMapping("/menus15")
 	public String menus15() {
 		return "admin/menus15";
 	}
+	
+	
+	@RequiresPermissions(value="用户综合统计")
 	@RequestMapping("/menus16")
 	public String menus16() {
 		return "admin/menus16";
 	}
+	
+	
+	@RequiresPermissions(value="发布公告")
 	@RequestMapping("/menus17")//公告
 	public String menus17(Model model,@ModelAttribute("push_q1")String q1,@ModelAttribute("push_q2")String q2) {//公告
 		Map map = new HashMap<>();
@@ -264,7 +319,7 @@ private IN_user_role_service IN_user_role_service;
 		return "admin/menus17";
 	}
 	
-	
+	@RequiresPermissions(value="意见反馈")
 	@RequestMapping("/menus18")
 	public String menus18(Model model,@ModelAttribute("feedback_q1")String feedback_q1,@ModelAttribute("feedback_q2")String feedback_q2) { //意见反馈
 		Map map = new HashMap<>();
@@ -288,6 +343,7 @@ private IN_user_role_service IN_user_role_service;
 	
 	
 	  //用户管理
+	@RequiresPermissions(value="用户管理")
 	@RequestMapping("/menus19")
 	public String menus19(Model model,@ModelAttribute("users_q1")String users_q1,@ModelAttribute("users_q2")String users_q2) {
 		Map map = new HashMap<>();
@@ -309,6 +365,8 @@ private IN_user_role_service IN_user_role_service;
 		model.addAttribute("list_user_role", list);
 		return "admin/menus20";
 	}
+	
+	@RequiresPermissions(value="修改密码")
 	@RequestMapping("/menus21")
 	public String menus21() {
 		return "admin/menus21";

@@ -19,7 +19,7 @@ public class Member_trade_record {
 	private double amount;//交易金额
 	private String trade_type;//交易分类
 	private int  fund_flow;  //资金流向 （0流出 1流入）
-	private int trade_status; //交易状态
+	private int trade_status; //交易状态  0未付款   1完成    2删除
 	private String ext_field1;//扩展1
 	private String ext_field2;//扩展2
 	private String ext_field3;//扩展3

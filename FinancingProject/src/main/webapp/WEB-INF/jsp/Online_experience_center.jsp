@@ -34,7 +34,7 @@
     </div>
     
     <!--   2   导入菜单栏  -->
-    <div class="jwNav">
+  <!--   <div class="jwNav">
 		<div class="container">
 			<div class="row">
 				<ul class="topNav">
@@ -81,16 +81,20 @@
 				</ul>
 			</div>
 		</div>
-	</div>
+	</div> -->
+
+       <div style="background-color: ; width:100%px; height:40px; margin:0 auto;">
+        <iframe src="/FinancingProject/index_files/daohang.jsp" scrolling="no" frameborder="0"  width="100%"></iframe>
+    </div>
+
 
     
+<!-- <img src="/FinancingProject/images/km1.jpg"   ></img> -->
+<center>
+<div style="height:695px;width:973px;background-image: url('/FinancingProject/images/km1.jpg');">
 
-
-<font size="+5">网上体验中心的内容</font>
-<br/><br/><br/><br/><br/><br/>
-
-
-
+</div>
+</center>
  <!-- 4     图片广告 -->
     <div class="container index">
 			<div class="row">

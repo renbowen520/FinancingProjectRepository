@@ -21,10 +21,8 @@
 
 <div class="logo container">
     <div class="row">
-            这里要显示图片
-      
+      <img src="/FinancingProject/images/zsj.jpg"></img>
         <div class="telInfo">
-          <!--   <img src="./400Icon.png" onmousemove="this.src = &#39;/400IconActive.png&#39;" onmouseout="	this.src = &#39;/400Icon.png&#39;"> -->
             <div class="detail">
                         <a style="font-size:18px;float:right;margin-right:15px;margin-top:5px;color:#917739;" target="_parent" href="/FinancingProject/IndexController/adminLogin">后台</a>
                         

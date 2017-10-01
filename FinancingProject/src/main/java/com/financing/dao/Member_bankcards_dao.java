@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.taglibs.standard.lang.jstl.test.beans.PublicInterface2;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.financing.Interface_dao.IN_Member_bankcards_dao;
+import com.financing.bean.Bank;
+import com.financing.bean.Member;
 import com.financing.bean.Member_bankcards;
 
 @Component
@@ -27,11 +30,32 @@ public class Member_bankcards_dao implements IN_Member_bankcards_dao {
 			return this.sessionFactory.getCurrentSession();
 		}
 		
+ public void save(Member_bankcards member_bankcards) {
+	 Session session = this.getSession();
+	 session.save(member_bankcards);
+ }
 		
-		//根据用户查询卡号
+		
+		//查询正常绑卡的   唯一性
+		public Member_bankcards get_ka(String card_no) {
+			   Session session = this.getSession();
+			    Query query = session.createQuery("from Member_bankcards  where  delflag=0 and  card_no=:card_no");
+				  query.setString("card_no", card_no);
+				  List<Member_bankcards> list=query.list();
+				  Member_bankcards member=null; 
+			 	for(Member_bankcards member2:list){
+			 		member=member2;
+				}
+				return member;
+		}
+		
+		
+		
+		
+		//根据用户查询卡号 状态要正常0
 		public List<Member_bankcards> getById(int id){
 			Session session=getSession();
-			Query query = session.createQuery("from Member_bankcards b where b.member_id.id=:id");
+			Query query = session.createQuery("from Member_bankcards b where b.delflag=0 and b.member_id.id=:id");
 			query.setInteger("id", id);
 			List<Member_bankcards>list = query.list();
 			return list;

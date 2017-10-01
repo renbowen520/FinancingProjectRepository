@@ -1,6 +1,9 @@
 package com.financing.controller;
 import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,11 +29,13 @@ public class News_type_Controller {
 	
 	
 	@RequestMapping("/de")  //删除
-	public String de(int id999) {
+	public String de(int id999,HttpSession session) {
 	//	System.out.println("id==="+id999);
 		   News_type news_type = news_type_service.getById(id999);
 		    news_type.setStatus(1);
-	        news_type.setUsers2((Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login"));
+		    
+		//    news_type.setUsers2((Users)session.getAttribute("admin_login"));
+  news_type.setUsers2((Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login"));
 		    news_type.setUpdTime(new Date());
 		     news_type_service.update(news_type);
 	        return "redirect:/AdminController/menus6";
@@ -38,7 +43,7 @@ public class News_type_Controller {
 	
 	
 	@RequestMapping("/update")
-	public String update(int id2,String name2,String info2,int sort2,String x2) {
+	public String update(HttpSession session,int id2,String name2,String info2,int sort2,String x2) {
 /*
 		System.out.println("n="+id2);
 		System.out.println("n="+name2);
@@ -51,7 +56,9 @@ public class News_type_Controller {
 	    news_type.setName(name2);
 	    news_type.setSort(sort2);
         news_type.setSupType(Integer.valueOf(x2));
-        news_type.setUsers((Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login"));
+	//    news_type.setUsers((Users)session.getAttribute("admin_login"));
+ 
+   news_type.setUsers((Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login"));
 	     news_type_service.update(news_type);
 		   return "redirect:/AdminController/menus6";
 	}
@@ -93,11 +100,11 @@ public class News_type_Controller {
 	 }
 	 
 	 @RequestMapping("/add")
-	 public String add(News_type news_type) {  //添加资讯类别
+	 public String add(News_type news_type,HttpSession session) {  //添加资讯类别
 		     news_type.setAddTime(new Date());
-	        news_type.setUsers((Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login"));
+	  news_type.setUsers((Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login"));
 		 
-	        
+	   //     news_type.setUsers((Users)session.getAttribute("admin_login"));
 	        news_type_service.save(news_type);
 		    return "redirect:/AdminController/menus6";
 	 }

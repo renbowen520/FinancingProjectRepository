@@ -12,7 +12,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
 @Table
-public class Finance_product_funds {//私募产品表
+public class Finance_product_funds {
+	
+	//私募产品表
 	private int id;
 	private String type;//类型
 	private String name;//名称

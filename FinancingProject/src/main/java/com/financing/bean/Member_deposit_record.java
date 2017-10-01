@@ -11,7 +11,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class Member_deposit_record {//(充值记录表)
+public class Member_deposit_record {
+	//(充值记录表)
 	private int id;//id
 	private String serial_number;//流水号
 	private Member member_id;//用户Id

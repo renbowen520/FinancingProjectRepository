@@ -70,10 +70,45 @@
    <mvc:annotation-driven>
    </mvc:annotation-driven>
    
-   
+   <!--shiro注解  -->
      <bean
               class="org.springframework.web.servlet.view.InternalResourceViewResolver">
             <property name="prefix" value="/WEB-INF/"></property>
             <property name="suffix" value=".jsp"></property>  
    </bean>
+   
+    
+     <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor">
+    <property name="proxyTargetClass" value="true" />
+</bean>
+
+<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+    <property name="securityManager" ref="securityManager"/>
+</bean> 
+
+<!--  <bean
+		class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+		depends-on="lifecycleBeanPostProcessor" />
+	<bean
+		class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+		<property name="securityManager" ref="securityManager" />
+	</bean>   -->
+    
+    <!-- 配置 shiro权限不通过 跳转页面 -->
+   <bean  
+    class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">  
+    <property name="exceptionMappings">  
+        <props>  
+            <prop key="org.apache.shiro.authz.UnauthorizedException"> 
+             
+             error
+            
+            </prop>  
+            <prop key="org.apache.shiro.authz.UnauthenticatedException"> 
+             error
+            </prop>  
+        </props>  
+    </property>  
+</bean>  
+     
 </beans>

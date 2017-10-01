@@ -29,7 +29,7 @@
 <script type="text/javascript"  src="/FinancingProject/js/bootstrapValidator.js"></script>
 
 
-<title>下载中心</title>
+<title>个人中心</title>
 </head>
 <body>
 <!--   1  导入顶部  -->
@@ -38,7 +38,7 @@
     </div>
     
     <!--   2   导入菜单栏  -->
-    <div class="jwNav">
+    <!-- <div class="jwNav">
 		<div class="container">
 			<div class="row">
 				<ul class="topNav">
@@ -85,8 +85,10 @@
 				</ul>
 			</div>
 		</div>
-	</div>
-
+	</div> -->
+       <div style="background-color: ; width:100%px; height:40px; margin:0 auto;">
+        <iframe src="/FinancingProject/index_files/daohang.jsp" scrolling="no" frameborder="0"  width="100%"></iframe>
+    </div>
     
  <!-- ============================================================= -->  
 
@@ -107,7 +109,7 @@
                 <h2>${member_login.name }，<span>您好!</span></h2>
         </td>
         <td align="right">
-            <a  onclick="return confirm('确定退出?')"    href="/FinancingProject/LoginController/out"   class="loginOut"><span class="iconfont"></span>安全退出</a>
+            <a  onclick="return confirm('确定退出?')"    href="/FinancingProject/LoginController/out"   class="loginOut"><i class="fa fa-hand-o-right"></i>&nbsp;安全退出</a>
         </td>
     </tr>
 </tbody>
@@ -116,7 +118,7 @@
 
 <div class="countBox">
     <ul>
-        <li><h2>0</h2><p>账户可用余额(元)<a href="javascript:;" class="iconfont"><span>账户可用余额</span><i></i></a></p></li>
+        <li><h2>0</h2><p>账户可用余额(元)<a href="javascript:;" class="iconfont"><span>账户可用余额</span><i class="fa fa-exclamation-circle"></i></a></p></li>
         <li><h2>0</h2><p>账户总资产(元)<a href="javascript:;" class="iconfont"><span>可用余额+投资金额+累计收益</span><i></i></a></p></li>
         <li><h2 style="color:#9d8440">0</h2><p>投资金额(元)<a href="javascript:;" class="iconfont"><span>投资中资金</span><i></i></a></p></li>
         <li><h2 style="color:#9d8440">0</h2><p>累计收益(元)<a href="javascript:;" class="iconfont"><span>累计收益</span><i></i></a></p></li>
@@ -138,7 +140,7 @@
     <h2>我的账户</h2>
     <ul>
         <li><a id="" href="#">账户充值</a></li>
-         <li><a id="/FinancingProject/IndexController/personal_center" href="">安全中心</a></li>
+         <li><a id=""  href="/FinancingProject/IndexController/personal_center">安全中心</a></li>
         <li><a id="" href="">我要提款</a></li>
         <li><a id="" href="">我是理财师</a></li>
     </ul>
@@ -155,13 +157,110 @@
                 
                 <div id="conBox">
                     <div class="box" style="display:block">
-							&nbsp;&nbsp;&nbsp;							                         
-                            <font size="+2"><b>绑定银行卡</b></font>            
-	                        <form action="" method="post" name="f1" id="f1">
-	    
-	                          
-	                          
-	                          </form>
+						
+						<h3 ><b>绑定银行卡</b> <small>Bind bank card</small>  </h3>
+	                    <hr><br>
+	                       <form action="/FinancingProject/MemberController/bk_ok" method="post" name="f1" id="f1">
+	           
+	       <div class="form-group">
+           <label   for="firstname" class="col-sm-2 control-label">真实姓名</label>
+         
+               <div class="col-sm-10">
+               <input  style="width: 300px;"     type="text" class="form-control" id="member_name"  name="member_name"
+               placeholder="请输入姓名"          required="required"> 
+                   <span style="color: red">  实名信息提交后不可修改，请务必认真填写真实资料</span>
+               </div>
+          </div>
+	          
+	         &nbsp; <br> 
+	   <div class="form-group">
+           <label   for="firstname" class="col-sm-2 control-label">身份证</label>
+                <div class="col-sm-10">
+                <input  style="width: 300px;"    type="text" class="form-control" id="identity"  name="identity"
+                placeholder="请输入身份证"          required="required"> 
+              <span style="color: red">一个身份证只能绑定一个帐号</span>
+                </div>
+          </div>    
+	        
+	        
+	       &nbsp; <br> 
+	   <div class="form-group">
+           <label   for="firstname" class="col-sm-2 control-label">开户银行</label>
+                <div class="col-sm-10">
+                         <select  style="width: 300px;"      id="bank_id"  name="bank_id"  class="form-control">
+                       
+                         </select>
+          </div>   
+	   </div>            
+	         &nbsp; <br> 
+	   <div class="form-group">
+           <label   for="firstname" class="col-sm-2 control-label">开户地</label>
+               <div class="col-sm-10">   
+                <table border="0" >    
+                  <tr>
+                    <td>
+                   <input type="hidden"  id="s111_111"  name="s111_111">
+                    <select  id="s111"  name="s111"  class="form-control"  style="width: 150px;" >
+                    <option  value=""  >--省份--</option>
+                    </select>
+               
+                    </td>
+                      <td>
+                       <input type="hidden"  id="s222_222"  name="s222_222">
+                    <select  id="s222"  name="s222"       class="form-control"  style="width: 150px;" >
+                    <option  value="">--地级市--</option>
+                    </select>
+                 
+                    </td>
+                       <td>
+                          <input type="hidden"  id="s333_333"  name="s333_333">
+                    <select id="s333"  name="s333"      class="form-control"  style="width: 150px;" >
+                       <option  value="">--市/县/区--</option>
+                    </select>
+                    </td>
+                  </tr>
+                </table>
+                </div>
+	   </div>      
+	      
+	           &nbsp; <br> 
+	   <div class="form-group">
+           <label   for="firstname" class="col-sm-2 control-label">开户支行</label>
+                <div class="col-sm-10">
+                <input  style="width: 300px;"    type="text" class="form-control" id="zh"  name="zh"
+                placeholder="请输入开户支行"          required="required"> 
+           
+                </div>
+          </div>     
+	        
+	      	           &nbsp; <br> 
+	   <div class="form-group">
+           <label   for="firstname" class="col-sm-2 control-label">银行卡号</label>
+                <div class="col-sm-10">
+                <input  style="width: 300px;"    type="text" class="form-control" id="card_no"  name="card_no"
+                placeholder="请输入银行卡号"          required="required"> 
+           
+                </div>
+          </div>   
+	         
+	        	           &nbsp; <br> 
+	   <div class="form-group">
+           <label   for="firstname" class="col-sm-2 control-label">确认卡号</label>
+                <div class="col-sm-10">
+                <input  style="width: 300px;"    type="text" class="form-control" id="card_no2"  name="card_no2"
+                placeholder="请输入确认卡号"          required="required"> 
+           
+                </div>
+          </div>  
+	        
+	          &nbsp; <br> 
+          <div   style="text-align: center;width: 59%" >
+               <button  type="submit" class="btn btn-primary"  >  提交</button>         
+               &nbsp; &nbsp;
+           <button type="button"       id="but2" class="btn btn-danger">重置</button> 
+            
+	           </div>               
+           </form>
                     </div>
                 </div>
             </div>
@@ -170,7 +269,261 @@
 
 
 <script type="text/javascript">
-       
+
+
+
+
+$('#but2').click(function() {
+	$("#s111 option:first").prop("selected", 'selected');
+	$("#s222 option:first").prop("selected", 'selected');
+	$("#s333 option:first").prop("selected", 'selected');
+    $('#f1').data('bootstrapValidator').resetForm(true);
+});
+
+      $(function(){   
+    	  
+    	  $('#s333').change(function(){  
+    		  var t111 = $('#s333').val();
+ 			 var t1	=	 $("#s333  option:checked").text(); // 选中项目的显示值
+ 			if(t111 != null){  //如果value有值
+    			$('#s333_333').val(t1);
+    			}else {
+    			$('#s333_333').val("");
+    			}
+        		$('#f1').data('bootstrapValidator').updateStatus('s111_111', 'NOT_VALIDATED').validateField('s111_111');
+        		$('#f1').data('bootstrapValidator').updateStatus('s222_222', 'NOT_VALIDATED').validateField('s222_222');
+        		$('#f1').data('bootstrapValidator').updateStatus('s333_333', 'NOT_VALIDATED').validateField('s333_333');
+  });
+    	  
+    	  $('#s222').change(function(){  
+    		     var t111 = $('#s222').val();
+    			 var t1	=	 $("#s222  option:checked").text(); // 选中项目的显示值
+    				if(t111 != null){  //如果value有值
+    	    			$('#s222_222').val(t1);
+    	    			   //需要异步请求二级列表
+    	    			    var s222;
+    	    	     	    $.post("/FinancingProject/MemberController/get_s333",{rid:3,pid:t111},
+    	    	 		   function(msg){
+    	    	     		    for(var i=0;i<msg.length;i++){
+    	    	  			      s222=msg[i];
+    	    	  			      $("#s333").append("<option value="+s222.id+">"+s222.name+"</option>");
+    	    	  		        }
+    	    	 		  }); 
+    	    			   
+    	    			}else {
+    	    			$('#s111_111').val("");
+    	    			}
+    	        		$('#f1').data('bootstrapValidator').updateStatus('s111_111', 'NOT_VALIDATED').validateField('s111_111');
+    	        		$('#f1').data('bootstrapValidator').updateStatus('s222_222', 'NOT_VALIDATED').validateField('s222_222');
+    	        		$('#f1').data('bootstrapValidator').updateStatus('s333_333', 'NOT_VALIDATED').validateField('s333_333');
+    	  });
+    	  
+    	  
+   　$('#s111').change(function(){  
+	         var t111 = $('#s111').val();
+    		 var t1	=	 $("#s111  option:checked").text(); // 选中项目的显示值
+    			if(t111 != null){  //如果value有值
+    			$('#s111_111').val(t1);
+    			   //需要异步请求二级列表
+    			    var s222;
+    	     	    $.post("/FinancingProject/MemberController/get_s333",{rid:2,pid:t111},
+    	 		   function(msg){
+    	     		    for(var i=0;i<msg.length;i++){
+    	  			      s222=msg[i];
+    	  			      $("#s222").append("<option value="+s222.id+">"+s222.name+"</option>");
+    	  		        }
+    	 		  }); 
+    			}else {
+    			$('#s111_111').val("");
+    			}
+        		$('#f1').data('bootstrapValidator').updateStatus('s111_111', 'NOT_VALIDATED').validateField('s111_111');
+        		$('#f1').data('bootstrapValidator').updateStatus('s222_222', 'NOT_VALIDATED').validateField('s222_222');
+        		$('#f1').data('bootstrapValidator').updateStatus('s333_333', 'NOT_VALIDATED').validateField('s333_333');
+
+    	 　}); 
+    	  
+    	/*  $('#f1').on('hidden.bs.select', function (e) { //该方法注册到$(function(){})函数中
+    		var tmpSelected = $('#s111').val();
+    		alert(tmpSelected);
+    		if(tmpSelected != null){
+    		$('#s111_111').val(tmpSelected);
+    		}else {
+    		$('#s111_111').val("");
+    		}
+    		//由于input为hidden，验证会出现一些bug，此处手动验证隐藏的input组件
+    		$('#f1').data('bootstrapValidator').updateStatus('s111_111', 'NOT_VALIDATED').validateField('s111_111');
+    		}); 
+    	  */
+    	 
+    	  	 //异步请求省份下拉列表
+     	 var ss;
+     	   $.post("/FinancingProject/MemberController/get_s333",{rid:1,pid:0},
+ 		  function(msg){
+     		   for(var i=0;i<msg.length;i++){
+  			      ss=msg[i];
+  			      $("#s111").append("<option value="+ss.id+">"+ss.name+"</option>");
+  		 }
+ 		  }); 
+    	  
+    	  
+    	 //异步请求下拉列表
+    	 var s;
+    	   $.post("/FinancingProject/MemberController/get_bank",
+		  function(msg){
+    		   for(var i=0;i<msg.length;i++){
+ 			      s=msg[i];
+ 			      $("#bank_id").append("<option value="+s.id+">"+s.bname+"</option>");
+ 		 }
+		  }); 
+    	  
+    	  
+    	//验证
+    	    $('#f1').bootstrapValidator({
+    	          message: 'This value is not valid',
+    	          excluded : [':disabled'],  
+    	          feedbackIcons: {
+    	              valid: 'glyphicon glyphicon-ok',
+    	              invalid: 'glyphicon glyphicon-remove',
+    	              validating: 'glyphicon glyphicon-refresh'
+    	          },
+    	          fields: {
+    	        	  member_name: {
+    	                  message: '',
+    	                  validators: {
+    	                      notEmpty: { //非空验证
+    	                          message: '姓名不能为空!'
+    	                      },
+    	                      stringLength: {  //长度验证
+    	                          min: 2,
+    	                          max: 10,
+    	                          message: '姓名长度为2-10个中文字符!'
+    	                      },
+    	                      regexp: {
+    	                        regexp: /^[\u4e00-\u9fa5]+(·[\u4e00-\u9fa5]+)*$/ ,
+    	                        message: '请输入正确的姓名格式'
+    	                    } 
+    	                  }
+    	              },
+    	              identity: {
+    	                  message: 'The phone is not valid',
+    	                  validators: {
+    	                      notEmpty: {
+    	                          message: '身份证号码不能为空'
+    	                      },
+    	                      stringLength: {
+    	                          min: 18,
+    	                          max: 18,
+    	                          message: '请输入18位身份证号码'
+    	                      },
+    	                      regexp: {
+    	                          regexp: /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/,
+    	                          message: '请输入正确的身份证号码'
+    	                      },
+    	                      threshold :18,
+    	                      remote: {
+    	                    	  url: '/FinancingProject/MemberController/yz',//验证地址
+    	                          message: '身份证号码号码已被绑定!',//提示消息
+    	                          delay :  2000,//每输入一个字符，就发ajax请求，服务器压力还是太大，设置2秒发送一次ajax（默认输入一个字符，提交一次，服务器压力太大）
+    	                          type: 'POST'//请求方式
+    	                      } 
+    	                  }
+    	              },
+    	              zh: {
+    	                  validators: {
+    	                	  notEmpty: {
+    	                          message: '支行名称不能为空'
+    	                      },
+    	                     stringLength:{
+    	  				        min:2,
+    	  				       max:40,
+    	                        message: '支行名称长度在2到40个字符之间'
+    	  				   }
+    	                  }
+    	              },
+    	               
+    	              card_no: {
+    	                  message: 'The phone is not valid',
+    	                  validators: {
+    	                      notEmpty: {
+    	                          message: '银行卡号不能为空'
+    	                      },
+    	                      
+    	                      stringLength: {
+    	                          min: 16,
+    	                          max: 21,
+    	                          message: '卡号有效位数16-21'
+    	                      },
+    	                      identical: {
+    	                          field: 'card_no2',
+    	                          message: '两次输入的卡号不一致'
+    	                      },
+    	                      regexp: {
+    	                          regexp: /^^([1-9]{1})(\d{15}|\d{18}|\d{19}|\d{20})$/,
+    	                          message: '请输入正确的银行卡号码'
+    	                      },
+    	                      threshold :16,
+    	                      remote: {
+    	                    	  url: '/FinancingProject/MemberController/yz_ka',//验证地址
+    	                          message: '该银行卡号码已被绑定!',//提示消息
+    	                          delay :  2000,//每输入一个字符，就发ajax请求，服务器压力还是太大，设置2秒发送一次ajax（默认输入一个字符，提交一次，服务器压力太大）
+    	                          type: 'POST'//请求方式
+    	                      } 
+    	                  }
+    	              },
+    	             
+    	              card_no2: {
+    	                  message: 'The phone is not valid',
+    	                  validators: {
+    	                      notEmpty: {
+    	                          message: '银行卡号不能为空'
+    	                      },
+    	                      
+    	                      stringLength: {
+    	                          min: 16,
+    	                          max: 21,
+    	                          message: '卡号有效位数16-21'
+    	                      },
+    	                      identical: {
+    	                          field: 'card_no',
+    	                          message: '两次输入的卡号不一致'
+    	                      },
+    	                      regexp: {
+    	                          regexp: /^^([1-9]{1})(\d{15}|\d{18}|\d{19}|\d{20})$/,
+    	                          message: '请输入正确的银行卡号码'
+    	                      }
+    	                  }
+    	              },
+    	              s111_111: {
+    	                  message: '',
+    	                  validators: {
+    	                      notEmpty: { //非空验证
+    	                          message: '请选择一级分类!'
+    	                      }
+    	                  }
+    	              },
+    	              s222_222: {
+    	                  message: '',
+    	                  validators: {
+    	                      notEmpty: { //非空验证
+    	                          message: '请选择二级分类!'
+    	                      }
+    	                  }
+    	              },
+    	              s333_333: {
+    	                  message: '',
+    	                  validators: {
+    	                      notEmpty: { //非空验证
+    	                          message: '请选择三级分类!'
+    	                      }
+    	                  }
+    	              }
+    	              
+    	          }//验证
+    	      });
+    	    //////////////////////	  
+    	  
+    	  
+      }); 
 
 
 </script>

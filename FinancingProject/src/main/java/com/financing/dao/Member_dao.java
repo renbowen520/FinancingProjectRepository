@@ -11,6 +11,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Component;
 import com.financing.Interface_dao.IN_Member_dao;
 import com.financing.bean.Award_records;
+import com.financing.bean.Bank;
 import com.financing.bean.Bbin_info;
 import com.financing.bean.Member;
 import com.financing.bean.Member_account;
@@ -18,6 +19,7 @@ import com.financing.bean.Member_deposit_record;
 import com.financing.bean.Member_trade_record;
 import com.financing.bean.Member_withdraw_record;
 import com.financing.bean.Subject_purchase_record;
+import com.financing.bean.Sys_region;
 import com.financing.bean.Users;
 
 
@@ -30,6 +32,52 @@ public class Member_dao implements IN_Member_dao {
 	public Session getSession(){
 		return this.sessionFactory.getCurrentSession();
 	}
+	
+	public List<Sys_region> get_s333( int rid,  int  pid ) { //选择地址
+	    Session session = this.getSession();
+	    Query query = session.createQuery("from Sys_region s  where  s.region_level=:rid  and  s.parent_id=:pid ");
+		query.setInteger("rid", rid);
+	    query.setInteger("pid", pid);
+	    List<Sys_region> list=query.list();
+	     return list;
+}
+	
+	
+/*	public List<Sys_region> get_s222(int  id ) { //选择地址
+		    Session session = this.getSession();
+		    Query query = session.createQuery("from Sys_region  where  region_level=2  and parent_id=:id");
+			query.setInteger("id", id);
+		    List<Sys_region> list=query.list();
+		     return list;
+	}
+	*/
+	
+	
+/*	public List<Sys_region> get_s111(int  id ) { //选择地址
+		   Session session = this.getSession();
+		    Query query = session.createQuery("from Sys_region  where  region_level=:id");
+			query.setInteger("id", id);
+		    List<Sys_region> list=query.list();
+		     return list;
+	}
+	*/
+	
+	
+	public List<Bank> get_bank() {
+		   Session session = this.getSession();
+		    Query query = session.createQuery("from Bank  where  0=0");
+			  List<Bank> list=query.list();
+		     return list;
+	}
+	
+	public Bank get_bank_id(int id) {
+		 Session session = this.getSession();
+		 Bank bank = (Bank) session.get(Bank.class, id);
+		 return bank;
+	}
+	
+	
+	
 	
 	public void update(Member member) {
 		   Session session = this.getSession();
@@ -66,6 +114,20 @@ public class Member_dao implements IN_Member_dao {
 			    s+=chars.charAt((int)(Math.random() * 52));
 		   }
 		  return s;
+	}
+	
+	
+	//根据身份证号查询
+	public Member getByIdentity(String identity) {
+		    Session session = this.getSession();
+		    Query query = session.createQuery("from Member  where identity=:identity");
+			  query.setString("identity", identity);
+			  List<Member> list=query.list();
+		  	Member member=null; 
+		 	for(Member member2:list){
+		 		member=member2;
+			}
+			return member;
 	}
 	
 	

@@ -2,6 +2,8 @@ package com.financing.controller;
 
 import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.catalina.tribes.transport.bio.util.SingleRemoveSynchronizedAddLock;
 import org.apache.shiro.SecurityUtils;
 import org.apache.taglibs.standard.lang.jstl.test.beans.PublicInterface2;
@@ -41,12 +43,14 @@ public class Push_notice_controller {
 	}
 	
 	@RequestMapping("/add")
-	public String add(String t1,String t2) { //新增
+	public String add(String t1,String t2,HttpSession session) { //新增
 	  Push_notice  push_notice = new Push_notice();
 	  push_notice.setTitle(t1);
 	  push_notice.setContent(t2);
       push_notice.setStatus(0);//状态
-	     Users users =  (Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login");
+	//	 Users users = (Users) session.getAttribute("admin_login");
+
+	   Users users =  (Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login");
       push_notice.setUsers(users);//发布人
 	 	push_notice.setCreate_date(new Date());	
 	 	IN_push_notice_service.save(push_notice);
@@ -54,13 +58,15 @@ public class Push_notice_controller {
 	}
 	
 	@RequestMapping("/update")
-	public String  update(Push_notice push_notice)  {
+	public String  update(Push_notice push_notice,HttpSession session)  {
 		   Push_notice pp= IN_push_notice_service.getById(push_notice.getId());
 		    pp.setUpdate_date(new Date());
 		    pp.setStatus(0);
 		    pp.setContent(push_notice.getContent());
 		    pp.setTitle(push_notice.getTitle());
-		     Users users2 =  (Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login");
+		    
+		//    Users users2 =  (Users)session.getAttribute("admin_login"); 
+		  Users users2 =  (Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login");
            pp.setUsers2(users2);//更新人
 	      IN_push_notice_service.delete(pp);  //更新的方法
 		  return"redirect:/AdminController/menus17";

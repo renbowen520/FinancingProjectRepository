@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>权限不足</title>
+<title>验证失败</title>
 <script type="text/javascript" src="/FinancingProject/js/jquery-3.2.0.min.js" ></script>
 
   <link href="/FinancingProject/404/css/404.css" rel="stylesheet" type="text/css" />

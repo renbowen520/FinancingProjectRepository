@@ -9,6 +9,7 @@ import java.util.Map;
 
 import javax.print.attribute.standard.RequestingUserName;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.apache.shiro.SecurityUtils;
@@ -43,7 +44,7 @@ public class News_Controller {
 	
     @RequestMapping("/update2")  
     public String update(@RequestParam("file88")MultipartFile file88,
-    		HttpServletRequest request,String zd,News news,int typeId) throws IOException {
+    		HttpServletRequest request,String zd,News news,int typeId,HttpSession session) throws IOException {
     	News news2 = news_service.getById(news.getId()); //数据库中原来的
     	  news2.setTitle(news.getTitle());
     	  news2.setText(news.getText());
@@ -55,7 +56,9 @@ public class News_Controller {
 	         }else {
 	        	  news2.setPlacTop(1); //不置顶
 	         }
-	    	   news.setUsers2((Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login"));
+	         
+	      //   news.setUsers2((Users)session.getAttribute("admin_login"));
+		   news.setUsers2((Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login"));
 	         news2.setUpdTime(new Date());//更新时间
 	         String filename=file88.getOriginalFilename();
 	         
@@ -94,7 +97,7 @@ public class News_Controller {
 	
     @RequestMapping("/add2")  
     public String save(@RequestParam("file1")MultipartFile file1,
-    		HttpServletRequest request,String zd,News news,int typeId) throws IOException {  
+    		HttpServletRequest request,String zd,News news,int typeId,HttpSession session) throws IOException {  
     	//获取上传的文件名称
     	   //    System.out.println("标题"+news.getTitle());
     	    //   System.out.println("内容"+news.getText());
@@ -108,7 +111,10 @@ public class News_Controller {
     	        	 news.setPlacTop(1);//不置顶
     	         }
     	         //添加人
-    	   news.setUsers((Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login"));
+    	         
+    	//         news.setUsers((Users)session.getAttribute("admin_login"));
+
+      news.setUsers((Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login"));
     		  	 String filename=file1.getOriginalFilename();
     		     news.setcPhoto(filename);
     		  //   System.out.println("filename="+filename);
@@ -125,13 +131,14 @@ public class News_Controller {
     }  
 	
 	@RequestMapping("/delete")
-	public String delete(int did) {
+	public String delete(int did,HttpSession session) {
 	     News news = news_service.getById(did);
 	     news.setUpdTime(new Date());
 	     news.setStatus(1);
-         news.setUsers2((Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login"));
+     //    news.setUsers2((Users)session.getAttribute("admin_login"));
+
+        news.setUsers2((Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login"));
          news_service.update(news);
-//		news_service.delete(Integer.valueOf(did));
 		return"redirect:/AdminController/menus7";
 	}
 	

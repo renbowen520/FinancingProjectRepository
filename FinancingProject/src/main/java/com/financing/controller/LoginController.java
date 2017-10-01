@@ -1,10 +1,8 @@
 package com.financing.controller;
-import java.security.KeyStore.PrivateKeyEntry;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.apache.shiro.SecurityUtils;
@@ -63,9 +61,11 @@ public class LoginController  {
    private IN_Member_bankcards_service IN_Member_bankcards_service;
    
    @RequestMapping("/admin_out")
-   public String  admin_out(HttpServletRequest request) {  //后台退出
+   public String  admin_out(HttpSession session,HttpServletRequest request) {  //后台退出
 	     //退出日志
-	     Users users =  (Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login");
+	   
+	  Users users =  (Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login");
+	  //   Users users=(Users) session.getAttribute("admin_login");
 	     User_log  log= new User_log();
          log.setUsers(users);
          log.setAction(1);
@@ -74,25 +74,27 @@ public class LoginController  {
          IN_Users_service.save_User_log(log);
          
 	     //清空session
-	     SecurityUtils.getSubject().getSession().removeAttribute("admin_login");
+         SecurityUtils.getSubject().getSession().removeAttribute("admin_login");
+       //  session.removeAttribute("admin_login");
 	     SecurityUtils.getSubject().logout();
 	     return "redirect:/IndexController/index";
    }
    
  
    @RequestMapping("/admin_logon")
-   public String  admin_logon(HttpServletRequest request) {  //后台注销
+   public String  admin_logon(HttpSession session,HttpServletRequest request) {  //后台注销
 	     //清空session
 	    //退出日志
-	     Users users =  (Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login");
+	  Users users =  (Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login");
+	//   Users users=(Users) session.getAttribute("admin_login");
 	     User_log  log= new User_log();
            log.setUsers(users);
            log.setAction(1);
            log.setCreate_date(new Date());
            log.setLogin_ip(IN_Users_service.getIpAddr(request));
            IN_Users_service.save_User_log(log);
-           
-           SecurityUtils.getSubject().getSession().removeAttribute("admin_login");
+     //      session.removeAttribute("admin_login");
+      SecurityUtils.getSubject().getSession().removeAttribute("admin_login");
  	       SecurityUtils.getSubject().logout();
 	       return "redirect:/IndexController/adminLogin";
    }
@@ -101,22 +103,25 @@ public class LoginController  {
    
    //后台登陆
  	@RequestMapping("adminLogin")
- 	public String adminLogin(Users users,HttpServletRequest request) {
+ 	public String adminLogin(HttpSession session,Users users,HttpServletRequest request) {
  		  System.out.println(users.getPassword());
  		  System.out.println(users.getMobile_Phone());
  		  org.apache.shiro.subject.Subject sub=SecurityUtils.getSubject();
  		  UsernamePasswordToken token = new UsernamePasswordToken(users.getMobile_Phone(),users.getPassword());
  		   try {
  			          sub.login(token);
- 			     	 Session session=sub.getSession();
+ 	 org.apache.shiro.session.Session shiro_session=sub.getSession();
  		 	        Users users888= (Users) sub.getPrincipal();
- 		 	        session.setAttribute("admin_login", users888);
+ 		 	   //     session.setAttribute("admin_login", users888);
  		       //	System.out.println("前台用户接受到了值:"+users888.getUser_name());
  				//	System.out.println("sessionId:"+session.getId());
  			  //	System.out.println("sessionHost:"+session.getHost());
- 			  //	System.out.println("sessionTimeout:"+session.getTimeout());
+ 		//	System.out.println("sessionTimeout:"+shiro_session.getTimeout());
  				 //    return "redirect:/AdminController/admin";//登陆成功后调到后台
- 	             //登陆成功后添加登陆记录
+ 		
+ 		 	        SecurityUtils.getSubject().getSession().setTimeout(600000);
+ 		 	      SecurityUtils.getSubject().getSession().setAttribute("admin_login", users888);
+ 			//登陆成功后添加登陆记录
  		           User_log  log= new User_log();
  		            log.setUsers(users888);
  		            log.setAction(0);
@@ -147,8 +152,8 @@ public class LoginController  {
 	 @RequestMapping("/login")
 	public String    login(HttpSession session,Member member0,Model model) {
          //根据手机号查询用户 
-		 System.out.println(member0.getMobile_Phone());
-		 System.out.println(member0.getPassword());
+/*		 System.out.println(member0.getMobile_Phone());
+		 System.out.println(member0.getPassword());*/
 		 Member member = IN_Member_service.getByPhone(member0.getMobile_Phone()) ;
 		   if(member!=null&&member.getStatus()==0) {  //查询到了,并且状态0
 			   //输入的密码加密

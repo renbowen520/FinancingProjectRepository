@@ -60,7 +60,7 @@
 				<td>${lmb.member_id.mobile_Phone }</td>
 				<td>${lmb.member_id.member_name}</td>
 				<td>${lmb.member_id.identity}</td>
-				<td>${lmb.type}</td>
+				<td></td>
 				<td>${lmb.card_no}</td>
 				<td>${lmb.cardaddress}</td>
 				<td>

@@ -20,9 +20,15 @@ public class Member_account_dao implements IN_Member_account_dao {
 	}
 	
 	
+	
 	public void save(Member_account member_account) {
 	   Session session =this.getSession();
 	   session.save(member_account);
 		
 	}
+	public void update_account(Member_account member_account) {
+		   Session session =this.getSession();
+		   session.update(member_account);
+	}
+	
 }

@@ -1,6 +1,8 @@
 package com.financing.dao;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -20,6 +22,16 @@ public class Role_permission_relation_dao  implements IN_Role_permission_relatio
 	public Session getSession(){
 		return this.sf.getCurrentSession();
 	}
+	
+	public Set<String>list_pname(int uid){
+		Session session = getSession();
+		   Query query = session.createSQLQuery("SELECT  permission_ename    from role_permission_relation  p ,users u ,user_role r , user_ss s    where  u.role_id = r.id  and s.rid = r.id  and  s.pid = p.id   and  u.id=:uid");
+		     query.setInteger("uid", uid); 
+		   List<String> list =query.list();
+		   Set<String >set = new HashSet<>(list);
+		  return set;
+	}
+	
 	
 	
 	//查询所有的权限

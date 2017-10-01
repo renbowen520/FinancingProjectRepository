@@ -1,20 +1,17 @@
 package com.financing.controller;
 
-import java.net.PasswordAuthentication;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.persistence.Index;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.financing.Interface_service.IN_Finance_produce_funds_service;
+import com.financing.Interface_service.IN_Member_bankcards_service;
 import com.financing.Interface_service.IN_Oversea_config_service;
 import com.financing.Interface_service.IN_Subject_service;
 import com.financing.bean.Finance_product_funds;
@@ -33,8 +30,15 @@ public class IndexController {
 	private IN_Finance_produce_funds_service finance_product_funds_Service;
 	@Autowired
 	private IN_Oversea_config_service oversea_config_Service;
+	@Autowired
+	private IN_Member_bankcards_service IN_Member_bankcards_service;
 	
 	
+	@RequestMapping("/NewFile")   //ÑéÇ©Ê§°Ü
+	public String NewFile() {
+		return "NewFile";
+		
+	}
 	
 	
 	@RequestMapping("/error")   //´íÎó
@@ -43,7 +47,11 @@ public class IndexController {
 		
 	}
 
-	
+	@RequestMapping("/dagou404")   //´íÎó
+	public String dagou404() {
+		return "error/dagou404";
+		
+	}
 	
 	//ºóÌ¨µÇÂ½
 	@RequestMapping("/adminLogin")
@@ -161,9 +169,9 @@ public class IndexController {
 				 public String  personal_center(HttpSession session) {
 					 Member member = (Member) session.getAttribute("member_login"); 
 					if(member!=null) {
-						  return "jsp/personal_center";
+						   return "jsp/personal_center";
 					}else {
-						 return "jsp/login";
+						  return "jsp/login";
 					}
 					
 				  }

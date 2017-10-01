@@ -169,47 +169,51 @@
     </div>
     
     
-	<div class="jwNav">
+        <div style="background-color: ; width:100%px; height:40px; margin:0 auto;">
+        <iframe src="/FinancingProject/index_files/daohang.jsp" scrolling="no" frameborder="0"  width="100%"></iframe>
+    </div>
+    
+ <!-- <div class="jwNav">
 		<div class="container">
 			<div class="row">
 				<ul class="topNav">
 					<li class="active">
-						<a class="item first" href="http://127.0.0.1:8080/FinancingProject/IndexController/index">
+						<a class="item first">
 							首页
 						</a>
 					</li>
 					<li>
-						<a class="item" href="/FinancingProject/IndexController/Online_experience_center">
+						<a class="item">
 							网上体验中心
 						</a>
 					</li>
 					<li>
-						<a class="item" href="/FinancingProject/IndexController/product">
+						<a class="item">
 							产品中心
 						</a>
 					</li>
 					<li>
-						<a class="item" href="/FinancingProject/IndexController/news">
+						<a class="item">
 							新闻中心
 						</a>
 					</li>
 					<li>
-                        <a class="item" href="/FinancingProject/IndexController/download">
+                        <a class="item" >
                             下载中心
                         </a>
 					</li>
 					<li>
-                        <a class="item " href="/FinancingProject/IndexController/help">
+                        <a class="item " >
                           孔明商学院
                         </a>
 					</li>
 					<li>
-                        <a class="item" href="/FinancingProject/IndexController/investment_research">
+                        <a class="item" >
                             投研中心
                         </a>
 					</li>
 					<li>
-						<a class="item last" href="/FinancingProject/IndexController/personal_center">
+						<a class="item last">
 							个人中心
 						</a>
 					</li>
@@ -219,8 +223,8 @@
 				</ul>
 			</div>
 		</div>
-	</div>
-
+	</div> -->
+ 
 	<div class="main">
 		
 
