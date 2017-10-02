@@ -34,9 +34,34 @@ public class IndexController {
 	private IN_Member_bankcards_service IN_Member_bankcards_service;
 	
 	
+	//主页
+	@RequestMapping("/index")
+	public String Index() {  
+		//需要查询公告
+		
+		
+		return "jsp/index";
+	}
+	
+	
+	
+	
+	
+	@RequestMapping("/feedback")   //意见反馈
+	public String feedback(HttpSession session) {
+		   Member member = (Member) session.getAttribute("member_login");
+	       if(member!=null) {
+	    		return "jsp/feedback";
+	       }else {
+	    		  return "redirect:/IndexController/index";   
+	       }
+	}
+	
+	
+	
 	@RequestMapping("/NewFile")   //验签失败
 	public String NewFile() {
-		return "NewFile";
+		return "jsp/NewFile";
 		
 	}
 	
@@ -61,12 +86,7 @@ public class IndexController {
 	}
 	
 	
-	//主页
-	@RequestMapping("/index")
-	public String Index() {
-		return "jsp/index";
-	}
-	
+
 	
 	//网上体验中心
   @RequestMapping("/Online_experience_center")

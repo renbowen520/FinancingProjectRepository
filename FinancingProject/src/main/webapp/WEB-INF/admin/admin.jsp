@@ -153,7 +153,7 @@
                                 <a href="javascript:;" data-url="/FinancingProject/AdminController/menus17" data-icon="&#xe614;" data-title="发布公告" kit-target data-id='18'><i class="layui-icon">&#xe614;</i><span> &nbsp;发布公告</span></a>
                             </dd>
 							    <dd>
-                                <a href="javascript:;" data-url="/FinancingProject/AdminController/menus18" data-icon="&#xe614;" data-title="意见反馈" kit-target data-id='19'><i class="layui-icon">&#xe614;</i><span> &nbsp;意见反馈</span></a>
+                                <a href="javascript:;" data-url="/FinancingProject/AdminController/menus18" data-icon="&#xe614;" data-title="建议反馈" kit-target data-id='19'><i class="layui-icon">&#xe614;</i><span> &nbsp;建议反馈</span></a>
                             </dd>
                         </dl>
 					

@@ -11,4 +11,5 @@ public interface IN_feedback_dao {
 List<Feedback>list(Map  map);
 Session getSession();
 Feedback getById(int  id);
+void save_feedback(Feedback feedback);
 }

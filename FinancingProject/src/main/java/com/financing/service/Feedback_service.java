@@ -32,4 +32,10 @@ public class Feedback_service  implements IN_feedback_service {
 		return IN_feedback_dao.getById(id);
 	}
 
+	@Override
+	public void save_feedback(Feedback feedback) {
+		// TODO Auto-generated method stub
+		IN_feedback_dao.save_feedback(feedback);
+	}
+
 }

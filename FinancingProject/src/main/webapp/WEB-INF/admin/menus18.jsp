@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>意见反馈</title>
+<title>建议反馈</title>
 <link rel="stylesheet" href="/FinancingProject/css/bootstrap.min.css" />
 <script type="text/javascript" src="/FinancingProject/js/jquery-3.2.0.min.js" ></script>
 <script type="text/javascript" src="/FinancingProject/js/bootstrap.min.js"></script>
@@ -20,7 +20,7 @@
 <body>
 <h3>
 <span class=" glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
-<b>意见反馈</b>
+<b>建议反馈</b>
 </h3>
 <hr>
 

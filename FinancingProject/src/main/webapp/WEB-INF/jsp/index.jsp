@@ -19,7 +19,7 @@
 	<link href="/FinancingProject/index_files/jw.less" rel="stylesheet">
 	<script src="/FinancingProject/index_files/jquery"></script>
 	<script src="/FinancingProject/index_files/bootstrap"></script>
-
+<script src="/FinancingProject/index_files/video.js"></script>
 <style>
 		* {
 			margin: 0;
@@ -173,77 +173,14 @@
         <iframe src="/FinancingProject/index_files/daohang.jsp" scrolling="no" frameborder="0"  width="100%"></iframe>
     </div>
     
- <!-- <div class="jwNav">
-		<div class="container">
-			<div class="row">
-				<ul class="topNav">
-					<li class="active">
-						<a class="item first">
-							首页
-						</a>
-					</li>
-					<li>
-						<a class="item">
-							网上体验中心
-						</a>
-					</li>
-					<li>
-						<a class="item">
-							产品中心
-						</a>
-					</li>
-					<li>
-						<a class="item">
-							新闻中心
-						</a>
-					</li>
-					<li>
-                        <a class="item" >
-                            下载中心
-                        </a>
-					</li>
-					<li>
-                        <a class="item " >
-                          孔明商学院
-                        </a>
-					</li>
-					<li>
-                        <a class="item" >
-                            投研中心
-                        </a>
-					</li>
-					<li>
-						<a class="item last">
-							个人中心
-						</a>
-					</li>
-					                    
-
-
-				</ul>
-			</div>
-		</div>
-	</div> -->
+ 
  
 	<div class="main">
-		
-
-<!-- Chang URLs to wherever Video.js files will be hosted -->
-<!-- <link href="/FinancingProject/index_files/video-js.css" rel="stylesheet" type="text/css"> -->
-<!-- video.js must be in the <head> for older IEs to work. -->
-<script src="/FinancingProject/index_files/video.js"></script>
-<!-- Unless using the CDN hosted version, update the URL to the Flash SWF -->
-<!-- <script>
-    videojs.options.flash.swf = "video-js.swf";
-</script>
- -->
 <div class="indexBanner">
 <div id="homebanner" class="carousel slide" data-ride="carousel">
 
 
- <!--    <ol class="carousel-indicators">
-            <li data-target="#homebanner" data-slide-to="0" class=" active"></li>
-    </ol> -->
+
 
    <div class="carousel-inner" role="listbox">
                 <div class=" item active">
@@ -284,8 +221,12 @@
             </a>
         </div>
         
+        
+        
          <!-- 引用   理财产品推荐-->
         <iframe width="972" height="500" scrolling="no" frameborder="0" src="/FinancingProject/index_files/iframeindex.html"></iframe>
+      
+      
       
       
         <div class=" download apply">
@@ -412,22 +353,6 @@
 
 
 </script>
-
-
-<!-- <script>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "//hm.baidu.com/hm.js?3a07c2531807d298ad88175fa22f9413";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script> -->
-
-
-
-
-
 		<div class="container index">
 			<div class="row">
 				<div class="security">
@@ -571,79 +496,6 @@
 			</div>
 		</div>
 	</div>
-	
-<!-- 	
-	<div class="modal fade loginModal infoModal" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content" style="width:400px;">
-				<div class="modal-header">
-					<span>用户登录</span>
-					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-				</div>
-				<div class="modal-body text-center">
-					<div class="content" style="padding:20px 40px;">
-						<input type="text" class="form-control" placeholder="用户名/手机/邮箱" id="modalUser"><br>
-						<input type="password" class="form-control" placeholder="密码" id="modalPw">
-					</div>
-					<div>
-						<button class="btn btn-primary" onclick="loginFromModal()" style="padding-left:20px;padding-right:20px;">登录</button>
-						<a class="btn btn-info" href="http://www.ying158.com/Account/Regist" target="blank" style="padding-left:20px;padding-right:20px;margin-left:20px;">注册</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div> -->
-
-	<!-- <div class="modal fade loginInfo infoModal" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content" style="width:400px;">
-				<div class="modal-header">
-					<span>错误信息</span>
-					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-				</div>
-				<div class="modal-body text-center">
-					<div class="content" id="loginFail">
-					</div>
-					<button class="btn btn-primary confirmBtn" data-dismiss="modal">确认</button>
-				</div>
-			</div>
-		</div>
-	</div> -->
-
-<!-- 	<div class="modal fade infoModal" id="infosModal" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content" style="border-radius: 0px;width:400px;">
-				<div class="modal-header">
-					<span>通知</span>
-					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-				</div>
-				<div class="modal-body">
-					<div id="infosModalError"></div>
-					<button class="btn btn-success confirmBtn" data-dismiss="modal">确认</button>
-				</div>
-			</div>
-		</div>
-	</div> -->
-<!-- 	<div class="modal fade infoModal" id="infosSuccessModal" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content" style="border-radius: 0px;width:400px;">
-				<div class="modal-header">
-					<span>通知</span>
-					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-				</div>
-				<div class="modal-body">
-					<div id="infosSuccessModalError"></div>
-					<button class="btn btn-success confirmBtn" data-dismiss="modal">确认</button>
-				</div>
-			</div>
-		</div>
-	</div> -->
-
-
-
-
-
-
 
 
 	<script>
@@ -722,9 +574,5 @@
 		}
 
 	</script>
-
-
-
-
-
-</body></html>
+</body>
+</html>

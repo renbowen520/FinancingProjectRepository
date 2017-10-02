@@ -86,15 +86,35 @@
        <div style="background-color: ; width:100%px; height:40px; margin:0 auto;">
         <iframe src="/FinancingProject/index_files/daohang.jsp" scrolling="no" frameborder="0"  width="100%"></iframe>
     </div>
-
-
+<style type="text/css">
+.div a{color:white}
+  </style>
     
-<!-- <img src="/FinancingProject/images/km1.jpg"   ></img> -->
 <center>
-<div style="height:695px;width:973px;background-image: url('/FinancingProject/images/km1.jpg');">
+<br>
+<div    style="height:695px;width:973px;background-image: url('/FinancingProject/images/km1.jpg');">
+  
+  
+  
+<div class="div"   style="padding-left:355px;padding-top: 288px;text-align:left;font-family:'幼圆' ;"><font color="#FFFFFF" size=""><b><a  href="/FinancingProject/IndexController/product" target="_parent">产品中心</a></b></font></div>
+<div class="div"     style="padding-left:350px;margin: 5px;text-align:left;font-family:'幼圆' ;"><font color="#FFFFFF" size=""><b><a  href="/FinancingProject/IndexController/news" target="_parent">新闻中心</a></b></font></div>
+<div  class="div"    style="padding-left:350px;margin: 5px;text-align:left;font-family:'幼圆' ;"><font color="#FFFFFF" size=""><b><a href="/FinancingProject/IndexController/download" target="_parent">下载中心</a></b></font></div>
+
+
+<div class="div"     style="padding-left:350px;margin: 5px;text-align:left;font-family:'幼圆' ;"><font color="#FFFFFF" size=""><b><a  href="/FinancingProject/IndexController/help" target="_parent">孔明商学院</a></b></font></div>
+<div class="div"     style="padding-left:350px;margin: 5px;text-align:left;font-family:'幼圆' ;"><font color="#FFFFFF" size=""><b><a  href="/FinancingProject/IndexController/investment_research"   target="_parent">投研中心</a></b></font></div>
+<div class="div"     style="padding-left:350px;margin: 5px;text-align:left;font-family:'幼圆' ;"><font color="#FFFFFF" size=""><b><a     href="/FinancingProject/IndexController/personal_center"    target="_parent">个人中心</a></b></font></div>
+
+<div style="padding-left:282px;margin: -40px;text-align:left;font-family:'幼圆' ;"><font color="#FFFFFF" size=""><b>网上业务办理</b></font></div>
+
+<div class="div"     style="padding-left:465px;margin: 30px;text-align:left;font-family:'幼圆' ;"><font color="#FFFFFF" size=""><b><a  href="/FinancingProject/IndexController/product" target="_parent">产品中心</a></b></font></div>
+<div class="div"     style="padding-left:770px;margin: -55px;text-align:left;font-family:'幼圆' ;"><font color="#FFFFFF" size=""><b><a     href="/FinancingProject/IndexController/personal_center"    target="_parent">个人中心</a></b></font></div>
 
 </div>
 </center>
+
+
+
  <!-- 4     图片广告 -->
     <div class="container index">
 			<div class="row">

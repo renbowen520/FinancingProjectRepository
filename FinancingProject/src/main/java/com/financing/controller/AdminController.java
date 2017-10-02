@@ -319,7 +319,7 @@ private IN_user_role_service IN_user_role_service;
 		return "admin/menus17";
 	}
 	
-	@RequiresPermissions(value="意见反馈")
+	@RequiresPermissions(value="建议反馈")
 	@RequestMapping("/menus18")
 	public String menus18(Model model,@ModelAttribute("feedback_q1")String feedback_q1,@ModelAttribute("feedback_q2")String feedback_q2) { //意见反馈
 		Map map = new HashMap<>();

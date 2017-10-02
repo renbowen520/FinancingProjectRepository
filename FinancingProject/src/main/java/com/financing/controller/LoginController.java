@@ -103,14 +103,14 @@ public class LoginController  {
    
    //后台登陆
  	@RequestMapping("adminLogin")
- 	public String adminLogin(HttpSession session,Users users,HttpServletRequest request) {
+ 	public String adminLogin(Users users,HttpServletRequest request) {
  		  System.out.println(users.getPassword());
  		  System.out.println(users.getMobile_Phone());
  		  org.apache.shiro.subject.Subject sub=SecurityUtils.getSubject();
  		  UsernamePasswordToken token = new UsernamePasswordToken(users.getMobile_Phone(),users.getPassword());
  		   try {
  			          sub.login(token);
- 	 org.apache.shiro.session.Session shiro_session=sub.getSession();
+ Session shiro_session=sub.getSession();
  		 	        Users users888= (Users) sub.getPrincipal();
  		 	   //     session.setAttribute("admin_login", users888);
  		       //	System.out.println("前台用户接受到了值:"+users888.getUser_name());

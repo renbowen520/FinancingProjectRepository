@@ -4,13 +4,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title></title>
+<title>权限不足</title>
 <script type="text/javascript" src="/FinancingProject/js/jquery-3.2.0.min.js" ></script>
 
 </head>
-<body >
+<body>
+
 <center>
 <img src="/FinancingProject/images/saqqq.jpg">
 </center>
+
 </body>
 </html>

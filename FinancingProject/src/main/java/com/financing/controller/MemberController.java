@@ -31,9 +31,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.financing.Interface_service.IN_Member_bankcards_service;
 import com.financing.Interface_service.IN_Member_deposit_record_service;
 import com.financing.Interface_service.IN_Member_service;
+import com.financing.Interface_service.IN_feedback_service;
 import com.financing.Interface_service.IN_member_trade_record_service;
 import com.financing.alipay.AlipayConfig;
 import com.financing.bean.Bank;
+import com.financing.bean.Feedback;
 import com.financing.bean.Member;
 import com.financing.bean.Member_account;
 import com.financing.bean.Member_bankcards;
@@ -62,6 +64,26 @@ public class MemberController {
 	
 	@Autowired
 	private  IN_member_trade_record_service  IN_member_trade_record_service;
+	
+	@Autowired
+	private IN_feedback_service IN_feedback_service;
+	@RequestMapping("/yj")
+	public String  yj(Feedback feedback,HttpSession session) {//意见反馈
+		   Member member = (Member) session.getAttribute("member_login");
+			System.out.println(feedback.getTitle());
+			System.out.println(feedback.getContent());
+		   if(member!=null) {
+	    	feedback.setCreate_date(new Date());
+	    	feedback.setMember(member);
+	    	IN_feedback_service.save_feedback(feedback);
+	    	  return "redirect:/IndexController/personal_center";
+	       }else {
+	    	   return "redirect:/IndexController/index";     
+	       }
+	}
+	
+	
+	
 	
 	@RequestMapping("/ok")   //付款ok
 	public String  ok(HttpSession session,HttpServletRequest request) throws UnsupportedEncodingException, AlipayApiException {

@@ -23,6 +23,12 @@ public class Feedback_dao implements IN_feedback_dao {
 		return this.sessionFactory.getCurrentSession();
 	}
 	
+	
+	public void save_feedback(Feedback feedback) {
+		   Session session = this.getSession();
+		   session.save(feedback);
+	}
+	
 	public Feedback getById(int  id) {
 		  Session session = this.getSession();
 		  Feedback feedback = (Feedback) session.get(Feedback.class, id);
