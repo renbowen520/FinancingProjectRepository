@@ -15,4 +15,5 @@ public interface IN_push_notice_dao {
 	   void  delete(Push_notice push_notice);
 	   void save(Push_notice push_notice);
 	   Session getSession();
+	   List<Push_notice>  list_5();
 }

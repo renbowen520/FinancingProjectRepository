@@ -1,6 +1,8 @@
 package com.financing.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.security.acl.Group;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -28,9 +30,12 @@ import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.internal.util.AlipaySignature;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.financing.Interface_service.IN_Member_account_service;
 import com.financing.Interface_service.IN_Member_bankcards_service;
 import com.financing.Interface_service.IN_Member_deposit_record_service;
 import com.financing.Interface_service.IN_Member_service;
+import com.financing.Interface_service.IN_Subject_service;
+import com.financing.Interface_service.IN_Users_service;
 import com.financing.Interface_service.IN_feedback_service;
 import com.financing.Interface_service.IN_member_trade_record_service;
 import com.financing.alipay.AlipayConfig;
@@ -40,12 +45,19 @@ import com.financing.bean.Member;
 import com.financing.bean.Member_account;
 import com.financing.bean.Member_bankcards;
 import com.financing.bean.Member_deposit_record;
+import com.financing.bean.Member_profit_record;
+import com.financing.bean.Member_tally;
 import com.financing.bean.Member_trade_record;
 import com.financing.bean.Member_withdraw_record;
+import com.financing.bean.Subject;
+import com.financing.bean.Subject_order_record;
 import com.financing.bean.Subject_purchase_record;
 import com.financing.bean.Sys_region;
 import com.financing.bean.Users;
 import com.financing.service.Member_deposit_record_service;
+import com.financing.service.SubjectService;
+
+import antlr.collections.impl.IntRange;
 
 @Controller
 @RequestMapping("/MemberController")
@@ -67,11 +79,139 @@ public class MemberController {
 	
 	@Autowired
 	private IN_feedback_service IN_feedback_service;
+	
+	
+	@Autowired
+	private IN_Member_account_service  account;
+	
+	@Autowired
+	private IN_Subject_service  IN_Subject_service;
+	
+	@Autowired
+	private IN_Users_service  IN_Users_service;
+	//购买产品
+	@RequestMapping("gou")
+	public  String  gou(int  subject_id,double qian,HttpSession session ,HttpServletRequest request) {
+	//	 System.out.println("aa=="+subject_id);
+		// System.out.println("bb==="+qian);
+		   Member member = (Member) session.getAttribute("member_login");	
+		   if(member!=null) {
+			   
+			 Subject subject =  IN_Subject_service.getById(subject_id);
+			     Date currentTime = new Date();
+			   SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+			   SimpleDateFormat format2 = new SimpleDateFormat("yyyy");
+			   SimpleDateFormat format3 = new SimpleDateFormat("MM");
+			   SimpleDateFormat format4 = new SimpleDateFormat("dd");
+			   
+			   String dateString = formatter.format(currentTime);
+			//   System.out.println("格式化后的时间:"+dateString);
+			   
+	
+			   
+				//subject_order_record(标的订单表)  
+				Subject_order_record  s1= new Subject_order_record();
+				s1.setSerial_number(dateString+currentTime.getTime());//流水号
+				s1.setAmount(qian);//订单金额
+				s1.setStatus(1);//状态  1完成
+				s1.setMember(member);//用户
+				s1.setSubject(subject);//标的id
+				s1.setCreate_date(currentTime);
+				
+
+				
+				 //购买表添加subject_purchase_record
+				Subject_purchase_record s2 = new Subject_purchase_record();
+				s2.setSerial_number(dateString+currentTime.getTime());//流水号
+				s2.setAmount(qian);//订单金额
+				//交易ip
+				s2.setDeal_ip(IN_Users_service.getIpAddr(request));
+				s2.setMember(member);//用户
+				s2.setSubject(subject);//标的id
+				s2.setDelflag(0);//正常
+				s2.setCreate_date(currentTime);//添加时间
+				s2.setIspayment(0);//没有还款
+				s2.setPay_interest_times(1);//购买1次
+			      java.util.Calendar rightNow = java.util.Calendar.getInstance();
+			        //得到当前时间，
+			        rightNow.add(java.util.Calendar.DAY_OF_MONTH, subject.getPeriod());   
+			        //进行时间转换
+			        String d = formatter.format(rightNow.getTime()); 
+			     	s2.setLast_profit_day(d);//最后计息日
+			     	double num = qian*(subject.getYear_rate()/100)/365*subject.getPeriod();
+                    java.text.DecimalFormat   df   =new   java.text.DecimalFormat("#.00");  
+			        s2.setInterest( Double.valueOf(df.format(num)));//利息
+			
+			        
+			//	member_trade_record(交易记录表)
+			 Member_trade_record    s3= new Member_trade_record();    
+			s3.setMember_id(member);//用户id
+			s3.setTrade_no(dateString+currentTime.getTime());//交易号
+			 s3.setTrade_name("购买:"+subject.getName()+";现金金额:"+qian);//交易名称       
+			 s3.setAmount(qian);//交易金额 
+			 s3.setTrade_type("账户余额");//类型
+			 s3.setFund_flow(0);//资金流出
+			 s3.setTrade_status(1);//付款完成
+			 s3.setCreate_date(currentTime);//添加时间
+	
+			 
+				//   member_tally(记账表)	 
+			Member_tally    s4= new Member_tally();
+			 s4.setMember(member);//用户id
+			 s4.setAmount(qian);//金额
+			 s4.setType_name("购买:"+subject.getName()+";现金金额:"+qian);//交易名称       
+			s4.setPay_date(currentTime);//支付时间
+			s4.setCreate_date(currentTime);//创建时间
+	  
+			
+				//member_account(成员账户表)   
+			Member_account  s5=account.getById(member.getId());
+		   double  q=s5.getUseable_balance();
+			s5.setUseable_balance(q-qian); //账户的钱要减少
+			s5.setUpdate_date(currentTime);//修改时间
+	    double  invest=		s5.getInvest_amount();//投资总金额
+	      s5.setInvest_amount(invest+qian);//投资总金额增加
+	   
+				// member_profit_record(成员利润记录表)
+				Member_profit_record  s6= new Member_profit_record();
+				s6.setSerial_number(dateString+currentTime.getTime());//流水号
+				s6.setAmount(Double.valueOf(df.format(num)));//利息
+				s6.setMember(member);//用户
+				s6.setDelflag(0);//正常
+				s6.setSubject(subject);//标的id
+				s6.setCreate_date(currentTime);//创建时间
+				s6.setProfit_year(Integer.valueOf(format2.format(currentTime)));//计息年
+                s6.setProfit_month(Integer.valueOf(format3.format(currentTime)));
+                s6.setProfit_day(Integer.valueOf(format4.format(currentTime)));
+			   s6.setComment("购买:"+subject.getName()+";现金金额:"+qian);//
+                
+                //添加数据
+		  	member_service.save_goumai(s1, s2, s3, s4, s5, s6);
+		 	//  return "redirect:/IndexController/personal_center";
+		  	return "";
+		       }else {
+		    	   return "redirect:/IndexController/index";     
+		       }
+	}
+	
+	
+
+	/*//异步请求账户余额
+	@RequestMapping("/useable_balance")
+	@ResponseBody
+	public  Member_account  useable_balance(HttpSession session) {
+		System.out.println("接受");
+		   Member member = (Member) session.getAttribute("member_login");
+		   System.out.println("aaaaaa="+member.getId());
+		   return  account.getById(member.getId());
+	}*/
+	
+	
 	@RequestMapping("/yj")
 	public String  yj(Feedback feedback,HttpSession session) {//意见反馈
 		   Member member = (Member) session.getAttribute("member_login");
-			System.out.println(feedback.getTitle());
-			System.out.println(feedback.getContent());
+		//	System.out.println(feedback.getTitle());
+		//	System.out.println(feedback.getContent());
 		   if(member!=null) {
 	    	feedback.setCreate_date(new Date());
 	    	feedback.setMember(member);

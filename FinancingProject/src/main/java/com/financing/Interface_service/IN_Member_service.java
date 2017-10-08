@@ -9,8 +9,11 @@ import com.financing.bean.Bbin_info;
 import com.financing.bean.Member;
 import com.financing.bean.Member_account;
 import com.financing.bean.Member_deposit_record;
+import com.financing.bean.Member_profit_record;
+import com.financing.bean.Member_tally;
 import com.financing.bean.Member_trade_record;
 import com.financing.bean.Member_withdraw_record;
+import com.financing.bean.Subject_order_record;
 import com.financing.bean.Subject_purchase_record;
 import com.financing.bean.Sys_region;
 
@@ -40,4 +43,13 @@ public interface IN_Member_service {
 	 List<Sys_region> get_s222(int  id ) ;*/
 	 List<Sys_region> get_s333( int rid,int  pid );
 	 Bank get_bank_id(int id);
+	 
+	 void    save_goumai(Subject_order_record  s1,
+				Subject_purchase_record s2,
+				Member_trade_record  s3,
+				Member_tally s4,
+				Member_account s5,
+				Member_profit_record  s6
+				) ;
+	 
 }

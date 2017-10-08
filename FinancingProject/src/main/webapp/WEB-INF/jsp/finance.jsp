@@ -31,58 +31,10 @@
 <body>
 <!--   1  导入顶部  -->
      <div style=" width:1002px; height:94px; margin:0 auto;">
-        <iframe src="/FinancingProject/index_files/iframetop.html" scrolling="no" frameborder="0" width="1002" height="94"></iframe>
+        <iframe src="/FinancingProject/index_files/iframetop.jsp" scrolling="no" frameborder="0" width="1002" height="94"></iframe>
     </div>
     
-    <!--   2   导入菜单栏  -->
-   <!--  <div class="jwNav">
-		<div class="container">
-			<div class="row">
-				<ul class="topNav">
-					<li class="active">
-						<a class="item first" href="http://127.0.0.1:8080/FinancingProject/index.jsp">
-							首页
-						</a>
-					</li>
-					<li>
-						<a class="item" href="/FinancingProject/IndexController/Online_experience_center">
-							网上体验中心
-						</a>
-					</li>
-					<li>
-						<a class="item" href="/FinancingProject/IndexController/product">
-							产品中心
-						</a>
-					</li>
-					<li>
-						<a class="item" href="/FinancingProject/IndexController/news">
-							新闻中心
-						</a>
-					</li>
-					<li>
-                        <a class="item" href="/FinancingProject/IndexController/download">
-                            下载中心
-                        </a>
-					</li>
-					<li>
-                        <a class="item " href="/FinancingProject/IndexController/help">
-                          孔明商学院
-                        </a>
-					</li>
-					<li>
-                        <a class="item" href="/FinancingProject/IndexController/investment_research">
-                            投研中心
-                        </a>
-					</li>
-					<li>
-						<a class="item last" href="/FinancingProject/IndexController/personal_center">
-							个人中心
-						</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div> -->
+
        <div style="background-color: ; width:100%px; height:40px; margin:0 auto;">
         <iframe src="/FinancingProject/index_files/daohang.jsp" scrolling="no" frameborder="0"  width="100%"></iframe>
     </div>
@@ -90,28 +42,52 @@
 <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-    
+<script  type="text/javascript">    
+//刷新固守类理财
+function fun1(){
+	$("#typeid").val("");			
+	$("#year_rate").val("");
+	$("#flag").val("");
+	$("#period_start").val("");
+	$("#period_end").val("");
+	$("#status").val("");
+	document.forms[0].action="/FinancingProject/IndexController/product";
+	document.forms[0].submit();	 
+}
+   
+</script>
+
+<form action="" method="post" id="f1" name="f1">
+            <input type="hidden"  name="typeid"  id="typeid"   val="${typeid }">
+			<input type="hidden" name="year_rate" id="year_rate" value="${year_rate }"/>
+			<input type="hidden" name="type" id="type" value="${type}"   />
+			<input type="hidden" name="status" id="status" valus="${status }">
+			<input type="hidden" name="flag" id="flag" value="${flag}"/>
+			<input type="hidden" name="period_start" id="period_start" value="${period_start}">
+			<input type="hidden" name="period_end" id="period_end" value="${period_end }">
+  </form>
+
 
 
   <div class="proMain">
     	<div class="hwpzNav">
     		<ul>
-    			<li class="first"><a class="active" href="/FinancingProject/IndexController/product">固收类理财</a></li>
+    			<li class="first"><a class="active" href="#"  onclick="fun1();" >固收类理财</a></li>
     			<li class="second"><a href="/FinancingProject/IndexController/finance">私募基金</a></li>
     			<li class="three"><a href="/FinancingProject/IndexController/oversea">海外配置</a></li>
     		</ul>
     	</div>
      
-
-
+<center>
     <div class="ajaxContainer">
         <!-- 异步内容开始 -->
         <c:forEach items="${finance}" var="f">
                 <ul class="tbList">
                     <li class="first">
-                        <span class="ico jp"></span>
+                          <span class="ico jp"></span>
                         <h2><b>${f.name}</b></h2>
                         <i></i>
+                     
                     </li>
                     <li class="second">
                         <div class="txt1" style="width:115px; margin-left:40px;">
@@ -134,8 +110,8 @@
                 </ul>
             </c:forEach>
         <!-- 异步内容结束 -->
-	
-
+	</div>
+</center>
 
 
  <!-- 4     图片广告 -->

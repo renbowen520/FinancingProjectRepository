@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.sql.Delete;
@@ -23,10 +24,21 @@ public class Push_notice_dao implements IN_push_notice_dao {
 		return this.sf.getCurrentSession();
 	}
 	
+	
+	//查询最新的5条公告
+	public  List<Push_notice>  list_5(){
+		     String sql="SELECT * from push_notice order by create_date desc  limit     0,5   ";
+		     Session session = this.getSession();
+		     Query query = session.createSQLQuery(sql).addEntity(Push_notice.class);
+		      List<Push_notice>list =query.list();
+		      return list;
+	}
+	
+	
 	public Push_notice getById(int id) {
 		Session session = this.getSession();
 		Push_notice push_notice = (Push_notice) session.get(Push_notice.class, id);
-return push_notice;
+          return push_notice;
 	}
 	
 	

@@ -10,13 +10,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.financing.Interface_service.IN_Finance_produce_funds_service;
 import com.financing.Interface_service.IN_Member_bankcards_service;
 import com.financing.Interface_service.IN_Oversea_config_service;
 import com.financing.Interface_service.IN_Subject_service;
+import com.financing.Interface_service.IN_push_notice_service;
 import com.financing.bean.Finance_product_funds;
 import com.financing.bean.Member;
 import com.financing.bean.Oversea_config;
+import com.financing.bean.Push_notice;
 import com.financing.bean.Subject;
 
 //前台跳转页面相关的控制层
@@ -32,19 +36,29 @@ public class IndexController {
 	private IN_Oversea_config_service oversea_config_Service;
 	@Autowired
 	private IN_Member_bankcards_service IN_Member_bankcards_service;
-	
-	
+
+@Autowired
+private IN_push_notice_service IN_push_notice_service;
 	//主页
 	@RequestMapping("/index")
-	public String Index() {  
+	public String Index(Model model) {  
 		//需要查询公告
-		
-		
-		return "jsp/index";
+	 	 List<Push_notice>list = IN_push_notice_service.list_5();
+	 	 model.addAttribute("push_notice", list);
+	 	 
+	 	 //首页需要显示4个产品
+	 List<Subject>list2 = subjectService.list_Subject_4();	 
+	 	model.addAttribute("subject", list2); 
+		 return "jsp/index";
 	}
 	
-	
-	
+	//显示5条公告
+	@RequestMapping("/list_5")
+	@ResponseBody
+	public List<Push_notice>list_5(){
+		 List<Push_notice>list = IN_push_notice_service.list_5();
+		 return list;
+	}
 	
 	
 	@RequestMapping("/feedback")   //意见反馈
@@ -105,21 +119,22 @@ public class IndexController {
 	}
 	
 	
-	
+	//获取产品查询的参数
 	public Map initMap(HttpServletRequest request,Map map){
+		String  typeid=request.getParameter("typeid");
 		String type=request.getParameter("type");
 		String year_rate=request.getParameter("year_rate");
 		String status=request.getParameter("status");
 		String period_start=request.getParameter("period_start");
 		String period_end=request.getParameter("period_end");
 		String flag=request.getParameter("flag");
-		System.out.println("year_rate="+year_rate);
 		map.put("type",type);
 		map.put("year_rate", year_rate);
 		map.put("status", status);
 		map.put("period_start",period_start);
 		map.put("period_end",period_end);
 		map.put("flag", flag);
+		map.put("typeid", typeid);
 		if(type!=null){
 			request.setAttribute("type", type);
 		}
@@ -137,6 +152,9 @@ public class IndexController {
 		}
 		if(flag!=null){
 			request.setAttribute("flag",flag);
+		}
+		if(typeid!=null) {
+			request.setAttribute("typeid",typeid);
 		}
 		return map; 
 	}
@@ -163,11 +181,13 @@ public class IndexController {
 			return "jsp/news";
 		}
 		
-		//购买固收
+		//准备购买固收
 		@RequestMapping("/buyproduct")
-		public String  buyproduct(int id) {
-			System.out.println("标的id="+id);
+		public String  buyproduct(int id,Model model) {
+			//System.out.println("标的id="+id);
 			//然后要查询数据到前台显示
+		   Subject subject =	subjectService.getById(id);
+		 	model.addAttribute("buyproduct", subject);
 			return "jsp/BuySubject";
 		}
 		

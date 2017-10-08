@@ -2,7 +2,19 @@ package com.financing.bean;
 
 import java.util.Date;
 
-public class Menber_tally {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
+
+
+@Table
+@Entity
+public class Member_tally {
 //记账表
 	
 	private int id;//主键
@@ -14,6 +26,9 @@ public class Menber_tally {
 	
 	private Member member;//引用  用户表id
 
+	
+	@Id
+	@GeneratedValue
 	public int getId() {
 		return id;
 	}
@@ -62,6 +77,10 @@ public class Menber_tally {
 		this.create_date = create_date;
 	}
 
+	
+	
+	@ManyToOne
+	@JoinColumn(name="member_id")
 	public Member getMember() {
 		return member;
 	}

@@ -119,7 +119,7 @@ public class LoginController  {
  		//	System.out.println("sessionTimeout:"+shiro_session.getTimeout());
  				 //    return "redirect:/AdminController/admin";//登陆成功后调到后台
  		
- 		 	        SecurityUtils.getSubject().getSession().setTimeout(600000);
+ 		 	    //    SecurityUtils.getSubject().getSession().setTimeout(600000);
  		 	      SecurityUtils.getSubject().getSession().setAttribute("admin_login", users888);
  			//登陆成功后添加登陆记录
  		           User_log  log= new User_log();
@@ -164,6 +164,10 @@ public class LoginController  {
 		   List<Member_bankcards>list=	IN_Member_bankcards_service.getById(member.getId());
 		 //查询绑定的银行卡
 		   session.setAttribute("member_bankcards_bk", list);
+		   //查询账号
+		   Member_account  member_account = IN_Member_account_service.getById(member.getId());
+		   session.setAttribute("member_account", member_account);
+		   
 		   session.setAttribute("no_login", "");
 				    //个人中心
 				   return "redirect:/IndexController/personal_center";

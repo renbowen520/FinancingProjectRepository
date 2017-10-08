@@ -113,7 +113,7 @@ public class News_type_Controller {
 	 @RequestMapping("/getById")
 	 @ResponseBody
 	 public News_type getById(int id) {
-		   System.out.println("id="+id);
+		  // System.out.println("id="+id);
 		   return   this.news_type_service.getById(id);
 	 }
 }

@@ -2,6 +2,17 @@ package com.financing.bean;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.ManyToAny;
+
+@Entity
+@Table
 public class Member_profit_record {
 //成员利润记录表
 	
@@ -9,15 +20,19 @@ public class Member_profit_record {
 	private String serial_number;//流水号
 	private int  type; //类型
 	private double amount;//金额
-	private byte delflag;  // 状态
+	private int  delflag;  // 状态
 	private Date create_date; //创建时间
 	private Date update_date;//修改时间
 	 private String comment; // 备注
 	 private int profit_year; //计息年
 	 private int profit_month;//计息月
 	 private int profit_day; //计息日
-	private Member member;//引用用户表id
+	private Member member;//引用用户表id      
 	private Subject subject;//引用 标的id
+	
+	
+	@Id
+	@GeneratedValue
 	public int getId() {
 		return id;
 	}
@@ -42,10 +57,10 @@ public class Member_profit_record {
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
-	public byte getDelflag() {
+	public int getDelflag() {
 		return delflag;
 	}
-	public void setDelflag(byte delflag) {
+	public void setDelflag(int delflag) {
 		this.delflag = delflag;
 	}
 	public Date getCreate_date() {
@@ -84,12 +99,19 @@ public class Member_profit_record {
 	public void setProfit_day(int profit_day) {
 		this.profit_day = profit_day;
 	}
+	
+	
+	@ManyToOne
+	@JoinColumn(name="member_id")
 	public Member getMember() {
 		return member;
 	}
 	public void setMember(Member member) {
 		this.member = member;
 	}
+	
+	@ManyToOne
+	@JoinColumn(name="subject_id")
 	public Subject getSubject() {
 		return subject;
 	}

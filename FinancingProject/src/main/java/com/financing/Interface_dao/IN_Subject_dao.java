@@ -24,5 +24,5 @@ public interface IN_Subject_dao {
 
 	 List<Subject> listSubject(Map map);
 	 String listHql(Map map,String hql);
-
+	 List<Subject>list_Subject_4();
 }

@@ -20,6 +20,12 @@
 	<script src="/FinancingProject/index_files/jquery"></script>
 	<script src="/FinancingProject/index_files/bootstrap"></script>
 <script src="/FinancingProject/index_files/video.js"></script>
+   <script src="/FinancingProject/index_files/echarts.js"></script>
+    <link rel="stylesheet" href="/FinancingProject/index_files/layer.css" id="layui_layer_skinlayercss">
+<link href="/FinancingProject/index_files/jw.css" rel="stylesheet">
+<link href="/FinancingProject/index_files/iconfont.css" rel="stylesheet" type="text/css">
+<link href="/FinancingProject/index_files/common.css" rel="stylesheet">
+
 <style>
 		* {
 			margin: 0;
@@ -205,27 +211,230 @@
 </div>
 </c:if>
 
-<div class="container index">
+ <div class="container index"  > 
     <div class="row">
-        <div class="report">
-            <div class="title">
-                <i class="fa fa-volume-up fa-2"></i>最新公告
-             </div>
-            
-            
-            <div class="content" id="announcements">
-                   这里显示的公告
-            </div>
-            <a href="/FinancingProject/IndexController/news">
-                查看更多&gt;&gt;&nbsp;&nbsp;&nbsp;&nbsp;
-            </a>
+   
+        <!-- -----------------公告------------------------------------------- -->
+<table width="100%"  border="0"  style="background-color: #F5F5F5" >
+   <tr height="30px">
+     <td  width="20%" align="center"> <i class="fa fa-volume-up fa-2"></i>&nbsp;最新公告</td>
+     <td>
+     <div class="swiper_wrap">
+		<ul class="font_inner" style="height: 120px; top: -60px;">
+		<c:forEach items="${push_notice }" var="s">
+		  <li>
+		  <a href="">${s.title }</a>
+		  </li>
+		 
+		</c:forEach>
+
+			
+			</ul>
+			
+		<a href="javascript:void(0)" class="lt">&lt;</a>
+		<a href="javascript:void(0)" class="gt">&gt;</a>
+	</div>
+     
+     
+     
+     </td>
+     <td  width="15%"   class="aaa"> 
+        <a href="/FinancingProject/IndexController/news"  >
+       查看更多 &gt;&gt;
+       </a>
+      </td>
+   </tr>
+</table>
+
+
+
+    
+
+	<style type="text/css">
+		div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,blockquote,p{padding:0; margin:0;}
+		ol,ul {list-style:none;}
+		li{list-style-type:none;}
+	
+		h1,h2,h3,h4,h5,h6{font-size:inherit; font-weight:normal;}
+		address,cite,code,em,th,i{font-weight:normal; font-style:normal;}
+		.clearfix{*zoom:1;}
+		.clearfix:after{display:block; overflow:hidden; clear:both; height:0; visibility:hidden; content:"";}
+		a:link,a:visited
+		{
+			color:#000;
+			text-decoration: none;
+		}
+		input
+		{
+			outline: 0;
+		}
+
+		 .swiper_wrap{
+			position: relative;
+			width: 695px;
+			height: 30px;
+			margin: 0 auto;
+			overflow: hidden;
+		}
+		.swiper_wrap  ul{
+			position: relative;
+			top: 0;
+			left: 0;
+			width: 695px;
+			float: right;
+		  	color: #444;
+		 	font-size: 14px;
+		 	margin-top: 1px;
+		}
+		.swiper_wrap	 ul li{
+			line-height: 30px;
+			padding-left: 24px;
+		}
+		 .lt{
+			position: absolute;
+			left: -1px;
+			top: 7px;
+			font-family: "宋体";
+			font-weight: bold;
+			color: #AAAAAA;
+		}
+		 .gt{
+			position: absolute;
+			right: 26px;
+			top: 7px;
+			font-family: "宋体";
+			font-weight: bold;
+			color: #AAAAAA;
+		}
+		 .swiper_wrap .font_inner a{
+			color: #444;
+		}
+				 .swiper_wrap  a:hover{
+			color: #FA9101;
+	}
+		
+		
+		 .aaa  a:hover{
+			color: #FA9101;
+	}
+	</style>
+
+
+
+     
+	  <script type="text/javascript">
+		$(function(){
+			//1文字轮播(2-5页中间)开始
+
+
+
+		$(".font_inner li:eq(0)").clone(true).appendTo($(".font_inner"));//克隆第一个放到最后(实现无缝滚动)
+		var liHeight = $(".swiper_wrap").height();//一个li的高度
+		//获取li的总高度再减去一个li的高度(再减一个Li是因为克隆了多出了一个Li的高度)
+		var totalHeight = ($(".font_inner li").length *  $(".font_inner li").eq(0).height()) -liHeight;
+		$(".font_inner").height(totalHeight);//给ul赋值高度
+		var index = 0;
+		var autoTimer = 0;//全局变量目的实现左右点击同步
+		var clickEndFlag = true; //设置每张走完才能再点击
+
+		function tab(){
+			$(".font_inner").stop().animate({
+				top: -index * liHeight
+			},400,function(){
+				clickEndFlag = true;//图片走完才会true
+				if(index == $(".font_inner li").length -1) {
+					$(".font_inner").css({top:0});
+					index = 0;
+				}
+			})
+		}
+
+		function next() {
+			index++;
+			if(index > $(".font_inner li").length - 1) {//判断index为最后一个Li时index为0
+				index = 0;
+			}
+			tab();
+		}
+		function prev() {
+			index--;
+			if(index < 0) {
+				index = $(".font_inner li").size() - 2;//因为index的0 == 第一个Li，减二是因为一开始就克隆了一个LI在尾部也就是多出了一个Li，减二也就是_index = Li的长度减二
+				$(".font_inner").css("top",- ($(".font_inner li").size() -1) * liHeight);//当_index为-1时执行这条，也就是走到li的最后一个
+			}
+			tab();
+		}
+		//切换到下一张
+		$(".swiper_wrap .gt").on("click",function() {
+			if(clickEndFlag) {
+				next();
+				clickEndFlag = false;
+			}
+		});
+		//切换到上一张
+		$(".swiper_wrap .lt").on("click",function() {
+			if(clickEndFlag) {
+				prev();
+				clickEndFlag = false;
+			}
+		});
+		//自动轮播
+		autoTimer = setInterval(next,3000);
+		$(".font_inner a").hover(function(){
+			clearInterval(autoTimer);
+		},function() {
+			autoTimer = setInterval(next,3000);
+		})
+
+		//鼠标放到左右方向时关闭定时器
+		$(".swiper_wrap .lt,.swiper_wrap .gt").hover(function(){
+			clearInterval(autoTimer);
+		},function(){
+			autoTimer = setInterval(next,3000);
+		})
+		//1文字轮播(2-5页中间)结束
+		})
+		</script>
+  
+   
+         <div class="gjList clearfix"  >
+      <c:forEach items="${subject }"   var="s">
+        	<ul>
+                    <li >
+                     
+                            <h2 class="tit"><span>固</span>${s.name }</h2>
+                            <span class="fenl">
+                            <c:if test="${s.type==0 }">固收</c:if>
+                             <c:if test="${s.type==1 }">车贷</c:if>
+                             <c:if test="${s.type==2 }">房贷</c:if>
+                            </span>
+                            <div class="count">
+                                <span class="s1"><b> ${ s.year_rate}</b>%</span>
+                                <span class="s2"><b>${s.bought}</b>人</span>
+                                <span class="s3">年化收益</span>
+                                <span class="s4">已购人数</span>
+                                <span class="s5">/</span>
+                            </div>
+                            <p class="safe">
+                                起购金额：￥${s.floor_amount }<br>
+                            </p>
+                            <p class="txt" style="height: 72px;">
+								管理人：襄阳孔明投资管理有限公司
+                            </p>
+                          
+                          
+                            <p class="abox">
+                            <a    href="/FinancingProject/IndexController/buyproduct?id=${s.id }">
+                            <span class="abtn">
+                          立即购买
+                            </span>
+                            </a>
+                            </p>
+                    
+                    </li>
+            </ul>
+     </c:forEach> 
         </div>
-        
-        
-        
-         <!-- 引用   理财产品推荐-->
-        <iframe width="972" height="500" scrolling="no" frameborder="0" src="/FinancingProject/index_files/iframeindex.html"></iframe>
-      
       
       
       

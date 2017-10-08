@@ -18,15 +18,15 @@ public class Subject_purchase_record {
 	
 	private int id;  //主键
 	private String serial_number;//流水号
-	private double amount=0.0;//购买金额
+	private double amount;//购买金额
 	private String deal_ip; //交易ip
-	private int delflag;  //是否删除
+	private int delflag;  //是否删除   0正常   1删除
 	private Date create_date;//添加时间
 	private Date update_date;//修改时间
 	private double interest; //结算利息
-	private int ispayment;//是否还款
+	private int ispayment;//是否还款    0是   1否
 	private int pay_interest_times;//购买次数
-	private int last_profit_day;//最后计息日
+	private   String last_profit_day;//最后计息日
 	private String  bonus_info;//红包金额信息
 	
 
@@ -95,10 +95,10 @@ public int getPay_interest_times() {
 public void setPay_interest_times(int pay_interest_times) {
 	this.pay_interest_times = pay_interest_times;
 }
-public int getLast_profit_day() {
+public String  getLast_profit_day() {
 	return last_profit_day;
 }
-public void setLast_profit_day(int last_profit_day) {
+public void setLast_profit_day(String last_profit_day) {
 	this.last_profit_day = last_profit_day;
 }
 public String getBonus_info() {

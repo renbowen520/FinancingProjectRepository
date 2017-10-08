@@ -26,6 +26,10 @@ public class Finance_product_funds_Dao  implements IN_Finance_product_funds_dao 
 		return this.sf.getCurrentSession();
 	}
 	
+	
+	//首页显示
+	
+	
 	//模糊查询
 	public String listDataHql(Map map,String hql){
 		String sname=(String)map.get("sname");

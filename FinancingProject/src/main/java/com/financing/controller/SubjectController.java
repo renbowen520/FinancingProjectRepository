@@ -121,7 +121,7 @@ public class SubjectController {
 	
 	
 	//计算总的金额
-	@RequestMapping("/getTotalMoney/")
+	@RequestMapping("/getTotalMoney")
 	@ResponseBody
 	public double getTotalMoney(int id){
 		System.out.println("id="+id);

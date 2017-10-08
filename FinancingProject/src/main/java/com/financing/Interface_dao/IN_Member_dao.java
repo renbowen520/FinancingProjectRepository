@@ -12,11 +12,13 @@ import com.financing.bean.Member;
 
 import com.financing.bean.Member_account;
 import com.financing.bean.Member_deposit_record;
+import com.financing.bean.Member_profit_record;
 import com.financing.bean.Member_trade_record;
 import com.financing.bean.Member_withdraw_record;
+import com.financing.bean.Subject_order_record;
 import com.financing.bean.Subject_purchase_record;
 import com.financing.bean.Sys_region;
-import com.financing.bean.Menber_tally;
+import com.financing.bean.Member_tally;
 
 
 public interface IN_Member_dao {
@@ -48,4 +50,14 @@ public interface IN_Member_dao {
 	 List<Sys_region> get_s222(int  id ) ;*/
 	 List<Sys_region> get_s333( int rid,  int  pid );
 	 Bank get_bank_id(int id);
+	 
+	 
+ void    save_goumai(Subject_order_record  s1,
+				Subject_purchase_record s2,
+				Member_trade_record  s3,
+				Member_tally s4,
+				Member_account s5,
+				Member_profit_record  s6
+				) ;
+	 
 }

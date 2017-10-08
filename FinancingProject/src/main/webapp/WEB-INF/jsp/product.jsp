@@ -35,55 +35,8 @@
     </div>
     
     <!--   2   导入菜单栏  -->
-    <!-- <div class="jwNav">
-		<div class="container">
-			<div class="row">
-				<ul class="topNav">
-					<li class="active">
-						<a class="item first" href="http://127.0.0.1:8080/FinancingProject/IndexController/index">
-							首页
-						</a>
-					</li>
-					<li>
-						<a class="item" href="/FinancingProject/IndexController/Online_experience_center">
-							网上体验中心
-						</a>
-					</li>
-					<li>
-						<a class="item" href="/FinancingProject/IndexController/product">
-							产品中心
-						</a>
-					</li>
-					<li>
-						<a class="item" href="/FinancingProject/IndexController/news">
-							新闻中心
-						</a>
-					</li>
-					<li>
-                        <a class="item" href="/FinancingProject/IndexController/download">
-                            下载中心
-                        </a>
-					</li>
-					<li>
-                        <a class="item " href="/FinancingProject/IndexController/help">
-                          孔明商学院
-                        </a>
-					</li>
-					<li>
-                        <a class="item" href="/FinancingProject/IndexController/investment_research">
-                            投研中心
-                        </a>
-					</li>
-					<li>
-						<a class="item last" href="/FinancingProject/IndexController/personal_center">
-							个人中心
-						</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div> -->
-	
+   
+   
 	       <div style="background-color: ; width:100%px; height:40px; margin:0 auto;">
         <iframe src="/FinancingProject/index_files/daohang.jsp" scrolling="no" frameborder="0"  width="100%"></iframe>
     </div>
@@ -93,23 +46,26 @@
 <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 
 <script type="text/javascript">
-$("#f1").click(function(){
-	$("#f1").submit();
-})	
+
+
+
+//状态
 	function setValue3(m){
-			alert(m);
 			$("#status").val(m);
-	
-     document.forms[0].action="/FinancingProject/IndexController/product";
-    document.forms[0].submit(); 
+          document.forms[0].action="/FinancingProject/IndexController/product";
+          document.forms[0].submit(); 
 	}
 		
+		
+		//年华收益
 		function setValue1(rate,flag){
 			$("#year_rate").val(rate);
 			$("#flag").val(flag);
 			document.forms[0].action="/FinancingProject/IndexController/product";
 			document.forms[0].submit();
 		}
+		
+		//期限
 		function setValue2(day1,day2){
 			$("#period_start").val(day1);
 			$("#period_end").val(day2);
@@ -117,10 +73,31 @@ $("#f1").click(function(){
 			document.forms[0].submit();
 		}
 
+		
+		//标的类型
+		function   fun(typeid){
+			$("#typeid").val(typeid);	
+			document.forms[0].action="/FinancingProject/IndexController/product";
+			document.forms[0].submit();	 
+		}
+		
+		//刷新固守类理财
+		function fun1(){
+			$("#typeid").val("");			
+			$("#year_rate").val("");
+			$("#flag").val("");
+			$("#period_start").val("");
+			$("#period_end").val("");
+			$("#status").val("");
+			document.forms[0].action="/FinancingProject/IndexController/product";
+			document.forms[0].submit();	 
+		}
+		
 </script>
 
 
    <form action="" method="post" id="f1" name="f1">
+            <input type="hidden"  name="typeid"  id="typeid"   val="${typeid }">
 			<input type="hidden" name="year_rate" id="year_rate" value="${year_rate }"/>
 			<input type="hidden" name="type" id="type" value="${type}"   />
 			<input type="hidden" name="status" id="status" valus="${status }">
@@ -133,18 +110,19 @@ $("#f1").click(function(){
   <div class="proMain">
     	<div class="hwpzNav">
     		<ul>
-    			<li class="first"><a class="active" href="/FinancingProject/IndexController/product">固收类理财</a></li>
+    			<li class="first"><a class="active" href="#"  onclick="fun1();" >固收类理财</a></li>
     			<li class="second"><a href="/FinancingProject/IndexController/finance">私募基金</a></li>
     			<li class="three"><a href="/FinancingProject/IndexController/oversea"">海外配置</a></li>
     		</ul>
     	</div>
         <div class="sdShaix">
+        
         	<ul>
             	<li class="first">标的类型：</li>
-               		<li><a href="/FinancingProject/IndexController/product" id="11" class="select">全部</a></li>
-               		<li><a href="/FinancingProject/IndexController/product" id="12">固收类理财</a></li>
-            <!--    		<li><a href="/FinancingProject/IndexController/product" id="13">P2P房贷</a></li>
-               		<li><a href="/FinancingProject/IndexController/product" id="14">P2P车贷</a></li> -->
+               		<li><a href="#"    onclick="fun(-1)"  id="11" class="select">全部</a></li>
+               		<li><a href="#"   onclick="fun(0);"  id=""><div id="a12">固收类理财</div></a></li>
+            		<li><a href="#"   onclick="fun(1)"  id="13">P2P车贷</a></li>
+               		<li><a href="#"   onclick="fun(2)"   id="14">P2P房贷</a></li> 
             </ul>
         	<ul>
             	<li class="first">年化收益：</li>
@@ -167,13 +145,13 @@ $("#f1").click(function(){
         	<ul>
             	<li class="first">标的状态：</li>
                		<li><a href="#" id="41" class="select" onclick="setValue3(-1)">全部</a></li>
-               		<li><a href="#" id="42" onclick="setValue3(0)">投标中</a></li>
-               		<li><a href="#" id="43" onclick="setValue3(1)">还款中</a></li>
-               		<li><a href="#" id="44" onclick="setValue3(2)">已完成</a></li>
+               		<li><a href="#" id="42" onclick="setValue3(1)">投标中</a></li>
+               		<li><a href="#" id="43" onclick="setValue3(2)">还款中</a></li>
+               		<li><a href="#" id="44" onclick="setValue3(3)">已完成</a></li>
             </ul>
         </div>
 
-
+<center>
 <div class="ajaxContainer">
 	<!-- 异步内容开始 -->
 	<c:forEach items="${subject}" var="s">
@@ -185,7 +163,7 @@ $("#f1").click(function(){
 						</li>
 						<li class="second">					
 							<div class="txt1">
-								<h2>${s.year_rate }<span style="font-size:18px;">${s.year_rate}%</span></h2>
+								<h2>${s.year_rate }%</h2>
 								<p>年化收益</p>
 							</div>
 							<div class="txt2">
@@ -198,7 +176,13 @@ $("#f1").click(function(){
 							</div>
 						</li>
 						<li class="three">
-							<a href="#1">企业担保</a><span>中国人保财险承保</span>
+						   <c:if test="${s. safeGuard_way == 0 }">
+						<a href="#1">   企业担保	</a>
+						   </c:if>
+						     <c:if test="${s. safeGuard_way == 1 }">
+						     	<a href="#1">   银行监督	</a>	 
+						     </c:if>
+			      		<span>中国人保财险承保</span>
 							<p>计息日期：当天投资，立即计息<br>已购人数：${s.bought }人</p>
 						</li>
 						<li class="four">
@@ -209,7 +193,8 @@ $("#f1").click(function(){
 					</ul>
 				</c:forEach>
 	<!-- 异步内容结束 -->
-	
+</div>
+</center>
 	
 					<div class="llpage">
 							<div class="in">

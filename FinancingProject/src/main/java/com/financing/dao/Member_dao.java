@@ -16,8 +16,11 @@ import com.financing.bean.Bbin_info;
 import com.financing.bean.Member;
 import com.financing.bean.Member_account;
 import com.financing.bean.Member_deposit_record;
+import com.financing.bean.Member_profit_record;
+import com.financing.bean.Member_tally;
 import com.financing.bean.Member_trade_record;
 import com.financing.bean.Member_withdraw_record;
+import com.financing.bean.Subject_order_record;
 import com.financing.bean.Subject_purchase_record;
 import com.financing.bean.Sys_region;
 import com.financing.bean.Users;
@@ -33,6 +36,30 @@ public class Member_dao implements IN_Member_dao {
 		return this.sessionFactory.getCurrentSession();
 	}
 	
+	// member_profit_record(成员利润记录表)
+	//member_account(成员账户表)  
+//   member_tally(记账表)	
+	//	member_trade_record(交易记录表)
+	 //购买表添加subject_purchase_record
+	//subject_order_record(标的订单表)  
+	public  void  save_goumai(Subject_order_record  s1,
+			Subject_purchase_record s2,
+			Member_trade_record  s3,
+			Member_tally s4,
+			Member_account s5,
+			Member_profit_record  s6
+			) {
+		   Session session = this.getSession();	
+		  session.save(s1);
+		  session.save(s2);
+		  session.save(s3);
+		  session.save(s4);
+		  session.save(s6);
+		  session.update(s5);
+	}
+	
+	
+	
 	public List<Sys_region> get_s333( int rid,  int  pid ) { //选择地址
 	    Session session = this.getSession();
 	    Query query = session.createQuery("from Sys_region s  where  s.region_level=:rid  and  s.parent_id=:pid ");
@@ -43,25 +70,7 @@ public class Member_dao implements IN_Member_dao {
 }
 	
 	
-/*	public List<Sys_region> get_s222(int  id ) { //选择地址
-		    Session session = this.getSession();
-		    Query query = session.createQuery("from Sys_region  where  region_level=2  and parent_id=:id");
-			query.setInteger("id", id);
-		    List<Sys_region> list=query.list();
-		     return list;
-	}
-	*/
-	
-	
-/*	public List<Sys_region> get_s111(int  id ) { //选择地址
-		   Session session = this.getSession();
-		    Query query = session.createQuery("from Sys_region  where  region_level=:id");
-			query.setInteger("id", id);
-		    List<Sys_region> list=query.list();
-		     return list;
-	}
-	*/
-	
+
 	
 	public List<Bank> get_bank() {
 		   Session session = this.getSession();

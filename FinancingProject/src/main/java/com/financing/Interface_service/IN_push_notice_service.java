@@ -10,4 +10,6 @@ public interface IN_push_notice_service {
  void  delete(Push_notice push_notice);
  Push_notice getById(int id);
  void save(Push_notice push_notice);
+
+ List<Push_notice>  list_5();
 }

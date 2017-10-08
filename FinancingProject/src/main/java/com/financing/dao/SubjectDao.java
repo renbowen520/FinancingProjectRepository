@@ -9,10 +9,12 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Component;
 import com.financing.Interface_dao.IN_Subject_dao;
+import com.financing.bean.Push_notice;
 import com.financing.bean.Subject;
 import com.financing.bean.Subject_bbin_purchase_record;
 import com.financing.bean.Subject_file;
@@ -27,6 +29,20 @@ public class SubjectDao implements IN_Subject_dao {
 	public Session getSession(){
 		return this.sf.getCurrentSession();
 	}
+	
+	//首页显示最新的4个募集中
+	public List<Subject>list_Subject_4(){
+		String  sql = "SELECT * from  subject  where status=1  order by  raise_start  desc ";  
+		Session session=getSession();
+		  Query query = session.createSQLQuery(sql).addEntity(Subject.class);
+	      List<Subject>list =query.list();
+	      return list;
+		
+	}
+	
+	
+	
+	
 	
 	//保存固收类
 	public void save(Subject subject){
@@ -56,6 +72,7 @@ public class SubjectDao implements IN_Subject_dao {
 	
 	//前台模糊查询 
 	public String listHql(Map map,String hql){
+		String typeid=(String) map.get("typeid");
 		String type=(String)map.get("type");
 		String year_rate=(String)map.get("year_rate");
 		String status=(String)map.get("status");
@@ -66,25 +83,34 @@ public class SubjectDao implements IN_Subject_dao {
 			   if(status.equals("-1")){
 				   
 			   }else{
-				   hql+=" and status="+Integer.valueOf(status);
+				   hql+="   and status="+Integer.valueOf(status);
 			   }
 			    
 		   }
 		   if((period_start!=null&&!period_start.equals(""))&&(period_end!=null&&!period_end.equals(""))){
 			      if(period_end.equals("-1")){
-			    	  hql+=" and period >="+Integer.valueOf(period_start);
+			    	  hql+="   and period >="+Integer.valueOf(period_start);
 			      }else{
-				    hql+=" and period between "+Integer.valueOf(period_start)+ " and "+Integer.valueOf(period_end);
+				    hql+="   and period between "+Integer.valueOf(period_start)+ " and "+Integer.valueOf(period_end);
 			      }
 		   }
 		   if(year_rate!=null&&!year_rate.equals("")){
 			   if("0".equals(flag)){
-				   hql+="and year_rate="+Double.valueOf(year_rate);
+				   hql+="   and year_rate="+Double.valueOf(year_rate);
 			   }else if("1".equals(flag)){
-				   hql+="and year_rate>"+Double.valueOf(year_rate);
+				   hql+="    and year_rate>"+Double.valueOf(year_rate);
 			   }
 		   }
-		   System.out.println("hql="+hql);
+		   
+		
+		   if(typeid!=null&&!typeid.equals("")) {
+			    if("-1".equals(typeid)) {
+			    }else {
+			    	 hql+="    and   type="+typeid;
+			    }
+			  
+		   }
+  //System.out.println("hql="+hql);
 		  return hql;
 	}
 	

@@ -16,7 +16,11 @@ import com.financing.bean.Bbin_info;
 import com.financing.bean.Member;
 import com.financing.bean.Member_account;
 import com.financing.bean.Member_deposit_record;
+import com.financing.bean.Member_profit_record;
+import com.financing.bean.Member_tally;
+import com.financing.bean.Member_trade_record;
 import com.financing.bean.Member_withdraw_record;
+import com.financing.bean.Subject_order_record;
 import com.financing.bean.Subject_purchase_record;
 import com.financing.bean.Sys_region;
 
@@ -141,5 +145,13 @@ public class Member_service  implements IN_Member_service{
 	public Bank get_bank_id(int id) {
 		// TODO Auto-generated method stub
 		return md.get_bank_id(id);
+	}
+
+
+	@Override
+	public void save_goumai(Subject_order_record s1, Subject_purchase_record s2, Member_trade_record s3, Member_tally s4,
+			Member_account s5, Member_profit_record s6) {
+		// TODO Auto-generated method stub
+		md.save_goumai(s1, s2, s3, s4, s5, s6);
 	}
 }

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -34,54 +37,7 @@
     </div>
     
     <!--   2   导入菜单栏  -->
-   <!--  <div class="jwNav">
-		<div class="container">
-			<div class="row">
-				<ul class="topNav">
-					<li class="active">
-						<a class="item first" href="http://127.0.0.1:8080/FinancingProject/IndexController/index">
-							首页
-						</a>
-					</li>
-					<li>
-						<a class="item" href="/FinancingProject/IndexController/Online_experience_center">
-							网上体验中心
-						</a>
-					</li>
-					<li>
-						<a class="item" href="/FinancingProject/IndexController/product">
-							产品中心
-						</a>
-					</li>
-					<li>
-						<a class="item" href="/FinancingProject/IndexController/news">
-							新闻中心
-						</a>
-					</li>
-					<li>
-                        <a class="item" href="/FinancingProject/IndexController/download">
-                            下载中心
-                        </a>
-					</li>
-					<li>
-                        <a class="item " href="/FinancingProject/IndexController/help">
-                          孔明商学院
-                        </a>
-					</li>
-					<li>
-                        <a class="item" href="/FinancingProject/IndexController/investment_research">
-                            投研中心
-                        </a>
-					</li>
-					<li>
-						<a class="item last" href="/FinancingProject/IndexController/personal_center">
-							个人中心
-						</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div> -->
+  
        <div style="background-color: ; width:100%px; height:40px; margin:0 auto;">
         <iframe src="/FinancingProject/index_files/daohang.jsp" scrolling="no" frameborder="0"  width="100%"></iframe>
     </div>
@@ -91,45 +47,72 @@
 
 <div class="proMain">
     <div class="conTit">
-        <span><a style="color:#9d8440;" href="http://pro.ying158.com/subject">其他标的</a></span>
-        <h2><em>￥</em>稳盈宝新手标</h2>
+        <h2><em>￥</em>${buyproduct.name }</h2>
     </div>
     <table class="conTable" width="100%" border="0" cellspacing="0" cellpadding="0">
         <tbody><tr>
             <td class="txtInfo">
                 <div class="txt1">
-                    <h2>206</h2>
+                    <h2>${buyproduct.bought }</h2>
                     <p>已购人数(人)</p>
                 </div>
                 <div class="txt2">
-                    <h2>6%</h2>
+                    <h2>${buyproduct.year_rate }%</h2>
                     <p>年化收益</p>
                 </div>
                 <div class="txt1">
-                    <h2>5</h2>
+                    <h2>${buyproduct.period }</h2>
                     <p>投资期限(天)</p>
                 </div>
             </td>
             <td width="360" rowspan="2" align="center" ;="" valign="middle" height="320">
                 <div class="tbBox">
                     <input type="hidden" id="account" value="">
-                    <h2>1227489.3</h2>
+                    <h2>0</h2>
                     <p>已投金额(元)</p>
                     <div class="li4" style=""><span id="checkmoney" style="color: red;"></span></div>
+                   
+                   
                     <div class="tit">
+                    
+                      <c:if  test="${ empty member_login  }"> 
                     	<span class="fr">
-                            <a style="color:#2695d5" class="unlogin" href="http://pro.ying158.com/web/login">登录</a>后可见
+                            <a style="color:#2695d5" class="unlogin" href="/FinancingProject/IndexController/login">登录</a>后可见
 						</span>
-                        <h2>账户余额</h2>
-                        <div id="count">预期所得收益<i data-num="0.000822" id="num">0</i>元
-                        </div>
+				 	</c:if> 
+                        <h2>账户余额
+                <c:if test="${!empty member_login }">
+                &nbsp;&nbsp;
+                <font color="red"> ${member_account.useable_balance }</font>
+                   &nbsp;&nbsp;
+                   <a  href="/FinancingProject/MemberController/cz" >充值</a>
+                      </c:if> 
+                        
+                        </h2>
+           
+                    
                     </div>
-                    <input id="mytext" class="txt" name="totalFee" type="text" placeholder="起投金额100元以上">
+                    
+                    <form  method="post"  name="gou"  id="gou">
+                    <input      onkeyup="fun()"     min="100"    name="qian"   id="qian" class="txt" name="qian" type="number" placeholder="起投金额100元以上">
+                    <input type="hidden"  name="subject_id"    id="subject_id"  value="${buyproduct.id }"> 
+                    </form>
                         <span style="float: right;margin-top: -40px;position: relative; line-height: 40px; padding: 0 10px;color: #f00;" id="addMoney"></span>
-                    <p class="preBox">
+                   <!--   <p class="preBox">
                         <input type="checkbox" id="registerRule" class="registerRule" checked="checked"><span class="fl">同意<a href="http://pro.ying158.com/web/syxy" target="_black">《产品协议》</a></span>
-                    </p>
-                    <button class="submit">确认抢购</button>
+                    </p> -->
+                    
+                        <div id="ccc">预期所得收益:
+                        <font color="red"   id="ddd">0</font>
+                        元
+                        </div>
+                    
+                    <c:if test="${!empty member_login }">
+                    <button class="submit"   id="ok"   onclick="fun2();">确认抢购</button>
+                 </c:if>
+                  <c:if test="${empty member_login }">
+                    <button  class="submit"   id="ok"   onclick="fun3();">登陆后抢购</button>
+                 </c:if>
                 </div>
             </td>
         </tr>
@@ -137,13 +120,56 @@
             <td>
                 <ul class="conInfoList">
                     <li class="info">
-                        <p>计息日期：<font color="#00baff">2017-09-20</font></p>
+                        <p>计息日期：<font color="#00baff">
+                        2017-09-20
+                        <script type="text/javascript">
+                         var myDate = new Date();
+                         var a=          myDate.getFullYear();    //获取完整的年份(4位,1970-????)
+                        var b=   myDate.getMonth()+1;       //获取当前月份(0-11,0代表1月)
+                        var c=      myDate.getDate();        //获取当前日(1-31)
+                       var d=a+"-"+b+"-"+c;
+                       document.write(d);
+                       </script> 
+                        </font>
+                        
+                        
+                        </p>
                         <p>还款方式：<font color="#00baff">一次性还本付息</font></p>
-                        <p>资金到账日：<font color="#00baff">2017-09-25至2017-09-26</font>
+                        <p>资金到账日：<font color="#00baff">
+                     <script type="text/javascript">
+                var  tian="${buyproduct.period }";
+            	    var  tian2=parseInt("${buyproduct.period }");
+            	    var tian3=tian2+1;
+                    var a = new Date();
+                      var b = new Date();
+                  a = a.valueOf();
+                     b = b.valueOf();
+                    a = a + tian * 24 * 60 * 60 * 1000;
+                     b = b + tian3 * 24 * 60 * 60 * 1000;
+                  a = new Date(a);
+                     b = new Date(b);
+              var a4=    a.getFullYear() + "-" + (a.getMonth() + 1) + "-" + a.getDate() ;
+                  var b4=    b.getFullYear() + "-" + (b.getMonth() + 1) + "-" +b.getDate() ;
+
+                  document.write(a4+" 至 "+b4);
+                  </script>        
+                        </font>
                         </p>
                     </li>
                     <li class="info">
-                        <p>保障方式：<font color="#00baff">企业担保</font></p>
+                        <p>保障方式：
+                        <font color="#00baff">
+                            <c:if test="${buyproduct.safeGuard_way ==0}">
+                                企业担保	
+                            </c:if>
+                     
+						     <c:if test="${buyproduct.safeGuard_way == 1 }">
+						     银行监督
+						     </c:if>
+                        
+                    
+                        </font>
+                        </p>
                         <p>资金安全：<font color="#00baff">中国人保财险承保</font></p>
                         <p></p>
                     </li>
@@ -154,7 +180,52 @@
 	</table>
 
 
-
+<script type="text/javascript">
+   function fun(){
+	     var a = $("#qian").val();
+     	 //   alert(a);
+	    var n="${buyproduct.year_rate }"/100;
+	    var  tian="${buyproduct.period }";
+	  var   num=a*n/365*tian;
+	  
+	  var f = Math.round(num*100)/100; 
+      var s = f.toString(); 
+      var rs = s.indexOf('.'); 
+      if (rs < 0) { 
+        rs = s.length; 
+        s += '.'; 
+      } 
+      while (s.length <= rs + 2) { 
+        s += '0'; 
+      } 
+	  
+	  
+	    $("#ddd").text(s);
+   }
+ 
+   function fun2(){
+	   var a = $("#qian").val();
+	 if(a<100){
+		    $("#checkmoney").text("起投金额最低100元!"); 
+		    return ;
+	 }
+	var m ="${member_account.useable_balance }";
+	if(parseFloat(m)<parseFloat(a)){
+		     $("#checkmoney").text("账户余额不足,请充值!"); 
+		     return ;
+	}
+	  $("#checkmoney").text(""); 
+	$("#gou").attr("action","/FinancingProject/MemberController/gou");
+	$("#gou").submit(); 
+	
+   }
+   
+   
+   function  fun3(){
+	   window.location.href="/FinancingProject/IndexController/login";
+	   
+   }
+</script>
  <!-- 4     图片广告 -->
     <div class="container index">
 			<div class="row">

@@ -27,91 +27,81 @@
 <title>产品中心</title>
 </head>
 <body>
+
 <!--   1  导入顶部  -->
      <div style=" width:1002px; height:94px; margin:0 auto;">
-        <iframe src="/FinancingProject/index_files/iframetop.html" scrolling="no" frameborder="0" width="1002" height="94"></iframe>
+        <iframe src="/FinancingProject/index_files/iframetop.jsp" scrolling="no" frameborder="0" width="1002" height="94"></iframe>
     </div>
     
     <!--   2   导入菜单栏  -->
-<!--     <div class="jwNav">
-		<div class="container">
-			<div class="row">
-				<ul class="topNav">
-					<li class="active">
-						<a class="item first" href="http://127.0.0.1:8080/FinancingProject/index.jsp">
-							首页
-						</a>
-					</li>
-					<li>
-						<a class="item" href="/FinancingProject/IndexController/Online_experience_center">
-							网上体验中心
-						</a>
-					</li>
-					<li>
-						<a class="item" href="/FinancingProject/IndexController/product">
-							产品中心
-						</a>
-					</li>
-					<li>
-						<a class="item" href="/FinancingProject/IndexController/news">
-							新闻中心
-						</a>
-					</li>
-					<li>
-                        <a class="item" href="/FinancingProject/IndexController/download">
-                            下载中心
-                        </a>
-					</li>
-					<li>
-                        <a class="item " href="/FinancingProject/IndexController/help">
-                          孔明商学院
-                        </a>
-					</li>
-					<li>
-                        <a class="item" href="/FinancingProject/IndexController/investment_research">
-                            投研中心
-                        </a>
-					</li>
-					<li>
-						<a class="item last" href="/FinancingProject/IndexController/personal_center">
-							个人中心
-						</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
- -->
+
            <div style="background-color: ; width:100%px; height:40px; margin:0 auto;">
         <iframe src="/FinancingProject/index_files/daohang.jsp" scrolling="no" frameborder="0"  width="100%"></iframe>
     </div>
 
+<script  type="text/javascript">    
+//刷新固守类理财
+function fun1(){
+	$("#typeid").val("");			
+	$("#year_rate").val("");
+	$("#flag").val("");
+	$("#period_start").val("");
+	$("#period_end").val("");
+	$("#status").val("");
+	document.forms[0].action="/FinancingProject/IndexController/product";
+	document.forms[0].submit();	 
+}
+   
+</script>
 
+<form action="" method="post" id="f1" name="f1">
+            <input type="hidden"  name="typeid"  id="typeid"   val="${typeid }">
+			<input type="hidden" name="year_rate" id="year_rate" value="${year_rate }"/>
+			<input type="hidden" name="type" id="type" value="${type}"   />
+			<input type="hidden" name="status" id="status" valus="${status }">
+			<input type="hidden" name="flag" id="flag" value="${flag}"/>
+			<input type="hidden" name="period_start" id="period_start" value="${period_start}">
+			<input type="hidden" name="period_end" id="period_end" value="${period_end }">
+  </form>
+  
+  
   <div class="proMain">
     	<div class="hwpzNav">
     		<ul>
-    			<li class="first"><a class="active" href="/FinancingProject/IndexController/product">固收类理财</a></li>
+    			<li class="first"><a class="active" href="#"  onclick="fun1();" >固收类理财</a></li>
     			<li class="second"><a href="/FinancingProject/IndexController/finance">私募基金</a></li>
-    			<li class="three"><a href="/FinancingProject/IndexController/oversea"">海外配置</a></li>
+    			<li class="three"><a href="/FinancingProject/IndexController/oversea">海外配置</a></li>
     		</ul>
     	</div>
-     
-<div class="ajaxContainer">
-	<!-- 异步内容开始 -->
-	<c:forEach items="${oversea}" var="o">
-		<li>
-				<a href="/oversea/overseaView/3">
-				<span style="width: 40px;height: 40px;" class="iconfont"><img src="/upload/news/img/20160122/20160122211432397907.png" width="40" height="40"/></span>
-				<h2>${o.title }<p>${o.child_title}</p></h2>
-				<h3>${o.description}<p><i style="color: #aaa; font-style: normal;">用户群体：</i>${o.user_type }</p></h3>
-			</a>
-		</li>
-	</c:forEach>
-	<!-- 异步内容结束 -->
+  
+  
+  
+  
+<center>
+<c:forEach items="${oversea}" var="o">
+<a href="" >
+<div   style="background-color: #F5F5F5;width: 90%;height: 110px;margin-top: 10px;" >
+
+    <table border="0"  width="100%"  height="100%">
+        <tr>
+        <td rowspan="2"  width="110" align="center">
+         <img src="${o.oversea_icon }" width="90px" height="90px">
+     </td>
+             <td><h3><b>${o.title }</b></h3></td>
+             <td align="right"  style="padding-right: 5px"><font color="red">${o.description}</font></td>
+        </tr>
+        <tr>
+          <td>${o.child_title}</td>
+          <td align="right"  style="padding-right: 5px"><font color="blue">用户群体：</font>
+          ${o.user_type }</td>
+        </tr>
+    </table>
+    </div>
+    </a>
+</c:forEach>
+</center>
+
 	
-
-
-
 
  <!-- 4     图片广告 -->
     <div class="container index">

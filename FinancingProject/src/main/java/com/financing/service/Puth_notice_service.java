@@ -44,4 +44,10 @@ public class Puth_notice_service  implements IN_push_notice_service{
 		 IN_push_notice_dao.save(push_notice);
 	}
 
+	@Override
+	public List<Push_notice> list_5() {
+		// TODO Auto-generated method stub
+		return IN_push_notice_dao.list_5();
+	}
+
 }

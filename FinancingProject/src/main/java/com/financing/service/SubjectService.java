@@ -57,4 +57,9 @@ public class SubjectService  implements IN_Subject_service {
 		return subjectdao.listSubject(map);
 
 	}
+	@Override
+	public List<Subject> list_Subject_4() {
+		// TODO Auto-generated method stub
+		return subjectdao.list_Subject_4();
+	}
 }

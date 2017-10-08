@@ -26,6 +26,12 @@ public class Member_account_service implements IN_Member_account_service {
 		// TODO Auto-generated method stub
 		IN_Member_account_dao.update_account(member_account);
 	}
+
+	@Override
+	public Member_account getById(int id) {
+		// TODO Auto-generated method stub
+		return IN_Member_account_dao.getById(id);
+	}
 	
 	
 

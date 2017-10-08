@@ -25,7 +25,7 @@ public class Member_account {
 	private double bonus_amount;//红包金额
 	private double invest_amount;//投资金额
 	private int delflag; //删除状态 0 ok    1 no
-	private double bbin_amount;//体验金
+	//private double bbin_amount;//体验金
 	private Member member;//引用用户表id     一对一
 	
 	
@@ -86,12 +86,12 @@ public class Member_account {
 	public void setDelflag(int delflag) {
 		this.delflag = delflag;
 	}
-	public double getBbin_amount() {
+/*	public double getBbin_amount() {
 		return bbin_amount;
 	}
 	public void setBbin_amount(double bbin_amount) {
 		this.bbin_amount = bbin_amount;
-	}
+	}*/
 	
 	
 	@OneToOne

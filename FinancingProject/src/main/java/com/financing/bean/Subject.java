@@ -18,8 +18,8 @@ public class Subject {
 	private String serial_number;//流水号
 	private String serial_no;//合同编号
 	private String name;//标的名称
-	private int type;//类型
-	private int status;//状态
+	private int type;//类型   0固守  1车贷 2 房贷
+	private int status;//状态  0未发布   1募集  2回款中  3回款完成
 	private double floor_amount;//起投金额
 	private double amount;//标的金额
 	private int first_id;//始标id
@@ -29,12 +29,12 @@ public class Subject {
 	private Date raise_start;//募集开始
 	private Date raise_end;//募集结束
 	private int refund_way;//还款方式
-	private int safeGuard_way;//保障方式
+	private int safeGuard_way;//保障方式  0企业   1银行
 	private String start_date;//标的开始时间
 	private String end_date;//标的结束时间
 	private double year_rate;//年化率
 	private String comment;//产品速览
-	private int folder_id;//文件夹id
+//	private int folder_id;//文件夹id
 	private int delflag;//是否删除
 	private Date update_date;
 	private Date create_date;
@@ -208,12 +208,12 @@ public class Subject {
 	public void setSafetyControl(String safetyControl) {
 		this.safetyControl = safetyControl;
 	}
-	public int getFolder_id() {
+/*	public int getFolder_id() {
 		return folder_id;
 	}
 	public void setFolder_id(int folder_id) {
 		this.folder_id = folder_id;
-	}
+	}*/
 	public int getDelflag() {
 		return delflag;
 	}

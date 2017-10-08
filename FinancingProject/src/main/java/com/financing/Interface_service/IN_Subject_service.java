@@ -15,4 +15,5 @@ public interface IN_Subject_service {
 	 Subject getById(int id);
 	 List<Subject_bbin_purchase_record> listsubjectrecord(int id);
 	 List<Subject> subject(Map map);//«∞Ã®≤È—Ø
+	 List<Subject>list_Subject_4();
 }
