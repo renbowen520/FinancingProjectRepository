@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<title>新增</title>
 </head>
 <link rel="stylesheet" href="/FinancingProject/css/bootstrap.min.css" />
 <script type="text/javascript" src="/FinancingProject/js/jquery-3.2.0.min.js" ></script>
@@ -26,40 +26,52 @@ $(function(){
 
 
 <body>
+<h3>
+<span class=" glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+<b>新增</b>
+</h3>
+<hr>
+
+
+
+<center>
+<div style="width: 90%;text-align: left;">
 <p><h3>&nbsp;&nbsp;▶ 产品信息详细表</h3>
+</div>
 <form id="form1" action="/FinancingProject/subject/save" method="post" enctype="multipart/form-data">
-<table border="0" cellspacing="0" width="100%">
+<table border="0" cellspacing="0" width="90%">
 <tr height="60">
-<td>&nbsp;&nbsp;&nbsp;名称:</td><td><input type="text" name="name" class="form-control"></td><td>&nbsp;&nbsp;类型:</td><td><select class="form-control" name="type"><option value="0">固收类</option><option value="1">P2P车贷</option><option value="2">P2P房贷</option></select></td>
+<td align="right" style="padding-right: 10px;">名称:</td><td><input type="text" name="name" class="form-control"></td><td  align="right" style="padding-right: 10px;">类型:</td><td><select class="form-control" name="type"><option value="0">固收类</option><option value="1">P2P车贷</option><option value="2">P2P房贷</option></select></td>
 </tr>
 <tr height="60">
-<td>&nbsp;&nbsp;&nbsp;合同编号:</td><td><input type="text" name="serial_no" class="form-control"></td><td>&nbsp;&nbsp;借款用途:</td><td><input type="text" name="purpose"  class="form-control"></td>
+<td align="right" style="padding-right: 10px;">合同编号:</td><td><input type="text" name="serial_no" class="form-control"></td><td align="right" style="padding-right: 10px;">借款用途:</td><td><input type="text" name="purpose"  class="form-control"></td>
 </tr>
 <tr height="60">
-<td>&nbsp;&nbsp;&nbsp;起投金额(元):</td><td><input type="text" name="floor_amount" class="form-control"></td><td>&nbsp;&nbsp;保障方式:</td><td><select name="safeGuard_way" class="form-control"><option value="0">企业担保</option><option value="1">银行监管</option></select></td>
+<td align="right" style="padding-right: 10px;">起投金额(元):</td><td><input type="text" name="floor_amount" class="form-control"></td><td  align="right" style="padding-right: 10px;">保障方式:</td><td><select name="safeGuard_way" class="form-control"><option value="0">企业担保</option><option value="1">银行监管</option></select></td>
 </tr>
 <tr height="60">
-<td>&nbsp;&nbsp;&nbsp;年化收益(%):</td><td><input type="text" name="year_rate" class="form-control"></td><td>&nbsp;&nbsp;可使用体验金:</td><td><select name="experStatus" class="form-control"><option value="0">否</option><option value="1">是</option></select></td>
+<td align="right" style="padding-right: 10px;">年化收益(%):</td><td><input type="text" name="year_rate" class="form-control"></td><td align="right" style="padding-right: 10px;">可使用体验金:</td><td><select name="experStatus" class="form-control"><option value="0">否</option><option value="1">是</option></select></td>
 </tr>
 <tr height="60">
-<td>&nbsp;&nbsp;&nbsp;状态:</td><td><select class="form-control" name="status">
+<td  align="right" style="padding-right: 10px;">状态:</td><td><select class="form-control" name="status">
 <option value="0">未发布</option>
 <option value="1">募集中</option>
 <option value="2">回款中</option>
 <option value="3">还款完成</option>
-</select></td><td>&nbsp;&nbsp;已购人数:</td><td><input type="text" class="form-control" name="bought"></td>
+</select></td>
+<td align="right" style="padding-right: 10px;" >借款人姓名:</td><td><input type="text" name="borrowername" class="form-control"></td><td colspan="2"></td>
 </tr>
 <tr height="60">
-<td>&nbsp;&nbsp;&nbsp;投资期限(天):</td><td><input type="text" class="form-control" name="period"></td><td colspan="2"></td>
+<td align="right" style="padding-right: 10px;">投资期限(天):</td><td><input type="text" class="form-control" name="period"></td><td colspan="2"></td>
 </tr>
 <tr height="60">
-<td>&nbsp;&nbsp;&nbsp;借款人姓名:</td><td><input type="text" name="borrowername" class="form-control"></td><td colspan="2"></td>
+
 </tr>
 <tr height="60">
 <td colspan="4"><h3>&nbsp;&nbsp;▶ 特定属性</h3><hr></td>
 </tr>
 <tr height="60">
-<td>&nbsp;&nbsp;&nbsp;债权编号:</td><td><input type="text" name="borrowerid" class="form-control"></td><td>&nbsp;&nbsp;&nbsp;债权人:</td><td><input type="text" name="borrowername" class="form-control" ></td>
+<td align="right" style="padding-right: 10px;">债权编号:</td><td><input type="text" name="borrowerid" class="form-control"></td><td align="right" style="padding-right: 10px;">债权人:</td><td><input type="text" name="borrowername" class="form-control" ></td>
 </tr>
 
 <tr height="60"><td colspan="4">
@@ -90,11 +102,14 @@ $(function(){
 <td colspan="4"  align="center">
 
 <input type="submit" class="btn btn-primary" id="btn1" value="保存">
-<a href="/FinancingProject/AdminController/menus1">返回固收首页</a>
+          <button type="button" class="btn btn-default"  onclick="javascript:history.back(-1);">返回</button>
 </td>
 </tr>
 </table>
 </form>
+</center>
+
+
 
   <script type="text/javascript">
     //实例化编辑器

@@ -56,8 +56,10 @@ public interface IN_Member_dao {
 				Subject_purchase_record s2,
 				Member_trade_record  s3,
 				Member_tally s4,
-				Member_account s5,
-				Member_profit_record  s6
+				Member_account s5
+				
 				) ;
-	 
+ List<Subject_purchase_record>  get_money(int id);
+ List<Member_profit_record>get_lixi(int id);
+ List<Member_deposit_record>get_cz(int id);
 }

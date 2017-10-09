@@ -1,4 +1,5 @@
 package com.financing.service;
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Map;
 
@@ -11,6 +12,7 @@ import com.financing.Interface_service.IN_Subject_service;
 import com.financing.bean.Subject;
 import com.financing.bean.Subject_bbin_purchase_record;
 import com.financing.bean.Subject_file;
+import com.financing.bean.Subject_purchase_record;
 import com.financing.dao.SubjectDao;
 
 
@@ -42,10 +44,8 @@ public class SubjectService  implements IN_Subject_service {
 	public Subject getById(int id){
 		return this.subjectdao.getById(id);
 	}
-	//查询显示标的购买记录
-	public List<Subject_bbin_purchase_record> listsubjectrecord(int id){
-		return subjectdao.listsubjectrecord(id);
-	}
+
+
 	
 
 	//付息计划模糊查询及其显示所有
@@ -61,5 +61,22 @@ public class SubjectService  implements IN_Subject_service {
 	public List<Subject> list_Subject_4() {
 		// TODO Auto-generated method stub
 		return subjectdao.list_Subject_4();
+	}
+	@Override
+	public BigInteger get_count(int id) {
+		// TODO Auto-generated method stub
+		return  subjectdao.get_count(id);
+	}
+	@Override
+	public List<Subject> ListFixGet(Map map) {
+		// TODO Auto-generated method stub
+		return subjectdao.ListFixGet(map);
+	}
+	
+	//查询显示标的购买记录
+	@Override
+	 public List<Subject_purchase_record> listsubjectrecord(int id) {
+	 	 // TODO Auto-generated method stub
+		  return subjectdao.listsubjectrecord(id);
 	}
 }

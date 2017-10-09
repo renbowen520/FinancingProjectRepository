@@ -17,7 +17,7 @@ public class Member_deposit_record {
 	private String serial_number;//流水号
 	private Member member_id;//用户Id
 	private double amount;//充值金额
-	private int status;//状态（0:代付款,1:完成）
+	private int status;//状态（0:未付款,1:完成）
 	private String pay_channel_name;//充值渠道名称
 	private String pay_channel_order_no;//充值渠道订单号；
 	private int delFlag;

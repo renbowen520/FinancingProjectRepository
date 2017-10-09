@@ -1,6 +1,7 @@
 package com.financing.dao;
 
 
+import java.math.BigInteger;
 import java.util.Date;
 
 
@@ -18,6 +19,7 @@ import com.financing.bean.Push_notice;
 import com.financing.bean.Subject;
 import com.financing.bean.Subject_bbin_purchase_record;
 import com.financing.bean.Subject_file;
+import com.financing.bean.Subject_purchase_record;
 
 @Component
 public class SubjectDao implements IN_Subject_dao {
@@ -30,9 +32,29 @@ public class SubjectDao implements IN_Subject_dao {
 		return this.sf.getCurrentSession();
 	}
 	
+	//根据标的id查询购买人数
+	 public BigInteger  get_count(int  id) {
+		// subject_purchase_record
+		 
+		 String sql="select  count(DISTINCT(member_id)) from subject_purchase_record where subject_id=:id";
+			Session session=getSession();
+	      Query   query = session.createSQLQuery(sql);
+	      query.setInteger("id", id);
+	      List<BigInteger>list =    query.list();
+	      
+	      BigInteger c = null ;
+	      for (BigInteger integer : list) {
+		  c=integer;
+	    }
+	  //   System.out.println("购买人数:"+c);
+	     return c;
+	 }
+	
+	
+	
 	//首页显示最新的4个募集中
 	public List<Subject>list_Subject_4(){
-		String  sql = "SELECT * from  subject  where status=1  order by  raise_start  desc ";  
+		String  sql = "SELECT * from  subject  where status=1  order by  raise_start  desc   LIMIT 0,4 ";  
 		Session session=getSession();
 		  Query query = session.createSQLQuery(sql).addEntity(Subject.class);
 	      List<Subject>list =query.list();
@@ -126,7 +148,7 @@ public class SubjectDao implements IN_Subject_dao {
 	//查询固收类
 	//显示所有后台
 	public List<Subject> ListFixGet(Map map){
-		String hql="from Subject where 0=0";
+		String hql="from Subject  s  where 0=0";
 		Session session=getSession();
 		hql=listDataHql(map, hql);
 		List<Subject> listSubject=session.createQuery(hql).list();
@@ -139,26 +161,27 @@ public class SubjectDao implements IN_Subject_dao {
 		String stype=(String)map.get("stype");
 		String status=(String)map.get("status");
 		if(sname!=null&&!sname.equals("")){
-			hql+=" and name like '%"+sname+"%'";
+			hql+="      and s.name like '%"+sname+"%'";
 		}
 		if(stype!=null&&!stype.equals("")){
-			hql+=" and type like '%"+stype+"%'";
+			hql+="      and s.type="+stype;  
 		}
 		if(status!=null&&!status.equals("")){
-			hql+=" and status like '%"+status+"%'";
+			 hql+="     and s.status ="+status;
 		}
+	//	System.out.println("hql============"+hql);
 		return hql;
 	}
 	
 	
 	
-	//查看记录
+	//查看投资记录
 	//查询显示
-	public List<Subject_bbin_purchase_record> listsubjectrecord(int id){
-		String hql="from Subject_bbin_purchase_record where subject_id="+id;
+	public List<Subject_purchase_record> listsubjectrecord(int id){
+		String hql="from Subject_purchase_record where subject_id="+id;
 		Session session=getSession();
-		List<Subject_bbin_purchase_record> listsubjectrecord=session.createQuery(hql).list();
-		return listsubjectrecord;
+		List<Subject_purchase_record> list=session.createQuery(hql).list();
+		return list;
 	}
 	
 	//付息计划显示所有信息

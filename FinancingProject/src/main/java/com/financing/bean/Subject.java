@@ -24,7 +24,7 @@ public class Subject {
 	private double amount;//标的金额
 	private int first_id;//始标id
 	private int parent_id;//父标id
-	private int period;//周期
+	private int period;//天数
 	private String purpose;//借款目的
 	private Date raise_start;//募集开始
 	private Date raise_end;//募集结束
@@ -40,10 +40,10 @@ public class Subject {
 	private Date create_date;
 	private String borrowername;//借款人姓名
 	private int borrowerid;//借款人id
-	private int bought;//已购人数
+//	private int bought;//已购人数
 	private String projectDetails;//项目详情
 	private String safetyControl;//安全保障
-	private int exper_status;//体验金是否可以购买
+	private int exper_status;//体验金是否可以购买0fou   1是
 	
 	//同一个标可以被购买多次  一对多，用集合
 	private Set<Subject_purchase_record> subject_purchase_record=new HashSet<>();//标的购买表(购买次数)
@@ -244,12 +244,12 @@ public class Subject {
 	public void setBorrowerid(int borrowerid) {
 		this.borrowerid = borrowerid;
 	}
-	public int getBought() {
+/*	public int getBought() {
 		return bought;
 	}
 	public void setBought(int bought) {
 		this.bought = bought;
-	}
+	}*/
 	public int getExper_status() {
 		return exper_status;
 	}

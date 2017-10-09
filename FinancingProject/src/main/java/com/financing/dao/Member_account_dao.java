@@ -23,6 +23,9 @@ public class Member_account_dao implements IN_Member_account_dao {
 		return this.sessionFactory.getCurrentSession();
 	}
 	
+
+	
+	
 	//¸ù¾Ýid²éÑ¯
 	public  Member_account getById(int id) {
 		   Session session =this.getSession();

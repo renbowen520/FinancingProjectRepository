@@ -79,12 +79,12 @@
 	</servlet-mapping>
 
 	
-	  <jsp-config>
+<!-- 	  <jsp-config>
     <taglib>
       <taglib-uri>http://jpager.com/taglibs/page</taglib-uri>
       <taglib-location>/WEB-INF/jpager.tld</taglib-location>
     </taglib>
-  </jsp-config>
+  </jsp-config> -->
   
 
 </web-app>

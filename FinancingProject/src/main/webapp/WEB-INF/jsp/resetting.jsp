@@ -34,62 +34,19 @@
     </div>
     
     <!--   2   导入菜单栏  -->
-   <!--  <div class="jwNav">
-		<div class="container">
-			<div class="row">
-				<ul class="topNav">
-					<li class="active">
-						<a class="item first" href="http://127.0.0.1:8080/FinancingProject/IndexController/index">
-							首页
-						</a>
-					</li>
-					<li>
-						<a class="item" href="/FinancingProject/IndexController/Online_experience_center">
-							网上体验中心
-						</a>
-					</li>
-					<li>
-						<a class="item" href="/FinancingProject/IndexController/product">
-							产品中心
-						</a>
-					</li>
-					<li>
-						<a class="item" href="/FinancingProject/IndexController/news">
-							新闻中心
-						</a>
-					</li>
-					<li>
-                        <a class="item" href="/FinancingProject/IndexController/download">
-                            下载中心
-                        </a>
-					</li>
-					<li>
-                        <a class="item " href="/FinancingProject/IndexController/help">
-                          孔明商学院
-                        </a>
-					</li>
-					<li>
-                        <a class="item" href="/FinancingProject/IndexController/investment_research">
-                            投研中心
-                        </a>
-					</li>
-					<li>
-						<a class="item last" href="/FinancingProject/IndexController/personal_center">
-							个人中心
-						</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-
-     -->
+   
        <div style="background-color: ; width:100%px; height:40px; margin:0 auto;">
         <iframe src="/FinancingProject/index_files/daohang.jsp" scrolling="no" frameborder="0"  width="100%"></iframe>
     </div>
 
 <br><br><br>
+
+
 <center>
+<div style="text-align: left;width: 70%" >
+<font size="+3">找回密码</font>
+</div>
+<br>
 <font color="#E12AB6" size="7">暂</font><font color="#BF8D5C" size="6">未</font><font color="#6DD4B0" size="4">开</font><font color="#E65D58" size="2">放</font><font color="#F9977E" size="4">,</font><font color="#A99A3E" size="4">敬</font><font color="#E0574C" size="3">请</font><font color="#A1AB5A" size="5">期</font><font color="#0229A8" size="6">待</font><font color="#51A9F6" size="5">!</font>
 </center>
 <br><br><br>

@@ -13,6 +13,7 @@ import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.financing.Interface_dao.IN_Role_permission_relation_dao;
 import com.financing.Interface_service.IN_Role_permission_relation_service;
@@ -20,6 +21,11 @@ import com.financing.Interface_service.IN_Users_service;
 import com.financing.bean.Role_permission_relation;
 import com.financing.bean.Users;
 import com.financing.service.Users_service;
+
+
+
+
+
 public class MyRealm extends AuthorizingRealm{
 
 	  @Autowired

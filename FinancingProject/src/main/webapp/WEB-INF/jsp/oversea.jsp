@@ -48,6 +48,12 @@ function fun1(){
 	$("#period_start").val("");
 	$("#period_end").val("");
 	$("#status").val("");
+	$("#bbb1").val("11");
+	$("#bbb2").val("21");
+	$("#bbb3").val("31");
+	$("#bbb4").val("41");
+	
+	
 	document.forms[0].action="/FinancingProject/IndexController/product";
 	document.forms[0].submit();	 
 }
@@ -55,6 +61,12 @@ function fun1(){
 </script>
 
 <form action="" method="post" id="f1" name="f1">
+
+      <input type="hidden"  id="bbb1"  name="bbb1"  val="${bbb1 }">
+           <input type="hidden"  id="bbb2"  name="bbb2"  val="${bbb2 }">
+       <input type="hidden"  id="bbb3"  name="bbb3"  val="${bbb3 }">
+        <input type="hidden"  id="bbb4"  name="bbb4"  val="${bbb4}">
+            
             <input type="hidden"  name="typeid"  id="typeid"   val="${typeid }">
 			<input type="hidden" name="year_rate" id="year_rate" value="${year_rate }"/>
 			<input type="hidden" name="type" id="type" value="${type}"   />

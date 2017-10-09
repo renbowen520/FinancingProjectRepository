@@ -150,8 +150,29 @@ public class Member_service  implements IN_Member_service{
 
 	@Override
 	public void save_goumai(Subject_order_record s1, Subject_purchase_record s2, Member_trade_record s3, Member_tally s4,
-			Member_account s5, Member_profit_record s6) {
+			Member_account s5) {
 		// TODO Auto-generated method stub
-		md.save_goumai(s1, s2, s3, s4, s5, s6);
+		md.save_goumai(s1, s2, s3, s4, s5);
+	}
+
+
+	@Override
+	public List<Subject_purchase_record> get_money(int id) {
+		 // TODO Auto-generated method stub
+		  return  md.get_money(id);
+	}
+
+
+	@Override
+	public List<Member_profit_record> get_lixi(int id) {
+	    	// TODO Auto-generated method stub
+		    return md.get_lixi(id);
+	}
+
+
+	@Override
+	public List<Member_deposit_record> get_cz(int id) {
+		// TODO Auto-generated method stub
+		return   md.get_cz(id);
 	}
 }

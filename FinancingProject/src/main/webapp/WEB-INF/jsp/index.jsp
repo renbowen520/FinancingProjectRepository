@@ -410,7 +410,22 @@
                             </span>
                             <div class="count">
                                 <span class="s1"><b> ${ s.year_rate}</b>%</span>
-                                <span class="s2"><b>${s.bought}</b>人</span>
+                                <span class="s2"><b>
+                        
+                                <script type="text/javascript">
+                                  var id='${s.id}';
+              				      $.ajaxSetup({  
+              					    async : false  
+              				 	  }); 
+              				    var m;
+                               $.post("/FinancingProject/IndexController/count",{id:id},
+                              		    function(msg){
+                              		    	m = msg;
+                              		    });
+                               document.write(m);
+                                
+                                </script>
+                                </b>人</span>
                                 <span class="s3">年化收益</span>
                                 <span class="s4">已购人数</span>
                                 <span class="s5">/</span>

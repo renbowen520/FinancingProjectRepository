@@ -60,37 +60,37 @@
 </table>
 
 
+
 <div class="countBox">
     <ul>
-        <li><h2>0</h2><p>账户可用余额(元)<a href="javascript:;" class="iconfont"><span>账户可用余额 </span></a></p></li>
-        <li><h2>0</h2><p>账户总资产(元)<a href="javascript:;" class="iconfont"><span>可用余额+投资金额+累计收益</span><i></i></a></p></li>
-        <li><h2 style="color:#9d8440">0</h2><p>投资金额(元)<a href="javascript:;" class="iconfont"><span>投资中资金</span><i></i></a></p></li>
-        <li><h2 style="color:#9d8440">0</h2><p>累计收益(元)<a href="javascript:;" class="iconfont"><span>累计收益</span><i></i></a></p></li>
-        <li><h2 style="color:#9d8440">0</h2><p>冻结金额(元)<a href="javascript:;" class="iconfont"><span>提现冻结金额</span><i></i></a></p></li>
+        <li><h2>${member_account.useable_balance }</h2><p>账户可用余额(元)<a href="javascript:;" class="iconfont"><span>账户可用余额 </span></a></p></li>
+        <li><h2>${sum }</h2><p>账户总资产(元)<a href="javascript:;" class="iconfont"><span>可用余额+投资金额+累计收益</span><i></i></a></p></li>
+        <li><h2 style="color:#9d8440">${touzi }</h2><p>投资金额(元)<a href="javascript:;" class="iconfont"><span>投资中资金</span><i></i></a></p></li>
+        <li><h2 style="color:#9d8440">${lixi }</h2><p>累计收益(元)<a href="javascript:;" class="iconfont"><span>累计收益</span><i></i></a></p></li>
+        <li><h2 style="color:#9d8440">${member_account.imuseale_balance}</h2><p>冻结金额(元)<a href="javascript:;" class="iconfont"><span>提现冻结金额</span><i></i></a></p></li>
     </ul>
     <a href="/FinancingProject/MemberController/cz" class="cz">充值</a>
-    <a href="" class="tk">提款</a>
+      <a href="#" class="tk"   onclick="javaScript:alert('暂未开放,敬请期待!')" >提款</a>
 </div>    <div class="proMain clearfix">
 <div class="adminLeft">
     <h2>我的投资</h2>
     
     <ul >
-         <li > <a id="" href="" >投资记录</a></li>
-        <li><a id="" href=""   >收益记录</a></li>
-        <li><a id="" href="">充值记录</a></li>
-        <li><a id="" href="">提款记录</a></li>
-        <li><a id="" href="">体验金记录</a></li>
+         <li > <a id="" href="/FinancingProject/MemberController/touzi" >投资记录</a></li>
+        <li><a id="" href="/FinancingProject/MemberController/lixi"   >收益记录</a></li>
+        <li><a id="" href="/FinancingProject/MemberController/chongzhi">充值记录</a></li>
+        <li><a id="" href="#"   onclick="javaScript:alert('暂未开放,敬请期待!')">提款记录</a></li>
+        <li><a id="" href="#">体验金记录</a></li>
     </ul>
     <h2>我的账户</h2>
     <ul>  
-        <li><a id="" href="#">账户充值</a></li>
         <li><a id="" href="/FinancingProject/IndexController/personal_center">安全中心</a></li>
-        <li><a id="" href="">我要提款</a></li>
-        <li><a id="" href="">我是理财师</a></li>
-          <li><a id="" href="">建议反馈</a></li>
+        <li><a id="" href="#"    onclick="javaScript:alert('暂未开放,敬请期待!')">我是理财师</a></li>
+          <li><a id="" href="/FinancingProject/IndexController/feedback">建议反馈</a></li>
     </ul>
 </div>
- 
+
+
  
  
  

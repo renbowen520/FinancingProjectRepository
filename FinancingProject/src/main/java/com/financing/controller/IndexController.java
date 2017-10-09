@@ -1,9 +1,12 @@
 package com.financing.controller;
 
 
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CountDownLatch;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +54,19 @@ private IN_push_notice_service IN_push_notice_service;
 	 	model.addAttribute("subject", list2); 
 		 return "jsp/index";
 	}
+	
+	//异步人数
+	@RequestMapping("/count")
+	@ResponseBody
+	public  BigInteger  count(int id) {
+	//	System.out.println("id====="+id);
+		//根据标的id查询购买人数
+		BigInteger  count =subjectService.get_count(id);
+		
+		return count;
+		
+	}
+	
 	
 	//显示5条公告
 	@RequestMapping("/list_5")
@@ -115,6 +131,34 @@ private IN_push_notice_service IN_push_notice_service;
 		map=initMap(request, map);
 		List<Subject> subject=this.subjectService.subject(map);
 		model.addAttribute("subject", subject);
+		
+		
+		String  bb1=request.getParameter("bbb1");
+		String  bb2=request.getParameter("bbb2");
+		String  bb3=request.getParameter("bbb3");
+		String  bb4=request.getParameter("bbb4");
+		if(bb1!=null&&!bb1.equals("")) {
+			request.setAttribute("bbb1", bb1);
+		}else {
+			request.setAttribute("bbb1", 11);
+		}
+		
+		if(bb2!=null&&!bb2.equals("")) {
+			request.setAttribute("bbb2", bb2);
+		}else {
+			request.setAttribute("bbb2", 21);
+		}
+		
+		if(bb3!=null&&!bb3.equals("")) {
+			request.setAttribute("bbb3", bb3);
+		}else {
+			request.setAttribute("bbb3", 31);
+		}
+		if(bb4!=null&&!bb4.equals("")) {
+			request.setAttribute("bbb4", bb4);
+		}else {
+			request.setAttribute("bbb4", 41);
+		}
 		return "jsp/product";
 	}
 	

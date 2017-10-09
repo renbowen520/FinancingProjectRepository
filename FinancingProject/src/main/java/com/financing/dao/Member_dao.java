@@ -20,6 +20,7 @@ import com.financing.bean.Member_profit_record;
 import com.financing.bean.Member_tally;
 import com.financing.bean.Member_trade_record;
 import com.financing.bean.Member_withdraw_record;
+import com.financing.bean.Subject;
 import com.financing.bean.Subject_order_record;
 import com.financing.bean.Subject_purchase_record;
 import com.financing.bean.Sys_region;
@@ -36,6 +37,49 @@ public class Member_dao implements IN_Member_dao {
 		return this.sessionFactory.getCurrentSession();
 	}
 	
+	//显示用户的充值记录
+	public  List<Member_deposit_record>get_cz(int id){
+		Session session = this.getSession();
+		String  sql ="select *  from  member_deposit_record   where  member_id=:id";
+		Query query = session.createSQLQuery(sql).addEntity(Member_deposit_record.class);
+		query.setInteger("id", id);
+		List<Member_deposit_record>list = query.list();
+		return list;
+		
+	}
+	
+	
+	
+	//统计用户的所有利息
+	public  List<Member_profit_record>get_lixi(int id){
+		Session session = this.getSession();
+		String  sql ="select *  from  member_profit_record   where  member_id=:id";
+		Query query = session.createSQLQuery(sql).addEntity(Member_profit_record.class);
+		query.setInteger("id", id);
+		List<Member_profit_record>list = query.list();
+		return list;
+	}
+	
+	
+	 //统计投资金额
+	public List<Subject_purchase_record>  get_money(int id) {
+		Session session = this.getSession();
+		String  sql ="select *  from subject_purchase_record  where  member_id=:id";
+		Query query = session.createSQLQuery(sql).addEntity(Subject_purchase_record.class);
+		query.setInteger("id", id);
+		List<Subject_purchase_record>list = query.list();
+	
+		
+		return list;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 	// member_profit_record(成员利润记录表)
 	//member_account(成员账户表)  
 //   member_tally(记账表)	
@@ -46,15 +90,14 @@ public class Member_dao implements IN_Member_dao {
 			Subject_purchase_record s2,
 			Member_trade_record  s3,
 			Member_tally s4,
-			Member_account s5,
-			Member_profit_record  s6
+			Member_account s5
+			
 			) {
 		   Session session = this.getSession();	
 		  session.save(s1);
 		  session.save(s2);
 		  session.save(s3);
 		  session.save(s4);
-		  session.save(s6);
 		  session.update(s5);
 	}
 	

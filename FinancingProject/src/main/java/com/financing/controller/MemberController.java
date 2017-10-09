@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -89,6 +90,88 @@ public class MemberController {
 	
 	@Autowired
 	private IN_Users_service  IN_Users_service;
+	
+	
+
+	//计算总的金额
+	@RequestMapping("/getTotalMoney")
+	@ResponseBody
+	public double getTotalMoney(int id){
+	//	System.out.println("id="+id);
+		Subject subject=this.IN_Subject_service.getById(id);
+		double num=0;
+		Set<Subject_purchase_record> set=subject.getSubject_purchase_record();
+		if(set.size()!=0){
+			Iterator<Subject_purchase_record> records=set.iterator();
+			while(records.hasNext()){
+				Subject_purchase_record record=records.next();
+				num+=record.getAmount();
+			}
+		}
+	//	System.out.println("num:"+num);
+		return num;
+	}
+	
+	
+	
+	
+	 //充值记录
+	 @RequestMapping("/chongzhi")
+	public String  chongzhi(HttpSession session,Model model) {
+		   Member member = (Member) session.getAttribute("member_login");
+		   if(member!=null) {
+		    	List<Member_deposit_record>list=member_service.get_cz(member.getId());
+		          model.addAttribute("chongzhi_list", list);
+		    	  return "jsp/chongzhi";
+		       }else {
+		    	   return "redirect:/IndexController/index";     
+		       }
+		
+	}
+	
+	
+	
+	
+	
+	
+	 //查看利息
+	 @RequestMapping("/lixi")
+	public String  lixi(HttpSession session,Model model) {
+		   Member member = (Member) session.getAttribute("member_login");
+		   if(member!=null) {
+		    	List<Member_profit_record>list = member_service.get_lixi(member.getId());
+		          model.addAttribute("lixi_list", list);
+		    	  return "jsp/lixi";
+		       }else {
+		    	   return "redirect:/IndexController/index";     
+		       }
+		
+	}
+	
+	
+	
+	
+	
+	 //查看投资记录
+	 @RequestMapping("/touzi")
+ 	public String  touzi(HttpSession session,Model model) {
+		   Member member = (Member) session.getAttribute("member_login");
+		   if(member!=null) {
+		    	List<Subject_purchase_record>list = member_service.get_money(member.getId());
+		          model.addAttribute("touzi_list", list);
+		    	  return "jsp/touzi";
+		       }else {
+		    	   return "redirect:/IndexController/index";     
+		       }
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 	//购买产品
 	@RequestMapping("gou")
 	public  String  gou(int  subject_id,double qian,HttpSession session ,HttpServletRequest request) {
@@ -130,7 +213,7 @@ public class MemberController {
 				s2.setSubject(subject);//标的id
 				s2.setDelflag(0);//正常
 				s2.setCreate_date(currentTime);//添加时间
-				s2.setIspayment(0);//没有还款
+				s2.setIspayment(1);//没有还款
 				s2.setPay_interest_times(1);//购买1次
 			      java.util.Calendar rightNow = java.util.Calendar.getInstance();
 			        //得到当前时间，
@@ -173,7 +256,10 @@ public class MemberController {
 	      s5.setInvest_amount(invest+qian);//投资总金额增加
 	   
 				// member_profit_record(成员利润记录表)
-				Member_profit_record  s6= new Member_profit_record();
+	      //购买的时候不应该添加    应该在还款的时候向利润表添加记录
+	      
+	      
+				/*Member_profit_record  s6= new Member_profit_record();
 				s6.setSerial_number(dateString+currentTime.getTime());//流水号
 				s6.setAmount(Double.valueOf(df.format(num)));//利息
 				s6.setMember(member);//用户
@@ -184,14 +270,44 @@ public class MemberController {
                 s6.setProfit_month(Integer.valueOf(format3.format(currentTime)));
                 s6.setProfit_day(Integer.valueOf(format4.format(currentTime)));
 			   s6.setComment("购买:"+subject.getName()+";现金金额:"+qian);//
-                
+*/                
                 //添加数据
-		  	member_service.save_goumai(s1, s2, s3, s4, s5, s6);
+		  	member_service.save_goumai(s1, s2, s3, s4, s5);
 		  	
 		  	 //重新查询下 用户数据
-		  	
-		 	//  return "redirect:/IndexController/personal_center";
-		  	return "";
+	    	 Member mmm=member_service.getById(member.getId());
+             session.setAttribute("member_login", mmm);
+             //查询账号
+  		   Member_account  member_account = account.getById(mmm.getId());
+  		   session.setAttribute("member_account", member_account);
+             
+             
+  		   //查询投资金额
+		   List<Subject_purchase_record>list2= member_service.get_money(mmm.getId());
+		   double  m = 0;
+		   if(!list2.isEmpty()) {
+			      for (Subject_purchase_record s222 : list2) {
+					m+=s222.getAmount();
+				}
+		   }
+		//   System.out.println("投资金额:"+m);
+		   
+		   //查询所有利息
+		   List<Member_profit_record>list3 = member_service.get_lixi(mmm.getId());
+		   double  m2=0;
+		   if(!list3.isEmpty()) {
+			   for (Member_profit_record member_profit_record : list3) {
+				m2+=member_profit_record.getAmount();
+			}
+		   }
+	//	   System.out.println("利息金额:"+m2);  
+	//	System.out.println("总金额"+m2+m+member_account.getUseable_balance() );
+		   session.setAttribute("lixi", m2);
+		   session.setAttribute("sum",m2+m+member_account.getUseable_balance() );
+		   session.setAttribute("touzi",m );
+  		   
+  		   
+             return "redirect:/IndexController/personal_center";
 		       }else {
 		    	   return "redirect:/IndexController/index";     
 		       }
@@ -253,9 +369,9 @@ public class MemberController {
 	   		String trade_no = new String(request.getParameter("trade_no").getBytes("ISO-8859-1"),"UTF-8");
 	   		//付款金额
 	   		String total_amount = new String(request.getParameter("total_amount").getBytes("ISO-8859-1"),"UTF-8");
-	    	System.out.println(out_trade_no); 
-	   		System.out.println(trade_no);
-	   		System.out.println(total_amount);
+	    //	System.out.println(out_trade_no); 
+	   //		System.out.println(trade_no);
+	   	//	System.out.println(total_amount);
 	   		  
 	   		//支付成功后 首先根据订单号 查询充值记录表
 	   	Member_deposit_record m=IN_Member_deposit_record_service.get_deposit(out_trade_no);
@@ -290,7 +406,12 @@ public class MemberController {
 	      //查询
 	       Member m222= 			member_service.getById(mmm.getId());
 	       session.setAttribute("member_login",m222);	
-	      //重新啊回到个人中心
+	  
+	       //查询账号
+  		   Member_account  member_account = account.getById(mmm.getId());
+  		   session.setAttribute("member_account", member_account);
+	       
+	       //重新啊回到个人中心
 	      return "redirect:/IndexController/personal_center";    
 	   		
 	   		 } else {
@@ -319,7 +440,9 @@ public class MemberController {
 	    	    String WIDtotal_amount=    request.getParameter("WIDtotal_amount");
 	    	     Member_deposit_record  deposit_record = new Member_deposit_record();
 	    	   //流水号
-	    	     deposit_record.setSerial_number(new Date().getTime()+"");
+			     Date currentTime = new Date();
+			   SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+	    	     deposit_record.setSerial_number(formatter.format(currentTime)+currentTime.getTime());
 	    	  //状态
 	    	     deposit_record.setStatus(0);
 	    	   //用户id

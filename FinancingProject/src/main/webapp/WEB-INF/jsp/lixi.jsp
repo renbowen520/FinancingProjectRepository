@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/functions"  prefix="fn"%>   
+    <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,105 +27,129 @@
 <script src="/FinancingProject/index_files/jquery"></script>
 <script src="/FinancingProject/index_files/bootstrap"></script>
 
-<title>产品中心</title>
+    <!--图标样式  -->
+	 <link rel="stylesheet" type="text/css" href="/FinancingProject/css/font-awesome.css">
+    <link rel="stylesheet" href="/FinancingProject/build/css/app.css" media="all">
+    <link rel="stylesheet" href="/FinancingProject/build/css/themes/blue.css" media="all">
+
+
+<link rel="stylesheet"  href="/FinancingProject/css/bootstrapValidator.css"  >
+<script type="text/javascript"  src="/FinancingProject/js/bootstrapValidator.js"></script>
+
+<title>个人中心</title>
 </head>
 <body>
+
 <!--   1  导入顶部  -->
      <div style=" width:1002px; height:94px; margin:0 auto;">
         <iframe src="/FinancingProject/index_files/iframetop.jsp" scrolling="no" frameborder="0" width="1002" height="94"></iframe>
     </div>
-    
-
+  
+  
+   <!--   2   导入菜单栏  -->  
+  <!-- ============================================================= -->  
        <div style="background-color: ; width:100%px; height:40px; margin:0 auto;">
         <iframe src="/FinancingProject/index_files/daohang.jsp" scrolling="no" frameborder="0"  width="100%"></iframe>
     </div>
-<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<script  type="text/javascript">    
-//刷新固守类理财
-function fun1(){
-	$("#typeid").val("");			
-	$("#year_rate").val("");
-	$("#flag").val("");
-	$("#period_start").val("");
-	$("#period_end").val("");
-	$("#status").val("");
-	
-	
-	$("#bbb1").val("11");
-	$("#bbb2").val("21");
-	$("#bbb3").val("31");
-	$("#bbb4").val("41");
-	
-	document.forms[0].action="/FinancingProject/IndexController/product";
-	document.forms[0].submit();	 
-}
-   
-</script>
-
-<form action="" method="post" id="f1" name="f1">
-          <input type="hidden"  id="bbb1"  name="bbb1"  val="${bbb1 }">
-           <input type="hidden"  id="bbb2"  name="bbb2"  val="${bbb2 }">
-          <input type="hidden"  id="bbb3"  name="bbb3"  val="${bbb3 }">
-          <input type="hidden"  id="bbb4"  name="bbb4"  val="${bbb4}">
-            <input type="hidden"  name="typeid"  id="typeid"   val="${typeid }">
-			<input type="hidden" name="year_rate" id="year_rate" value="${year_rate }"/>
-			<input type="hidden" name="type" id="type" value="${type}"   />
-			<input type="hidden" name="status" id="status" valus="${status }">
-			<input type="hidden" name="flag" id="flag" value="${flag}"/>
-			<input type="hidden" name="period_start" id="period_start" value="${period_start}">
-			<input type="hidden" name="period_end" id="period_end" value="${period_end }">
-  </form>
+<br>
+ 
 
 
 
-  <div class="proMain">
-    	<div class="hwpzNav">
-    		<ul>
-    			<li class="first"><a class="active" href="#"  onclick="fun1();" >固收类理财</a></li>
-    			<li class="second"><a href="/FinancingProject/IndexController/finance">私募基金</a></li>
-    			<li class="three"><a href="/FinancingProject/IndexController/oversea">海外配置</a></li>
-    		</ul>
-    	</div>
-     
-<center>
-    <div class="ajaxContainer">
-        <!-- 异步内容开始 -->
-        <c:forEach items="${finance}" var="f">
-                <ul class="tbList">
-                    <li class="first">
-                          <span class="ico jp"></span>
-                        <h2><b>${f.name}</b></h2>
-                        <i></i>
-                     
-                    </li>
-                    <li class="second">
-                        <div class="txt1" style="width:115px; margin-left:40px;">
-                            <h2>${f.year_rate}%</h2>
-                            <p>年化收益</p>
-                        </div>
-                        <div class="txt2" style="width:120px;margin-left:40px;">
-                            <h2>${f.floor_amount}</h2>
-                            <p>起购金额(元)</p>
-                        </div>
-                    </li>
-                    <li class="six three" style="width:290px;">
-                        <p>已购人数：${f.buyer_count}
-                            <br>
-                            管理人：襄阳孔明理财有限公司<br>
-                            投资方向：各交易所期货类、证券类投资品种等
-                        </p>
-                    </li>
-                    <li class="five"><a class="abtn" href="#">购买</a></li>
-                </ul>
-            </c:forEach>
-        <!-- 异步内容结束 -->
-	</div>
-</center>
+<table height="160" class="peopleInfo" width="970" border="0" cellspacing="0" cellpadding="0">
+    <tbody>
+    <tr>
+        <td width="200px;">
+            	<div  >
+            	   <img src="/FinancingProject/images/0.jpg"    style="border-radius:50%;height: 150px;width: 150px;">
+            </div>
+            	</td>
+            	<td  align="left" valign="middle" class="info" >
+                <h2>${member_login.name }，<span>您好!</span></h2>
+        </td>
+        <td align="right">
+            <a  onclick="return confirm('确定退出?')"    href="/FinancingProject/LoginController/out"   class="loginOut"><i class="fa fa-hand-o-right"></i>&nbsp;安全退出</a>
+        </td>
+    </tr>
+</tbody>
+</table>
 
 
+
+<div class="countBox">
+    <ul>
+        <li><h2>${member_account.useable_balance }</h2><p>账户可用余额(元)<a href="javascript:;" class="iconfont"><span>账户可用余额 </span></a></p></li>
+        <li><h2>${sum }</h2><p>账户总资产(元)<a href="javascript:;" class="iconfont"><span>可用余额+投资金额+累计收益</span><i></i></a></p></li>
+        <li><h2 style="color:#9d8440">${touzi }</h2><p>投资金额(元)<a href="javascript:;" class="iconfont"><span>投资中资金</span><i></i></a></p></li>
+        <li><h2 style="color:#9d8440">${lixi }</h2><p>累计收益(元)<a href="javascript:;" class="iconfont"><span>累计收益</span><i></i></a></p></li>
+        <li><h2 style="color:#9d8440">${member_account.imuseale_balance}</h2><p>冻结金额(元)<a href="javascript:;" class="iconfont"><span>提现冻结金额</span><i></i></a></p></li>
+    </ul>
+    <a href="/FinancingProject/MemberController/cz" class="cz">充值</a>
+      <a href="#" class="tk"   onclick="javaScript:alert('暂未开放,敬请期待!')" >提款</a>
+</div>    <div class="proMain clearfix">
+<div class="adminLeft">
+    <h2>我的投资</h2>
+    
+    <ul >
+         <li > <a id="" href="/FinancingProject/MemberController/touzi" >投资记录</a></li>
+        <li><a id="" href="/FinancingProject/MemberController/lixi"   >收益记录</a></li>
+        <li><a id="" href="/FinancingProject/MemberController/chongzhi">充值记录</a></li>
+        <li><a id="" href="#"   onclick="javaScript:alert('暂未开放,敬请期待!')">提款记录</a></li>
+        <li><a id="" href="#">体验金记录</a></li>
+    </ul>
+    <h2>我的账户</h2>
+    <ul>  
+        <li><a id="" href="/FinancingProject/IndexController/personal_center">安全中心</a></li>
+        <li><a id="" href="#"    onclick="javaScript:alert('暂未开放,敬请期待!')">我是理财师</a></li>
+          <li><a id="" href="/FinancingProject/IndexController/feedback">建议反馈</a></li>
+    </ul>
+</div>
+
+
+
+
+        <div class="admin-right">
+        	<div class="tbConBox">
+                <div class="tab">
+                    <a class="select" href="">收益记录</a>
+                </div>
+                <div id="conBox">
+                 
+             <div class="ajaxContainer">
+	<!-- 异步内容开始 -->
+	<br>
+	<table class="tzlist" width="100%" border="1" bordercolor="#e9e9e9" cellspacing="0" cellpadding="0">
+		<tbody><tr>
+			<th>时间</th>
+			<th>订单号</th>
+			<th>金额</th>
+			<th>备注</th>
+		
+		</tr>
+		<c:forEach items="${lixi_list }"  var="s"  varStatus="var">
+		  <tr>
+	     <td>${s.create_date}</td>
+		 <td>${s.serial_number }</td>
+		  <td>${s.amount }</td>
+		  <td>${s.comment }</td>
+		  </tr>
+		</c:forEach>
+	</tbody></table>
+	<div class="listCount">总计<font color="#ff503f">${fn:length(lixi_list)} </font>笔</div>
+</div>
+	     
+	     
+	     <br>
+                 <center>
+                    <button type="button" class="btn btn-default"  onclick="javascript:history.back(-1);">返回</button>
+          </center>
+          <br>
+            </div>
+        </div>
+    </div>
+<!-- ========================================= -->
+
+<!--  ==============================================================-->
  <!-- 4     图片广告 -->
     <div class="container index">
 			<div class="row">

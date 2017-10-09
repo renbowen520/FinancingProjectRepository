@@ -12,53 +12,103 @@
 <script type="text/javascript" src="/FinancingProject/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 $(function(){
+	status
+	var a = "${status}";
+	var b = "${stype}";
+	    $("#status  option[value='"+a+"']").attr("selected", true);
+	    $("#stype  option[value='"+b+"']").attr("selected", true);
+	
+	
+	
 	$("#btn2").click(function(){ //新增按钮
 		$("#form1").attr("action","/FinancingProject/subject/addfixget");
 		$("#form1").submit();
 	});
 	$("#btn1").click(function(){ //模糊查询按钮
-		$("#form1").attr("action","/FinancingProject/subject/menus1");
+		$("#form1").attr("action","/FinancingProject/AdminController/menus1");
 		$("#form1").submit();
 	});
+	
+	
+	$("#ree").click(function(){ //重置
+		 $("#sname").text("");
+	     $("#status  option[value='']").attr("selected", true);
+	    $("#stype  option[value='']").attr("selected", true);
+		$("#form1").attr("action","/FinancingProject/AdminController/menus1");
+		$("#form1").submit();
+			});
 	});
+	
+
+	
+
+	
  function test3(id){
 	 $("#form1").attr("action","/FinancingProject/subject/bfupdate/"+id);
 		$("#form1").submit();
  }
  function test4(id){
-	 alert(id);
 	 $("#form1").attr("action","/FinancingProject/subject/listsubjectrecord/"+id);
 		$("#form1").submit();
  }
  </script>
 <body>
-<br>
-<div class="table table-responsive">
-<form method="post" id="form1" role="form">
-			<table class="table table-striped" width="100%" >
-			<div><p><center>
-		名称:<input type="text" placeholder="名称" name="sname" value="${sname}">
-				
-				
-						状态:<select name="status">
+<h3>
+<span class=" glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+<b>固收类/P2P</b>
+</h3>
+<hr>
+
+
+
+	<center>
+<form method="post" id="form1" role="form"    class="form-horizontal">
+
+	
+	
+<table  width="90%" >
+<tr>
+  <td >
+  <label for="firstname" class="col-sm-3 control-label">名称</label >
+  <input     id="sname"  style="width: 160px"     type="text"  class="form-control"    placeholder="请输入名称" name="sname" value="${sname}">
+  </td>
+ <td >
+ <label for="firstname" class="col-sm-3 control-label">状态</label >
+                     <select style="width: 160px"     id="status"  name="status"    class="form-control"  >
 							<option value="">全部</option>
 							<option value="0">未发布</option>
 							<option value="1">募集中</option>
 							<option value="2">回款中</option>
 							<option value="3">还款完成</option>
 						</select>
-				
-						类型:<select name="stype">
+ </td>
+ <td>
+  <label for="firstname" class="col-sm-3 control-label">类型</label >
+ 	   <select   id="stype"   name="stype"  style="width: 160px"  class="form-control"  >
 							<option value="">全部</option>
 							<option value="0">固收类</option>
 							<option value="1">P2P车贷</option>
 							<option value="2">P2P房贷</option>
 						</select>
-					<button type="button" class="btn btn-primary" id="btn1">查询</button>
-					<button type="reset" class="btn btn-primary">重置</button>
-					<button type="button" class="btn btn-primary" id="btn2">新增</button> 
-						
-		</center></p></div>		
+ </td>
+ 
+  <td>
+  		<button type="button" class="btn btn-primary" id="btn1">查询</button>
+ </td>
+ 
+ <td>
+					<button  id="ree" type="button" class="btn btn-danger">重置</button>
+					
+ </td>
+    <td align="right" width="10%">
+    <button type="button" class="btn btn-primary" id="btn2">新增</button> 
+ </td>
+</tr>
+</table>
+
+<br>	
+
+			<table class="table table-striped"   style="width: 95%">
 				<tr>
 					<th>序号</th>
 					<th>合同编号</th>
@@ -100,7 +150,7 @@ $(function(){
 					</td>
 					<td>${li.period}天</td>
 					<td>¥${li.floor_amount}</td>
-					<td>${li.year_rate*10}%</td>
+					<td>${li.year_rate}%</td>
 					<td>
 					<c:if test="${li.status==0}">未发布</c:if>
 					<c:if test="${li.status==1}">募集中</c:if>
@@ -114,12 +164,15 @@ $(function(){
 					<td>${li.create_date}</td>
 					<td>
 					<button type="button" class="btn btn-primary" onclick="test3(${li.id})">编辑修改</button> 
+					&nbsp;
 					<button type="button" class="btn btn-primary" onclick="test4(${li.id})">查看投资</button> 
 					</td>
 				</tr>
 				</c:forEach>
 			</table>
+			
+			
 </form>
-</div>			
+</center>	
 </body>
 </html>

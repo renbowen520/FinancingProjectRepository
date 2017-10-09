@@ -14,8 +14,15 @@
 
 </script>
 <body>
-<div class="table table-responsive">
-<table class="table table-striped" width="100%" >
+<h3>
+<span class=" glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+<b>投资记录</b>
+</h3>
+<hr>
+
+<center>
+<div  style="width: 90%">
+<table class="table table-striped" >
 	<tr align="center">
 	<th>序号</th>
 	<th>流水号</th>
@@ -31,23 +38,26 @@
 	<td>${li.serial_number }</td>
 	<td>${li.member.member_name}</td>
 	<td>¥${li.amount }</td>
-	<td><!-- ${li.interest} -->
-	<script type="text/javascript">
+	<td>${li.interest}
+<!-- 	<script type="text/javascript">
 	var first="${li.amount}";
 	var date=${li.subject.year_rate}/100;
 	var t="${e.subject.period}";
 	var shou=((first*date)/365)*t;
 	document.write(parseFloat(shou).toFixed(2));
-	</script>
+	</script> -->
 	</td>
 	<td>
-	<c:if test="${li.ispayment==0}">否</c:if>
-	<c:if test="${li.ispayment==1}">是</c:if>
+	<c:if test="${li.ispayment==0}">是</c:if>
+	<c:if test="${li.ispayment==1}">否</c:if>
 	</td>
 	<td>${li.create_date}</td>
 	</tr>
 	</c:forEach>
 </table>
+<button type="button" class="btn btn-default"  onclick="javascript:history.back(-1);">返回</button>
 </div>
+</center>
+
 </body>
 </html>

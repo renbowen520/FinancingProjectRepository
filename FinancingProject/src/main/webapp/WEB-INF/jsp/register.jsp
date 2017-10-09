@@ -46,56 +46,7 @@
     </div>
     
     <!--   2   导入菜单栏  -->
-   <!--  <div class="jwNav">
-		<div class="container">
-			<div class="row">
-				<ul class="topNav">
-					<li class="active">
-						<a class="item first" href="http://127.0.0.1:8080/FinancingProject/IndexController/index">
-							首页
-						</a>
-					</li>
-					<li>
-						<a class="item" href="/FinancingProject/IndexController/Online_experience_center">
-							网上体验中心
-						</a>
-					</li>
-					<li>
-						<a class="item" href="/FinancingProject/IndexController/product">
-							产品中心
-						</a>
-					</li>
-					<li>
-						<a class="item" href="/FinancingProject/IndexController/news">
-							新闻中心
-						</a>
-					</li>
-					<li>
-                        <a class="item" href="/FinancingProject/IndexController/download">
-                            下载中心
-                        </a>
-					</li>
-					<li>
-                        <a class="item " href="/FinancingProject/IndexController/help">
-                          孔明商学院
-                        </a>
-					</li>
-					<li>
-                        <a class="item" href="/FinancingProject/IndexController/investment_research">
-                            投研中心
-                        </a>
-					</li>
-					<li>
-						<a class="item last" href="/FinancingProject/IndexController/personal_center">
-							个人中心
-						</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-
- -->
+ 
        <div style="background-color: ; width:100%px; height:40px; margin:0 auto;">
         <iframe src="/FinancingProject/index_files/daohang.jsp" scrolling="no" frameborder="0"  width="100%"></iframe>
     </div>

@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class Subject_bbin_purchase_record {
+public class Subject_bbin_purchase_record {//体验金购买
 	private int id;
 	private String serial_number;//流水号
 	private double amount;//购买金额

@@ -46,11 +46,22 @@
 <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 
 <script type="text/javascript">
-
+$(function(){
+	       var  bbb1="${bbb1}";
+	       var  bbb2="${bbb2}"; 
+	       var  bbb3="${bbb3}";
+	       var  bbb4="${bbb4}";
+	      // alert(bbb1);
+		 $("#"+bbb1).addClass("select");
+		 $("#"+bbb2).addClass("select");
+		 $("#"+bbb3).addClass("select");
+		 $("#"+bbb4).addClass("select");
+});
 
 
 //状态
-	function setValue3(m){
+	function setValue3(m,obj){
+		   $("#bbb4").val(obj.id);
 			$("#status").val(m);
           document.forms[0].action="/FinancingProject/IndexController/product";
           document.forms[0].submit(); 
@@ -58,7 +69,8 @@
 		
 		
 		//年华收益
-		function setValue1(rate,flag){
+		function setValue1(rate,flag,obj){
+			   $("#bbb2").val(obj.id);
 			$("#year_rate").val(rate);
 			$("#flag").val(flag);
 			document.forms[0].action="/FinancingProject/IndexController/product";
@@ -66,7 +78,8 @@
 		}
 		
 		//期限
-		function setValue2(day1,day2){
+		function setValue2(day1,day2,obj){
+			   $("#bbb3").val(obj.id);
 			$("#period_start").val(day1);
 			$("#period_end").val(day2);
 			document.forms[0].action="/FinancingProject/IndexController/product";
@@ -75,10 +88,12 @@
 
 		
 		//标的类型
-		function   fun(typeid){
-			$("#typeid").val(typeid);	
-			document.forms[0].action="/FinancingProject/IndexController/product";
-			document.forms[0].submit();	 
+		function   fun(typeid,obj){
+			   // alert(obj.id);
+			   $("#bbb1").val(obj.id);
+			  $("#typeid").val(typeid);	
+			 document.forms[0].action="/FinancingProject/IndexController/product";
+			 document.forms[0].submit();	 
 		}
 		
 		//刷新固守类理财
@@ -89,6 +104,12 @@
 			$("#period_start").val("");
 			$("#period_end").val("");
 			$("#status").val("");
+			
+			$("#bbb1").val("11");
+			$("#bbb2").val("21");
+			$("#bbb3").val("31");
+			$("#bbb4").val("41");
+			
 			document.forms[0].action="/FinancingProject/IndexController/product";
 			document.forms[0].submit();	 
 		}
@@ -97,6 +118,12 @@
 
 
    <form action="" method="post" id="f1" name="f1">
+             <input type="hidden"  id="bbb1"  name="bbb1"  value="${bbb1}">
+             <input type="hidden"  id="bbb2"  name="bbb2"  value="${bbb2}">
+             <input type="hidden"  id="bbb3"  name="bbb3"  value="${bbb3}">
+             <input type="hidden"  id="bbb4"  name="bbb4"  value="${bbb4}">
+            
+            
             <input type="hidden"  name="typeid"  id="typeid"   val="${typeid }">
 			<input type="hidden" name="year_rate" id="year_rate" value="${year_rate }"/>
 			<input type="hidden" name="type" id="type" value="${type}"   />
@@ -119,35 +146,35 @@
         
         	<ul>
             	<li class="first">标的类型：</li>
-               		<li><a href="#"    onclick="fun(-1)"  id="11" class="select">全部</a></li>
-               		<li><a href="#"   onclick="fun(0);"  id=""><div id="a12">固收类理财</div></a></li>
-            		<li><a href="#"   onclick="fun(1)"  id="13">P2P车贷</a></li>
-               		<li><a href="#"   onclick="fun(2)"   id="14">P2P房贷</a></li> 
+               		<li><a href="#"    onclick="fun(-1,this)"  id="11" >全部</a></li>
+               		<li><a href="#"   onclick="fun(0,this);"  id="12">固收类理财</a></li>
+            		<li><a href="#"   onclick="fun(1,this)"  id="13">P2P车贷</a></li>
+               		<li><a href="#"   onclick="fun(2,this)"   id="14">P2P房贷</a></li> 
             </ul>
         	<ul>
             	<li class="first">年化收益：</li>
-               		<li><a href="#" id="21" class="select" onclick="setValue1(0,-1)">全部</a></li>
-               		<li><a href="#" id="22" onclick="setValue1(6,0)">6.0%</a></li>
-               		<li><a href="#" id="23" onclick="setValue1(7,0)">7.0%</a></li>
-               		<li><a href="#" id="24" onclick="setValue1(7.5,0)">7.5%</a></li>
-               		<li><a href="#" id="25" onclick="setValue1(8,0)">8.0%</a></li>
-               		<li><a href="#" id="25" onclick="setValue1(8,1)">8.0%以上</a></li>
+               		<li><a href="#" id="21"  onclick="setValue1(0,-1,this)">全部</a></li>
+               		<li><a href="#" id="22" onclick="setValue1(6,0,this)">6.0%</a></li>
+               		<li><a href="#" id="23" onclick="setValue1(7,0,this)">7.0%</a></li>
+               		<li><a href="#" id="24" onclick="setValue1(7.5,0,this)">7.5%</a></li>
+               		<li><a href="#" id="25" onclick="setValue1(8,0,this)">8.0%</a></li>
+               		<li><a href="#" id="25" onclick="setValue1(8,1,this)">8.0%以上</a></li>
             </ul>
         	<ul>
             	<li class="first">项目期限：</li>
-               		<li><a href="#" id="31" class="select" onclick="setValue2(0,0)">全部</a></li>
-               		<li><a href="#" id="32" onclick="setValue2(0,15)">15天以下</a></li>
-               		<li><a href="#" id="33" onclick="setValue2(15,30)">15-30天</a></li>
-               		<li><a href="#" id="34" onclick="setValue2(30,180)">30-180天</a></li>
-               		<li><a href="#" id="35" onclick="setValue2(180,365)">180-365天</a></li>
-               		<li><a href="#" id="36" onclick="setValue2(365,-1)">一年以上</a></li>
+               		<li><a href="#" id="31" onclick="setValue2(0,0,this)">全部</a></li>
+               		<li><a href="#" id="32" onclick="setValue2(0,15,this)">15天以下</a></li>
+               		<li><a href="#" id="33" onclick="setValue2(15,30,this)">15-30天</a></li>
+               		<li><a href="#" id="34" onclick="setValue2(30,180,this)">30-180天</a></li>
+               		<li><a href="#" id="35" onclick="setValue2(180,365,this)">180-365天</a></li>
+               		<li><a href="#" id="36" onclick="setValue2(365,-1,this)">一年以上</a></li>
             </ul>
         	<ul>
             	<li class="first">标的状态：</li>
-               		<li><a href="#" id="41" class="select" onclick="setValue3(-1)">全部</a></li>
-               		<li><a href="#" id="42" onclick="setValue3(1)">投标中</a></li>
-               		<li><a href="#" id="43" onclick="setValue3(2)">还款中</a></li>
-               		<li><a href="#" id="44" onclick="setValue3(3)">已完成</a></li>
+               		<li><a href="#" id="41" onclick="setValue3(-1,this)">全部</a></li>
+               		<li><a href="#" id="42" onclick="setValue3(1,this)">投标中</a></li>
+               		<li><a href="#" id="43" onclick="setValue3(2,this)">还款中</a></li>
+               		<li><a href="#" id="44" onclick="setValue3(3,this)">已完成</a></li>
             </ul>
         </div>
 
@@ -183,7 +210,20 @@
 						     	<a href="#1">   银行监督	</a>	 
 						     </c:if>
 			      		<span>中国人保财险承保</span>
-							<p>计息日期：当天投资，立即计息<br>已购人数：${s.bought }人</p>
+							<p>计息日期：当天投资，立即计息<br>已购人数：
+							  <script type="text/javascript">
+                                  var id='${s.id}';
+              				      $.ajaxSetup({  
+              					    async : false  
+              				 	  }); 
+              				    var m;
+                               $.post("/FinancingProject/IndexController/count",{id:id},
+                              		    function(msg){
+                              		    	m = msg;
+                              		    });
+                               document.write(m);
+                                </script>
+							人</p>
 						</li>
 						<li class="four">
 						</li>

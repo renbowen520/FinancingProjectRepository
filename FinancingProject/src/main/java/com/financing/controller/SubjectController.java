@@ -3,6 +3,7 @@ package com.financing.controller;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -13,6 +14,7 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,34 +46,29 @@ public class SubjectController {
 
 	//跳到新增页面
 	@RequestMapping("/addfixget")
+	@RequiresPermissions(value="固收类/P2P")
 	public String addfixget(){
 		return "admin/addfixget";
 	}
 	
-	//查询固收类
-	@RequestMapping("/menus1")
-	public String menus1(Model model,@RequestParam(required=false)String sname,@RequestParam(required=false)String stype,@RequestParam(required=false)String status) {
-		Map map=new HashMap();
-		map.put("sname",sname);
-		map.put("stype", stype);
-		map.put("status", status);
-		List<Subject> listSubject=this.subjectService.listSubject(map);
-		model.addAttribute("sname",sname);
-		model.addAttribute("stype", stype);
-		model.addAttribute("status", status);
-		model.addAttribute("listSubject", listSubject);
-		return "admin/menus1";
-	}
+
 	
 	//保存固收类
 	@RequestMapping("/save")
 	public String save(Subject subject,Model model,@RequestParam("file")MultipartFile file_name,
 			HttpServletRequest request,HttpSession session,Subject_file subject_file) throws IOException{
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddhhmmssssss");	
-		subject.setCreate_date(new Date());
-		subject.setUpdate_date(new Date());
-		subject.setRaise_start(new Date());
-		subject.setRaise_end(new Date());
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddhhmmssSSS");	
+		subject.setSerial_number(sdf.format(new Date()));
+		subject.setCreate_date(new Date());//创建日期
+	//	subject.setUpdate_date(new Date());
+		subject.setRaise_start(new Date());//募集开始
+		//period
+		     Calendar calendar = Calendar.getInstance();
+	        calendar.setTime(new Date());
+	        calendar.add(Calendar.DAY_OF_MONTH, subject.getPeriod());//+1今天的时间加一天
+	       Date    dddd = calendar.getTime();
+	//	System.out.println("dddd==========="+dddd);
+	     subject.setRaise_end(dddd);//募集结束
 		subjectService.save(subject);
 		System.out.println("文件名:"+file_name.getOriginalFilename());
 		session.setAttribute("filename", file_name.getOriginalFilename());
@@ -91,7 +88,7 @@ public class SubjectController {
 		subject_file.setPath(path+sdf2.format(date));
 		subject_file.setCreate_date(new Date());
 		subjectService.savefile(subject_file);
-		return "redirect:/subject/menus1";
+		return "redirect:/AdminController/menus1";
 	}
 	@RequestMapping("/bfupdate/{id}")
 	//修改之前的查询
@@ -108,13 +105,13 @@ public class SubjectController {
 		subject.setRaise_start(new Date());
 		subject.setRaise_end(new Date());
 		this.subjectService.update(subject);
-		return "redirect:/subject/menus1";
+		return "redirect:/AdminController/menus1";
 	}
 	
 	//显示标的购买记录
 	@RequestMapping("/listsubjectrecord/{id}")
 	public String listsubjectrecord(@PathVariable("id")int id,Model model){
-		List<Subject_bbin_purchase_record> listsubjectrecord=this.subjectService.listsubjectrecord(id);
+		List<Subject_purchase_record> listsubjectrecord=this.subjectService.listsubjectrecord(id);
 		model.addAttribute("listsubjectrecord", listsubjectrecord);
 		return "admin/subjectrecord";
 	}
@@ -124,7 +121,7 @@ public class SubjectController {
 	@RequestMapping("/getTotalMoney")
 	@ResponseBody
 	public double getTotalMoney(int id){
-		System.out.println("id="+id);
+	//	System.out.println("id="+id);
 		Subject subject=this.subjectService.getById(id);
 		double num=0;
 		Set<Subject_purchase_record> set=subject.getSubject_purchase_record();
@@ -135,7 +132,7 @@ public class SubjectController {
 				num+=record.getAmount();
 			}
 		}
-		System.out.println("num:"+num);
+	//	System.out.println("num:"+num);
 		return num;
 	}
 	

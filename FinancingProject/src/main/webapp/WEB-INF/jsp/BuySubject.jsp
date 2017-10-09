@@ -53,7 +53,22 @@
         <tbody><tr>
             <td class="txtInfo">
                 <div class="txt1">
-                    <h2>${buyproduct.bought }</h2>
+                    <h2>
+                     <script type="text/javascript">
+                                  var id='${buyproduct.id}';
+              				      $.ajaxSetup({  
+              					    async : false  
+              				 	  }); 
+              				    var m;
+                                $.post("/FinancingProject/IndexController/count",{id:id},
+                              		    function(msg){
+                              		    	m = msg;
+                              		    });
+                               document.write(m);
+                                </script>
+                    
+                    
+                    </h2>
                     <p>已购人数(人)</p>
                 </div>
                 <div class="txt2">
@@ -68,9 +83,25 @@
             <td width="360" rowspan="2" align="center" ;="" valign="middle" height="320">
                 <div class="tbBox">
                     <input type="hidden" id="account" value="">
-                    <h2>0</h2>
+                    <h2>
+                     <script type="text/javascript">
+				  var id='${buyproduct.id}';
+				  $.ajaxSetup({  
+					    async : false  
+					}); 
+				  var num1=0;
+				  $.post("/FinancingProject/MemberController/getTotalMoney",{id:id},function(data){
+					 num1=data;
+				  });
+				  document.write(num1);
+				 </script>
+                    
+                    
+                    
+                    </h2>
                     <p>已投金额(元)</p>
-                    <div class="li4" style=""><span id="checkmoney" style="color: red;"></span></div>
+                    <div class="li4" style="">
+                    <span id="checkmoney" style="color: red;"></span></div>
                    
                    
                     <div class="tit">

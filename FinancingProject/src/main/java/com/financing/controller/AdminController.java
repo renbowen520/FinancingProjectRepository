@@ -7,8 +7,10 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.financing.Interface_service.IN_Finance_produce_funds_service;
 import com.financing.Interface_service.IN_Member_bankcards_service;
@@ -99,8 +101,30 @@ private IN_user_role_service IN_user_role_service;
 		return "admin/show";
 	} 
 	
-	//固收类
-
+	
+	//查询固收类
+	@RequestMapping("/menus1")
+	@RequiresPermissions(value="固收类/P2P")
+	public String menus1(Model model,@ModelAttribute("sname")String sname,
+			@ModelAttribute("stype")String stype,@ModelAttribute("status")String status
+	) {
+		
+	//	System.out.println("接受的查询参数:"+sname+stype+status);
+		Map map=new HashMap();
+		map.put("sname",sname);
+		map.put("stype", stype);
+		map.put("status", status);
+		List<Subject> listSubject=	subjectService.ListFixGet(map);
+		model.addAttribute("sname",sname);
+		model.addAttribute("stype", stype);
+		model.addAttribute("status", status);
+		model.addAttribute("listSubject", listSubject);
+	    return "admin/menus1";
+	}
+	
+	
+	
+	/*//固收类
 	@RequestMapping("/menus1")
 	@RequiresPermissions(value="固收类/P2P")
 	public String menus1(Model model,@ModelAttribute("sname")String sname) {
@@ -110,7 +134,9 @@ private IN_user_role_service IN_user_role_service;
 		model.addAttribute("sname",sname);
 		model.addAttribute("listSubject", listSubject);
 		return "admin/menus1";
-	}
+	}*/
+	
+	
 //私募基金
 	
 	@RequestMapping("/menus2")

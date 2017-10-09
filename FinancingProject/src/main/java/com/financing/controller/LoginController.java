@@ -29,6 +29,8 @@ import com.financing.bean.Bbin_info;
 import com.financing.bean.Member;
 import com.financing.bean.Member_account;
 import com.financing.bean.Member_bankcards;
+import com.financing.bean.Member_profit_record;
+import com.financing.bean.Subject_purchase_record;
 import com.financing.bean.User_log;
 import com.financing.bean.Users;
 
@@ -167,6 +169,30 @@ public class LoginController  {
 		   //查询账号
 		   Member_account  member_account = IN_Member_account_service.getById(member.getId());
 		   session.setAttribute("member_account", member_account);
+		   
+		   //查询投资金额
+		   List<Subject_purchase_record>list2= IN_Member_service.get_money(member.getId());
+		   double  m = 0;
+		   if(!list2.isEmpty()) {
+			      for (Subject_purchase_record s2 : list2) {
+					m+=s2.getAmount();
+				}
+		   }
+		//   System.out.println("投资金额:"+m);
+		   
+		   //查询所有利息
+		   List<Member_profit_record>list3 = IN_Member_service.get_lixi(member.getId());
+		   double  m2=0;
+		   if(!list3.isEmpty()) {
+			   for (Member_profit_record member_profit_record : list3) {
+				m2+=member_profit_record.getAmount();
+			}
+		   }
+	//	   System.out.println("利息金额:"+m2);  
+	//	System.out.println("总金额"+m2+m+member_account.getUseable_balance() );
+		   session.setAttribute("lixi", m2);
+		   session.setAttribute("sum",m2+m+member_account.getUseable_balance() );
+		   session.setAttribute("touzi",m );
 		   
 		   session.setAttribute("no_login", "");
 				    //个人中心
