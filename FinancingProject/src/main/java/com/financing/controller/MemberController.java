@@ -187,6 +187,9 @@ public class MemberController {
                 
                 //添加数据
 		  	member_service.save_goumai(s1, s2, s3, s4, s5, s6);
+		  	
+		  	 //重新查询下 用户数据
+		  	
 		 	//  return "redirect:/IndexController/personal_center";
 		  	return "";
 		       }else {
