@@ -25,12 +25,12 @@ $(function(){
 	});
  });
 function test3(id){//签署状态
-	alert(id);
+	//alert(id);
 	 $("#form1").attr("action","/FinancingProject/finance/subscribe/"+id);
 		$("#form1").submit();
 }
 function test4(id){//编辑查看
-	alert(id);
+//	alert(id);
 	 $("#form1").attr("action","/FinancingProject/finance/bfupdate/"+id);
 		$("#form1").submit();
 }

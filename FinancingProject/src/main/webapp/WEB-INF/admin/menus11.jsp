@@ -102,7 +102,7 @@ function fun(id){
 					            document.write('￥'+amount);
 				      </script>
 				      </td>
-				<td>${ls.bought }人</td>
+				<td>0</td>
 				<td>${ls.period }</td>
 				<td>${ls.year_rate }%</td>
 				<td><c:if test="${ls.status==0 }">未发布</c:if>

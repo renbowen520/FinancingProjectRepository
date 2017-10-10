@@ -60,16 +60,14 @@ public class SubjectController {
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddhhmmssSSS");	
 		subject.setSerial_number(sdf.format(new Date()));
 		subject.setCreate_date(new Date());//创建日期
-	//	subject.setUpdate_date(new Date());
 		subject.setRaise_start(new Date());//募集开始
-		//period
-		     Calendar calendar = Calendar.getInstance();
+/*		     Calendar calendar = Calendar.getInstance();
 	        calendar.setTime(new Date());
 	        calendar.add(Calendar.DAY_OF_MONTH, subject.getPeriod());//+1今天的时间加一天
 	       Date    dddd = calendar.getTime();
 	//	System.out.println("dddd==========="+dddd);
 	     subject.setRaise_end(dddd);//募集结束
-		subjectService.save(subject);
+*/		subjectService.save(subject);
 		System.out.println("文件名:"+file_name.getOriginalFilename());
 		session.setAttribute("filename", file_name.getOriginalFilename());
 		String type=file_name.getOriginalFilename().substring(file_name.getOriginalFilename().indexOf("."));

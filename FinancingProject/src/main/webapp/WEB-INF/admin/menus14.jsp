@@ -68,9 +68,8 @@ function fun(id){
 				<th>姓名</th>
 				<th>邀请码</th>
 				<th>被邀请码</th>
-				<th>投资金额</th>
-				<th>是否已注册奖励</th>
-				<th>是否已投资奖励</th>
+				<th>奖励类型</th>
+				<th>是否已奖励</th>
 				<th>注册时间</th>
 				<th>操作</th>
 			</tr>
@@ -81,10 +80,15 @@ function fun(id){
 				<td>${lr.member.member_name }</td>
 				<td>${lr.member.invitationCode }</td>
 				<td>${lr.member.invitedCode }</td>
-				<td>${lr.amount}</td>
-				<td><c:if test="${lr.type==0 }"><font color="green">是</font></c:if>
-				<c:if test="${lr.type==1 }"><font color="red">否</font></c:if>
+				<td>
+				<c:if test="${lr.type ==0 }">
+				注册
+				</c:if>
+					<c:if test="${lr.type ==1 }">
+				投资
+				</c:if>
 				</td>
+			
 				<td><c:if test="${lr.isAward==0}"><font color="red">否</font></c:if>
 				<c:if test="${lr.isAward==1}"><font color="green">是</font></c:if>
 				</td>

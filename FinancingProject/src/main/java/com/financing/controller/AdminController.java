@@ -122,21 +122,7 @@ private IN_user_role_service IN_user_role_service;
 	    return "admin/menus1";
 	}
 	
-	
-	
-	/*//¹ÌÊÕÀà
-	@RequestMapping("/menus1")
-	@RequiresPermissions(value="¹ÌÊÕÀà/P2P")
-	public String menus1(Model model,@ModelAttribute("sname")String sname) {
-		Map map=new HashMap();
-		map.put("sname",sname);
-		List<Subject> listSubject=this.subjectService.listSubject(map);
-		model.addAttribute("sname",sname);
-		model.addAttribute("listSubject", listSubject);
-		return "admin/menus1";
-	}*/
-	
-	
+
 //Ë½Ä¼»ù½ð
 	
 	@RequestMapping("/menus2")
@@ -303,7 +289,13 @@ private IN_user_role_service IN_user_role_service;
 	
 	@RequiresPermissions(value="ÑûÇë½±Àø")
 	@RequestMapping("/menus14")//ÑûÇë½±Àø
-	public String menus14(Model model,@ModelAttribute("member_namem")String member_namem,@ModelAttribute("mobile_Phonem")String mobile_Phonem,@ModelAttribute("invitationCodem")String invitationCodem,@ModelAttribute("invitedCodem")String invitedCodem,@ModelAttribute("typem")String typem,@ModelAttribute("isAwardm")String isAwardm) {
+	public String menus14(Model model,
+			@ModelAttribute("member_namem")String member_namem,
+			@ModelAttribute("mobile_Phonem")String mobile_Phonem,
+			@ModelAttribute("invitationCodem")String invitationCodem,
+			@ModelAttribute("invitedCodem")String invitedCodem,
+			@ModelAttribute("typem")String typem,
+			@ModelAttribute("isAwardm")String isAwardm) {
 		Map map=new HashMap<>();
 		map.put("member_namem", member_namem);
 		map.put("mobile_Phonem", mobile_Phonem);
