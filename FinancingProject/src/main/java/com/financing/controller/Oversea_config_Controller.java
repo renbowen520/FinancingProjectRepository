@@ -26,14 +26,7 @@ import com.financing.service.Oversea_config_Service;
 public class Oversea_config_Controller {
 	@Autowired
 	private IN_Oversea_config_service oversea_config_Service;
-	
-	@RequestMapping("/menus4")
-	//查询海外配置
-	public String menus4(Model model){
-		List<Oversea_config> listOversea=this.oversea_config_Service.listOversea();
-		model.addAttribute("listOversea", listOversea);
-		return "admin/menus4";
-	}
+
 	
 	//保存海外配置
 	@RequestMapping("/save")
@@ -54,7 +47,7 @@ public class Oversea_config_Controller {
 		mpf.transferTo(file);
 		oversea_config.setOversea_icon(filename);
 		oversea_config_Service.save(oversea_config);
-		return "redirect:/oversea/menus4";
+		return "redirect:/AdminController/menus4";
 	}
 	
 	
@@ -65,21 +58,39 @@ public class Oversea_config_Controller {
 	
 	//修改之前的查询
 	@RequestMapping("/bfupdate/{id}")
-	public String bfupdate(@PathVariable("id")int id,Model model,Oversea_config oversea_config){
-		oversea_config.setAddTime(new Date());
-		oversea_config.setUpdTime(new Date());
-		oversea_config=oversea_config_Service.getById(id);
+	public String bfupdate(@PathVariable("id")int id,Model model){
+		//oversea_config.setAddTime(new Date());
+	 //	oversea_config.setUpdTime(new Date());
+	   Oversea_config 	oversea_config=oversea_config_Service.getById(id);
 		model.addAttribute("oversea_config", oversea_config);
 		return "admin/gupdate";
 	}
 	
 	//修改海外配置
 	@RequestMapping("/update")
-	public String update(Oversea_config oversea_config,Model model){
-		oversea_config.setAddTime(new Date());
-		oversea_config.setUpdTime(new Date());
-		this.oversea_config_Service.update(oversea_config);
-		return "redirect:/oversea/menus4";
+	public String update(Oversea_config e,Model model){
+	
+		
+		//重新查询一下
+		   Oversea_config 	ok=oversea_config_Service.getById(e.getId());
+		   ok.setUpdTime(new Date());
+		   ok.setTitle(e.getTitle());
+		 ok.setDescription(e.getDescription());
+         ok.setUser_type(e.getUser_type());
+         ok.setSortColum(e.getSortColum());
+         ok.setStatus(e.getStatus());
+         ok.setEnd_date(e.getEnd_date());
+         ok.setContext(e.getContext());
+	/*	 System.out.println("id="+e.getId());
+		 System.out.println("title"+e.getTitle());
+		 System.out.println("miaosh==="+e.getDescription());
+		 System.out.println("全体===="+e.getUser_type());
+		 System.out.println("排序===="+e.getSortColum());
+		 System.out.println("转投胎===="+e.getStatus());
+		 System.out.println("结束时间"+e.getEnd_date());*/
+		
+      	this.oversea_config_Service.update(ok);
+		return "redirect:/AdminController/menus4";
 	}
 	//查看海外配置订阅
 	@RequestMapping("/config/{id}")

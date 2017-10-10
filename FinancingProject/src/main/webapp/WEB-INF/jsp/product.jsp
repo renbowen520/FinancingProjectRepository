@@ -138,8 +138,8 @@ $(function(){
     	<div class="hwpzNav">
     		<ul>
     			<li class="first"><a class="active" href="#"  onclick="fun1();" >固收类理财</a></li>
-    			<li class="second"><a href="/FinancingProject/IndexController/finance">私募基金</a></li>
-    			<li class="three"><a href="/FinancingProject/IndexController/oversea"">海外配置</a></li>
+    			<li class="second"><a href="/FinancingProject/IndexController/finance"><font color="#9D8440">私募基金</font></a></li>
+    			<li class="three"><a href="/FinancingProject/IndexController/oversea""><font color="#9D8440">海外配置</font></a></li>
     		</ul>
     	</div>
         <div class="sdShaix">
@@ -158,7 +158,7 @@ $(function(){
                		<li><a href="#" id="23" onclick="setValue1(7,0,this)">7.0%</a></li>
                		<li><a href="#" id="24" onclick="setValue1(7.5,0,this)">7.5%</a></li>
                		<li><a href="#" id="25" onclick="setValue1(8,0,this)">8.0%</a></li>
-               		<li><a href="#" id="25" onclick="setValue1(8,1,this)">8.0%以上</a></li>
+               		<li><a href="#" id="26" onclick="setValue1(8,1,this)">8.0%以上</a></li>
             </ul>
         	<ul>
             	<li class="first">项目期限：</li>

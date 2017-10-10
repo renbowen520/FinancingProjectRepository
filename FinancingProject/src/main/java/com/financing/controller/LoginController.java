@@ -112,7 +112,7 @@ public class LoginController  {
  		  UsernamePasswordToken token = new UsernamePasswordToken(users.getMobile_Phone(),users.getPassword());
  		   try {
  			          sub.login(token);
- Session shiro_session=sub.getSession();
+                      Session shiro_session=sub.getSession();
  		 	        Users users888= (Users) sub.getPrincipal();
  		 	   //     session.setAttribute("admin_login", users888);
  		       //	System.out.println("前台用户接受到了值:"+users888.getUser_name());
@@ -170,15 +170,7 @@ public class LoginController  {
 		   Member_account  member_account = IN_Member_account_service.getById(member.getId());
 		   session.setAttribute("member_account", member_account);
 		   
-		   //查询投资金额
-		   List<Subject_purchase_record>list2= IN_Member_service.get_money(member.getId());
-		   double  m = 0;
-		   if(!list2.isEmpty()) {
-			      for (Subject_purchase_record s2 : list2) {
-					m+=s2.getAmount();
-				}
-		   }
-		//   System.out.println("投资金额:"+m);
+		 
 		   
 		   //查询所有利息
 		   List<Member_profit_record>list3 = IN_Member_service.get_lixi(member.getId());
@@ -188,11 +180,11 @@ public class LoginController  {
 				m2+=member_profit_record.getAmount();
 			}
 		   }
-	//	   System.out.println("利息金额:"+m2);  
-	//	System.out.println("总金额"+m2+m+member_account.getUseable_balance() );
-		   session.setAttribute("lixi", m2);
-		   session.setAttribute("sum",m2+m+member_account.getUseable_balance() );
-		   session.setAttribute("touzi",m );
+	
+		   java.text.DecimalFormat   df   =new   java.text.DecimalFormat("#.00");  
+		   session.setAttribute("lixi", df.format(m2));
+		   session.setAttribute("sum",df.format(m2+member_account.getImuseale_balance()+member_account.getUseable_balance()) );
+		
 		   
 		   session.setAttribute("no_login", "");
 				    //个人中心

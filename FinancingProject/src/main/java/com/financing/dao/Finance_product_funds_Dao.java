@@ -32,23 +32,25 @@ public class Finance_product_funds_Dao  implements IN_Finance_product_funds_dao 
 	
 	//模糊查询
 	public String listDataHql(Map map,String hql){
-		String sname=(String)map.get("sname");
-		int status=(Integer)map.get("status");
-		String type=(String)map.get("type");
-		if(sname!=null&&!sname.equals("")){
-			hql+=" and name like '%"+sname+"%'";
+		String   name=(String)map.get("name");
+		String  status=(String) map.get("status");
+		String  type=(String)map.get("type");
+		if(name!=null&&!name.equals("")){
+			hql+="    and f.name like '%"+name+"%'";
 		}
-		if(status!=-1){
-			hql+=" and status="+status;
+		if(status!=null && !status.equals("")){
+			hql+="    and    f.status="+status;
 		}
 		if(type!=null&&!type.equals("")){
-			hql+=" and type='"+type+"'";
+			hql+="    and   f.type='"+type+"'";
 		}
+		
+	//	System.out.println("hql======="+hql);
 		return hql;
 	}
 	//查询显示后台
 	public List<Finance_product_funds> listfinance(Map map){
-		String hql="from Finance_product_funds where 0=0";
+		String hql="from Finance_product_funds   f   where  0=0";
 		Session session=getSession();
 		hql=listDataHql(map, hql);
 		List<Finance_product_funds> listfinance=session.createQuery(hql).list();

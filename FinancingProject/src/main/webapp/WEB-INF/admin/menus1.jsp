@@ -12,7 +12,6 @@
 <script type="text/javascript" src="/FinancingProject/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 $(function(){
-	status
 	var a = "${status}";
 	var b = "${stype}";
 	    $("#status  option[value='"+a+"']").attr("selected", true);
@@ -31,7 +30,7 @@ $(function(){
 	
 	
 	$("#ree").click(function(){ //重置
-		 $("#sname").text("");
+	     $("#sname").val("");
 	     $("#status  option[value='']").attr("selected", true);
 	    $("#stype  option[value='']").attr("selected", true);
 		$("#form1").attr("action","/FinancingProject/AdminController/menus1");
@@ -108,17 +107,16 @@ $(function(){
 
 <br>	
 
-			<table class="table table-striped"   style="width: 95%">
+			<table  class="table table-striped  table-hover"   style="width: 95%">
 				<tr>
 					<th>序号</th>
 					<th>合同编号</th>
 					<th>类型</th>
 					<th>名称</th>
-					<th>标的金额</th>
-					<th>已投金额</th>
-					<th>投资期限</th>
-					<th>起投金额</th>
-					<th>年化收益</th>
+					<th>已投金额(RMB)</th>
+					<th>投资期限(天)</th>
+					<th>起投金额(RMB)</th>
+					<th>年化收益(%)</th>
 					<th>状态</th>
 					<th>可用体验金</th>
 					<th>添加时间</th>
@@ -134,7 +132,6 @@ $(function(){
 					<c:if test="${li.type==2}">P2P房贷</c:if>
 					</td>
 					<td>${li.name}</td>
-					<td>¥${li.amount}</td>
 					<td>
 			 <script type="text/javascript">
 				  var id='${li.id}';
@@ -145,12 +142,12 @@ $(function(){
 				  $.post("/FinancingProject/subject/getTotalMoney",{id:id},function(data){
 					 num1=data;
 				  });
-				  document.write("¥"+num1);
+				  document.write(num1);
 				 </script>
 					</td>
-					<td>${li.period}天</td>
-					<td>¥${li.floor_amount}</td>
-					<td>${li.year_rate}%</td>
+					<td>${li.period}</td>
+					<td>${li.floor_amount}</td>
+					<td>${li.year_rate}</td>
 					<td>
 					<c:if test="${li.status==0}">未发布</c:if>
 					<c:if test="${li.status==1}">募集中</c:if>

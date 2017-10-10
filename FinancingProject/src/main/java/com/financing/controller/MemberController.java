@@ -252,9 +252,16 @@ public class MemberController {
 		   double  q=s5.getUseable_balance();
 			s5.setUseable_balance(q-qian); //账户的钱要减少
 			s5.setUpdate_date(currentTime);//修改时间
+			
+	
 	    double  invest=		s5.getInvest_amount();//投资总金额
 	      s5.setInvest_amount(invest+qian);//投资总金额增加
-	   
+	   //增加冻结金额
+	     double  museale=  s5.getImuseale_balance();
+	     s5.setImuseale_balance(museale+qian);
+	     
+	      
+	      
 				// member_profit_record(成员利润记录表)
 	      //购买的时候不应该添加    应该在还款的时候向利润表添加记录
 	      
@@ -280,18 +287,7 @@ public class MemberController {
              //查询账号
   		   Member_account  member_account = account.getById(mmm.getId());
   		   session.setAttribute("member_account", member_account);
-             
-             
-  		   //查询投资金额
-		   List<Subject_purchase_record>list2= member_service.get_money(mmm.getId());
-		   double  m = 0;
-		   if(!list2.isEmpty()) {
-			      for (Subject_purchase_record s222 : list2) {
-					m+=s222.getAmount();
-				}
-		   }
-		//   System.out.println("投资金额:"+m);
-		   
+       
 		   //查询所有利息
 		   List<Member_profit_record>list3 = member_service.get_lixi(mmm.getId());
 		   double  m2=0;
@@ -300,13 +296,9 @@ public class MemberController {
 				m2+=member_profit_record.getAmount();
 			}
 		   }
-	//	   System.out.println("利息金额:"+m2);  
-	//	System.out.println("总金额"+m2+m+member_account.getUseable_balance() );
-		   session.setAttribute("lixi", m2);
-		   session.setAttribute("sum",m2+m+member_account.getUseable_balance() );
-		   session.setAttribute("touzi",m );
-  		   
-  		   
+	
+		   session.setAttribute("lixi", df.format(m2));
+		   session.setAttribute("sum",df.format(m2+member_account.getImuseale_balance()+member_account.getUseable_balance()) );
              return "redirect:/IndexController/personal_center";
 		       }else {
 		    	   return "redirect:/IndexController/index";     
@@ -411,6 +403,20 @@ public class MemberController {
   		   Member_account  member_account = account.getById(mmm.getId());
   		   session.setAttribute("member_account", member_account);
 	       
+  
+		   //查询所有利息
+		   List<Member_profit_record>list3 = member_service.get_lixi(m222.getId());
+		   double  num222=0;
+		   if(!list3.isEmpty()) {
+			   for (Member_profit_record member_profit_record : list3) {
+				num222+=member_profit_record.getAmount();
+			 }
+		   }
+		
+           java.text.DecimalFormat   df   =new   java.text.DecimalFormat("#.00");  
+		   session.setAttribute("lixi", df.format(num222));
+		   session.setAttribute("sum",df.format(num222+member_account.getImuseale_balance()+member_account.getUseable_balance()) );
+  		 
 	       //重新啊回到个人中心
 	      return "redirect:/IndexController/personal_center";    
 	   		
@@ -515,7 +521,7 @@ public class MemberController {
 	    	     IN_Member_bankcards_service.save(member_bankcards);
 	    	     //更新session中存储的
 	    	     List<Member_bankcards>list=	IN_Member_bankcards_service.getById(member.getId());
-	    		 //查询绑定的银行卡
+	    		 //  重新查询  查询绑定的银行卡
 	    		   session.setAttribute("member_bankcards_bk", list);
 	    	       session.setAttribute("member_login",member_service.getById(member.getId())); 
 	    	       return "redirect:/IndexController/personal_center";

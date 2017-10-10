@@ -81,8 +81,8 @@ function fun1(){
     	<div class="hwpzNav">
     		<ul>
     			<li class="first"><a class="active" href="#"  onclick="fun1();" >固收类理财</a></li>
-    			<li class="second"><a href="/FinancingProject/IndexController/finance">私募基金</a></li>
-    			<li class="three"><a href="/FinancingProject/IndexController/oversea">海外配置</a></li>
+    			<li class="second"><a href="/FinancingProject/IndexController/finance"><font color="#9D8440">私募基金</font></a></li>
+    			<li class="three"><a href="/FinancingProject/IndexController/oversea""><font color="#9D8440">海外配置</font></a></li>
     		</ul>
     	</div>
   

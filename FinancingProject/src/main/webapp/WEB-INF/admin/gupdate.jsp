@@ -6,20 +6,28 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>修改海外配置</title>
 </head>
-<link rel="stylesheet" href="/FinancingProject/css/bootstrap.min.css" />
-<script type="text/javascript" src="/FinancingProject/js/jquery-3.2.0.min.js" ></script>
-<script type="text/javascript" src="/FinancingProject/js/bootstrap.min.js"></script>
-
+    <link rel="stylesheet" href="/FinancingProject/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/FinancingProject/js/jquery-3.2.0.min.js" ></script>
+    <script type="text/javascript" src="/FinancingProject/js/bootstrap.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="/FinancingProject/ueditor/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="/FinancingProject/ueditor/ueditor.all.min.js"> </script>
     <script type="text/javascript" charset="utf-8" src="/FinancingProject/ueditor/lang/zh-cn/zh-cn.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	  $("#status").val(${oversea_config.status}); 
+	  $("#status").val("${oversea_config.status}"); 
 });
 </script>
 
 <body>
+<h3>
+<span class=" glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+<b>编辑</b>
+</h3>
+<hr>
+
+
+
+
 <center>
 	<form action="/FinancingProject/oversea/update" method="post" >
 	<input type="hidden" name="id" value="${oversea_config.id }"/>
@@ -52,13 +60,13 @@ $(document).ready(function(){
 	<option value="2">已结束</option>
 	</select></td>
 	</tr>
-	<tr height="60">
+<%-- 	<tr height="60">
 	<td>&nbsp;&nbsp;&nbsp;开始时间:</td>
 	<td><input type="date" name="start_date" value="${oversea_config.start_date}" class="form-control"></td>
-	</tr>
+	</tr> --%>
 	<tr height="60">
 	<td>&nbsp;&nbsp;&nbsp;结束时间:</td>
-	<td><input type="date" name="end_date" value="${oversea_config.end_date}" class="form-control"></td>
+	<td><input type="date" name="end_date"  class="form-control"></td>
 	</tr>
 <tr height="60"><td colspan="2">
 <p><h3>&nbsp;&nbsp;▶内容</h3><hr>
@@ -69,6 +77,8 @@ $(document).ready(function(){
  <tr height="60">
 <td colspan="2"  align="center">
 <input type="submit" value="保存" class="btn btn-primary"/>
+&nbsp;&nbsp;
+<button type="button" class="btn btn-default"  onclick="javascript:history.back(-1);">返回</button>
 </td>
 </tr>
  	</table>

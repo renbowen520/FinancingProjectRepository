@@ -36,30 +36,6 @@ public class Finance_product_funds_Controller {
 	@Autowired
 	private IN_Finance_produce_funds_service finance_product_funds_Service;
 	
-	//前台查询私募
-//	@RequestMapping("/financeqian")
-//	public String finance(Model model){
-//		Map map=new HashMap();
-//		List<Finance_product_funds> finance=finance_product_funds_Service.finance(map);
-//		model.addAttribute("finance", finance);
-//		return "jsp/finance";
-//	}
-	
-	@RequestMapping("/menus2")
-	//查询私募后台
-	public String menus2(Model model,@RequestParam(required=false)String sname,@RequestParam(required=false)String type,@RequestParam(required=false,defaultValue="-1")String status){
-		Map map=new HashMap();
-		map.put("sname",sname);
-		map.put("type", type);
-		map.put("status", Integer.valueOf(status));
-		List<Finance_product_funds> listfinance=this.finance_product_funds_Service.listfinance(map);
-		model.addAttribute("sname",sname);
-		model.addAttribute("type", type);
-		model.addAttribute("status", status);
-		model.addAttribute("listfinance", listfinance);
-		return "admin/menus2";
-	}
-	
 	//保存私募
 	@RequestMapping("/save")
 	public String save(Finance_product_funds finance_product_funds,Model model,
@@ -81,7 +57,7 @@ public class Finance_product_funds_Controller {
 		mpf.transferTo(file);
 		finance_product_funds.setProduct_manager_pic(filename);
 		finance_product_funds_Service.save(finance_product_funds);
-		return "redirect:/finance/menus2";
+		return "redirect:/AdminController/menus2";
 	}
 	
 	//跳转到新增私募页面
@@ -118,8 +94,8 @@ public class Finance_product_funds_Controller {
 				//把上传的文件内容传送给新创建的文件
 				mpf.transferTo(file);
 				finance_product_funds.setProduct_manager_pic(filename);
-		this.finance_product_funds_Service.update(finance_product_funds);
-		return "redirect:/finance/menus2";
+		 this.finance_product_funds_Service.update(finance_product_funds);
+		 return "redirect:/AdminController/menus2";
 	}
 	//查看私募订阅
 	@RequestMapping("/subscribe/{id}")

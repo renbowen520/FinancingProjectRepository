@@ -102,6 +102,7 @@ $(function(){
 <td colspan="4"  align="center">
 
 <input type="submit" class="btn btn-primary" id="btn1" value="保存">
+&nbsp;&nbsp;
           <button type="button" class="btn btn-default"  onclick="javascript:history.back(-1);">返回</button>
 </td>
 </tr>

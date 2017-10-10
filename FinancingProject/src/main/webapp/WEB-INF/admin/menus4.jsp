@@ -27,9 +27,12 @@ function test2(id){//编辑查看
 }
  </script>
 <body>
-<div class="table table-responsive">
+
+<center>
+
+<div style="width: 95%">
 <form id="form1" action="" method="post" role="form">
-<table class="table table-striped" width="100%" >
+<table class="table table-striped" >
 				<div><p align="right">
 				<button type="button" class="btn btn-primary" id="btn1">新增</button> 
 				</p></div>
@@ -39,6 +42,8 @@ function test2(id){//编辑查看
 					<th>子标题</th>
 					<th>状态</th>
 					<th>排序值</th>
+					<th>募集开始</th>
+					<th>募集结束</th>
 					<th>图标</th>
 					<th>添加时间</th>
 					<th>操作</th>
@@ -54,16 +59,20 @@ function test2(id){//编辑查看
 				<c:if test="${li.status==2}">已结束</c:if>
 				</td>
 				<td>${li.sortColum}</td>
+					<td>${li.start_date}</td>
+						<td>${li.end_date}</td>
 				<td><img src="${li.oversea_icon}" /></td>
 				<td>${li.addTime}</td>
 				<td>
-				<button type="button" class="btn btn-primary" onclick="test1(${li.id})">查看投资</button> 
+				<button type="button" class="btn btn-primary" onclick="test1(${li.id})">查看预约</button> 
 				<button type="button" class="btn btn-primary" onclick="test2(${li.id})">编辑查看</button> 
 				</td>
 			</tr>
 			</c:forEach>	
 			</table>
 	</form>
-</div>
+	
+	</div>
+</center>
 </body>
 </html>

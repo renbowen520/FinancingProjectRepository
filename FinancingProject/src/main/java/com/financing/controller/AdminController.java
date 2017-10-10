@@ -109,7 +109,7 @@ private IN_user_role_service IN_user_role_service;
 			@ModelAttribute("stype")String stype,@ModelAttribute("status")String status
 	) {
 		
-	//	System.out.println("接受的查询参数:"+sname+stype+status);
+	System.out.println("接受的查询参数:"+sname+"   "+stype+"   "+status);
 		Map map=new HashMap();
 		map.put("sname",sname);
 		map.put("stype", stype);
@@ -124,20 +124,27 @@ private IN_user_role_service IN_user_role_service;
 	
 
 //私募基金
-	
-	@RequestMapping("/menus2")
-	@RequiresPermissions(value="私募基金")
-	public String menus2(Model model,Finance_product_funds fpf){
-		System.out.println("name:"+fpf.getName());
+	 @RequestMapping("/menus2")
+	 @RequiresPermissions(value="私募基金")
+	 public String menus2(Model model,@ModelAttribute("name")String name,
+			@ModelAttribute("type")String type,@ModelAttribute("status")String status
+	) {
+		
+//	System.out.println("接受的查询参数:"+name+"   "+type+"   "+status);
 		Map map=new HashMap();
-		map.put("sname",fpf.getName());
-		map.put("status",fpf.getStatus());
-		map.put("type",fpf.getType());
-		List<Finance_product_funds> listfinance=this.finance_product_funds_Service.listfinance(map);
-		model.addAttribute("listfinance", listfinance);
-		model.addAttribute("fpf",fpf);
-		return "admin/menus2";
+		map.put("name",name);
+		map.put("type", type);
+		map.put("status", status);
+	List<Finance_product_funds>list = finance_product_funds_Service.listfinance(map);
+		model.addAttribute("name",name);
+		model.addAttribute("type", type);
+		model.addAttribute("status", status);
+		model.addAttribute("listfinance", list);
+	    return "admin/menus2";
 	}
+	
+	
+	
 	
 	
 	

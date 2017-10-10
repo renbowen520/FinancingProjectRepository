@@ -19,12 +19,26 @@ function test4(pid,id){//签署状态
 	 $("#form1").attr("action","/FinancingProject/finance/lose/"+id+"/"+pid);
 		$("#form1").submit();
 }
+
+function fan(){
+	window.location.href="/FinancingProject/AdminController/menus2";
+}
+
+
  </script>
 <body>
-<div class="table table-responsive">
+<h3>
+<span class=" glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+<b>签署状态</b>
+</h3>
+<hr>
+
+
+<center>
+<div  style="width: 95%">
 <form id="form1" action="" method="post" role="form">
 
-<table class="table table-striped" width="100%">
+<table class="table table-striped  table-hover"  >
 <tr>
 <th>序号</th>
 <th>姓名</th>
@@ -65,7 +79,13 @@ function test4(pid,id){//签署状态
 </tr>
 </c:forEach>
 </table>
+
+<br>
+<button type="button" class="btn btn-default"  onclick="fan();">返回</button>
 </form>
 </div>
+</center>
+
+
 </body>
 </html>

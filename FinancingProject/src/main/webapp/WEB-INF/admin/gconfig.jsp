@@ -5,16 +5,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>显示海外配置订阅记录</title>
+<title></title>
 </head>
 <link rel="stylesheet" href="/FinancingProject/css/bootstrap.min.css" />
 <script type="text/javascript" src="/FinancingProject/js/jquery-3.2.0.min.js" ></script>
 <script type="text/javascript" src="/FinancingProject/js/bootstrap.min.js"></script>
 
 <body>
-<div class="table table-responsive">
+<h3>
+<span class=" glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+<b>查看预约</b>
+</h3>
+<hr>
+
+
+<center>
+<div  style="width: 95%">
 <form method="post" id="form1" role="form">
-	<table class="table table-striped" width="100%" >
+	<table class="table table-striped"  >
 	<tr>
 	<th>序号</th>
 	<th>姓名</th>
@@ -33,7 +41,11 @@
 	</c:forEach>
 
 	</table>
+	<br>
+	 <button type="button" class="btn btn-default"  onclick="javascript:history.back(-1);">返回</button>
 	</form>
 	</div>
+	</center>
+	
 </body>
 </html>

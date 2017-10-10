@@ -16,6 +16,14 @@
 
 </head>
 <body>
+<h3>
+<span class=" glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+<b>新增</b>
+</h3>
+<hr>
+
+
+
 <center>
 <form action="/FinancingProject/oversea/save" method="post" enctype="multipart/form-data">
 <table border="0" cellspacing="0" width="400">
@@ -56,7 +64,13 @@
 	<input type="file" name="file" class="form-control"/></td>
 	 </tr>
 	 <tr>
-	 <td colspan="2"><input type="submit" value="保存"></td>
+	 <td colspan="2"  align="center">
+	
+	 <input type="submit" class="btn btn-primary" value="保存">
+&nbsp;&nbsp;
+          <button type="button" class="btn btn-default"  onclick="javascript:history.back(-1);">返回</button>
+	 
+	 </td>
 	 </tr>
 </table>
 

@@ -234,20 +234,24 @@
 	    $("#ddd").text(s);
    }
  
-   function fun2(){
+   function fun2(){//确定购买
+	   
 	   var a = $("#qian").val();
-	 if(a<100){
-		    $("#checkmoney").text("起投金额最低100元!"); 
+	   var m ="${member_account.useable_balance }";
+		if(parseFloat(m)<parseFloat(a)){
+			     $("#checkmoney").text("账户余额不足,请充值!"); 
+			     return ;
+		}
+		
+		var    qi = "${buyproduct.floor_amount}";
+	  if(a<qi){
+		    $("#checkmoney").text("标的起投金额最低"+qi+"元!"); 
 		    return ;
-	 }
-	var m ="${member_account.useable_balance }";
-	if(parseFloat(m)<parseFloat(a)){
-		     $("#checkmoney").text("账户余额不足,请充值!"); 
-		     return ;
-	}
+	  }
+	
 	  $("#checkmoney").text(""); 
-	$("#gou").attr("action","/FinancingProject/MemberController/gou");
-	$("#gou").submit(); 
+	  $("#gou").attr("action","/FinancingProject/MemberController/gou");
+	  $("#gou").submit(); 
 	
    }
    

@@ -31,7 +31,6 @@
 	});
 	
 	function fun(id){
-		alert("333")
 		$("#form1").attr("action","/FinancingProject/MemberController/menus25/"+id);
 		$("#form1").submit();
 	};

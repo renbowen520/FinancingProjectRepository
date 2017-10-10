@@ -24,26 +24,79 @@ function test1(pid){//签署状态
 		$("#form1").submit();
 }
  function fun(obj){
-	 var money=obj.value;
-	 var rate=${subscribe.finance_product_funds.year_rate}/100;
-	 var period=${subscribe.finance_product_funds.period};
-	 var num=((money*rate)/365)*period;
-	 $("#interest").val(parseFloat(num).toFixed(2));
+	  var money=obj.value;
+	  var rate="${subscribe.finance_product_funds.year_rate}"/100;
+	  var period=${subscribe.finance_product_funds.period};
+	   var num=((money*rate)/365)*period;
+	  $("#interest").val(parseFloat(num).toFixed(2));
  }
 </script>
 <body>
+<h3>
+<span class=" glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+<b>签署合约</b>
+</h3>
+<hr>
+
+
+
 <center>
 <form action="/FinancingProject/finance/savesubscribe" method="post" id="form1">
+<table width="50%"  border="0">
+<tr  height="70px;">
+<td  align="right"   style="padding-right: 10px;">真实姓名:</td>
+<td>
 <input type="hidden" name="id" value="${subscribe.id }"/>
-真实姓名:<input type="text" name="member_name" value="${subscribe.member.member_name}"> <br>
-身份证信息:<input type="text" name="identity" value="${subscribe.member.identity}"> <br>
-购买金额:<input type="text" name="amount" onkeyup="fun(this)"><br>
-利息收益:<input type="text" name="interest" id="interest" readonly="true"><br>
-开始时间:<input type="text" name="start" id="start" readonly="true"><br>
-截止时间:<input type="text" name="end" id="end" readonly="true"><br>
+<input      style="width: 400px;"      readonly="readonly"   class="form-control"       type="text" name="member_name" value="${subscribe.member.member_name}"> 
+</td>
+</tr>
+
+
+<tr height="70px;">
+<td align="right"   style="padding-right: 10px;">身份证信息:</td>
+<td>
+<input        style="width: 400px;"      readonly="readonly"   class="form-control"              type="text" name="identity" value="${subscribe.member.identity}"> 
+</td>
+</tr>
+
+<tr height="70px;">
+<td align="right"   style="padding-right: 10px;">购买金额:</td>
+<td>
+<input     style="width: 400px;"     class="form-control"            type="text" name="amount" onkeyup="fun(this)">
+</td>
+</tr>
+
+<tr height="70px;">
+<td align="right"   style="padding-right: 10px;">利息收益:</td>
+<td>
+<input         style="width: 400px;"      readonly="readonly"   class="form-control"                    type="text" name="interest" id="interest" readonly="true">
+</td>
+</tr>
+
+<tr height="70px;">
+<td align="right"   style="padding-right: 10px;">开始时间:</td>
+<td>
+<input       style="width: 400px;"     class="form-control"       readonly="readonly"         type="text" name="start" id="start" >
+</td>
+</tr>
+
+<tr height="70px;">
+<td  align="right"   style="padding-right: 10px;">截止时间:</td>
+<td>
+<input       style="width: 400px;"      readonly="readonly"   class="form-control"               type="text" name="end" id="end" >
+</td>
+</tr>
+
 <!-- 私募合同:<input type="file" name="contract"/><br>
 风险揭示书:<input type="file" name="risk_reveal" /><br> -->
-  <button type="submit" class="btn btn-primary"  onclick="test1(${subscribe.finance_product_funds.id})">签署合同</button>
+<tr height="70px;">
+<td colspan="2"  align="center">
+    <button type="submit" class="btn btn-primary"  onclick="test1(${subscribe.finance_product_funds.id})">签署合同</button>
+&nbsp;&nbsp;
+    <button type="button" class="btn btn-default"  onclick="javascript:history.back(-1);">返回</button>
+</td>
+</tr>
+</table>
 </form>
 </center>
 </body>

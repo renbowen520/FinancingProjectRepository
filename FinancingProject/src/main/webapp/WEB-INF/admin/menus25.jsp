@@ -62,8 +62,8 @@
 										<tr>
 										<td>红包金额:</td>
 										<td><input class="form-control" type="text" placeholder="Readonly input here…" readonly value="${member_account.bonus_amount }"></td>
-										<td>体验金:</td>
-										<td><input class="form-control" type="text" placeholder="Readonly input here…" readonly value="${member_account.bbin_amount }"></td>
+										<!-- <td>体验金:</td>
+										<td><input class="form-control" type="text" placeholder="Readonly input here…" readonly value=></td> -->
 									</tr>
 							</table>
 							<br>
