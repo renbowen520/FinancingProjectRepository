@@ -60,17 +60,17 @@ $(document).ready(function(){
 	<option value="2">已结束</option>
 	</select></td>
 	</tr>
-<%-- 	<tr height="60">
-	<td>&nbsp;&nbsp;&nbsp;开始时间:</td>
-	<td><input type="date" name="start_date" value="${oversea_config.start_date}" class="form-control"></td>
-	</tr> --%>
+	<tr height="60">
+	<td>&nbsp;&nbsp;&nbsp;原结束时间:</td>
+	<td><input  readonly="readonly"    type="text" name="" value="${oversea_config.end_date}" class="form-control"></td>
+	</tr>
 	<tr height="60">
 	<td>&nbsp;&nbsp;&nbsp;结束时间:</td>
 	<td><input type="date" name="end_date"  class="form-control"></td>
 	</tr>
 <tr height="60"><td colspan="2">
 <p><h3>&nbsp;&nbsp;▶内容</h3><hr>
- <script id="editor" type="text/plain" style="width:auto;height:auto;">
+ <script     name="editor"   id="editor" type="text/plain" style="width:auto;height:auto;">
 		${oversea_config.context}
 </script> 
 </td></tr>

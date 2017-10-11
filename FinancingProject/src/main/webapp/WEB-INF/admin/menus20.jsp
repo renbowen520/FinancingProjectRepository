@@ -251,7 +251,6 @@ function okok(){      //提交权限配置
 
 
 function fun(){   //新增
-	// $(location).attr('href', '/FinancingProject/UsersController/show_add');
    $('#my').modal('show'); //显示
 }
 
@@ -260,7 +259,7 @@ function fun(){   //新增
 	   $("#aaa").hide();
    $("#rid").val(id);
      if(del==1){
-	     $("#aaa").show();
+	     $("#aaa").show();//根据删除情况是否显示重新启用
      }
 	      //显示树形菜单
 	      var setting = {

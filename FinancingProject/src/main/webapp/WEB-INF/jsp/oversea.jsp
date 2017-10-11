@@ -97,7 +97,7 @@ function fun1(){
     <table border="0"  width="100%"  height="100%">
         <tr>
         <td rowspan="2"  width="110" align="center">
-         <img src="${o.oversea_icon }" width="90px" height="90px">
+         <img src="/FinancingProject/upload/${o.oversea_icon }" width="90px" height="90px">
      </td>
              <td><h3><b>${o.title }</b></h3></td>
              <td align="right"  style="padding-right: 5px"><font color="red">${o.description}</font></td>

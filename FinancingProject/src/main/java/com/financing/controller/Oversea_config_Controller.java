@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,9 +32,12 @@ public class Oversea_config_Controller {
 	//保存海外配置
 	@RequestMapping("/save")
 	public String save(Oversea_config oversea_config,Model model,
-			@RequestParam("file")MultipartFile mpf,HttpServletRequest request) throws IOException{
+		@RequestParam("file")MultipartFile mpf,HttpServletRequest request,String editor) throws IOException{
+	
+
+		
 		oversea_config.setAddTime(new Date());
-		oversea_config.setUpdTime(new Date());
+		//oversea_config.setUpdTime(new Date());
 		//获得上传文件的名字
 		String  filename=mpf.getOriginalFilename();
 		System.out.println("filename="+filename);
@@ -46,6 +50,7 @@ public class Oversea_config_Controller {
 		//把上传的文件内容传送给新创建的文件
 		mpf.transferTo(file);
 		oversea_config.setOversea_icon(filename);
+		oversea_config.setContext(editor);
 		oversea_config_Service.save(oversea_config);
 		return "redirect:/AdminController/menus4";
 	}
@@ -68,9 +73,9 @@ public class Oversea_config_Controller {
 	
 	//修改海外配置
 	@RequestMapping("/update")
-	public String update(Oversea_config e,Model model){
+	public String update(Oversea_config e,Model model,String editor){
 	
-		
+		//System.out.println("=========="+editor);
 		//重新查询一下
 		   Oversea_config 	ok=oversea_config_Service.getById(e.getId());
 		   ok.setUpdTime(new Date());
@@ -80,7 +85,7 @@ public class Oversea_config_Controller {
          ok.setSortColum(e.getSortColum());
          ok.setStatus(e.getStatus());
          ok.setEnd_date(e.getEnd_date());
-         ok.setContext(e.getContext());
+         ok.setContext(editor);
 	/*	 System.out.println("id="+e.getId());
 		 System.out.println("title"+e.getTitle());
 		 System.out.println("miaosh==="+e.getDescription());

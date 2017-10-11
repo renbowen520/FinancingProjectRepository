@@ -108,8 +108,8 @@ ${finance_product_funds.product_strategy}
 <tr height="60"  >
 <td   align="right" style="padding-right: 10px;">基金经理名称:</td>
 <td><input     value="${finance_product_funds.product_manager_name }"         type="text" name="product_manager_name" class="form-control"   style="width: 300px;"></td>
-<td     value="${finance_product_funds.product_manager_title }"      align="right" style="padding-right: 10px;">基金经理头衔:</td>
-<td><input type="text" name="product_manager_title" class="form-control"    style="width: 300px;"></td>
+<td     align="right" style="padding-right: 10px;">基金经理头衔:</td>
+<td><input       value="${finance_product_funds.product_manager_title }"          type="text" name="product_manager_title" class="form-control"    style="width: 300px;"></td>
 </tr>
 
 

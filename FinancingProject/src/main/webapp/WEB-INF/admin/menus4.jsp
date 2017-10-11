@@ -61,7 +61,7 @@ function test2(id){//编辑查看
 				<td>${li.sortColum}</td>
 					<td>${li.start_date}</td>
 						<td>${li.end_date}</td>
-				<td><img src="${li.oversea_icon}" /></td>
+				<td><img  style="width: 40px;height: 40px;"    src="/FinancingProject/upload/${li.oversea_icon}" /></td>
 				<td>${li.addTime}</td>
 				<td>
 				<button type="button" class="btn btn-primary" onclick="test1(${li.id})">查看预约</button> 

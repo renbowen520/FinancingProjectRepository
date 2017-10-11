@@ -26,9 +26,9 @@
 
 <center>
 <form action="/FinancingProject/oversea/save" method="post" enctype="multipart/form-data">
-<table border="0" cellspacing="0" width="400">
+<table border="0" cellspacing="0" width="50%">
 	<tr height="60">
-	<td>&nbsp;&nbsp;&nbsp;标题:</td>
+	<td  height="50px;">&nbsp;&nbsp;&nbsp;标题:</td>
 	<td><input type="text" name="title" class="form-control"></td>
 	</tr>
 	<tr height="60">
@@ -44,11 +44,12 @@
 	</tr>
 	<tr height="60">
 	<td>&nbsp;&nbsp;&nbsp;排序值:</td>
-	<td><input type="text" name="sortColum" class="form-control"></td>
+	<td><input type="number" name="sortColum"    class="form-control"></td>
 	</tr><tr height="60">
 	<td>&nbsp;&nbsp;&nbsp;描述:</td>
 	<td><input type="text" name="description" class="form-control"></td>
 	</tr>
+	
 	<tr>
 	<td>&nbsp;&nbsp;&nbsp;状态:</td>
 	<td><select class="form-control" name="status">
@@ -58,23 +59,56 @@
 		<option value="3">还款完成</option>
 	</select></td>
 	</tr>
+	
+	<tr   height="60">
+	<td>&nbsp;&nbsp;&nbsp;开始时间:</td>
+	<td>
+	<input type="date"  name="start_date"     class="form-control">
+	</td>
+	</tr>
+	
+   <tr   height="60">
+	<td>&nbsp;&nbsp;&nbsp;结束时间:</td>
+	<td>	<input type="date"  name="end_date"     class="form-control"></td>
+	</tr>
+	
+	
 	<tr height="60">
 	<td>&nbsp;&nbsp;&nbsp;图片预览 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 	<td>
 	<input type="file" name="file" class="form-control"/></td>
+	
 	 </tr>
+	 
+	<tr   height="60">
+	<td  colspan="2">&nbsp;&nbsp;&nbsp;
+	<h3>内容:</h3>
+	<script     name="editor"   id="editor" type="text/plain" style="width:auto;height:auto;">
+      </script>
+	 <br>
+	</td>
+	</tr>
+	 
+	 
 	 <tr>
 	 <td colspan="2"  align="center">
-	
 	 <input type="submit" class="btn btn-primary" value="保存">
 &nbsp;&nbsp;
           <button type="button" class="btn btn-default"  onclick="javascript:history.back(-1);">返回</button>
 	 
 	 </td>
 	 </tr>
+	 
+	
+	 
 </table>
 
 </form>
 </center>
+
+	<script type="text/javascript">
+   		 var ue = UE.getEditor('editor');
+   </script>
+
 </body>
 </html>
