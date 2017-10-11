@@ -62,9 +62,15 @@ public class LoginController  {
    @Autowired
    private IN_Member_bankcards_service IN_Member_bankcards_service;
    
+   @Autowired
+   private IN_Member_account_service account;
+
+   
    @RequestMapping("/admin_out")
    public String  admin_out(HttpSession session,HttpServletRequest request) {  //后台退出
 	     //退出日志
+	   
+	   
 	   
 	  Users users =  (Users) SecurityUtils.getSubject().getSession().getAttribute("admin_login");
 	  //   Users users=(Users) session.getAttribute("admin_login");
@@ -301,6 +307,26 @@ public class LoginController  {
 	   //重新查询账号 
 		Member   member999 =IN_Member_service.getByPhone(member.getMobile_Phone()) ;
 		 session.setAttribute("member_login", member999);//存入session中
+		
+	     //查询账号
+		   Member_account  member_account = account.getById(member999.getId());
+		   session.setAttribute("member_account", member_account);
+     
+		   //查询所有利息
+		   List<Member_profit_record>list3 = IN_Member_service.get_lixi(member999.getId());
+		   double  mm2=0;
+		   if(!list3.isEmpty()) {
+			   for (Member_profit_record member_profit_record : list3) {
+				mm2+=member_profit_record.getAmount();
+			}
+		   }
+		      java.text.DecimalFormat   df   =new   java.text.DecimalFormat("#.00");  
+		   session.setAttribute("lixi", df.format(mm2));
+		   session.setAttribute("sum",df.format(mm2+member_account.getImuseale_balance()+member_account.getUseable_balance()) );
+        
+		 
+		 
+		 
 		 //进入个人中心
 		 return "redirect:/IndexController/personal_center";
 	}
