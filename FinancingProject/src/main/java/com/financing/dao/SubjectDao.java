@@ -173,6 +173,35 @@ public class SubjectDao implements IN_Subject_dao {
 		return hql;
 	}
 	
+	//------------------------------------------------
+	//付息计划查询
+		public List<Subject> ListFixGet2(Map map){
+			String hql="from Subject  s  where 0=0";
+			Session session=getSession();
+			hql=listDataHql2(map, hql);
+			List<Subject> listSubject=session.createQuery(hql).list();
+			return listSubject;
+		}
+		
+		//模糊查询后台
+		public String listDataHql2(Map map,String hql){
+			String namem=(String)map.get("namem");
+			String typem=(String)map.get("typem");
+			String statusm=(String)map.get("statusm");
+			if(namem!=null&&!namem.equals("")){
+				hql+="      and s.name like '%"+namem+"%'";
+			}
+			if(typem!=null&&!typem.equals("")){
+				hql+="      and s.type="+typem;  
+			}
+			if(statusm!=null&&!statusm.equals("")){
+				 hql+="     and s.status ="+statusm;
+			}
+		//	System.out.println("hql============"+hql);
+			return hql;
+		}
+	//----------------------------------------------
+	
 	
 	
 	//查看投资记录

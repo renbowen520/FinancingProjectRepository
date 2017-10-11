@@ -79,4 +79,9 @@ public class SubjectService  implements IN_Subject_service {
 	 	 // TODO Auto-generated method stub
 		  return subjectdao.listsubjectrecord(id);
 	}
+	@Override
+	public List<Subject> ListFixGet2(Map map) {
+		// TODO Auto-generated method stub
+		return subjectdao.ListFixGet2(map);
+	}
 }

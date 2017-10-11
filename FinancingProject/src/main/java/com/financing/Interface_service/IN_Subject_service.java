@@ -20,4 +20,5 @@ public interface IN_Subject_service {
 	 List<Subject>list_Subject_4();
 	 List<Subject> ListFixGet(Map map);
 	 BigInteger  get_count(int  id);
+	 List<Subject> ListFixGet2(Map map);
 }

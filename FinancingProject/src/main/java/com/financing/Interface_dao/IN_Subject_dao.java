@@ -26,6 +26,6 @@ public interface IN_Subject_dao {
 	 List<Subject> listSubject(Map map);
 	 String listHql(Map map,String hql);
 	 List<Subject>list_Subject_4();
-	 
+	 List<Subject> ListFixGet2(Map map);
 	 BigInteger  get_count(int  id);
 }

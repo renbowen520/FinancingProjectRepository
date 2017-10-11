@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -88,6 +89,7 @@ private IN_user_role_service IN_user_role_service;
 
 
 	 //œ‘ æ∫ÛÃ®
+     @RequiresAuthentication
 	@RequestMapping("/admin")
 	public String admin() {
 		 return "admin/admin";
@@ -253,9 +255,8 @@ private IN_user_role_service IN_user_role_service;
 		map.put("namem", namem);
 		map.put("statusm", statusm);
 		map.put("typem", typem);
-		List<Subject>listSubject=subjectService.listSubject(map);
+		List<Subject>listSubject=subjectService.ListFixGet2(map);
 		model.addAttribute("listSubject", listSubject);
-		
 		return "admin/menus11";
 	}
 	
