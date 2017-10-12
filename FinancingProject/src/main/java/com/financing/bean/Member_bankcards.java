@@ -1,7 +1,6 @@
 package com.financing.bean;
 
 import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,17 +12,17 @@ import javax.persistence.Table;
 @Entity
 @Table
 public class Member_bankcards {
-	//(³ÉÔ±ÒøÁª±í) 
+	//(ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½) 
 
-		private int id;//°ó¿¨id
-	//	private String type;//ÒøÐÐ¿¨ÀàÐÍ
-		private Member member_id;//ÓÃ»§±íid Íâ¼ü
-		private  String card_no;//ÒøÐÐ¿¨ºÅ
-		private int delflag;//ÊÇ·ñÉ¾³ý£¨0£ºÕý³£Ê¹ÓÃ£¬1£º±»É¾³ý£©
-		private Date create_date;//´´½¨Ê±¼ä
-		private Date update_date;//ÐÞ¸ÄÊ±¼ä
-		private String cardaddress;//¿ª»§ÒøÐÐËùÔÚµØ
-		private  Bank bank;  //ÒýÓÃÒøÐÐ¿¨
+		private int id;//ï¿½ï¿½id
+	//	private String type;//ï¿½ï¿½ï¿½Ð¿ï¿½ï¿½ï¿½ï¿½ï¿½
+		private Member member_id;//ï¿½Ã»ï¿½ï¿½ï¿½id ï¿½ï¿½ï¿½
+		private  String card_no;//ï¿½ï¿½ï¿½Ð¿ï¿½ï¿½ï¿½
+		private int delflag;//ï¿½Ç·ï¿½É¾ï¿½ï¿½ï¿½ï¿½0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã£ï¿½1ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½
+		private Date create_date;//ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+		private Date update_date;//ï¿½Þ¸ï¿½Ê±ï¿½ï¿½
+		private String cardaddress;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½
+		private  Bank bank;  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¿ï¿½
 		
 		
 	 @OneToOne

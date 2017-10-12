@@ -188,10 +188,23 @@ public class LoginController  {
 		   }
 	
 		   java.text.DecimalFormat   df   =new   java.text.DecimalFormat("#.00");  
-		   session.setAttribute("lixi", df.format(m2));
-		   session.setAttribute("sum",df.format(m2+member_account.getImuseale_balance()+member_account.getUseable_balance()) );
+	
 		
-		   
+		
+		   if(m2!=0) {
+			   session.setAttribute("lixi", df.format(m2)); 
+		   }else {
+			   session.setAttribute("lixi", 0);   
+		   }
+		double zzz=   m2+member_account.getImuseale_balance()+member_account.getUseable_balance();  
+		   if(zzz!=0) {
+			   session.setAttribute("sum",df.format(zzz) ); 
+		   }else {
+			   session.setAttribute("sum",0 );   
+		   }
+		
+		
+		
 		   session.setAttribute("no_login", "");
 				    //个人中心
 				   return "redirect:/IndexController/personal_center";

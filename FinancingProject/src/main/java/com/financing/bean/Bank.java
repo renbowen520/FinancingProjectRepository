@@ -8,7 +8,7 @@ import javax.persistence.Table;
 @Table
 @Entity
 public class Bank {
-	//ÒøĞĞ
+	//ï¿½ï¿½ï¿½ï¿½
 	
         private  int id;
         private String bname;

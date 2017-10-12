@@ -297,8 +297,21 @@ public class MemberController {
 			}
 		   }
 	
-		   session.setAttribute("lixi", df.format(m2));
-		   session.setAttribute("sum",df.format(m2+member_account.getImuseale_balance()+member_account.getUseable_balance()) );
+		   
+		   if(m2!=0) {
+			   session.setAttribute("lixi", df.format(m2)); 
+		   }else {
+			   session.setAttribute("lixi", 0);   
+		   }
+		double zzz=   m2+member_account.getImuseale_balance()+member_account.getUseable_balance();  
+		   if(zzz!=0) {
+			   session.setAttribute("sum",df.format(zzz) ); 
+		   }else {
+			   session.setAttribute("sum",0 );   
+		   }
+		   
+		   
+	
              return "redirect:/IndexController/personal_center";
 		       }else {
 		    	   return "redirect:/IndexController/index";     
@@ -414,9 +427,18 @@ public class MemberController {
 		   }
 		
            java.text.DecimalFormat   df   =new   java.text.DecimalFormat("#.00");  
-		   session.setAttribute("lixi", df.format(num222));
-		   session.setAttribute("sum",df.format(num222+member_account.getImuseale_balance()+member_account.getUseable_balance()) );
-  		 
+    	   if(num222!=0) {
+			   session.setAttribute("lixi", df.format(num222)); 
+		   }else {
+			   session.setAttribute("lixi", 0);   
+		   }
+		double zzz=   num222+member_account.getImuseale_balance()+member_account.getUseable_balance();  
+		   if(zzz!=0) {
+			   session.setAttribute("sum",df.format(zzz) ); 
+		   }else {
+			   session.setAttribute("sum",0 );   
+		   }
+           
 	       //重新啊回到个人中心
 	      return "redirect:/IndexController/personal_center";    
 	   		
